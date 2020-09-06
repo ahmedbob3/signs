@@ -7,6 +7,7 @@ const regularFontFamily = 'Font-Regular';
 const lightFontFamily = 'Font-Light';
 const mediumFontFamily = 'Font-Medium';
 const boldFontFamily = 'Font-Bold';
+const semiBoldFontFamily = 'Font-SemiBold';
 
 const defaultBackgroundColor = Color.fromRGBO(0, 81, 173, 1);
 const defaultSecondaryBackgroundColor = Color(0xFF3D5A80);

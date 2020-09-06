@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:signs/Utils/images.dart';
+import 'package:signs/Utils/strings.dart';
 import 'package:signs/Utils/styles.dart';
 import 'package:signs/widgets/widgets.dart';
 
@@ -34,6 +35,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 Container(
                   margin: EdgeInsets.only(
                       top: MediaQuery.of(context).size.height * 0.33),
+                  padding: EdgeInsets.all(40),
                   decoration: BoxDecoration(
                     color: defaultBackgroundColor,
                     borderRadius: BorderRadius.only(
@@ -46,19 +48,30 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Spacer(),
-                        Text('Welcome',
+                        Text(Strings().getWelcomeText(),
                             style: titleStyle(
                                 fontFamily: boldFontFamily, fontSize: 32)),
                         Spacer(),
-                        Text('Offline and online appoitmnet',
+                        Text(Strings().getLoginTitle1(),
                             style: titleStyle(
                                 fontFamily: boldFontFamily, fontSize: 18)),
                         SizedBox(height: 10),
-                        Text('To Your Health care app',
+                        Text(Strings().getLoginTitle2(),
                             style: titleStyle(
                                 fontFamily: boldFontFamily, fontSize: 22)),
                         Spacer(),
-                        button(null, 'Sign In')
+                        button(() {}, Strings().getSingInText()),
+                        SizedBox(height: 20),
+                        button(() {}, Strings().getCreateAccountText(),
+                            isFilledColor: false),
+                        Spacer(),
+                        Center(
+                          child: Text(
+                            Strings().getDiscoverApp(),
+                            style: titleStyle().copyWith(decoration: TextDecoration.underline),
+                          ),
+                        ),
+                        Spacer(),
                       ],
                     ),
                   ),
