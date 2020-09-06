@@ -53,4 +53,8 @@ class Constants {
       ),
     ),
   );
+
+  TextStyle labelStyle ({Color color , double fontSize}){
+    return TextStyle(color: color?? Colors.black, fontSize: fontSize ?? 14);
+  }
 }
