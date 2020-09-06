@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:signs/Utils/images.dart';
 import 'package:signs/Utils/strings.dart';
@@ -36,8 +37,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         ))),
                 Container(
                   margin: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height * (Theme.of(context).platform == TargetPlatform.iOS ? 0.335 : 0.37)),
-                  padding: EdgeInsets.all(40),
+                      top: MediaQuery.of(context).size.height * (Theme.of(context).platform == TargetPlatform.iOS ? 0.335 : 0.355)),
+                  padding: EdgeInsets.all(35),
                   decoration: BoxDecoration(
                     color: defaultBackgroundColor,
                     borderRadius: BorderRadius.only(
@@ -71,7 +72,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           child: Text(
                             Strings().getDiscoverApp(),
                             style: titleStyle()
-                                .copyWith(decoration: TextDecoration.underline),
+                                .copyWith(decoration: TextDecoration.underline ,fontFamily: mediumFontFamily, fontSize: 14),
                           ),
                         ),
                         Spacer(),

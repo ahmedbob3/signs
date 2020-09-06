@@ -94,7 +94,7 @@ Widget button(Function onPress, String labelText,
     child: MaterialButton(
       onPressed: onPress,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(15),
         side: BorderSide(color: Colors.white),
       ),
       elevation: 0,
@@ -103,8 +103,8 @@ Widget button(Function onPress, String labelText,
         labelText,
         style: TextStyle(
             color: !isFilledColor ? Colors.white : defaultBackgroundColor,
-            fontSize: 18,
-            fontFamily: boldFontFamily),
+            fontSize: 16,
+            fontFamily: !isFilledColor ? semiBoldFontFamily : mediumFontFamily ),
       ),
     ),
   );
