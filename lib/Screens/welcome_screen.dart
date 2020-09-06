@@ -23,10 +23,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               children: <Widget>[
                 Container(
                     width: double.infinity,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(Login_background), fit: BoxFit.cover)),
                     child: Image.asset(
-                      LOGIN_BACKGROUND,
+                      Login_shape,
                       fit: BoxFit.fitWidth,
-                    )),
+                    )
+                ),
                 Container(
                   margin: EdgeInsets.only(
                       top: MediaQuery.of(context).size.height * 0.33),
