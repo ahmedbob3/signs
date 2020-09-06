@@ -39,7 +39,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 ),
                 Container(
                   margin: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height * 0.37),
+                      top: MediaQuery.of(context).size.height * 0.335),
                   padding: EdgeInsets.all(40),
                   decoration: BoxDecoration(
                     color: defaultBackgroundColor,
