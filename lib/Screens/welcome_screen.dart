@@ -26,20 +26,17 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     width: double.infinity,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: AssetImage(Login_background), fit: BoxFit.cover)),
-
-              child: Padding(
-                padding: EdgeInsets.only(top: 10),
-                child:
-                Image.asset(
-                    Login_shape,
-                    fit: BoxFit.contain,
-                  )
-              )
-                ),
+                            image: AssetImage(Login_background),
+                            fit: BoxFit.cover)),
+                    child: Padding(
+                        padding: EdgeInsets.only(top: 10),
+                        child: Image.asset(
+                          Login_shape,
+                          fit: BoxFit.contain,
+                        ))),
                 Container(
                   margin: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height * 0.335),
+                      top: MediaQuery.of(context).size.height * (Theme.of(context).platform == TargetPlatform.iOS ? 0.335 : 0.37)),
                   padding: EdgeInsets.all(40),
                   decoration: BoxDecoration(
                     color: defaultBackgroundColor,
@@ -73,7 +70,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         Center(
                           child: Text(
                             Strings().getDiscoverApp(),
-                            style: titleStyle().copyWith(decoration: TextDecoration.underline),
+                            style: titleStyle()
+                                .copyWith(decoration: TextDecoration.underline),
                           ),
                         ),
                         Spacer(),
