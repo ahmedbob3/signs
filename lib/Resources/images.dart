@@ -1,0 +1,21 @@
+const String Login_background = 'assets/images/bg.png';
+const String Add_pill_Active = 'assets/images/ic_addPill_Active.png';
+const String Add_pill = 'assets/images/ic_addPill.png';
+const String Add_subaccount = 'assets/images/ic_addsubaccount.png';
+const String Appointement_inactive = 'assets/images/ic_Appointement_Inactive.png';
+const String Arrow_down = 'assets/images/ic_arrow_Down.png';
+const String Arrow_back_grey = 'assets/images/ic_arrowback_grey.png';
+const String Arrow_back_white = 'assets/images/ic_arrowback_white.png';
+const String Blood_Pressure = 'assets/images/ic_BloodPressure.png';
+const String Circle = 'assets/images/ic_circle.png';
+const String Direction = 'assets/images/ic_direction.png';
+const String Female_active = 'assets/images/ic_female_active.png';
+const String Heartbeat = 'assets/images/ic_HeartBeat.png';
+const String History_inctive = 'assets/images/ic_History_Inctive_1.png';
+const String kuwait_flag = 'assets/images/ic_kuwaitFlag.png';
+const String Login_shape = 'assets/images/ic_LoginShape.png';
+const String Male_inactive = 'assets/images/ic_male_inactive.png';
+const String MapMarker = 'assets/images/ic_mapMarker.png';
+const String Medicine_inctive = 'assets/images/ic_Medicine_Inctive_1.png';
+const String Plus_add_Pill = 'assets/images/ic_plusaddPill.png';
+
