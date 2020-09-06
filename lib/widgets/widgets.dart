@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:signs/Utils/constants.dart';
+import 'package:signs/Utils/styles.dart';
 
 class Widgets {
   call() {}
@@ -64,8 +65,11 @@ TextFormField textField(String hintText, Function callback,
               icon: Icon(Icons.remove_red_eye, color: Colors.white),
               onPressed: showPassword)
           : icon == null ? null : icon,
-      prefixIcon:
-          Container(child: prefixIcon != null ? prefixIcon : Container(), height: 30, width: 30,),
+      prefixIcon: Container(
+        child: prefixIcon != null ? prefixIcon : Container(),
+        height: 30,
+        width: 30,
+      ),
     ),
     textInputAction: TextInputAction.done,
     keyboardType: isPhoneKeyboard ? TextInputType.phone : TextInputType.text,
@@ -82,23 +86,22 @@ TextFormField textField(String hintText, Function callback,
   );
 }
 
-Widget button(Function onPress, String labelText, {bool isFilledColor = true}) {
-  return Container(
-    child: MaterialButton(
-      onPressed: onPress,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5),side: BorderSide(
-        color: isFilledColor ? Colors.transparent : Colors.red
-      )),
-      color: isFilledColor ? Colors.red : Colors.transparent,
-      elevation: 0,
-      child: Center(
-        child: Text(
-          labelText,
-          style: TextStyle(
-              color: isFilledColor ? Colors.white : Colors.red, fontSize: 20, fontFamily: 'Font-Meduim'),
-        ),
-      ),
-      height: 60,
+Widget button(Function onPress, String labelText,
+    {bool isFilledColor = true, Color color}) {
+  return MaterialButton(
+    onPressed: onPress,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(5),
+      side: BorderSide(color: Colors.red),
+    ),
+    elevation: 0,
+    color: Colors.red,
+    child: Text(
+      labelText,
+      style: TextStyle(
+          color: color != null ? defaultBackgroundColor : Colors.white,
+          fontSize: 20,
+          fontFamily: boldFontFamily),
     ),
   );
 }
