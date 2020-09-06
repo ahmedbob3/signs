@@ -87,21 +87,25 @@ TextFormField textField(String hintText, Function callback,
 }
 
 Widget button(Function onPress, String labelText,
-    {bool isFilledColor = true, Color color}) {
-  return MaterialButton(
-    onPressed: onPress,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(5),
-      side: BorderSide(color: Colors.red),
-    ),
-    elevation: 0,
-    color: Colors.red,
-    child: Text(
-      labelText,
-      style: TextStyle(
-          color: color != null ? defaultBackgroundColor : Colors.white,
-          fontSize: 20,
-          fontFamily: boldFontFamily),
+    {bool isFilledColor = true}) {
+  return Container(
+    width: double.infinity,
+    height: 50,
+    child: MaterialButton(
+      onPressed: onPress,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+        side: BorderSide(color: Colors.white),
+      ),
+      elevation: 0,
+      color: isFilledColor ? Colors.white : defaultBackgroundColor,
+      child: Text(
+        labelText,
+        style: TextStyle(
+            color: !isFilledColor ? Colors.white : defaultBackgroundColor,
+            fontSize: 18,
+            fontFamily: boldFontFamily),
+      ),
     ),
   );
 }
