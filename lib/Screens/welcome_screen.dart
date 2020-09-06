@@ -27,20 +27,25 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     decoration: BoxDecoration(
                         image: DecorationImage(
                             image: AssetImage(Login_background), fit: BoxFit.cover)),
-                    child: Image.asset(
-                      Login_shape,
-                      fit: BoxFit.fitWidth,
-                    )
+
+              child: Padding(
+                padding: EdgeInsets.only(top: 10),
+                child:
+                Image.asset(
+                    Login_shape,
+                    fit: BoxFit.contain,
+                  )
+              )
                 ),
                 Container(
                   margin: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height * 0.33),
+                      top: MediaQuery.of(context).size.height * 0.37),
                   padding: EdgeInsets.all(40),
                   decoration: BoxDecoration(
                     color: defaultBackgroundColor,
                     borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(30),
-                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(28),
+                      topLeft: Radius.circular(28),
                     ),
                   ),
                   child: Container(
