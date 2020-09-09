@@ -17,7 +17,7 @@ class Strings {
     }
   }
 
-  String getWelcomeText(){
+  String getWelcomeText() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.WELCOME;
@@ -30,7 +30,7 @@ class Strings {
     }
   }
 
-    String getLoginTitle1(){
+  String getLoginTitle1() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.LOGIN_TITLE1;
@@ -43,8 +43,7 @@ class Strings {
     }
   }
 
-
-  String getLoginTitle2(){
+  String getLoginTitle2() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.LOGIN_TITLE2;
@@ -57,8 +56,7 @@ class Strings {
     }
   }
 
-
-  String getSingInText(){
+  String getSingInText() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SIGN_IN;
@@ -71,8 +69,7 @@ class Strings {
     }
   }
 
-
-  String getCreateAccountText(){
+  String getCreateAccountText() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.CREATE_ACCOUNT;
@@ -85,8 +82,7 @@ class Strings {
     }
   }
 
-
-  String getDiscoverApp(){
+  String getDiscoverApp() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.DISCOVER_APP;
@@ -99,4 +95,55 @@ class Strings {
     }
   }
 
+  String getSinginSlogan() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_IN_SLOGAN;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_IN_SLOGAN;
+        break;
+      default:
+        return Strings_EN.SING_IN_SLOGAN;
+    }
+  }
+
+  String getMobileNumberString(){
+   switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.MOBILE_NUMBER;
+        break;
+      case languages.Indian:
+        return Strings_INR.MOBILE_NUMBER;
+        break;
+      default:
+        return Strings_EN.MOBILE_NUMBER;
+    }
+  }
+
+  String getEnterMobileNumberString(){
+   switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.ENTER_MOBILE_NUMBER;
+        break;
+      case languages.Indian:
+        return Strings_INR.ENTER_MOBILE_NUMBER;
+        break;
+      default:
+        return Strings_EN.ENTER_MOBILE_NUMBER;
+    }
+  }
+
+  String getContinueStrings(){
+   switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.CONTINUE;
+        break;
+      case languages.Indian:
+        return Strings_INR.CONTINUE;
+        break;
+      default:
+        return Strings_EN.CONTINUE;
+    }
+  }
 }

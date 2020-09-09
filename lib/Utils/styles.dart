@@ -10,6 +10,7 @@ const boldFontFamily = 'Font-Bold';
 const semiBoldFontFamily = 'Font-SemiBold';
 
 const defaultBackgroundColor = Color.fromRGBO(0, 81, 173, 1);
+const greyColor = Color.fromRGBO(122, 134, 154, 1);
 const defaultSecondaryBackgroundColor = Color(0xFF3D5A80);
 const defaultPrimaryBackgroundColor = Color(0xFFEE6C4D);
 const TransparentColor = Color(0x00000000);

@@ -24,7 +24,8 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           fontFamily: 'Font-Regular',
           backgroundColor: defaultBackgroundColor,
-          canvasColor: defaultBackgroundColor,
+          canvasColor: Colors.transparent,
+            //  theme: ThemeData(canvasColor: Colors.transparent)
           primaryColor: defaultBackgroundColor,
           scaffoldBackgroundColor: defaultBackgroundColor,
         ),

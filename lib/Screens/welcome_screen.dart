@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:signs/Screens/continue_login_screen.dart';
+import 'package:signs/Screens/login_screen.dart';
 import 'package:signs/Utils/images.dart';
 import 'package:signs/Utils/strings.dart';
 import 'package:signs/Utils/styles.dart';
@@ -23,18 +25,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             width: double.infinity,
             child: Stack(
               children: <Widget>[
-                Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage(Login_background),
-                            fit: BoxFit.cover)),
-                    child: Padding(
-                        padding: EdgeInsets.only(top: 10),
-                        child: Image.asset(
-                          Login_shape,
-                          fit: BoxFit.contain,
-                        ))),
+                headerBg(),
                 Container(
                   margin: EdgeInsets.only(
                       top: MediaQuery.of(context).size.height * (Theme.of(context).platform == TargetPlatform.iOS ? 0.335 : 0.355)),
@@ -63,10 +54,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             style: titleStyle(
                                 fontFamily: boldFontFamily, fontSize: 22)),
                         Spacer(),
-                        button(() {}, Strings().getSingInText()),
+                        button(() {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ContinueLoginScreen()));
+                        }, Strings().getSingInText(), isFilledColor: false),
                         SizedBox(height: 20),
                         button(() {}, Strings().getCreateAccountText(),
-                            isFilledColor: false),
+                            isFilledColor: true),
                         Spacer(),
                         Center(
                           child: Text(
