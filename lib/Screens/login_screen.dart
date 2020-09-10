@@ -25,11 +25,13 @@ class _LoginScreenState extends State<LoginScreen> {
               children: <Widget>[
                 headerBg(),
                 SingleChildScrollView(
+                  physics: NeverScrollableScrollPhysics(),
                   child: Container(
+                    height: MediaQuery.of(context).size.height,
                     margin: EdgeInsets.only(
                         top: MediaQuery.of(context).size.height *
                             (Theme.of(context).platform == TargetPlatform.iOS
-                                ? 0.25
+                                ? 0.33
                                 : 0.25)),
                     padding: EdgeInsets.all(35),
                     decoration: BoxDecoration(
