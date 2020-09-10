@@ -30,7 +30,7 @@ class _ContinueLoginScreenState extends State<ContinueLoginScreen> {
                     margin: EdgeInsets.only(
                         top: MediaQuery.of(context).size.height *
                             (Theme.of(context).platform == TargetPlatform.iOS
-                                ? 0.50
+                                ? 0.33
                                 : 0.44)),
                     padding: EdgeInsets.all(35),
                     decoration: BoxDecoration(
