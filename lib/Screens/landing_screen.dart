@@ -24,7 +24,7 @@ class _LandingScreenState extends State<LandingScreen> {
               child: Stack(
                 children: <Widget>[
                   Container(
-                    height: 200,
+                    height: 250,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       image: DecorationImage(
