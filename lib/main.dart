@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
       SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-        statusBarColor: TransparentColor,
+        statusBarColor: defaultBackgroundColor,
       ));
 
       SystemChrome.setPreferredOrientations([
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           fontFamily: 'Font-Regular',
           backgroundColor: defaultBackgroundColor,
-          canvasColor: Colors.transparent,
+          canvasColor: defaultBackgroundColor,
             //  theme: ThemeData(canvasColor: Colors.transparent)
           primaryColor: defaultBackgroundColor,
           scaffoldBackgroundColor: defaultBackgroundColor,

@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:signs/Blocs/check%20mobile%20bloc/check_mobile_bloc.dart';
+
 import 'package:signs/Screens/continue_login_screen.dart';
 import 'package:signs/Screens/login_screen.dart';
 import 'package:signs/Screens/signup_screen_step1.dart';
@@ -29,7 +32,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 headerBg(),
                 Container(
                   margin: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height * (Theme.of(context).platform == TargetPlatform.iOS ? 0.335 : 0.355)),
+                      top: MediaQuery.of(context).size.height *
+                          (Theme.of(context).platform == TargetPlatform.iOS
+                              ? 0.335
+                              : 0.355)),
                   padding: EdgeInsets.all(35),
                   decoration: BoxDecoration(
                     color: defaultBackgroundColor,
@@ -38,44 +44,55 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       topLeft: Radius.circular(28),
                     ),
                   ),
-                  child: Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Spacer(),
-                        Text(Strings().getWelcomeText(),
-                            style: titleStyle(
-                                fontFamily: boldFontFamily, fontSize: 32)),
-                        Spacer(),
-                        Text(Strings().getLoginTitle1(),
-                            style: titleStyle(
-                                fontFamily: boldFontFamily, fontSize: 18)),
-                        SizedBox(height: 10),
-                        Text(Strings().getLoginTitle2(),
-                            style: titleStyle(
-                                fontFamily: boldFontFamily, fontSize: 22)),
-                        Spacer(),
-                        button(() {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ContinueLoginScreen()));
-                        }, Strings().getSingInText(), isFilledColor: false),
-                        SizedBox(height: 20),
-                        button(() {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => SignupScreenStep1()));
-                        }, Strings().getCreateAccountText(),
-                            isFilledColor: true),
-                        Spacer(),
-                        Center(
-                          child: Text(
-                            Strings().getDiscoverApp(),
-                            style: titleStyle()
-                                .copyWith(decoration: TextDecoration.underline ,fontFamily: mediumFontFamily, fontSize: 14),
+                  child: MultiBlocProvider(
+                    providers: [
+                      BlocProvider<CheckMobileBloc>(
+                        create: (_) => CheckMobileBloc(),
+                      )
+                    ],
+                    child: Container(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Spacer(),
+                          Text(Strings().getWelcomeText(),
+                              style: titleStyle(
+                                  fontFamily: boldFontFamily, fontSize: 32)),
+                          Spacer(),
+                          Text(Strings().getLoginTitle1(),
+                              style: titleStyle(
+                                  fontFamily: boldFontFamily, fontSize: 18)),
+                          SizedBox(height: 10),
+                          Text(Strings().getLoginTitle2(),
+                              style: titleStyle(
+                                  fontFamily: boldFontFamily, fontSize: 22)),
+                          Spacer(),
+                          button(() {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => ContinueLoginScreen()));
+                          }, Strings().getSingInText(), isFilledColor: false),
+                          SizedBox(height: 20),
+                          button(() {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => SignupScreenStep1()));
+                          }, Strings().getCreateAccountText(),
+                              isFilledColor: true),
+                          Spacer(),
+                          Center(
+                            child: Text(
+                              Strings().getDiscoverApp(),
+                              style: titleStyle().copyWith(
+                                  decoration: TextDecoration.underline,
+                                  fontFamily: mediumFontFamily,
+                                  fontSize: 14),
+                            ),
                           ),
-                        ),
-                        Spacer(),
-                      ],
+                          Spacer(),
+                        ],
+                      ),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),

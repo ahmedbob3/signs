@@ -5,7 +5,7 @@ enum languages { English, Arabic, Indian }
 class Constants {
   static String appName = "Signs";
 
-  static const String serverURL = "";
+  
   static const languageId = languages.English;
 
   //Colors for theme

@@ -67,12 +67,16 @@ Widget textField(String hintText, Function callback,
             ? IconButton(
                 icon: Icon(Icons.remove_red_eye, color: Colors.white),
                 onPressed: showPassword)
-            : icon == null ? null : icon,
-        prefixIcon: prefixIcon != null ? Container(
-          child: prefixIcon,
-          height: 30,
-          width: 30,
-        ) : null,
+            : icon == null
+                ? null
+                : icon,
+        prefixIcon: prefixIcon != null
+            ? Container(
+                child: prefixIcon,
+                height: 30,
+                width: 30,
+              )
+            : null,
       ),
       textInputAction: TextInputAction.done,
       keyboardType: isPhoneKeyboard ? TextInputType.phone : TextInputType.text,
@@ -100,10 +104,10 @@ Widget button(Function onPress, String labelText, {bool isFilledColor = true}) {
         borderRadius: BorderRadius.circular(15),
         side: BorderSide(color: Colors.white),
       ),
-      disabledColor: Color.fromRGBO(144	,156,	179,1),
+      disabledColor: Color.fromRGBO(144, 156, 179, 1),
       disabledTextColor: Colors.white,
       elevation: 0,
-      color: isFilledColor ? defaultBackgroundColor : Colors.white  ,
+      color: isFilledColor ? defaultBackgroundColor : Colors.white,
       child: Text(
         labelText,
         style: TextStyle(
@@ -115,8 +119,8 @@ Widget button(Function onPress, String labelText, {bool isFilledColor = true}) {
   );
 }
 
-
-Widget buttonChangeState(String image, String labelText, {bool isFActive = true}) {
+Widget buttonChangeState(String image, String labelText,
+    {bool isFActive = true}) {
   return Container(
     width: double.infinity,
     height: 50,
@@ -126,57 +130,61 @@ Widget buttonChangeState(String image, String labelText, {bool isFActive = true}
         borderRadius: BorderRadius.circular(15),
         side: BorderSide(color: Colors.white),
       ),
-      disabledColor: isFActive ? defaultBackgroundColor  : genderColor,
+      disabledColor: isFActive ? defaultBackgroundColor : genderColor,
       elevation: 0,
-      padding: EdgeInsets.only(left: 25,right: 25),
+      padding: EdgeInsets.only(left: 25, right: 25),
       child: Row(
-          children: <Widget>[
-            Text(
-              labelText,
-              style: TextStyle(
-                  color: isFActive ? Colors.white  :  greyColor,
-                  fontSize: 16,
-                  fontFamily: isFActive ? semiBoldFontFamily : mediumFontFamily),
-            ),
-            SizedBox(width: 30),
-            Image.asset(image,color: isFActive ? Colors.white :  greyHeader,),
-          ],
+        children: <Widget>[
+          Text(
+            labelText,
+            style: TextStyle(
+                color: isFActive ? Colors.white : greyColor,
+                fontSize: 16,
+                fontFamily: isFActive ? semiBoldFontFamily : mediumFontFamily),
+          ),
+          SizedBox(width: 30),
+          Image.asset(
+            image,
+            color: isFActive ? Colors.white : greyHeader,
+          ),
+        ],
       ),
     ),
   );
 }
 
 bool reflect(bool isFActive) {
-  bool result=false;
-  if (isFActive == false)
-    result=true;
+  bool result = false;
+  if (isFActive == false) result = true;
   return result;
 }
 
-
-Widget buttonWithIcon(String image, String labelText, {bool isBackground = true}) {
+Widget buttonWithIcon(String image, String labelText,
+    {bool isBackground = true}) {
   return Container(
     width: double.infinity,
     height: 55,
     child: Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(isBackground ? 15 : 0),
-        side: BorderSide(color: isBackground ? buttonBorderColor : Colors.white ),
+        side:
+            BorderSide(color: isBackground ? buttonBorderColor : Colors.white),
       ),
       color: Colors.white,
       elevation: isBackground ? 5 : 0,
       child: Row(
-        mainAxisAlignment:  MainAxisAlignment.center ,
-        crossAxisAlignment: CrossAxisAlignment.center  ,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Image.asset(image),
           SizedBox(width: 20),
           Text(
             labelText,
             style: TextStyle(
-                color: isBackground ? defaultBackgroundColor : buttonBorderColor ,
+                color:
+                    isBackground ? defaultBackgroundColor : buttonBorderColor,
                 fontSize: 16,
-                fontFamily: semiBoldFontFamily ),
+                fontFamily: semiBoldFontFamily),
           ),
         ],
       ),
@@ -198,4 +206,19 @@ Widget headerBg() {
       ),
     ),
   );
+}
+
+showLoadingDialog(BuildContext context) async{
+  Future.delayed(Duration(milliseconds: 10), () {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return Container(
+          child: Center(
+            child: CircularProgressIndicator(),
+          ),
+        );
+      },
+    );
+  });
 }
