@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:country_code_picker/country_code_picker.dart';
+import 'package:country_codes/country_codes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:signs/Blocs/check mobile bloc/check_mobile_bloc.dart';
@@ -18,11 +20,20 @@ class ContinueLoginScreen extends StatefulWidget {
 class _ContinueLoginScreenState extends State<ContinueLoginScreen> {
   CheckMobileBloc _checkMobileBloc;
   TextEditingController _mobileController = TextEditingController();
-
+  String selectedCountry = '';
+  String locale;
   @override
   void initState() {
     super.initState();
     _checkMobileBloc = CheckMobileBloc();
+    getSimInfo();
+  }
+
+  Future<void> getSimInfo() async {
+    await CountryCodes.init();
+    setState(() {
+      selectedCountry = CountryCodes.dialCode();
+    });
   }
 
   @override
@@ -34,7 +45,6 @@ class _ContinueLoginScreenState extends State<ContinueLoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print('build');
     return Container(
       color: Color.fromRGBO(0, 81, 173, 1),
       child: SafeArea(
@@ -47,8 +57,9 @@ class _ContinueLoginScreenState extends State<ContinueLoginScreen> {
                 showLoadingDialog(context);
               } else if (state is CheckMobileLoadedState) {
                 if (state.response.data.toMap().isEmpty) {
-                  Future.delayed(Duration(milliseconds: 10), (){
-                    Scaffold.of(context).showSnackBar(SnackBar(content: Text(state.response.msg)));
+                  Future.delayed(Duration(milliseconds: 10), () {
+                    Scaffold.of(context).showSnackBar(
+                        SnackBar(content: Text(state.response.msg)));
                     Navigator.of(context).pop();
                   });
                 } else {
@@ -113,7 +124,30 @@ class _ContinueLoginScreenState extends State<ContinueLoginScreen> {
                                     const EdgeInsets.symmetric(horizontal: 15),
                                 child: Row(
                                   children: <Widget>[
-                                    Image.asset(Kuwait_flag),
+                                    Container(
+                                      width: 40,
+                                      child: CountryCodePicker(
+                                        onChanged: (countryCode) {
+                                          setState(() {
+                                            selectedCountry =
+                                                countryCode.dialCode;
+                                          });
+                                        },
+                                        // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
+                                        initialSelection:
+                                            CountryCodes.dialCode(),
+                                        favorite: ['+20', '+965'],
+                                        // optional. Shows only country name and flag
+                                        showCountryOnly: false,
+                                        // optional. Shows only country name and flag when popup is closed.
+                                        showOnlyCountryWhenClosed: true,
+                                        // optional. aligns the flag and the Text left
+                                        alignLeft: false,
+                                        // hideSearch: true,
+                                        hideMainText: true,
+                                        dialogTextStyle: titleStyle(fontFamily: mediumFontFamily, color:  Colors.black),
+                                      ),
+                                    ),
                                     SizedBox(width: 5),
                                     Icon(Icons.arrow_drop_down),
                                     SizedBox(width: 10),
@@ -123,7 +157,7 @@ class _ContinueLoginScreenState extends State<ContinueLoginScreen> {
                                         height: 60),
                                     SizedBox(width: 10),
                                     Text(
-                                      '+995',
+                                      selectedCountry,
                                       style: titleStyle(
                                           fontFamily: mediumFontFamily,
                                           color: Colors.black,
@@ -161,7 +195,10 @@ class _ContinueLoginScreenState extends State<ContinueLoginScreen> {
                               ),
                             ),
                             SizedBox(height: 30),
-                            button(_mobileController.text.isEmpty ? null : checkMobileNumber,
+                            button(
+                                _mobileController.text.isEmpty
+                                    ? null
+                                    : checkMobileNumber,
                                 Strings().getContinueStrings(),
                                 isFilledColor: true),
                             Spacer()
@@ -195,4 +232,28 @@ class _ContinueLoginScreenState extends State<ContinueLoginScreen> {
     print('check');
     _checkMobileBloc.add(checkMobileNumberEvent(_mobileController.text));
   }
+
+  // Widget _buildDropdownItem(Country country) {
+  //   return SizedBox(
+  //     width: 80,
+  //     child: Row(
+  //       children: <Widget>[
+  //         CountryPickerUtils.getDefaultFlagImage(country),
+  //         SizedBox(
+  //           width: 8.0,
+  //         ),
+  //         // Icon(Icons.keyboard_arrow_down),
+  //         // SizedBox(
+  //         //   width: 8.0,
+  //         // ),
+  //         // Container(
+  //         //     color: Color.fromRGBO(239, 239, 244, 1), width: 2, height: 60),
+  //         // SizedBox(
+  //         //   width: 8.0,
+  //         // ),
+  //         Expanded(child: Text("+${country.phoneCode}")),
+  //       ],
+  //     ),
+  //   );
+  // }
 }
