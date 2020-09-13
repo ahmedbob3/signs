@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:signs/Screens/continue_login_screen.dart';
 import 'package:signs/Screens/login_screen.dart';
+import 'package:signs/Screens/signup_screen_step1.dart';
 import 'package:signs/Utils/images.dart';
 import 'package:signs/Utils/strings.dart';
 import 'package:signs/Utils/styles.dart';
@@ -58,7 +59,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           Navigator.of(context).push(MaterialPageRoute(builder: (context) => ContinueLoginScreen()));
                         }, Strings().getSingInText(), isFilledColor: false),
                         SizedBox(height: 20),
-                        button(() {}, Strings().getCreateAccountText(),
+                        button(() {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => SignupScreenStep1()));
+                        }, Strings().getCreateAccountText(),
                             isFilledColor: true),
                         Spacer(),
                         Center(

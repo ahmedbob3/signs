@@ -31,7 +31,8 @@ class MyApp extends StatelessWidget {
           primaryColor: defaultBackgroundColor,
           scaffoldBackgroundColor: defaultBackgroundColor,
         ),
-        home: LandingScreen(),
+        home: WelcomeScreen(),
+        // home: LandingScreen(),
       );
   }
 }

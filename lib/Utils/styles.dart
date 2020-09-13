@@ -11,9 +11,20 @@ const semiBoldFontFamily = 'Font-SemiBold';
 
 const defaultBackgroundColor = Color.fromRGBO(0, 81, 173, 1);
 const greyColor = Color.fromRGBO(122, 134, 154, 1);
+const greyHeader = Color.fromRGBO(193, 199, 208, 1);
+const textFieldFill = Color.fromRGBO(242, 244, 247, 1);
+const textFieldBorder = Color.fromRGBO(239, 239, 244, 1);
+const TransparentColor = Color.fromRGBO(255, 255, 255, 1);
+const genderColor = Color.fromRGBO(246, 247, 249, 1);
+const headerColor = Color.fromRGBO(0, 34, 81, 1);
+const buttonBorderColor = Color.fromRGBO(163, 172, 194, 0.3);
+
+
+
+
+
 const defaultSecondaryBackgroundColor = Color(0xFF3D5A80);
 const defaultPrimaryBackgroundColor = Color(0xFFEE6C4D);
-const TransparentColor = Color(0x00000000);
 
 
 const defaultAppBarTheme = AppBarTheme(

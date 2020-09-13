@@ -146,4 +146,431 @@ class Strings {
         return Strings_EN.CONTINUE;
     }
   }
+
+
+  String getSignupStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP;
+        break;
+      default:
+        return Strings_EN.SING_UP;
+    }
+  }
+
+  String getSingupSlogan(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP_SLOGAN;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP_SLOGAN;
+        break;
+      default:
+        return Strings_EN.SING_UP_SLOGAN;
+    }
+  }
+
+  String getSignupStep1Strings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP_STEP1;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP_STEP1;
+        break;
+      default:
+        return Strings_EN.SING_UP_STEP1;
+    }
+  }
+
+  String getSignupStep2Strings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP_STEP2;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP_STEP2;
+        break;
+      default:
+        return Strings_EN.SING_UP_STEP2;
+    }
+  }
+
+  String getSignupStep3Strings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP_STEP3;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP_STEP3;
+        break;
+      default:
+        return Strings_EN.SING_UP_STEP3;
+    }
+  }
+
+  String getPasswordStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP_PASSWORD;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP_PASSWORD;
+        break;
+      default:
+        return Strings_EN.SING_UP_PASSWORD;
+    }
+  }
+
+  String getEnterPasswordStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP_ENTER_PASSWORD;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP_ENTER_PASSWORD;
+        break;
+      default:
+        return Strings_EN.SING_UP_ENTER_PASSWORD;
+    }
+  }
+
+  String getConfirmStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP_CONFIRM;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP_CONFIRM;
+        break;
+      default:
+        return Strings_EN.SING_UP_CONFIRM;
+    }
+  }
+
+  String getConfirmPasswordStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP_CONFIRM_PASSWORD;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP_CONFIRM_PASSWORD;
+        break;
+      default:
+        return Strings_EN.SING_UP_CONFIRM_PASSWORD;
+    }
+  }
+
+
+  String getNextStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.NEXT;
+        break;
+      case languages.Indian:
+        return Strings_INR.NEXT;
+        break;
+      default:
+        return Strings_EN.NEXT;
+    }
+  }
+
+  String getHavingAccountStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.HAVING_ACCOUNT;
+        break;
+      case languages.Indian:
+        return Strings_INR.HAVING_ACCOUNT;
+        break;
+      default:
+        return Strings_EN.HAVING_ACCOUNT;
+    }
+  }
+
+  String getPreviousStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.PREVIOUS;
+        break;
+      case languages.Indian:
+        return Strings_INR.PREVIOUS;
+        break;
+      default:
+        return Strings_EN.PREVIOUS;
+    }
+  }
+
+  String getMaleStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.MALE;
+        break;
+      case languages.Indian:
+        return Strings_INR.MALE;
+        break;
+      default:
+        return Strings_EN.MALE;
+    }
+  }
+  String getFemaleStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.FEMALE;
+        break;
+      case languages.Indian:
+        return Strings_INR.FEMALE;
+        break;
+      default:
+        return Strings_EN.FEMALE;
+    }
+  }
+  String getGenderStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.GENDER;
+        break;
+      case languages.Indian:
+        return Strings_INR.GENDER;
+        break;
+      default:
+        return Strings_EN.GENDER;
+    }
+  }
+  String getFirstNameStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP_FIRST_NAME;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP_FIRST_NAME;
+        break;
+      default:
+        return Strings_EN.SING_UP_FIRST_NAME;
+    }
+  }
+  String getEnterFirstStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP_ENTER_FIRST;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP_ENTER_FIRST;
+        break;
+      default:
+        return Strings_EN.SING_UP_ENTER_FIRST;
+    }
+  }
+  String getLastNameStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP_LAST_NAME;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP_LAST_NAME;
+        break;
+      default:
+        return Strings_EN.SING_UP_LAST_NAME;
+    }
+  }
+  String getEnterLastStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP_ENTER_LAST;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP_ENTER_LAST;
+        break;
+      default:
+        return Strings_EN.SING_UP_ENTER_LAST;
+    }
+  }
+  String getEmailStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP_EMAIL;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP_EMAIL;
+        break;
+      default:
+        return Strings_EN.SING_UP_EMAIL;
+    }
+  }
+  String getEnterEmailStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP_ENTER_EMAIL;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP_ENTER_EMAIL;
+        break;
+      default:
+        return Strings_EN.SING_UP_ENTER_EMAIL;
+    }
+  }
+  String getSubaccountStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP_ADD_SUB_ACCOUNT;;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP_ADD_SUB_ACCOUNT;
+        break;
+      default:
+        return Strings_EN.SING_UP_ADD_SUB_ACCOUNT;
+    }
+  }
+  String getDatebirthStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP_DATE_BIRTH;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP_DATE_BIRTH;
+        break;
+      default:
+        return Strings_EN.SING_UP_DATE_BIRTH;
+    }
+  }
+  String getHeightTStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP_HEIGHT;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP_HEIGHT;
+        break;
+      default:
+        return Strings_EN.SING_UP_HEIGHT;
+    }
+  }
+  String getWeightStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP_WEIGHT;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP_WEIGHT;
+        break;
+      default:
+        return Strings_EN.SING_UP_WEIGHT;
+    }
+  }
+  String getBedtimeStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP_BED_TIME;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP_BED_TIME;
+        break;
+      default:
+        return Strings_EN.SING_UP_BED_TIME;
+    }
+  }
+  String getWaketimeStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP_WAKE_TIME;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP_WAKE_TIME;
+        break;
+      default:
+        return Strings_EN.SING_UP_WAKE_TIME;
+    }
+  }
+  String getSkipStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP_SKIP;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP_SKIP;
+        break;
+      default:
+        return Strings_EN.SING_UP_SKIP;
+    }
+  }
+
+  String getSubAccountStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP_SUB_ACCOUNT;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP_SUB_ACCOUNT;
+        break;
+      default:
+        return Strings_EN.SING_UP_SUB_ACCOUNT;
+    }
+  }
+
+  String getDoneStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP_DONE;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP_DONE;
+        break;
+      default:
+        return Strings_EN.SING_UP_DONE;
+    }
+  }
+
+  String getSingRelationStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP_RELATION;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP_RELATION;
+        break;
+      default:
+        return Strings_EN.SING_UP_RELATION;
+    }
+  }
+  String getSingSonStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP_SON;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP_SON;
+        break;
+      default:
+        return Strings_EN.SING_UP_SON;
+    }
+  }
+  String getSingMotherStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP_MOTHER;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP_MOTHER;
+        break;
+      default:
+        return Strings_EN.SING_UP_MOTHER;
+    }
+  }
+  String getSingAddAnotherStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP_ADD_ANOTHER;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP_ADD_ANOTHER;
+        break;
+      default:
+        return Strings_EN.SING_UP_ADD_ANOTHER;
+    }
+  }
+
 }

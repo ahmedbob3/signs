@@ -32,7 +32,7 @@ class _ContinueLoginScreenState extends State<ContinueLoginScreen> {
                             (Theme.of(context).platform == TargetPlatform.iOS
                                 ? 0.33
                                 : 0.44)),
-                    padding: EdgeInsets.all(35),
+                    padding: EdgeInsets.all(30),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
@@ -47,34 +47,36 @@ class _ContinueLoginScreenState extends State<ContinueLoginScreen> {
                           Strings().getSingInText(),
                           style: titleStyle(
                               fontFamily: boldFontFamily,
-                              color: Colors.black,
-                              fontSize: 20),
+                              color: headerColor,
+                              fontSize: 24),
                         ),
                         SizedBox(height: 10),
                         Text(Strings().getSinginSlogan(),
                             style: titleStyle(
                                 fontFamily: mediumFontFamily,
-                                color: Color.fromRGBO(122, 134, 154, 1))),
+                                color: greyColor,
+                                fontSize: 14)),
                         SizedBox(height: 20),
                         Text(Strings().getMobileNumberString(),
                             style: titleStyle(
                                 fontFamily: semiBoldFontFamily,
-                                color: Color.fromRGBO(193, 199, 208, 1))),
-                        SizedBox(height: 20),
+                                color: greyHeader,
+                                fontSize: 14)),
+                        SizedBox(height: 15),
                         Container(
                           height: 50,
                           decoration: BoxDecoration(
-                              color: Color.fromRGBO(242, 242, 242, 1),
+                              color: textFieldFill,
                               border: Border.all(
-                                color: Color.fromRGBO(239, 239, 244, 1),
+                                color: textFieldBorder,
                               ),
-                              borderRadius: BorderRadius.circular(20)),
+                              borderRadius: BorderRadius.circular(18)),
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            padding: const EdgeInsets.symmetric(horizontal: 15),
                             child: Row(
                               children: <Widget>[
                                 Image.asset(Kuwait_flag),
-                                SizedBox(width: 10),
+                                SizedBox(width: 5),
                                 Icon(Icons.arrow_drop_down),
                                 SizedBox(width: 10),
                                 Container(
@@ -83,11 +85,11 @@ class _ContinueLoginScreenState extends State<ContinueLoginScreen> {
                                     height: 60),
                                 SizedBox(width: 10),
                                 Text(
-                                  '+966',
+                                  '+995',
                                   style: titleStyle(
-                                      fontFamily: boldFontFamily,
+                                      fontFamily: mediumFontFamily,
                                       color: Colors.black,
-                                      fontSize: 18),
+                                      fontSize: 17),
                                 ),
                                 SizedBox(width: 10),
                                 Expanded(
@@ -95,10 +97,12 @@ class _ContinueLoginScreenState extends State<ContinueLoginScreen> {
                                     child: TextField(
                                       decoration: InputDecoration(
                                         hintText: Strings().getEnterMobileNumberString(),
-                                        hintStyle:
-                                            titleStyle(color: Colors.grey),
+                                        hintStyle: titleStyle(
+                                            fontFamily: mediumFontFamily,
+                                            color: greyColor,
+                                            fontSize: 16),
                                         labelStyle:
-                                            titleStyle(color: Colors.grey),
+                                            titleStyle(color: greyColor),
                                         border: InputBorder.none,
                                         focusedBorder: InputBorder.none,
                                         enabledBorder: InputBorder.none,
@@ -114,7 +118,7 @@ class _ContinueLoginScreenState extends State<ContinueLoginScreen> {
                           ),
                         ),
                         SizedBox(height: 30),
-                        button(null, Strings().getContinueStrings(), isFilledColor: false),
+                        button(null, Strings().getContinueStrings(), isFilledColor: true),
                         Spacer()
                       ],
                     ),
