@@ -7,7 +7,7 @@ import 'package:signs/Utils/strings.dart';
 import 'package:signs/Utils/styles.dart';
 import 'package:signs/widgets/widgets.dart';
 
-import 'continue_login_screen.dart';
+import 'check_mobile_screen.dart';
 
 class SignupSubAccountScreenStep1 extends StatefulWidget {
   SignupSubAccountScreenStep1({Key key}) : super(key: key);
@@ -244,7 +244,7 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
                             new GestureDetector(
                               onTap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => ContinueLoginScreen()));
+                                    builder: (context) => CheckMobileScreen()));
                               },
                               child: new Text(
                                 Strings().getSingInText(),

@@ -6,7 +6,7 @@ import 'package:signs/Utils/strings.dart';
 import 'package:signs/Utils/styles.dart';
 import 'package:signs/widgets/widgets.dart';
 
-import 'continue_login_screen.dart';
+import 'check_mobile_screen.dart';
 import 'home_screen.dart';
 import 'landing_screen.dart';
 
@@ -41,7 +41,7 @@ class _SignupScreenStep3State extends State<SignupScreenStep3> {
                 ),
                 SingleChildScrollView(
                   child: Container(
-                    height: MediaQuery.of(context).size.height * 0.95,
+                    height: MediaQuery.of(context).size.height ,
                     margin: EdgeInsets.only(
                         top: (Theme.of(context).platform == TargetPlatform.iOS
                             ? 30
@@ -386,7 +386,7 @@ class _SignupScreenStep3State extends State<SignupScreenStep3> {
                             new GestureDetector(
                               onTap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => ContinueLoginScreen()));
+                                    builder: (context) => CheckMobileScreen()));
                               },
                               child: new Text(
                                 Strings().getSingInText(),

@@ -9,16 +9,15 @@ part 'check_mobile_event.dart';
 part 'check_mobile_state.dart';
 
 class CheckMobileBloc extends Bloc<CheckMobileEvent, CheckMobileState> {
-
   @override
   Stream<CheckMobileState> mapEventToState(
     CheckMobileEvent event,
   ) async* {
-    if ( event is checkMobileNumberEvent ){
+    if (event is checkMobileNumberEvent) {
       yield CheckMobileLoadingState();
-      var response = await CheckMobileRepo().checkMobileNumber(event.mobileNumber);
+      var response =
+          await CheckMobileRepo().checkMobileNumber(event.mobileNumber);
       yield CheckMobileLoadedState(response);
-      // yield CheckMobileInitial();
     }
   }
 

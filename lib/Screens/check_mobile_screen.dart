@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:country_codes/country_codes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:signs/Blocs/check mobile bloc/check_mobile_bloc.dart';
 import 'package:signs/Utils/images.dart';
@@ -10,18 +11,19 @@ import 'package:signs/Utils/strings.dart';
 import 'package:signs/Utils/styles.dart';
 import 'package:signs/widgets/widgets.dart';
 
-class ContinueLoginScreen extends StatefulWidget {
-  ContinueLoginScreen({Key key}) : super(key: key);
+class CheckMobileScreen extends StatefulWidget {
+  CheckMobileScreen({Key key}) : super(key: key);
 
   @override
-  _ContinueLoginScreenState createState() => _ContinueLoginScreenState();
+  _CheckMobileScreenState createState() => _CheckMobileScreenState();
 }
 
-class _ContinueLoginScreenState extends State<ContinueLoginScreen> {
+class _CheckMobileScreenState extends State<CheckMobileScreen> {
   CheckMobileBloc _checkMobileBloc;
   TextEditingController _mobileController = TextEditingController();
   String selectedCountry = '';
-  String locale;
+  FocusNode focusNode = FocusNode();
+  
   @override
   void initState() {
     super.initState();
@@ -56,12 +58,13 @@ class _ContinueLoginScreenState extends State<ContinueLoginScreen> {
               if (state is CheckMobileLoadingState) {
                 showLoadingDialog(context);
               } else if (state is CheckMobileLoadedState) {
+                print('loaded');
                 if (state.response.data.toMap().isEmpty) {
-                  Future.delayed(Duration(milliseconds: 10), () {
+                  Future.delayed(Duration(milliseconds: 1), () {
                     Scaffold.of(context).showSnackBar(
                         SnackBar(content: Text(state.response.msg)));
-                    Navigator.of(context).pop();
                   });
+                  Navigator.of(context).pop();
                 } else {
                   print('xxx');
                 }
@@ -168,6 +171,7 @@ class _ContinueLoginScreenState extends State<ContinueLoginScreen> {
                                       child: Container(
                                         child: TextField(
                                           controller: _mobileController,
+                                          focusNode: focusNode,
                                           decoration: InputDecoration(
                                             hintText: Strings()
                                                 .getEnterMobileNumberString(),
@@ -196,9 +200,8 @@ class _ContinueLoginScreenState extends State<ContinueLoginScreen> {
                             ),
                             SizedBox(height: 30),
                             button(
-                                _mobileController.text.isEmpty
-                                    ? null
-                                    : checkMobileNumber,
+                              _mobileController.text == null ? null :
+                                checkMobileNumber,
                                 Strings().getContinueStrings(),
                                 isFilledColor: true),
                             Spacer()
@@ -229,31 +232,7 @@ class _ContinueLoginScreenState extends State<ContinueLoginScreen> {
   }
 
   checkMobileNumber() {
-    print('check');
+    focusNode.unfocus();
     _checkMobileBloc.add(checkMobileNumberEvent(_mobileController.text));
   }
-
-  // Widget _buildDropdownItem(Country country) {
-  //   return SizedBox(
-  //     width: 80,
-  //     child: Row(
-  //       children: <Widget>[
-  //         CountryPickerUtils.getDefaultFlagImage(country),
-  //         SizedBox(
-  //           width: 8.0,
-  //         ),
-  //         // Icon(Icons.keyboard_arrow_down),
-  //         // SizedBox(
-  //         //   width: 8.0,
-  //         // ),
-  //         // Container(
-  //         //     color: Color.fromRGBO(239, 239, 244, 1), width: 2, height: 60),
-  //         // SizedBox(
-  //         //   width: 8.0,
-  //         // ),
-  //         Expanded(child: Text("+${country.phoneCode}")),
-  //       ],
-  //     ),
-  //   );
-  // }
 }

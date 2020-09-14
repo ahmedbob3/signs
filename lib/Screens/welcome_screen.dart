@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:signs/Blocs/check%20mobile%20bloc/check_mobile_bloc.dart';
 
-import 'package:signs/Screens/continue_login_screen.dart';
+import 'package:signs/Screens/check_mobile_screen.dart';
 import 'package:signs/Screens/login_screen.dart';
 import 'package:signs/Screens/signup_screen_step1.dart';
 import 'package:signs/Utils/images.dart';
@@ -69,7 +69,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           Spacer(),
                           button(() {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => ContinueLoginScreen()));
+                                builder: (context) => CheckMobileScreen()));
                           }, Strings().getSingInText(), isFilledColor: false),
                           SizedBox(height: 20),
                           button(() {

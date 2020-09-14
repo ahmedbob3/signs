@@ -1,3 +1,5 @@
+import 'package:country_code_picker/country_code_picker.dart';
+import 'package:country_codes/country_codes.dart';
 import 'package:flutter/material.dart';
 import 'package:signs/Screens/signup_screen_step2.dart';
 import 'package:signs/Utils/images.dart';
@@ -13,6 +15,9 @@ class SignupScreenStep1 extends StatefulWidget {
 }
 
 class _SignupScreenStep1State extends State<SignupScreenStep1> {
+  TextEditingController _mobileController = TextEditingController();
+  String selectedCountry = '';
+  
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,7 +32,7 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                 headerBg(),
                 SingleChildScrollView(
                   child: Container(
-                    height: MediaQuery.of(context).size.height * 0.70,
+                    height: MediaQuery.of(context).size.height * 0.75,
                     margin: EdgeInsets.only(
                         top: MediaQuery.of(context).size.height *
                             (Theme.of(context).platform == TargetPlatform.iOS
@@ -77,61 +82,144 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                                 color: greyHeader,
                                 fontSize: 14)),
                         SizedBox(height: 15),
+                        // Container(
+                        //   height: 50,
+                        //   decoration: BoxDecoration(
+                        //       color: textFieldFill,
+                        //       border: Border.all(
+                        //         color: textFieldBorder,
+                        //       ),
+                        //       borderRadius: BorderRadius.circular(18)),
+                        //   child: Padding(
+                        //     padding: const EdgeInsets.symmetric(horizontal: 15),
+                        //     child: Row(
+                        //       children: <Widget>[
+                        //         Image.asset(Kuwait_flag),
+                        //         SizedBox(width: 5),
+                        //         Icon(Icons.arrow_drop_down),
+                        //         SizedBox(width: 10),
+                        //         Container(
+                        //             color: Color.fromRGBO(239, 239, 244, 1),
+                        //             width: 2,
+                        //             height: 60),
+                        //         SizedBox(width: 10),
+                        //         Text(
+                        //           '+995',
+                        //           style: titleStyle(
+                        //               fontFamily: mediumFontFamily,
+                        //               color: Colors.black,
+                        //               fontSize: 17),
+                        //         ),
+                        //         SizedBox(width: 10),
+                        //         Expanded(
+                        //           child: Container(
+                        //             child: TextField(
+                        //               decoration: InputDecoration(
+                        //                 hintText: Strings()
+                        //                     .getEnterMobileNumberString(),
+                        //                 hintStyle: titleStyle(
+                        //                     fontFamily: mediumFontFamily,
+                        //                     color: greyColor,
+                        //                     fontSize: 16),
+                        //                 labelStyle:
+                        //                     titleStyle(color: greyColor),
+                        //                 border: InputBorder.none,
+                        //                 focusedBorder: InputBorder.none,
+                        //                 enabledBorder: InputBorder.none,
+                        //                 errorBorder: InputBorder.none,
+                        //                 disabledBorder: InputBorder.none,
+                        //               ),
+                        //               keyboardType: TextInputType.number,
+                        //             ),
+                        //           ),
+                        //         ),
+                        //       ],
+                        //     ),
+                        //   ),
+                        // ),
                         Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                              color: textFieldFill,
-                              border: Border.all(
-                                color: textFieldBorder,
-                              ),
-                              borderRadius: BorderRadius.circular(18)),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 15),
-                            child: Row(
-                              children: <Widget>[
-                                Image.asset(Kuwait_flag),
-                                SizedBox(width: 5),
-                                Icon(Icons.arrow_drop_down),
-                                SizedBox(width: 10),
-                                Container(
-                                    color: Color.fromRGBO(239, 239, 244, 1),
-                                    width: 2,
-                                    height: 60),
-                                SizedBox(width: 10),
-                                Text(
-                                  '+995',
-                                  style: titleStyle(
-                                      fontFamily: mediumFontFamily,
-                                      color: Colors.black,
-                                      fontSize: 17),
-                                ),
-                                SizedBox(width: 10),
-                                Expanded(
-                                  child: Container(
-                                    child: TextField(
-                                      decoration: InputDecoration(
-                                        hintText: Strings()
-                                            .getEnterMobileNumberString(),
-                                        hintStyle: titleStyle(
-                                            fontFamily: mediumFontFamily,
-                                            color: greyColor,
-                                            fontSize: 16),
-                                        labelStyle:
-                                            titleStyle(color: greyColor),
-                                        border: InputBorder.none,
-                                        focusedBorder: InputBorder.none,
-                                        enabledBorder: InputBorder.none,
-                                        errorBorder: InputBorder.none,
-                                        disabledBorder: InputBorder.none,
-                                      ),
-                                      keyboardType: TextInputType.number,
-                                    ),
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  color: textFieldFill,
+                                  border: Border.all(
+                                    color: textFieldBorder,
                                   ),
+                                  borderRadius: BorderRadius.circular(18)),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 15),
+                                child: Row(
+                                  children: <Widget>[
+                                    Container(
+                                      width: 40,
+                                      child: CountryCodePicker(
+                                        onChanged: (countryCode) {
+                                          setState(() {
+                                            selectedCountry =
+                                                countryCode.dialCode;
+                                          });
+                                        },
+                                        // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
+                                        initialSelection:
+                                            CountryCodes.dialCode(),
+                                        favorite: ['+20', '+965'],
+                                        // optional. Shows only country name and flag
+                                        showCountryOnly: false,
+                                        // optional. Shows only country name and flag when popup is closed.
+                                        showOnlyCountryWhenClosed: true,
+                                        // optional. aligns the flag and the Text left
+                                        alignLeft: false,
+                                        // hideSearch: true,
+                                        hideMainText: true,
+                                        dialogTextStyle: titleStyle(fontFamily: mediumFontFamily, color:  Colors.black),
+                                      ),
+                                    ),
+                                    SizedBox(width: 5),
+                                    Icon(Icons.arrow_drop_down),
+                                    SizedBox(width: 10),
+                                    Container(
+                                        color: Color.fromRGBO(239, 239, 244, 1),
+                                        width: 2,
+                                        height: 60),
+                                    SizedBox(width: 10),
+                                    Text(
+                                      selectedCountry,
+                                      style: titleStyle(
+                                          fontFamily: mediumFontFamily,
+                                          color: Colors.black,
+                                          fontSize: 17),
+                                    ),
+                                    SizedBox(width: 10),
+                                    Expanded(
+                                      child: Container(
+                                        child: TextField(
+                                          controller: _mobileController,
+                                          decoration: InputDecoration(
+                                            hintText: Strings()
+                                                .getEnterMobileNumberString(),
+                                            hintStyle: titleStyle(
+                                                fontFamily: mediumFontFamily,
+                                                color: greyColor,
+                                                fontSize: 16),
+                                            labelStyle:
+                                                titleStyle(color: greyColor),
+                                            border: InputBorder.none,
+                                            focusedBorder: InputBorder.none,
+                                            enabledBorder: InputBorder.none,
+                                            errorBorder: InputBorder.none,
+                                            disabledBorder: InputBorder.none,
+                                          ),
+                                          keyboardType: TextInputType.number,
+                                          onChanged: (value) {
+                                            setState(() {});
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ],
+                              ),
                             ),
-                          ),
-                        ),
                         SizedBox(height: 20),
                         Text(Strings().getPasswordStrings(),
                             style: titleStyle(
