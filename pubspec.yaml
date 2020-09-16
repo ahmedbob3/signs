@@ -32,7 +32,9 @@ dependencies:
   path_provider: ^1.6.9
   country_code_picker: ^1.4.0
   country_codes: ^1.0.1
-  
+  flutter_datetime_picker: ^1.4.0
+
+
 
 
 

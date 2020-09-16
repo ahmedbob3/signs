@@ -125,12 +125,12 @@ Widget buttonChangeState(String image, String labelText,
     width: double.infinity,
     height: 50,
     child: MaterialButton(
-      // onPressed: isFActive ? isFActive = false : reflect(isFActive),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
         side: BorderSide(color: Colors.white),
       ),
       disabledColor: isFActive ? defaultBackgroundColor : genderColor,
+      // color: isFActive ? defaultBackgroundColor : genderColor,
       elevation: 0,
       padding: EdgeInsets.only(left: 25, right: 25),
       child: Row(

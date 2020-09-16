@@ -17,6 +17,14 @@ class SignupScreenStep2 extends StatefulWidget {
 }
 
 class _SignupScreenStep2State extends State<SignupScreenStep2> {
+
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  var maleKey = GlobalKey<FormFieldState>();
+  var femaleKey = GlobalKey<FormFieldState>();
+  bool isActive= false;
+  final bedTimeController = TextEditingController();
+  final wakeTimeController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -176,15 +184,33 @@ class _SignupScreenStep2State extends State<SignupScreenStep2> {
                         Row(
                           children: <Widget>[
                             Expanded(
-                              child: buttonChangeState(
-                                  Male_inactive, Strings().getMaleStrings(),
-                                  isFActive: false),
+                              child:
+                              new GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    isActive=!isActive;
+                                  });
+                                },
+                                child:
+                                buttonChangeState(
+                                    Male_inactive, Strings().getMaleStrings(),
+                                    isFActive: isActive),
+                              ),
                             ),
                             SizedBox(width: 10),
                             Expanded(
-                              child: buttonChangeState(
-                                  Female_active, Strings().getFemaleStrings(),
-                                  isFActive: true),
+                              child:
+                              new GestureDetector(
+                                onTap: () {
+                                setState(() {
+                                  isActive=!isActive;
+                                });
+                                },
+                                child:
+                                buttonChangeState(
+                                    Female_active, Strings().getFemaleStrings(),
+                                    isFActive: !isActive),
+                              ),
                             ),
                           ],
                         ),
