@@ -130,7 +130,6 @@ Widget buttonChangeState(String image, String labelText,
         side: BorderSide(color: Colors.white),
       ),
       disabledColor: isFActive ? defaultBackgroundColor : genderColor,
-      // color: isFActive ? defaultBackgroundColor : genderColor,
       elevation: 0,
       padding: EdgeInsets.only(left: 25, right: 25),
       child: Row(
@@ -151,12 +150,6 @@ Widget buttonChangeState(String image, String labelText,
       ),
     ),
   );
-}
-
-bool reflect(bool isFActive) {
-  bool result = false;
-  if (isFActive == false) result = true;
-  return result;
 }
 
 Widget buttonWithIcon(String image, String labelText,
