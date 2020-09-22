@@ -18,7 +18,8 @@ Widget textField(String hintText, Function callback,
     Color color,
     double fontSize = 16,
     Widget prefixIcon,
-    int maxLines = 1}) {
+    int maxLines = 1,
+    Function onChange}) {
   return Container(
     height: 50,
     child: TextFormField(
@@ -89,6 +90,9 @@ Widget textField(String hintText, Function callback,
           return 'Please Enter $hintText';
         else
           return null;
+      },
+      onChanged: (value){
+        onChange != null ? onChange(value) : print('');
       },
     ),
   );

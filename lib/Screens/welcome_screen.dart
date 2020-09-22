@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:signs/Blocs/check%20mobile%20bloc/check_mobile_bloc.dart';
+import 'package:signs/Blocs/login%20mobile%20bloc/login_mobile_bloc.dart';
 
 import 'package:signs/Screens/check_mobile_screen.dart';
 import 'package:signs/Screens/login_screen.dart';
@@ -46,8 +46,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   ),
                   child: MultiBlocProvider(
                     providers: [
-                      BlocProvider<CheckMobileBloc>(
-                        create: (_) => CheckMobileBloc(),
+                      BlocProvider<LoginBloc>(
+                        create: (_) => LoginBloc(),
                       )
                     ],
                     child: Container(

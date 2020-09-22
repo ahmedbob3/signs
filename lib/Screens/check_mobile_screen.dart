@@ -5,7 +5,8 @@ import 'package:country_codes/country_codes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:signs/Blocs/check mobile bloc/check_mobile_bloc.dart';
+import 'package:signs/Blocs/login%20mobile%20bloc/login_mobile_bloc.dart';
+import 'package:signs/Screens/login_screen.dart';
 import 'package:signs/Utils/images.dart';
 import 'package:signs/Utils/strings.dart';
 import 'package:signs/Utils/styles.dart';
@@ -19,15 +20,15 @@ class CheckMobileScreen extends StatefulWidget {
 }
 
 class _CheckMobileScreenState extends State<CheckMobileScreen> {
-  CheckMobileBloc _checkMobileBloc;
+  LoginBloc _checkMobileBloc;
   TextEditingController _mobileController = TextEditingController();
   String selectedCountry = '';
   FocusNode focusNode = FocusNode();
-  
+
   @override
   void initState() {
     super.initState();
-    _checkMobileBloc = CheckMobileBloc();
+    _checkMobileBloc = LoginBloc();
     getSimInfo();
   }
 
@@ -52,22 +53,25 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
       child: SafeArea(
         bottom: false,
         child: Scaffold(
-          body: BlocBuilder<CheckMobileBloc, CheckMobileState>(
+          body: BlocBuilder<LoginBloc, LoginState>(
             bloc: _checkMobileBloc,
             builder: (context, state) {
-              if (state is CheckMobileLoadingState) {
+              if (state is LoginLoadingState) {
                 showLoadingDialog(context);
-              } else if (state is CheckMobileLoadedState) {
+              } else if (state is LoginLoadedState) {
                 print('loaded');
-                if (state.response.data.toMap().isEmpty) {
-                  Future.delayed(Duration(milliseconds: 1), () {
+
+                Future.delayed(Duration(milliseconds: 1), () {
+                  if (state.checkMobileResponse.code == 200) {
                     Scaffold.of(context).showSnackBar(
-                        SnackBar(content: Text(state.response.msg)));
-                  });
-                  Navigator.of(context).pop();
-                } else {
-                  print('xxx');
-                }
+                        SnackBar(content: Text(state.checkMobileResponse.msg)));
+
+                    Navigator.of(context).pop();
+                  } else {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => LoginScreen(mobileNumber: _mobileController.text, selectedCountry: selectedCountry)));
+                  }
+                });
               }
               return Container(
                 height: MediaQuery.of(context).size.height,
@@ -148,7 +152,9 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
                                         alignLeft: false,
                                         // hideSearch: true,
                                         hideMainText: true,
-                                        dialogTextStyle: titleStyle(fontFamily: mediumFontFamily, color:  Colors.black),
+                                        dialogTextStyle: titleStyle(
+                                            fontFamily: mediumFontFamily,
+                                            color: Colors.black),
                                       ),
                                     ),
                                     SizedBox(width: 5),
@@ -200,8 +206,9 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
                             ),
                             SizedBox(height: 30),
                             button(
-                              _mobileController.text == null ? null :
-                                checkMobileNumber,
+                                _mobileController.text == null
+                                    ? null
+                                    : checkMobileNumber,
                                 Strings().getContinueStrings(),
                                 isFilledColor: true),
                             Spacer()

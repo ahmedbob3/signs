@@ -44,4 +44,5 @@ class Strings_AR {
   static const String MOBILE_NUMBER = 'Mobile No.';
   static const String ENTER_MOBILE_NUMBER = 'Enter Mobile No.';
   static const String CONTINUE = 'Continue';
+  static const String SELECT_APP_LANGUAGE = 'Select App Language';
 }

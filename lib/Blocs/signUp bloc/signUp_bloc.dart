@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:signs/Models/sign_up.dart';
-import 'package:signs/Repos/CheckMobileRepos/signUp_repo.dart';
+import 'package:signs/Repos/LoginRepos/signUp_repo.dart';
 
 part 'signUp_event.dart';
 part 'signUp_state.dart';

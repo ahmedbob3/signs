@@ -3,7 +3,7 @@ class Strings_EN {
   static const String WELCOME = 'Welcome';
   static const String LOGIN_TITLE1 = 'Offline and online appoitmnet';
   static const String LOGIN_TITLE2 = 'To Your Health care app';
-  static const String SIGN_IN = 'Sing In';
+  static const String SIGN_IN = 'Sign In';
   static const String CREATE_ACCOUNT = 'Create New Account';
   static const String DISCOVER_APP = 'Discover The App';
   static const String SING_IN_SLOGAN = 'Hello there, signin to continue';
@@ -44,5 +44,6 @@ class Strings_EN {
   static const String MOBILE_NUMBER = 'Mobile No.';
   static const String ENTER_MOBILE_NUMBER = 'Enter Mobile No.';
   static const String CONTINUE = 'Continue';
+  static const String SELECT_APP_LANGUAGE = 'Select App Language';
   
 }

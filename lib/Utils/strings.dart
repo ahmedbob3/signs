@@ -573,4 +573,17 @@ class Strings {
     }
   }
 
+    String getSelectAppLanguageStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SELECT_APP_LANGUAGE;
+        break;
+      case languages.Indian:
+        return Strings_INR.SELECT_APP_LANGUAGE;
+        break;
+      default:
+        return Strings_EN.SELECT_APP_LANGUAGE;
+    }
+  }
+
 }
