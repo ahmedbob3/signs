@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:signs/Screens/home_screen.dart';
 import 'package:signs/Utils/images.dart';
+import 'package:signs/Utils/styles.dart';
 import 'package:signs/widgets/widgets.dart';
 
 class LandingScreen extends StatefulWidget {
@@ -17,8 +18,7 @@ class _LandingScreenState extends State<LandingScreen> {
       body: Container(
         child: SafeArea(
           bottom: false,
-          child: Scaffold(
-            body: Container(
+          child:  Container(
               height: MediaQuery.of(context).size.height,
               color: Color.fromRGBO(245, 248, 252, 1),
               child: Stack(
@@ -37,24 +37,24 @@ class _LandingScreenState extends State<LandingScreen> {
               ),
             ),
           ),
-        ),
       ),
       floatingActionButton: Container(
-        height: 80,
-        width: 80,
-        margin: EdgeInsets.only(top: 40),
+        height: 70,
+        width: 70,
+        margin: EdgeInsets.only(top: 30),
         child: FloatingActionButton(
           onPressed: () {},
           tooltip: 'Increment',
           child: Icon(Icons.add),
           elevation: 4.0,
+          backgroundColor: defaultBackgroundColor,
         ),
       ),
       bottomNavigationBar: Container(
         child: Container(
           color: Color.fromRGBO(245	,248,	252,1),
           child: Container(
-            height: 90,
+            height: 70,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
@@ -70,17 +70,17 @@ class _LandingScreenState extends State<LandingScreen> {
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: IconButton(icon: Icon(Icons.home)),
+                  child: IconButton(icon: Image.asset(Home_Active), iconSize: 140,)
                 ),
                 Expanded(
-                  child: IconButton(icon: Icon(Icons.show_chart)),
+                  child: IconButton(icon: Image.asset(Appointement_inactive,), iconSize: 140,)
                 ),
                 Expanded(child: new Text('')),
                 Expanded(
-                  child: IconButton(icon: Icon(Icons.tab)),
+                  child: IconButton(icon: Image.asset(History_inctive), iconSize: 140)
                 ),
                 Expanded(
-                  child: IconButton(icon: Icon(Icons.settings)),
+                  child: IconButton(icon: Image.asset(Medicine_inctive), iconSize: 140)
                 ),
               ],
               // unselectedItemColor: Colors.grey,

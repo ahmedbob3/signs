@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:signs/Screens/check_mobile_screen.dart';
 import 'package:signs/Screens/landing_screen.dart';
+import 'package:signs/Screens/langauage_screen.dart';
 import 'package:signs/Screens/login_screen.dart';
 import 'package:signs/Screens/welcome_screen.dart';
 import 'package:signs/Utils/styles.dart';
@@ -32,8 +33,8 @@ class MyApp extends StatelessWidget {
           primaryColor: defaultBackgroundColor,
           scaffoldBackgroundColor: defaultBackgroundColor,
         ),
-        home: CheckMobileScreen(),
-        // home: LandingScreen(),
+        home: WelcomeScreen(),
+        // home: CheckMobileScreen(),
       );
   }
 }

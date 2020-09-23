@@ -9,6 +9,7 @@ part 'signUp_event.dart';
 part 'signUp_state.dart';
 
 class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
+  
   @override
   Stream<SignUpState> mapEventToState(
       SignUpEvent event,

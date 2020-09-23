@@ -45,9 +45,19 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             SizedBox(height: 20),
-            // subaccounts .. 
+            // subaccounts ..
             Row(
               children: <Widget>[
+                 CircleAvatar(
+                  radius: 24,
+                  backgroundColor: Colors.white,
+                  child: CircleAvatar(
+                    radius: 22,
+                    backgroundColor: Color.fromRGBO(0, 54, 115, 1),
+                    child: Icon(Icons.add, color: Colors.white,)
+                  ),
+                ),
+                SizedBox(width: 10),
                 CircleAvatar(
                   radius: 24,
                   backgroundColor: Colors.white,
@@ -72,13 +82,13 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             SizedBox(height: 20),
-            // health title 
+            // health title
             Text(
               'How is your Health ?',
               style: titleStyle(fontFamily: boldFontFamily, fontSize: 19),
             ),
             SizedBox(height: 20),
-            // health details .. 
+            // health details ..
             Row(
               children: <Widget>[
                 Expanded(
@@ -149,16 +159,20 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             SizedBox(height: 20),
-            // Upcoming reminder 
-            Text('Upcoming Reminder', style: titleStyle(fontFamily: boldFontFamily, fontSize: 22, color: defaultBackgroundColor)),
+            // Upcoming reminder
+            Text('Upcoming Reminder',
+                style: titleStyle(
+                    fontFamily: boldFontFamily,
+                    fontSize: 22,
+                    color: defaultBackgroundColor)),
             Container(
               height: 140,
               child: ListView.builder(
                 itemCount: 3,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext context, int index) {
-                return PillCell(isActive : true);
-               },
+                  return PillCell(isActive: true);
+                },
               ),
             ),
           ],

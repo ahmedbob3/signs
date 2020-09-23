@@ -20,7 +20,7 @@ class CheckMobileScreen extends StatefulWidget {
 }
 
 class _CheckMobileScreenState extends State<CheckMobileScreen> {
-  LoginBloc _checkMobileBloc;
+  LoginBloc _loginBloc;
   TextEditingController _mobileController = TextEditingController();
   String selectedCountry = '';
   FocusNode focusNode = FocusNode();
@@ -28,7 +28,7 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
   @override
   void initState() {
     super.initState();
-    _checkMobileBloc = LoginBloc();
+    _loginBloc = LoginBloc();
     getSimInfo();
   }
 
@@ -42,7 +42,7 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
   @override
   void dispose() {
     super.dispose();
-    _checkMobileBloc.close();
+    _loginBloc.close();
     _mobileController.clear();
   }
 
@@ -54,23 +54,24 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
         bottom: false,
         child: Scaffold(
           body: BlocBuilder<LoginBloc, LoginState>(
-            bloc: _checkMobileBloc,
+            bloc: _loginBloc,
             builder: (context, state) {
               if (state is LoginLoadingState) {
                 showLoadingDialog(context);
-              } else if (state is LoginLoadedState) {
+              } else if (state is LoginLoadedState ) {
                 print('loaded');
 
                 Future.delayed(Duration(milliseconds: 1), () {
                   if (state.checkMobileResponse.code == 200) {
                     Scaffold.of(context).showSnackBar(
                         SnackBar(content: Text(state.checkMobileResponse.msg)));
-
                     Navigator.of(context).pop();
                   } else {
                     Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) => LoginScreen(mobileNumber: _mobileController.text, selectedCountry: selectedCountry)));
                   }
+
+                  _loginBloc.add(resetState());
                 });
               }
               return Container(
@@ -206,7 +207,7 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
                             ),
                             SizedBox(height: 30),
                             button(
-                                _mobileController.text == null
+                                _mobileController.text.isEmpty
                                     ? null
                                     : checkMobileNumber,
                                 Strings().getContinueStrings(),
@@ -240,6 +241,6 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
 
   checkMobileNumber() {
     focusNode.unfocus();
-    _checkMobileBloc.add(checkMobileNumberEvent(_mobileController.text));
+    _loginBloc.add(checkMobileNumberEvent(_mobileController.text));
   }
 }

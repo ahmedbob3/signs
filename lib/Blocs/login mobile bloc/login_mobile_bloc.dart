@@ -27,6 +27,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       
       yield LoginLoadedState(loginResponse: response);
 
+    } else if ( event is resetState ){
+      yield LoginInitial();
     }
   }
 

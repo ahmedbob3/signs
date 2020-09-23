@@ -48,7 +48,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     providers: [
                       BlocProvider<LoginBloc>(
                         create: (_) => LoginBloc(),
-                      )
+                      ),
                     ],
                     child: Container(
                       child: Column(

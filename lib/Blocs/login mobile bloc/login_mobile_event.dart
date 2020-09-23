@@ -13,3 +13,5 @@ class doLoginEvent extends LoginEvent {
   String password;
   doLoginEvent(this.mobileNumber, this.password);
 }
+
+class resetState extends LoginEvent {}

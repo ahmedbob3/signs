@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:signs/Blocs/login%20mobile%20bloc/login_mobile_bloc.dart';
 import 'package:signs/Screens/home_screen.dart';
+import 'package:signs/Screens/landing_screen.dart';
 import 'package:signs/Utils/images.dart';
 import 'package:signs/Utils/strings.dart';
 import 'package:signs/Utils/styles.dart';
@@ -47,7 +48,6 @@ class _LoginScreenState extends State<LoginScreen> {
           body: BlocBuilder<LoginBloc, LoginState>(
               bloc: _loginBloc,
               builder: (context, state) {
-
                 if (state is LoginLoadingState) {
                 showLoadingDialog(context);
               } else if (state is LoginLoadedState) {
@@ -59,8 +59,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         SnackBar(content: Text(state.loginResponse.msg)));
                     Navigator.of(context).pop();
                   } else {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomeScreen()));
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => LandingScreen()));
                   }
+                  _loginBloc.add(resetState());
                 });
               }
 
@@ -199,7 +200,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   controller: passwordController,
                                   onChange: (value) {
                                 setState(() {});
-                              }),
+                              }, isPassword: true),
                               SizedBox(height: 30),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
