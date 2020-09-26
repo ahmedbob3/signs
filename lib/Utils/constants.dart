@@ -6,7 +6,7 @@ class Constants {
   static String appName = "Signs";
 
   
-  static const languageId = languages.English;
+  static languages languageId = languages.English;
 
   //Colors for theme
   static Color lightPrimary = Color(0xfffcfcff);

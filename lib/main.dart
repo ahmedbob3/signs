@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
           primaryColor: defaultBackgroundColor,
           scaffoldBackgroundColor: defaultBackgroundColor,
         ),
-        home: WelcomeScreen(),
+        home: LangauageScreen(),
         // home: CheckMobileScreen(),
       );
   }

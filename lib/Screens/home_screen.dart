@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:signs/Utils/images.dart';
 import 'package:signs/Utils/styles.dart';
+import 'package:signs/widgets/hospital_cell.dart';
 import 'package:signs/widgets/pill_cell.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -48,14 +49,16 @@ class _HomeScreenState extends State<HomeScreen> {
             // subaccounts ..
             Row(
               children: <Widget>[
-                 CircleAvatar(
+                CircleAvatar(
                   radius: 24,
                   backgroundColor: Colors.white,
                   child: CircleAvatar(
-                    radius: 22,
-                    backgroundColor: Color.fromRGBO(0, 54, 115, 1),
-                    child: Icon(Icons.add, color: Colors.white,)
-                  ),
+                      radius: 22,
+                      backgroundColor: Color.fromRGBO(0, 54, 115, 1),
+                      child: Icon(
+                        Icons.add,
+                        color: Colors.white,
+                      )),
                 ),
                 SizedBox(width: 10),
                 CircleAvatar(
@@ -159,7 +162,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             SizedBox(height: 20),
-            // Upcoming reminder
+            // Upcoming reminder ..
             Text('Upcoming Reminder',
                 style: titleStyle(
                     fontFamily: boldFontFamily,
@@ -175,6 +178,23 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ),
             ),
+            // hospitals list ..
+            Text('Hospitals',
+                style: titleStyle(
+                    fontFamily: boldFontFamily,
+                    fontSize: 22,
+                    color: defaultBackgroundColor)),
+            Container(
+              width: double.infinity,
+              height: 200,
+              child: ListView.builder(
+                itemCount: 4,
+                itemBuilder: (BuildContext context, int index) {
+                  return HospitalCell();
+                },
+              ),
+            ),
+            
           ],
         ),
       ),
