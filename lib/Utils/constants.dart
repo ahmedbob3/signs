@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:signs/Screens/home_screen.dart';
+import 'package:signs/Screens/hospital_details_screen.dart';
 
 enum languages { English, Arabic, Indian }
 
 class Constants {
   static String appName = "Signs";
 
-  
   static languages languageId = languages.English;
 
   //Colors for theme
@@ -54,7 +55,7 @@ class Constants {
     ),
   );
 
-  TextStyle labelStyle ({Color color , double fontSize}){
-    return TextStyle(color: color?? Colors.black, fontSize: fontSize ?? 14);
+  TextStyle labelStyle({Color color, double fontSize}) {
+    return TextStyle(color: color ?? Colors.black, fontSize: fontSize ?? 14);
   }
 }

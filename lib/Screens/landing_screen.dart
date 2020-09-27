@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:signs/Screens/home_screen.dart';
+import 'package:signs/Screens/hospital_details_screen.dart';
+import 'package:signs/Utils/constants.dart';
 import 'package:signs/Utils/images.dart';
 import 'package:signs/Utils/styles.dart';
-import 'package:signs/widgets/widgets.dart';
 
 class LandingScreen extends StatefulWidget {
   LandingScreen({Key key}) : super(key: key);
@@ -16,25 +16,22 @@ class _LandingScreenState extends State<LandingScreen> {
   Widget build(BuildContext context) {
     return new Scaffold(
       body: Container(
-        child: SafeArea(
-          bottom: false,
-          child:  Container(
-              height: MediaQuery.of(context).size.height,
-              color: Color.fromRGBO(245, 248, 252, 1),
-              child: Stack(
-                children: <Widget>[
-                  Container(
-                    height: 250,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage(Login_background),
-                          fit: BoxFit.cover),
-                    ),
+        child: Container(
+            height: MediaQuery.of(context).size.height,
+            color: Color.fromRGBO(245, 248, 252, 1),
+            child: Stack(
+              children: <Widget>[
+                Container(
+                  height: 250,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage(Login_background),
+                        fit: BoxFit.cover),
                   ),
-                  HomeScreen()
-                ],
-              ),
+                ),
+                HospitalDetailsScreen()
+              ],
             ),
           ),
       ),
