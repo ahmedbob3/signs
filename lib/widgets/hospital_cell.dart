@@ -35,7 +35,7 @@ class HospitalCell extends StatelessWidget {
           subtitle: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Icon(Icons.location_pin),
+              Icon(Icons.location_on),
               Text('Salem Al Mubarak St,',
                   style: titleStyle(
                       fontFamily: mediumFontFamily,
