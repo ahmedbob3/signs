@@ -586,4 +586,161 @@ class Strings {
     }
   }
 
+  String getMedicineAddStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.MEDICINE_ADD;
+        break;
+      case languages.Indian:
+        return Strings_INR.MEDICINE_ADD;
+        break;
+      default:
+        return Strings_EN.MEDICINE_ADD;
+    }
+  }
+
+  String getMedicineStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.MEDICINE_FORM;
+        break;
+      case languages.Indian:
+        return Strings_INR.MEDICINE_FORM;
+        break;
+      default:
+        return Strings_EN.MEDICINE_FORM;
+    }
+  }
+  String getTabletStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.TABLET;
+        break;
+      case languages.Indian:
+        return Strings_INR.TABLET;
+        break;
+      default:
+        return Strings_EN.TABLET;
+    }
+  }
+  String getCapsuleStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.CAPSULE;
+        break;
+      case languages.Indian:
+        return Strings_INR.CAPSULE;
+        break;
+      default:
+        return Strings_EN.CAPSULE;
+    }
+  }
+  String getLiquidStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.LIQUID;
+        break;
+      case languages.Indian:
+        return Strings_INR.LIQUID;
+        break;
+      default:
+        return Strings_EN.LIQUID;
+    }
+  }
+  String getDropsStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.DROPS;
+        break;
+      case languages.Indian:
+        return Strings_INR.DROPS;
+        break;
+      default:
+        return Strings_EN.DROPS;
+    }
+  }
+  String getSuppositoryStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SUPPOSITORY;
+        break;
+      case languages.Indian:
+        return Strings_INR.SUPPOSITORY;
+        break;
+      default:
+        return Strings_EN.SUPPOSITORY;
+    }
+  }
+  String getTopicalStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.TOPICAL;
+        break;
+      case languages.Indian:
+        return Strings_INR.TOPICAL;
+        break;
+      default:
+        return Strings_EN.TOPICAL;
+    }
+  }
+  String getInhalersStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.INHALERS;
+        break;
+      case languages.Indian:
+        return Strings_INR.INHALERS;
+        break;
+      default:
+        return Strings_EN.INHALERS;
+    }
+  }
+  String getImplantsStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.IMPLANTS;
+        break;
+      case languages.Indian:
+        return Strings_INR.IMPLANTS;
+        break;
+      default:
+        return Strings_EN.IMPLANTS;
+    }
+  }
+  String getPatchesStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.PATCHES;
+        break;
+      case languages.Indian:
+        return Strings_INR.PATCHES;
+        break;
+      default:
+        return Strings_EN.PATCHES;
+    }
+  }
+  String getInjectionsStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.INJECTIONS;
+        break;
+      case languages.Indian:
+        return Strings_INR.INJECTIONS;
+        break;
+      default:
+        return Strings_EN.INJECTIONS;
+    }
+  }
+  String getSachetsStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SACHETS;
+        break;
+      case languages.Indian:
+        return Strings_INR.SACHETS;
+        break;
+      default:
+        return Strings_EN.SACHETS;
+    }
+  }
 }

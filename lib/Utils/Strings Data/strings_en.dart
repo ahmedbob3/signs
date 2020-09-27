@@ -33,7 +33,7 @@ class Strings_EN {
   static const String SING_UP_WEIGHT = 'Weight';
   static const String SING_UP_BED_TIME = 'Bed Time';
   static const String SING_UP_WAKE_TIME = 'Wake Time';
-  static const String SING_UP_SKIP = 'You can skip and Sign up';
+  static const String SING_UP_SKIP = 'Sign up & Skip this step';
   static const String SING_UP_SUB_ACCOUNT = 'Sub account';
   static const String SING_UP_DONE = 'Done';
   static const String SING_UP_RELATION = 'Relation';
@@ -45,5 +45,18 @@ class Strings_EN {
   static const String ENTER_MOBILE_NUMBER = 'Enter Mobile No.';
   static const String CONTINUE = 'Continue';
   static const String SELECT_APP_LANGUAGE = 'Select App Language';
+  static const String MEDICINE_ADD = 'Add Medication';
+  static const String MEDICINE_FORM = 'Medicine form';
+  static const String TABLET = 'Tablet';
+  static const String CAPSULE = 'Capsule';
+  static const String LIQUID = 'Liquid';
+  static const String DROPS = 'Drops';
+  static const String SUPPOSITORY = 'Suppository';
+  static const String TOPICAL = 'Topical';
+  static const String INHALERS = 'Inhalers';
+  static const String IMPLANTS = 'Implants';
+  static const String PATCHES = 'Patches';
+  static const String INJECTIONS = 'Injections';
+  static const String SACHETS = 'Sachets';
   
 }

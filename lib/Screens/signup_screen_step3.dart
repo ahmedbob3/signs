@@ -414,13 +414,13 @@ class _SignupScreenStep3State extends State<SignupScreenStep3> {
                                 Strings().getSkipStrings(),
                                 style: titleStyle(
                                     fontFamily: boldFontFamily,
-                                    color: greyColor,
+                                    color: linkColor,
                                     fontSize: 14),
                               ),
                             ),
                           ],
                         ),
-                        SizedBox(height: 30),
+                        SizedBox(height: 40),
                         Row(
                           children: <Widget>[
                             Expanded(

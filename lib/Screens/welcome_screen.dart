@@ -12,6 +12,9 @@ import 'package:signs/Utils/strings.dart';
 import 'package:signs/Utils/styles.dart';
 import 'package:signs/widgets/widgets.dart';
 
+import 'medicine_add.dart';
+import 'medicine_form.dart';
+
 class WelcomeScreen extends StatefulWidget {
   WelcomeScreen({Key key}) : super(key: key);
 
@@ -79,7 +82,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             SizedBox(height: 20),
                             button(() {
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => SignupScreenStep1()));
+                                  // builder: (context) => MedicineForm()));
+                                  builder: (context) => AddMedication()));
+                                  // builder: (context) => SignupScreenStep1()));
                             }, Strings().getCreateAccountText(),
                                 isFilledColor: true),
                             Spacer(),

@@ -68,9 +68,7 @@ Widget textField(String hintText, Function callback,
             ? IconButton(
                 icon: Icon(Icons.remove_red_eye, color: Colors.white),
                 onPressed: showPassword)
-            : icon == null
-                ? null
-                : icon,
+            : icon == null ? null : icon,
         prefixIcon: prefixIcon != null
             ? Container(
                 child: prefixIcon,
@@ -91,7 +89,7 @@ Widget textField(String hintText, Function callback,
         else
           return null;
       },
-      onChanged: (value){
+      onChanged: (value) {
         onChange != null ? onChange(value) : print('');
       },
     ),
@@ -189,6 +187,41 @@ Widget buttonWithIcon(String image, String labelText,
   );
 }
 
+Widget cardChangeState(bool isEmpty,
+    String activeImage, String inactiveImage, String labelText,
+    {bool isFActive = true}) {
+
+   return isEmpty  ? Container(
+  height: 120,
+    padding: EdgeInsets.only(left: 5, right: 5),
+    child: Card(
+      elevation: 5,
+      color: isFActive ? Color.fromRGBO(221, 231, 247, 1)  : Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Image.asset(
+            isFActive ? activeImage : inactiveImage,
+            fit: BoxFit.contain,
+          ),
+          SizedBox(height: 20),
+          Text(
+            labelText,
+            style: TextStyle(
+                color: isFActive ? Color.fromRGBO(33, 99, 206, 1) : medicineColor,
+                fontSize: 16,
+                fontFamily: isFActive ? semiBoldFontFamily : mediumFontFamily),
+          ),
+        ],
+      ),
+    ),
+  ) : Container();
+}
+
 Widget headerBg() {
   return Container(
     width: double.infinity,
@@ -205,7 +238,7 @@ Widget headerBg() {
   );
 }
 
-showLoadingDialog(BuildContext context) async{
+showLoadingDialog(BuildContext context) async {
   Future.delayed(Duration(milliseconds: 10), () {
     showDialog(
       context: context,

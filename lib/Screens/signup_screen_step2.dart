@@ -261,14 +261,14 @@ class _SignupScreenStep2State extends State<SignupScreenStep2> {
                         ),
                         SizedBox(height: 20),
 
-                        new GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => SignupSubAccountScreenStep1()));
-                          },
-                          child: buttonWithIcon(Add_subaccount, Strings().getSubaccountStrings(),isBackground: true),
-                        ),
-                        SizedBox(height: 50),
+                        // new GestureDetector(
+                        //   onTap: () {
+                        //     Navigator.of(context).push(MaterialPageRoute(
+                        //         builder: (context) => SignupSubAccountScreenStep1()));
+                        //   },
+                        //   child: buttonWithIcon(Add_subaccount, Strings().getSubaccountStrings(),isBackground: true),
+                        // ),
+                        SizedBox(height: 120),
                         Row(
                           children: <Widget>[
                             Expanded(
