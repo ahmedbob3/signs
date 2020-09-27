@@ -11,6 +11,7 @@ const semiBoldFontFamily = 'Font-SemiBold';
 
 const defaultBackgroundColor = Color.fromRGBO(0, 81, 173, 1);
 const greyColor = Color.fromRGBO(122, 134, 154, 1);
+const payneGray = Color.fromRGBO(62, 86, 119, 1);
 const greyHeader = Color.fromRGBO(193, 199, 208, 1);
 const textFieldFill = Color.fromRGBO(242, 244, 247, 1);
 const textFieldBorder = Color.fromRGBO(239, 239, 244, 1);
