@@ -743,4 +743,91 @@ class Strings {
         return Strings_EN.SACHETS;
     }
   }
+
+  String getMedicationNameStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.MEDICATION_NAME;
+        break;
+      case languages.Indian:
+        return Strings_INR.MEDICATION_NAME;
+        break;
+      default:
+        return Strings_EN.MEDICATION_NAME;
+    }
+  }
+  String getMedicationHowStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.MEDICATION_HOW;
+        break;
+      case languages.Indian:
+        return Strings_INR.MEDICATION_HOW;
+        break;
+      default:
+        return Strings_EN.MEDICATION_HOW;
+    }
+  }
+  String getMedicationReminderStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.MEDICATION_REMINDER;
+        break;
+      case languages.Indian:
+        return Strings_INR.MEDICATION_REMINDER;
+        break;
+      default:
+        return Strings_EN.MEDICATION_REMINDER;
+    }
+  }
+  String getMedicationDurationStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.MEDICATION_DURATION;
+        break;
+      case languages.Indian:
+        return Strings_INR.MEDICATION_DURATION;
+        break;
+      default:
+        return Strings_EN.MEDICATION_DURATION;
+    }
+  }
+  String getMedicationHowLongStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.MEDICATION_HOW_LONG;
+        break;
+      case languages.Indian:
+        return Strings_INR.MEDICATION_HOW_LONG;
+        break;
+      default:
+        return Strings_EN.MEDICATION_HOW_LONG;
+    }
+  }
+  String getMedicationNoteStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.MEDICATION_NOTE;
+        break;
+      case languages.Indian:
+        return Strings_INR.MEDICATION_NOTE;
+        break;
+      default:
+        return Strings_EN.MEDICATION_NOTE;
+    }
+  }
+  String getMedicationHintStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.MEDICATION_HINT;
+        break;
+      case languages.Indian:
+        return Strings_INR.MEDICATION_HINT;
+        break;
+      default:
+        return Strings_EN.MEDICATION_HINT;
+    }
+  }
+
+
 }

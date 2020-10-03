@@ -58,5 +58,12 @@ class Strings_EN {
   static const String PATCHES = 'Patches';
   static const String INJECTIONS = 'Injections';
   static const String SACHETS = 'Sachets';
+  static const String MEDICATION_NAME = 'Medication name';
+  static const String MEDICATION_HOW = 'How many dose do you need to take ?';
+  static const String MEDICATION_REMINDER = 'Remind me at';
+  static const String MEDICATION_DURATION = 'Duration';
+  static const String MEDICATION_HOW_LONG = 'How long do you need to take this medicine';
+  static const String MEDICATION_NOTE = 'Reminder Note';
+  static const String MEDICATION_HINT = 'ex: That’s my painkiller to my teeth';
   
 }

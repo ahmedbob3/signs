@@ -1,14 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:signs/Screens/signup_screen_step1.dart';
 import 'package:signs/Screens/signup_screen_step2.dart';
-import 'package:signs/Screens/signup_screen_step3.dart';
-import 'package:signs/Screens/signup_sub_screen_step1.dart';
 import 'package:signs/Utils/images.dart';
 import 'package:signs/Utils/strings.dart';
 import 'package:signs/Utils/styles.dart';
 import 'package:signs/widgets/widgets.dart';
-
-import 'check_mobile_screen.dart';
 
 class AddMedication extends StatefulWidget {
   AddMedication({Key key}) : super(key: key);
@@ -18,9 +14,8 @@ class AddMedication extends StatefulWidget {
 }
 
 class _AddMedicationState extends State<AddMedication> {
-
-  List<bool> medications = [false, false, false,false, false, false,false, false, false,false, false];
-  bool isActive= false;
+  List<bool> medications = [false, false, false, false, false];
+  bool isActive = false;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +25,7 @@ class _AddMedicationState extends State<AddMedication> {
         bottom: false,
         child: Scaffold(
           body: Container(
-            height: MediaQuery.of(context).size.height,
+            // height: MediaQuery.of(context).size.height,
             child: Stack(
               children: <Widget>[
                 Container(
@@ -38,271 +33,527 @@ class _AddMedicationState extends State<AddMedication> {
                   color: Colors.white,
                 ),
                 SingleChildScrollView(
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * 0.80,
-                    margin: EdgeInsets.only(
-                        top: (Theme.of(context).platform == TargetPlatform.iOS
-                            ? 120
-                            : 130)),
-                    padding: EdgeInsets.all(5),
+                  // child: Center(
+                    // height: MediaQuery.of(context).size.height ,
+                    // margin: EdgeInsets.only(
+                    //     top: (Theme.of(context).platform == TargetPlatform.iOS
+                    //         ? 10
+                    //         : 10)),
+                    // padding:
+                    // EdgeInsets.only(top: 0, right: 20, left: 20, bottom: 5),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            // Positioned(
+                            //     child: IconButton(
+                            //       icon: Icon(
+                            //         Icons.arrow_back_ios,
+                            //         color: Color.fromRGBO(130, 130, 130, 1),
+                            //       ),
+                            //       onPressed: () {
+                            //         Navigator.of(context).pop();
+                            //       },
+                            //     ),),
+                            Positioned(
+                                child: Text(
+                                  Strings().getMedicineAddStrings(),
+                                  style: titleStyle(
+                                      fontFamily: boldFontFamily,
+                                      color: defaultBackgroundColor,
+                                      fontSize: 24),
+                                ),
+                                ),
+                          ],
+                        ),
+                        SizedBox(height: 10),
+                        Text(Strings().getMedicationNameStrings(),
+                            style: titleStyle(
+                                fontFamily: semiBoldFontFamily,
+                                color: greyColor,
+                                fontSize: 17)),
+                        SizedBox(height: 10),
+                        Container(
+                          height: 50,
+                          decoration: BoxDecoration(
+                              color: textFieldFill,
+                              border: Border.all(
+                                color: textFieldBorder,
+                              ),
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 0, left: 15),
+                            child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Container(
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                        hintText: 'ibuprofen , 200 mg',
+                                        hintStyle: titleStyle(
+                                            fontFamily: mediumFontFamily,
+                                            color: greyColor,
+                                            fontSize: 16),
+                                        labelStyle:
+                                            titleStyle(color: greyColor),
+                                        border: InputBorder.none,
+                                        focusedBorder: InputBorder.none,
+                                        enabledBorder: InputBorder.none,
+                                        errorBorder: InputBorder.none,
+                                        disabledBorder: InputBorder.none,
+                                      ),
+                                      keyboardType: TextInputType.number,
+                                    ),
+                                  ),
+                                ),
+                                Positioned(
+                                    child: IconButton(
+                                      icon: Image.asset(
+                                        Camera_rectangle,
+                                        fit: BoxFit.fitHeight,
+                                      ),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                    ),
+                                    left: 30),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 20),
                         Row(
                           children: <Widget>[
-                            Expanded(
-                              child:
-                              new GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    isActive= !medications[0];
-                                    medications = [isActive, false, false,false, false, false,false, false, false,false, false];
-                                  });
-                                },
-                                child: cardChangeState(true,
-                                    Tablet_active,Tablet_inactive, Strings().getTabletStrings(),
-                                    isFActive: medications[0]),
-                              ),
-                            ),
-                            Expanded(
-
-
-                              child:
-                              new GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    isActive= !medications[1];
-                                    medications = [false, isActive, false,false, false, false,false, false, false,false, false];
-                                  });
-                                },
-                                child:
-                                cardChangeState(true,
-                                    Capsule_active,Capsule_inactive, Strings().getCapsuleStrings(),
-                                    isFActive: medications[1]),
-                              ),
-
-                            ),
-                            Expanded(
-
-                              child:
-                              new GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    isActive= !medications[2];
-                                    medications = [false, false, isActive,false, false, false,false, false, false,false, false];
-                                  });
-                                },
-                                child:
-                                cardChangeState(true,
-                                    Liquid_active,Liquid_inactive, Strings().getLiquidStrings(),
-                                    isFActive: medications[2]),
-                              ),
-
+                            Text(Strings().getMedicineStrings(),
+                                style: titleStyle(
+                                    fontFamily: semiBoldFontFamily,
+                                    color: greyColor,
+                                    fontSize: 17)),
+                            SizedBox(
+                                width: MediaQuery.of(context).size.width - 240),
+                            Text(
+                              "View more",
+                              style: titleStyle(
+                                  fontFamily: boldFontFamily,
+                                  color: defaultBackgroundColor,
+                                  fontSize: 14),
                             ),
                           ],
                         ),
                         SizedBox(height: 10),
-
-
-                        Row(
-                          children: <Widget>[
-                            Expanded(
-
-
-                              child:
-                              new GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    isActive= !medications[3];
-                                    medications = [false, false, false,isActive, false, false,false, false, false,false, false];
-                                  });
-                                },
-                                child:
-                                cardChangeState(true,
-                                    Drops_Active,Drops_inactive, Strings().getDropsStrings(),
-                                    isFActive: medications[3]),
-                              ),
-
-                            ),
-                            Expanded(
-
-                              child:
-                              new GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    isActive= !medications[4];
-                                    medications = [false, false, false,false, isActive, false,false, false, false,false, false];
-                                  });
-                                },
-                                child:
-                                cardChangeState(true,
-                                    Suppository_active,Suppository_inactive, Strings().getSuppositoryStrings(),
-                                    isFActive: medications[4]),
-                              ),
-
-
-                            ),
-                            Expanded(
-
-
-                              child:
-                              new GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    isActive= !medications[5];
-                                    medications = [false, false, false,false, false, isActive,false, false, false,false, false];
-                                  });
-                                },
-                                child:
-                                cardChangeState(true,
-                                    Topical_active,Topical_inactive, Strings().getTopicalStrings(),
-                                    isFActive: medications[5]),
-                              ),
-
-                            ),
-                          ],
+                        Container(
+                          width: double.infinity,
+                          height: 120,
+                          child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: 5,
+                              itemBuilder: (context, index) {
+                                return medicationForm(index);
+                              }),
                         ),
                         SizedBox(height: 10),
-
-                        Row(
-                          children: <Widget>[
-                            Expanded(
-
-                              child:
-                              new GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    isActive= !medications[6];
-                                    medications = [false, false, false,false, false, false,isActive, false, false,false, false];
-                                  });
-                                },
-                                child:
-                                cardChangeState(true,
-                                    Inhalator_active,Inhalator_inactive, Strings().getInhalersStrings(),
-                                    isFActive: medications[6]),
-                              ),
-
-                            ),
-                            Expanded(
-
-
-                              child:
-                              new GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    isActive= !medications[7];
-                                    medications = [false, false, false,false, false, false,false, isActive, false,false, false];
-                                  });
-                                },
-                                child:
-                                cardChangeState(true,
-                                    Implant_active,Implant_inactive, Strings().getImplantsStrings(),
-                                    isFActive: medications[7]),
-                              ),
-
-                            ),
-                            Expanded(
-
-                              child:
-                              new GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    isActive= !medications[8];
-                                    medications = [false, false, false,false, false, false,false, false, isActive,false, false];
-                                  });
-                                },
-                                child:
-                                cardChangeState(true,
-                                    Patches_active,Patches_inactive, Strings().getPatchesStrings(),
-                                    isFActive: medications[8]),
-                              ),
-
-                            ),
-                          ],
-                        ),
+                        Text(Strings().getDropsStrings(),
+                            style: titleStyle(
+                                fontFamily: semiBoldFontFamily,
+                                color: greyColor,
+                                fontSize: 17)),
+                        Text(Strings().getMedicationHowStrings(),
+                            style: titleStyle(
+                                fontFamily: mediumFontFamily,
+                                color: greyColor,
+                                fontSize: 14)),
                         SizedBox(height: 10),
-
-                        Row(
-                          children: <Widget>[
-                            Expanded(
-                              child:
-                              new GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    isActive= !medications[9];
-                                    medications = [false, false, false,false, false, false,false, false, false,isActive, false];
-                                  });
-                                },
-                                child:
-                                cardChangeState(true,
-                                    Injection_active,Injection_inactive, Strings().getInjectionsStrings(),
-                                    isFActive: medications[9]),
+                        Container(
+                          height: 50,
+                          decoration: BoxDecoration(
+                              color: textFieldFill,
+                              border: Border.all(
+                                color: textFieldBorder,
                               ),
-
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 15, left: 15),
+                            child: Row(
+                              children: <Widget>[
+                                Positioned(
+                                    child: IconButton(
+                                      icon: Image.asset(
+                                        Minus_rectangle,
+                                        fit: BoxFit.fill,
+                                      ),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                    ),
+                                    right: 50),
+                                Expanded(
+                                  child: Container(
+                                    child: TextField(
+                                      textAlign: TextAlign.center,
+                                      decoration: InputDecoration(
+                                        hintText: '2',
+                                        hintStyle: titleStyle(
+                                            fontFamily: mediumFontFamily,
+                                            color: greyColor,
+                                            fontSize: 16),
+                                        labelStyle:
+                                            titleStyle(color: greyColor),
+                                        border: InputBorder.none,
+                                        focusedBorder: InputBorder.none,
+                                        enabledBorder: InputBorder.none,
+                                        errorBorder: InputBorder.none,
+                                        disabledBorder: InputBorder.none,
+                                      ),
+                                      keyboardType: TextInputType.number,
+                                    ),
+                                  ),
+                                ),
+                                Positioned(
+                                    child: IconButton(
+                                      icon: Image.asset(
+                                        Plus_rectangle,
+                                        fit: BoxFit.fill,
+                                      ),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                    ),
+                                    left: 50),
+                              ],
                             ),
-                            Expanded(
-
-                              child:
-                              new GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    isActive= !medications[10];
-                                    medications = [false, false, false,false, false, false,false, false, false,false, isActive];
-                                  });
-                                },
-                                child:
-                                cardChangeState(true,
-                                    Sachets_active,Sachets_inactive, Strings().getSachetsStrings(),
-                                    isFActive: medications[10]),
-                              ),
-
-                            ),
-                            Expanded(
-                              child: cardChangeState(false,
-                                  Capsule_active,Capsule_inactive, Strings().getCapsuleStrings(),
-                                  isFActive: false),
-                            ),
-                          ],
+                          ),
                         ),
-
-
-
+                        SizedBox(height: 20),
+                        Text(Strings().getMedicationReminderStrings(),
+                            style: titleStyle(
+                                fontFamily: semiBoldFontFamily,
+                                color: greyColor,
+                                fontSize: 17)),
+                        SizedBox(height: 10),
+                        Container(
+                          height: 50,
+                          decoration: BoxDecoration(
+                              color: textFieldFill,
+                              border: Border.all(
+                                color: textFieldBorder,
+                              ),
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 15, left: 15),
+                            child: Row(
+                              children: <Widget>[
+                                Positioned(
+                                    child: IconButton(
+                                      icon: Image.asset(
+                                        Medicine_notification,
+                                        fit: BoxFit.fill,
+                                      ),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                    ),
+                                    right: 50),
+                                Expanded(
+                                  child: Container(
+                                    child: TextField(
+                                      textAlign: TextAlign.center,
+                                      decoration: InputDecoration(
+                                        hintText: '10 : 00 AM',
+                                        hintStyle: titleStyle(
+                                            fontFamily: mediumFontFamily,
+                                            color: greyColor,
+                                            fontSize: 16),
+                                        labelStyle:
+                                            titleStyle(color: greyColor),
+                                        border: InputBorder.none,
+                                        focusedBorder: InputBorder.none,
+                                        enabledBorder: InputBorder.none,
+                                        errorBorder: InputBorder.none,
+                                        disabledBorder: InputBorder.none,
+                                      ),
+                                      keyboardType: TextInputType.number,
+                                    ),
+                                  ),
+                                ),
+                                Positioned(
+                                    child: IconButton(
+                                      icon: Image.asset(
+                                        Plus_rectangle,
+                                        fit: BoxFit.fill,
+                                      ),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                    ),
+                                    left: 50),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        Text(Strings().getMedicationDurationStrings(),
+                            style: titleStyle(
+                                fontFamily: semiBoldFontFamily,
+                                color: greyColor,
+                                fontSize: 17)),
+                        Text(Strings().getMedicationHowLongStrings(),
+                            style: titleStyle(
+                                fontFamily: mediumFontFamily,
+                                color: greyColor,
+                                fontSize: 14)),
+                        SizedBox(height: 10),
+                        Container(
+                          height: 50,
+                          decoration: BoxDecoration(
+                              color: textFieldFill,
+                              border: Border.all(
+                                color: textFieldBorder,
+                              ),
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 15, left: 15),
+                            child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Container(
+                                    child: TextField(
+                                      textAlign: TextAlign.center,
+                                      decoration: InputDecoration(
+                                        hintText: '20 days',
+                                        hintStyle: titleStyle(
+                                            fontFamily: mediumFontFamily,
+                                            color: greyColor,
+                                            fontSize: 16),
+                                        labelStyle:
+                                            titleStyle(color: greyColor),
+                                        border: InputBorder.none,
+                                        focusedBorder: InputBorder.none,
+                                        enabledBorder: InputBorder.none,
+                                        errorBorder: InputBorder.none,
+                                        disabledBorder: InputBorder.none,
+                                      ),
+                                      keyboardType: TextInputType.number,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        Text(Strings().getMedicationNoteStrings(),
+                            style: titleStyle(
+                                fontFamily: semiBoldFontFamily,
+                                color: greyColor,
+                                fontSize: 17)),
+                        SizedBox(height: 10),
+                        Container(
+                          height: 100,
+                          decoration: BoxDecoration(
+                              color: textFieldFill,
+                              border: Border.all(
+                                color: textFieldBorder,
+                              ),
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 15, left: 15),
+                            child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Container(
+                                    child: TextField(
+                                        textAlign: TextAlign.center,
+                                        decoration: InputDecoration(
+                                          hintText:
+                                              'ex: That’s my painkiller to my teeth',
+                                          hintStyle: titleStyle(
+                                              fontFamily: mediumFontFamily,
+                                              color: greyColor,
+                                              fontSize: 16),
+                                          labelStyle:
+                                              titleStyle(color: greyColor),
+                                          border: InputBorder.none,
+                                          focusedBorder: InputBorder.none,
+                                          enabledBorder: InputBorder.none,
+                                          errorBorder: InputBorder.none,
+                                          disabledBorder: InputBorder.none,
+                                        ),
+                                        keyboardType: TextInputType.multiline,
+                                        minLines: 3,
+                                        maxLines: null),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        button(() {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => SignupScreenStep2()));
+                        }, Strings().getDoneStrings(), isFilledColor: true),
                         Spacer()
-
                       ],
                     ),
-                  ),
+                  // ),
                 ),
-
-                Positioned(
-                    child: IconButton(
-                      icon: Icon(
-                        Icons.arrow_back_ios,
-                        color: Color.fromRGBO(130, 130, 130, 1),
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                    top: 5,
-                    left: 5),
-
-                Positioned(
-                    child: Text(
-                        Strings().getMedicineAddStrings(),
-                        style: titleStyle(
-                            fontFamily: boldFontFamily,
-                            color: defaultBackgroundColor,
-                            fontSize: 32),
-                      ),
-                    top: 60,
-                    left: 35),
-
-
+                // Positioned(
+                //     child: IconButton(
+                //       icon: Icon(
+                //         Icons.arrow_back_ios,
+                //         color: Color.fromRGBO(130, 130, 130, 1),
+                //       ),
+                //       onPressed: () {
+                //         Navigator.of(context).pop();
+                //       },
+                //     ),
+                //     top: 5,
+                //     left: 5),
+                // Positioned(
+                //     child: Text(
+                //       Strings().getMedicineAddStrings(),
+                //       style: titleStyle(
+                //           fontFamily: boldFontFamily,
+                //           color: defaultBackgroundColor,
+                //           fontSize: 24),
+                //     ),
+                //     top: 60,
+                //     left: 30),
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget medicationForm(int index) {
+    return Container(
+      width: 120,
+      height: 120,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: new GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      switch (index) {
+                        case 0:
+                          isActive = !medications[0];
+                          medications = [
+                            isActive,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false
+                          ];
+                          break;
+                        case 1:
+                          isActive = !medications[1];
+                          medications = [
+                            false,
+                            isActive,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false
+                          ];
+                          break;
+                        case 2:
+                          isActive = !medications[2];
+                          medications = [
+                            false,
+                            false,
+                            isActive,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false
+                          ];
+                          break;
+                        case 3:
+                          isActive = !medications[3];
+                          medications = [
+                            false,
+                            false,
+                            false,
+                            isActive,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false
+                          ];
+                          break;
+                        case 4:
+                          isActive = !medications[4];
+                          medications = [
+                            false,
+                            false,
+                            false,
+                            false,
+                            isActive,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false
+                          ];
+                          break;
+                      }
+                    });
+                  },
+                  child: index == 0
+                      ? cardChangeState(true, Tablet_active, Tablet_inactive, Strings().getTabletStrings(),
+                          isFActive: medications[0])
+                      : index == 1
+                          ? cardChangeState(
+                              true, Capsule_active, Capsule_inactive, Strings().getCapsuleStrings(),
+                              isFActive: medications[1])
+                          : index == 2
+                              ? cardChangeState(
+                                  true, Liquid_active, Liquid_inactive, Strings().getLiquidStrings(),
+                                  isFActive: medications[2])
+                              : index == 3
+                                  ? cardChangeState(
+                                      true, Drops_Active, Drops_inactive, Strings().getDropsStrings(),
+                                      isFActive: medications[3])
+                                  : index == 4
+                                      ? cardChangeState(
+                                          true,
+                                          Suppository_active,
+                                          Suppository_inactive,
+                                          Strings().getSuppositoryStrings(),
+                                          isFActive: medications[4])
+                                      : Container(),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
