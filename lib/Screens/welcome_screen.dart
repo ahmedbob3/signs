@@ -12,7 +12,6 @@ import 'package:signs/Utils/strings.dart';
 import 'package:signs/Utils/styles.dart';
 import 'package:signs/widgets/widgets.dart';
 
-import 'home_screen.dart';
 import 'medicine_add.dart';
 import 'medicine_form.dart';
 
@@ -27,9 +26,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: Constants.languageId == languages.Arabic
-          ? TextDirection.rtl
-          : TextDirection.ltr,
+      textDirection: Constants.textDirection,
       child: Container(
         color: Color.fromRGBO(0, 81, 173, 1),
         child: SafeArea(

@@ -65,5 +65,7 @@ class Strings_EN {
   static const String MEDICATION_HOW_LONG = 'How long do you need to take this medicine';
   static const String MEDICATION_NOTE = 'Reminder Note';
   static const String MEDICATION_HINT = 'ex: That’s my painkiller to my teeth';
+  static const String SELECT = 'Select';
+  static const String FORGET_PASSWORD = 'Forget Password ?';
   
 }

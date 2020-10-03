@@ -108,8 +108,8 @@ class Strings {
     }
   }
 
-  String getMobileNumberString(){
-   switch (Constants.languageId) {
+  String getMobileNumberString() {
+    switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.MOBILE_NUMBER;
         break;
@@ -121,8 +121,8 @@ class Strings {
     }
   }
 
-  String getEnterMobileNumberString(){
-   switch (Constants.languageId) {
+  String getEnterMobileNumberString() {
+    switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.ENTER_MOBILE_NUMBER;
         break;
@@ -134,8 +134,8 @@ class Strings {
     }
   }
 
-  String getContinueStrings(){
-   switch (Constants.languageId) {
+  String getContinueStrings() {
+    switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.CONTINUE;
         break;
@@ -147,8 +147,7 @@ class Strings {
     }
   }
 
-
-  String getSignupStrings(){
+  String getSignupStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SING_UP;
@@ -161,7 +160,7 @@ class Strings {
     }
   }
 
-  String getSingupSlogan(){
+  String getSingupSlogan() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SING_UP_SLOGAN;
@@ -174,7 +173,7 @@ class Strings {
     }
   }
 
-  String getSignupStep1Strings(){
+  String getSignupStep1Strings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SING_UP_STEP1;
@@ -187,7 +186,7 @@ class Strings {
     }
   }
 
-  String getSignupStep2Strings(){
+  String getSignupStep2Strings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SING_UP_STEP2;
@@ -200,7 +199,7 @@ class Strings {
     }
   }
 
-  String getSignupStep3Strings(){
+  String getSignupStep3Strings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SING_UP_STEP3;
@@ -213,7 +212,7 @@ class Strings {
     }
   }
 
-  String getPasswordStrings(){
+  String getPasswordStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SING_UP_PASSWORD;
@@ -226,7 +225,7 @@ class Strings {
     }
   }
 
-  String getEnterPasswordStrings(){
+  String getEnterPasswordStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SING_UP_ENTER_PASSWORD;
@@ -239,7 +238,7 @@ class Strings {
     }
   }
 
-  String getConfirmStrings(){
+  String getConfirmStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SING_UP_CONFIRM;
@@ -252,7 +251,7 @@ class Strings {
     }
   }
 
-  String getConfirmPasswordStrings(){
+  String getConfirmPasswordStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SING_UP_CONFIRM_PASSWORD;
@@ -265,8 +264,7 @@ class Strings {
     }
   }
 
-
-  String getNextStrings(){
+  String getNextStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.NEXT;
@@ -279,7 +277,7 @@ class Strings {
     }
   }
 
-  String getHavingAccountStrings(){
+  String getHavingAccountStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.HAVING_ACCOUNT;
@@ -292,7 +290,7 @@ class Strings {
     }
   }
 
-  String getPreviousStrings(){
+  String getPreviousStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.PREVIOUS;
@@ -305,7 +303,7 @@ class Strings {
     }
   }
 
-  String getMaleStrings(){
+  String getMaleStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.MALE;
@@ -317,7 +315,8 @@ class Strings {
         return Strings_EN.MALE;
     }
   }
-  String getFemaleStrings(){
+
+  String getFemaleStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.FEMALE;
@@ -329,7 +328,8 @@ class Strings {
         return Strings_EN.FEMALE;
     }
   }
-  String getGenderStrings(){
+
+  String getGenderStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.GENDER;
@@ -341,7 +341,8 @@ class Strings {
         return Strings_EN.GENDER;
     }
   }
-  String getFirstNameStrings(){
+
+  String getFirstNameStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SING_UP_FIRST_NAME;
@@ -353,7 +354,8 @@ class Strings {
         return Strings_EN.SING_UP_FIRST_NAME;
     }
   }
-  String getEnterFirstStrings(){
+
+  String getEnterFirstStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SING_UP_ENTER_FIRST;
@@ -365,7 +367,8 @@ class Strings {
         return Strings_EN.SING_UP_ENTER_FIRST;
     }
   }
-  String getLastNameStrings(){
+
+  String getLastNameStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SING_UP_LAST_NAME;
@@ -377,7 +380,8 @@ class Strings {
         return Strings_EN.SING_UP_LAST_NAME;
     }
   }
-  String getEnterLastStrings(){
+
+  String getEnterLastStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SING_UP_ENTER_LAST;
@@ -389,7 +393,8 @@ class Strings {
         return Strings_EN.SING_UP_ENTER_LAST;
     }
   }
-  String getEmailStrings(){
+
+  String getEmailStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SING_UP_EMAIL;
@@ -401,7 +406,8 @@ class Strings {
         return Strings_EN.SING_UP_EMAIL;
     }
   }
-  String getEnterEmailStrings(){
+
+  String getEnterEmailStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SING_UP_ENTER_EMAIL;
@@ -413,10 +419,12 @@ class Strings {
         return Strings_EN.SING_UP_ENTER_EMAIL;
     }
   }
-  String getSubaccountStrings(){
+
+  String getSubaccountStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
-        return Strings_AR.SING_UP_ADD_SUB_ACCOUNT;;
+        return Strings_AR.SING_UP_ADD_SUB_ACCOUNT;
+        ;
         break;
       case languages.Indian:
         return Strings_INR.SING_UP_ADD_SUB_ACCOUNT;
@@ -425,7 +433,8 @@ class Strings {
         return Strings_EN.SING_UP_ADD_SUB_ACCOUNT;
     }
   }
-  String getDatebirthStrings(){
+
+  String getDatebirthStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SING_UP_DATE_BIRTH;
@@ -437,7 +446,8 @@ class Strings {
         return Strings_EN.SING_UP_DATE_BIRTH;
     }
   }
-  String getHeightTStrings(){
+
+  String getHeightTStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SING_UP_HEIGHT;
@@ -449,7 +459,8 @@ class Strings {
         return Strings_EN.SING_UP_HEIGHT;
     }
   }
-  String getWeightStrings(){
+
+  String getWeightStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SING_UP_WEIGHT;
@@ -461,7 +472,8 @@ class Strings {
         return Strings_EN.SING_UP_WEIGHT;
     }
   }
-  String getBedtimeStrings(){
+
+  String getBedtimeStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SING_UP_BED_TIME;
@@ -473,7 +485,8 @@ class Strings {
         return Strings_EN.SING_UP_BED_TIME;
     }
   }
-  String getWaketimeStrings(){
+
+  String getWaketimeStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SING_UP_WAKE_TIME;
@@ -485,7 +498,8 @@ class Strings {
         return Strings_EN.SING_UP_WAKE_TIME;
     }
   }
-  String getSkipStrings(){
+
+  String getSkipStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SING_UP_SKIP;
@@ -498,7 +512,7 @@ class Strings {
     }
   }
 
-  String getSubAccountStrings(){
+  String getSubAccountStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SING_UP_SUB_ACCOUNT;
@@ -511,7 +525,7 @@ class Strings {
     }
   }
 
-  String getDoneStrings(){
+  String getDoneStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SING_UP_DONE;
@@ -524,7 +538,7 @@ class Strings {
     }
   }
 
-  String getSingRelationStrings(){
+  String getSingRelationStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SING_UP_RELATION;
@@ -536,7 +550,8 @@ class Strings {
         return Strings_EN.SING_UP_RELATION;
     }
   }
-  String getSingSonStrings(){
+
+  String getSingSonStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SING_UP_SON;
@@ -548,7 +563,8 @@ class Strings {
         return Strings_EN.SING_UP_SON;
     }
   }
-  String getSingMotherStrings(){
+
+  String getSingMotherStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SING_UP_MOTHER;
@@ -560,7 +576,8 @@ class Strings {
         return Strings_EN.SING_UP_MOTHER;
     }
   }
-  String getSingAddAnotherStrings(){
+
+  String getSingAddAnotherStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SING_UP_ADD_ANOTHER;
@@ -573,7 +590,7 @@ class Strings {
     }
   }
 
-    String getSelectAppLanguageStrings(){
+  String getSelectAppLanguageStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SELECT_APP_LANGUAGE;
@@ -586,7 +603,7 @@ class Strings {
     }
   }
 
-  String getMedicineAddStrings(){
+  String getMedicineAddStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.MEDICINE_ADD;
@@ -599,7 +616,7 @@ class Strings {
     }
   }
 
-  String getMedicineStrings(){
+  String getMedicineStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.MEDICINE_FORM;
@@ -611,7 +628,8 @@ class Strings {
         return Strings_EN.MEDICINE_FORM;
     }
   }
-  String getTabletStrings(){
+
+  String getTabletStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.TABLET;
@@ -623,7 +641,8 @@ class Strings {
         return Strings_EN.TABLET;
     }
   }
-  String getCapsuleStrings(){
+
+  String getCapsuleStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.CAPSULE;
@@ -635,7 +654,8 @@ class Strings {
         return Strings_EN.CAPSULE;
     }
   }
-  String getLiquidStrings(){
+
+  String getLiquidStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.LIQUID;
@@ -647,7 +667,8 @@ class Strings {
         return Strings_EN.LIQUID;
     }
   }
-  String getDropsStrings(){
+
+  String getDropsStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.DROPS;
@@ -659,7 +680,8 @@ class Strings {
         return Strings_EN.DROPS;
     }
   }
-  String getSuppositoryStrings(){
+
+  String getSuppositoryStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SUPPOSITORY;
@@ -671,7 +693,8 @@ class Strings {
         return Strings_EN.SUPPOSITORY;
     }
   }
-  String getTopicalStrings(){
+
+  String getTopicalStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.TOPICAL;
@@ -683,7 +706,8 @@ class Strings {
         return Strings_EN.TOPICAL;
     }
   }
-  String getInhalersStrings(){
+
+  String getInhalersStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.INHALERS;
@@ -695,7 +719,8 @@ class Strings {
         return Strings_EN.INHALERS;
     }
   }
-  String getImplantsStrings(){
+
+  String getImplantsStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.IMPLANTS;
@@ -707,7 +732,8 @@ class Strings {
         return Strings_EN.IMPLANTS;
     }
   }
-  String getPatchesStrings(){
+
+  String getPatchesStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.PATCHES;
@@ -719,7 +745,8 @@ class Strings {
         return Strings_EN.PATCHES;
     }
   }
-  String getInjectionsStrings(){
+
+  String getInjectionsStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.INJECTIONS;
@@ -731,7 +758,8 @@ class Strings {
         return Strings_EN.INJECTIONS;
     }
   }
-  String getSachetsStrings(){
+
+  String getSachetsStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SACHETS;
@@ -744,7 +772,7 @@ class Strings {
     }
   }
 
-  String getMedicationNameStrings(){
+  String getMedicationNameStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.MEDICATION_NAME;
@@ -756,7 +784,8 @@ class Strings {
         return Strings_EN.MEDICATION_NAME;
     }
   }
-  String getMedicationHowStrings(){
+
+  String getMedicationHowStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.MEDICATION_HOW;
@@ -768,7 +797,8 @@ class Strings {
         return Strings_EN.MEDICATION_HOW;
     }
   }
-  String getMedicationReminderStrings(){
+
+  String getMedicationReminderStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.MEDICATION_REMINDER;
@@ -780,7 +810,8 @@ class Strings {
         return Strings_EN.MEDICATION_REMINDER;
     }
   }
-  String getMedicationDurationStrings(){
+
+  String getMedicationDurationStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.MEDICATION_DURATION;
@@ -792,7 +823,8 @@ class Strings {
         return Strings_EN.MEDICATION_DURATION;
     }
   }
-  String getMedicationHowLongStrings(){
+
+  String getMedicationHowLongStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.MEDICATION_HOW_LONG;
@@ -804,7 +836,8 @@ class Strings {
         return Strings_EN.MEDICATION_HOW_LONG;
     }
   }
-  String getMedicationNoteStrings(){
+
+  String getMedicationNoteStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.MEDICATION_NOTE;
@@ -816,7 +849,8 @@ class Strings {
         return Strings_EN.MEDICATION_NOTE;
     }
   }
-  String getMedicationHintStrings(){
+
+  String getMedicationHintStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.MEDICATION_HINT;
@@ -829,5 +863,29 @@ class Strings {
     }
   }
 
-
+  String getSelectLabelStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SELECT;
+        break;
+      case languages.Indian:
+        return Strings_INR.SELECT;
+        break;
+      default:
+        return Strings_EN.SELECT;
+    }
+  }
+  String getForgetPasswordStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.FORGET_PASSWORD;
+        break;
+      case languages.Indian:
+        return Strings_INR.FORGET_PASSWORD;
+        break;
+      default:
+        return Strings_EN.FORGET_PASSWORD;
+    }
+  }
+  
 }

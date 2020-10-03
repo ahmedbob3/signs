@@ -68,3 +68,5 @@ const String SearchIcon = 'assets/images/ic_Search.png';
 const String ShareIcon = 'assets/images/ic_share.png';
 const String DirectionIcon = 'assets/images/ic_Direction_Icon.png';
 const String CallIcon = 'assets/images/ic_Call.png';
+const String SplashBG = 'assets/images/splash_bg.png';
+const String SignsLogo = 'assets/images/signs_Logo.png';

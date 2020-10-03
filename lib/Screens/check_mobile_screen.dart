@@ -50,9 +50,7 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: Constants.languageId == languages.Arabic
-          ? TextDirection.rtl
-          : TextDirection.ltr,
+      textDirection: Constants.textDirection,
       child: Container(
         color: Color.fromRGBO(0, 81, 173, 1),
         child: SafeArea(

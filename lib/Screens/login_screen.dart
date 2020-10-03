@@ -3,7 +3,6 @@ import 'package:country_codes/country_codes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:signs/Blocs/login%20mobile%20bloc/login_mobile_bloc.dart';
-import 'package:signs/Screens/home_screen.dart';
 import 'package:signs/Screens/landing_screen.dart';
 import 'package:signs/Utils/constants.dart';
 import 'package:signs/Utils/images.dart';
@@ -42,9 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: Constants.languageId == languages.Arabic
-          ? TextDirection.rtl
-          : TextDirection.ltr,
+      textDirection: Constants.textDirection,
       child: Container(
         color: Color.fromRGBO(0, 81, 173, 1),
         child: SafeArea(
@@ -223,7 +220,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: <Widget>[
                                     Text(
-                                      'Forget Password ?',
+                                      Strings().getForgetPasswordStrings(),
                                       style: titleStyle(
                                               fontSize: 14,
                                               fontFamily: mediumFontFamily,

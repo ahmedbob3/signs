@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:signs/Screens/welcome_screen.dart';
 import 'package:signs/Utils/constants.dart';
 import 'package:signs/Utils/images.dart';
@@ -19,8 +20,8 @@ class _LangauageScreenState extends State<LangauageScreen> {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: Constants.languageId == languages.Arabic ? TextDirection.rtl : TextDirection.ltr,
-          child: Container(
+      textDirection: Constants.textDirection,
+      child: Container(
         color: Color.fromRGBO(0, 81, 173, 1),
         child: SafeArea(
           bottom: false,
@@ -76,6 +77,7 @@ class _LangauageScreenState extends State<LangauageScreen> {
                               setState(() {
                                 selectedLanguage = 1;
                                 Constants.languageId = languages.Arabic;
+                                Constants.textDirection = TextDirection.rtl;
                               });
                             },
                             child: Container(
@@ -92,9 +94,11 @@ class _LangauageScreenState extends State<LangauageScreen> {
                                   ),
                                 ],
                               ),
-                              decoration: selectedLanguage == 1 ? BoxDecoration(
-                                  color: Color.fromRGBO(33, 99, 206, 0.14),
-                                  borderRadius: BorderRadius.circular(20)) : null,
+                              decoration: selectedLanguage == 1
+                                  ? BoxDecoration(
+                                      color: Color.fromRGBO(33, 99, 206, 0.14),
+                                      borderRadius: BorderRadius.circular(20))
+                                  : null,
                             ),
                           ),
                           Divider(),
@@ -105,6 +109,7 @@ class _LangauageScreenState extends State<LangauageScreen> {
                               setState(() {
                                 selectedLanguage = 2;
                                 Constants.languageId = languages.English;
+                                Constants.textDirection = TextDirection.ltr;
                               });
                             },
                             child: Container(
@@ -121,9 +126,11 @@ class _LangauageScreenState extends State<LangauageScreen> {
                                   ),
                                 ],
                               ),
-                              decoration: selectedLanguage == 2 ? BoxDecoration(
-                                  color: Color.fromRGBO(33, 99, 206, 0.14),
-                                  borderRadius: BorderRadius.circular(20)) : null,
+                              decoration: selectedLanguage == 2
+                                  ? BoxDecoration(
+                                      color: Color.fromRGBO(33, 99, 206, 0.14),
+                                      borderRadius: BorderRadius.circular(20))
+                                  : null,
                             ),
                           ),
                           Divider(),
@@ -134,6 +141,7 @@ class _LangauageScreenState extends State<LangauageScreen> {
                               setState(() {
                                 selectedLanguage = 3;
                                 Constants.languageId = languages.Indian;
+                                Constants.textDirection = TextDirection.ltr;
                               });
                             },
                             child: Container(
@@ -150,17 +158,22 @@ class _LangauageScreenState extends State<LangauageScreen> {
                                   ),
                                 ],
                               ),
-                              decoration: selectedLanguage == 3 ? BoxDecoration(
-                                  color: Color.fromRGBO(33, 99, 206, 0.14),
-                                  borderRadius: BorderRadius.circular(20)) : null,
+                              decoration: selectedLanguage == 3
+                                  ? BoxDecoration(
+                                      color: Color.fromRGBO(33, 99, 206, 0.14),
+                                      borderRadius: BorderRadius.circular(20))
+                                  : null,
                             ),
                           ),
 
                           SizedBox(height: 30),
-                          button(() {
-                            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => WelcomeScreen()));
-                          }, "Select",
-                              isFilledColor: true),
+                          button(() async{
+                            SharedPreferences _sharedPrefs = await SharedPreferences.getInstance();
+                            _sharedPrefs.setInt('selectedLanguage', Constants.languageId.index);
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (context) => WelcomeScreen()));
+                          }, Strings().getSelectLabelStrings(), isFilledColor: true),
                           SizedBox(height: 30),
                         ],
                       ),

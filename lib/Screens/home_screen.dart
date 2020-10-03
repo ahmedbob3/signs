@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:signs/Blocs/navigation%20bloc/navigation_bloc.dart';
+import 'package:signs/Screens/medication_section.dart';
 import 'package:signs/Utils/images.dart';
 import 'package:signs/Utils/styles.dart';
 import 'package:signs/widgets/hospital_cell.dart';
@@ -169,21 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SizedBox(height: 20),
               // Upcoming reminder ..
-              Text('Upcoming Reminder',
-                  style: titleStyle(
-                      fontFamily: boldFontFamily,
-                      fontSize: 22,
-                      color: defaultBackgroundColor)),
-              Container(
-                height: 140,
-                child: ListView.builder(
-                  itemCount: 3,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (BuildContext context, int index) {
-                    return PillCell(isActive: true);
-                  },
-                ),
-              ),
+              MediciationSection(medicationList: [],),
               // hospitals list ..
               Text('Hospitals',
                   style: titleStyle(

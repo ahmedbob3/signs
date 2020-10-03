@@ -65,6 +65,8 @@ class Strings_AR {
   static const String MEDICATION_HOW_LONG = 'How long do you need to take this medicine';
   static const String MEDICATION_NOTE = 'Reminder Note';
   static const String MEDICATION_HINT = 'ex: That’s my painkiller to my teeth';
+  static const String SELECT = 'إختر';
+  static const String FORGET_PASSWORD = 'هل نسيت كلمة المرور ؟';
 
 
 

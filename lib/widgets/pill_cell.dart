@@ -3,14 +3,14 @@ import 'package:signs/Utils/images.dart';
 import 'package:signs/Utils/styles.dart';
 
 class PillCell extends StatelessWidget {
-  bool isActive;
-  PillCell({Key key, this.isActive}) : super(key: key);
+  bool isNewPill;
+  PillCell({Key key, this.isNewPill}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(10),
-      width: 220,
+      width: isNewPill ? (MediaQuery.of(context).size.width * 0.87) : 220,
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
@@ -28,12 +28,12 @@ class PillCell extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Image.asset(isActive ? Add_pill_Active : Add_pill),
-                    isActive ? Text('8-9 AM', style: titleStyle(fontFamily: semiBoldFontFamily, fontSize: 16, color: Color.fromRGBO(96, 96, 96, 1),)) : Container()
+                    Image.asset(!isNewPill ? Add_pill_Active : Add_pill),
+                    !isNewPill ? Text('8-9 AM', style: titleStyle(fontFamily: semiBoldFontFamily, fontSize: 16, color: Color.fromRGBO(96, 96, 96, 1),)) : Container()
                   ],
                 ),
                 SizedBox(height: 10),
-                isActive ? 
+                !isNewPill ? 
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
