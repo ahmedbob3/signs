@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:signs/Screens/medicine_add.dart';
 import 'package:signs/Utils/images.dart';
 import 'package:signs/Utils/styles.dart';
 
@@ -28,7 +29,7 @@ class PillCell extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Image.asset(!isNewPill ? Add_pill_Active : Add_pill),
+                   Image.asset(!isNewPill ? Add_pill_Active : Add_pill),
                     !isNewPill ? Text('8-9 AM', style: titleStyle(fontFamily: semiBoldFontFamily, fontSize: 16, color: Color.fromRGBO(96, 96, 96, 1),)) : Container()
                   ],
                 ),
@@ -48,11 +49,21 @@ class PillCell extends StatelessWidget {
                                 fontFamily: semiBoldFontFamily,
                                 color: Colors.black54,
                                 fontSize: 18))),
-                    Icon(
-                      Icons.add_circle,
-                      color: defaultBackgroundColor,
-                      size: 40,
-                    )
+
+
+                    GestureDetector(
+                      onTap: () {
+                        !isNewPill ? (){} :
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => AddMedication()));
+                      },
+                      child: Icon(
+                        Icons.add_circle,
+                        color: defaultBackgroundColor,
+                        size: 40,
+                      ),
+                    ),
+
                   ],
                 ),
               ],

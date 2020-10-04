@@ -67,6 +67,8 @@ class Strings_AR {
   static const String MEDICATION_HINT = 'ex: That’s my painkiller to my teeth';
   static const String SELECT = 'إختر';
   static const String FORGET_PASSWORD = 'هل نسيت كلمة المرور ؟';
+  static const String SAVE = 'Save';
+
 
 
 

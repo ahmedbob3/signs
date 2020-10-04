@@ -538,6 +538,19 @@ class Strings {
     }
   }
 
+  String getSaveStrings() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SAVE;
+        break;
+      case languages.Indian:
+        return Strings_INR.SAVE;
+        break;
+      default:
+        return Strings_EN.SAVE;
+    }
+  }
+
   String getSingRelationStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:

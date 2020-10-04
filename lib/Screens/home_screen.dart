@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:signs/Blocs/home%20bloc/home_bloc.dart';
-import 'package:signs/Blocs/navigation%20bloc/navigation_bloc.dart';
+import 'package:signs/Medication%20bloc/medication_bloc.dart';
 import 'package:signs/Screens/medication_section.dart';
+import 'package:signs/Screens/signup_sub_screen_step1.dart';
 import 'package:signs/Utils/images.dart';
 import 'package:signs/Utils/styles.dart';
 import 'package:signs/widgets/hospital_cell.dart';
-import 'package:signs/widgets/pill_cell.dart';
 import 'package:signs/widgets/widgets.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -85,16 +85,23 @@ class _HomeScreenState extends State<HomeScreen> {
                     // subaccounts ..
                     Row(
                       children: <Widget>[
-                        CircleAvatar(
-                          radius: 24,
-                          backgroundColor: Colors.white,
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => SignupSubAccountScreenStep1()));
+                            });
+                          },
                           child: CircleAvatar(
-                              radius: 22,
-                              backgroundColor: Color.fromRGBO(0, 54, 115, 1),
-                              child: Icon(
-                                Icons.add,
-                                color: Colors.white,
-                              )),
+                            radius: 24,
+                            backgroundColor: Colors.white,
+                            child: CircleAvatar(
+                                radius: 22,
+                                backgroundColor: Color.fromRGBO(0, 54, 115, 1),
+                                child: Icon(
+                                  Icons.add,
+                                  color: Colors.white,
+                                )),
+                          ),
                         ),
                         SizedBox(width: 10),
                         CircleAvatar(

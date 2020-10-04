@@ -228,34 +228,34 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
                         button(() {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => SignupScreenStep2()));
-                        }, Strings().getDoneStrings(), isFilledColor: true),
-                        SizedBox(height: 20),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              Strings().getHavingAccountStrings(),
-                              style: titleStyle(
-                                  fontFamily: mediumFontFamily,
-                                  color: greyColor,
-                                  fontSize: 14),
-                            ),
-                            new GestureDetector(
-                              onTap: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => CheckMobileScreen()));
-                              },
-                              child: new Text(
-                                Strings().getSingInText(),
-                                style: titleStyle(
-                                    fontFamily: mediumFontFamily,
-                                    color: defaultBackgroundColor,
-                                    fontSize: 14),
-                              ),
-                            ),
-                          ],
-                        ),
+                        }, Strings().getSaveStrings(), isFilledColor: true),
+                        // SizedBox(height: 20),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.center,
+                        //   crossAxisAlignment: CrossAxisAlignment.center,
+                        //   children: <Widget>[
+                        //     Text(
+                        //       Strings().getHavingAccountStrings(),
+                        //       style: titleStyle(
+                        //           fontFamily: mediumFontFamily,
+                        //           color: greyColor,
+                        //           fontSize: 14),
+                        //     ),
+                        //     new GestureDetector(
+                        //       onTap: () {
+                        //         Navigator.of(context).push(MaterialPageRoute(
+                        //             builder: (context) => CheckMobileScreen()));
+                        //       },
+                        //       child: new Text(
+                        //         Strings().getSingInText(),
+                        //         style: titleStyle(
+                        //             fontFamily: mediumFontFamily,
+                        //             color: defaultBackgroundColor,
+                        //             fontSize: 14),
+                        //       ),
+                        //     ),
+                        //   ],
+                        // ),
                         Spacer()
 
                       ],
@@ -264,17 +264,17 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
                 ),
 
                 Positioned(
-                    child: IconButton(
-                      icon: Icon(
-                        Icons.arrow_back_ios,
-                        color: Colors.white,
-                      ),
-                      onPressed: () {
+
+                    child: GestureDetector(
+                      onTap: () {
                         Navigator.of(context).pop();
                       },
+                      child:  Image.asset(
+                        CloseWhite,
+                      ),
                     ),
-                    top: 5,
-                    left: 5),
+                    top: 20,
+                    left: 20),
 
                 Positioned(
                     child: Text(
@@ -285,7 +285,7 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
                             fontSize: 32),
                       ),
                     top: 60,
-                    left: 35),
+                    left: 20),
 
 
               ],
