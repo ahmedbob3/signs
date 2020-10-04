@@ -18,7 +18,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   HomeBloc _homeBloc;
-  List<String> medicationList = [];
+  List<MedicationBloc> medicationList = [];
 
   @override
   void initState() {

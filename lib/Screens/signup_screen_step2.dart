@@ -268,7 +268,7 @@ class _SignupScreenStep2State extends State<SignupScreenStep2> {
                         //   },
                         //   child: buttonWithIcon(Add_subaccount, Strings().getSubaccountStrings(),isBackground: true),
                         // ),
-                        SizedBox(height: 120),
+                        SizedBox(height: 110),
                         Row(
                           children: <Widget>[
                             Expanded(
@@ -291,7 +291,7 @@ class _SignupScreenStep2State extends State<SignupScreenStep2> {
                             ),
                           ],
                         ),
-                        SizedBox(height: 20),
+                        SizedBox(height: 10),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,

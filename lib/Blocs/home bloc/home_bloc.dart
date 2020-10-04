@@ -15,10 +15,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   ) async* {
     if (event is loadMedicationsEvent) {
       yield HomeLoadingState();
-      var response = await LoginRepo().doLogin('01063813377', '123456');
-      var list = List<String>();
-      // var list = List<MedicationBloc>();
-      list.add("medication list ..");
+     // var response = await LoginRepo().doLogin('01063813377', '123456');
+     //  var list = List<String>();
+      var list = List<MedicationBloc>();
+      //list.add("medication list ..");
       yield HomeLoadedState(list);
     } else if ( event is resetHomeEvent ){
       yield HomeInitial();

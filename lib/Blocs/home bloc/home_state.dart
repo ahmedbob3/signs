@@ -8,6 +8,6 @@ class HomeInitial extends HomeState {}
 class HomeLoadingState extends HomeState {}
 
 class HomeLoadedState extends HomeState {
-  List<String> medicationList;
+  List<MedicationBloc> medicationList;
   HomeLoadedState(this.medicationList);
 }

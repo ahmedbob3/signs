@@ -315,7 +315,7 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => SignupScreenStep2()));
                         }, Strings().getNextStrings(), isFilledColor: true),
-                        SizedBox(height: 20),
+                        SizedBox(height: 10),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,

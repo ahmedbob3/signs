@@ -399,7 +399,7 @@ class _SignupScreenStep3State extends State<SignupScreenStep3> {
                             ),
                           ),
                         ),
-                        SizedBox(height: 80),
+                        SizedBox(height: 70),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -442,7 +442,7 @@ class _SignupScreenStep3State extends State<SignupScreenStep3> {
                             ),
                           ],
                         ),
-                        SizedBox(height: 20),
+                        SizedBox(height: 10),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
