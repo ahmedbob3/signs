@@ -19,6 +19,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   HomeBloc _homeBloc;
   List<MedicationBloc> medicationList = [];
+  bool isLoading = false;
 
   @override
   void initState() {
@@ -39,12 +40,18 @@ class _HomeScreenState extends State<HomeScreen> {
             bloc: _homeBloc,
             builder: (context, state) {
               if (state is HomeLoadingState) {
-                showLoadingDialog(context);
+                if (!isLoading) {
+                  showLoadingDialog(context);
+                  isLoading = true;
+                }
               } else if (state is HomeLoadedState) {
                 medicationList = state.medicationList;
-                Future.delayed(Duration(milliseconds: 1), () {
-                  Navigator.of(context).pop();
-                  _homeBloc.add(resetHomeEvent());
+                Future.delayed(Duration(milliseconds: 1000), () {
+                  if (isLoading) {
+                    _homeBloc.add(resetHomeEvent());
+                    Navigator.of(context).pop();
+                    isLoading = false;
+                  }
                 });
               }
 
@@ -88,7 +95,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         GestureDetector(
                           onTap: () {
                             setState(() {
-                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => SignupSubAccountScreenStep1()));
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) =>
+                                      SignupSubAccountScreenStep1()));
                             });
                           },
                           child: CircleAvatar(
