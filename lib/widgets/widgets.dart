@@ -242,6 +242,7 @@ showLoadingDialog(BuildContext context) async {
   Future.delayed(Duration(milliseconds: 10), () {
     showDialog(
       context: context,
+      barrierDismissible: false,
       builder: (context) {
         return Container(
           child: Center(

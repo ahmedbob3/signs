@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 import 'package:signs/Blocs/home%20bloc/home_bloc.dart';
 import 'package:signs/Screens/home_screen.dart';
 import 'package:signs/Screens/hospital_details_screen.dart';
 import 'package:signs/Utils/constants.dart';
 import 'package:signs/Utils/images.dart';
+import 'package:signs/Utils/navigation.dart';
 import 'package:signs/Utils/styles.dart';
 
 class LandingScreen extends StatefulWidget {
@@ -37,15 +39,7 @@ class _LandingScreenState extends State<LandingScreen> {
                           fit: BoxFit.cover),
                     ),
                   ),
-                  // HospitalDetailsScreen()
-                  MultiBlocProvider(
-                    providers: [
-                      BlocProvider<HomeBloc>(
-                        create: (BuildContext context) => HomeBloc(),
-                      ),
-                    ],
-                    child: HomeScreen(),
-                  )
+                  HomeScreen()
                 ],
               ),
             ),

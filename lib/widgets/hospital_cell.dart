@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:signs/Blocs/navigation%20bloc/navigation_bloc.dart';
+import 'package:signs/Screens/hospital_details_screen.dart';
 import 'package:signs/Utils/images.dart';
 import 'package:signs/Utils/styles.dart';
 
@@ -12,8 +13,7 @@ class HospitalCell extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: () {
-        // Navigator.of(context).push(MaterialPageRoute(builder: (context) => HospitalDetailsScreen()));
-        BlocProvider.of<NavigationBloc>(context).add(openHospitalScreen());
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => HospitalDetailsScreen()));
       },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 10),
