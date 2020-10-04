@@ -7,7 +7,6 @@ import 'package:signs/Blocs/login%20mobile%20bloc/login_mobile_bloc.dart';
 import 'package:signs/Screens/landing_screen.dart';
 import 'package:signs/Utils/constants.dart';
 import 'package:signs/Utils/images.dart';
-import 'package:signs/Utils/navigation.dart';
 import 'package:signs/Utils/strings.dart';
 import 'package:signs/Utils/styles.dart';
 import 'package:signs/widgets/widgets.dart';
@@ -26,16 +25,16 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController passwordController = TextEditingController();
   LoginBloc _loginBloc;
+  bool isLoading = false;
+
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     passwordController.dispose();
   }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _loginBloc = LoginBloc();
   }
@@ -55,7 +54,10 @@ class _LoginScreenState extends State<LoginScreen> {
               bloc: _loginBloc,
               builder: (context, state) {
                 if (state is LoginLoadingState) {
-                  showLoadingDialog(context);
+                  if (!isLoading) {
+                    showLoadingDialog(context);
+                    isLoading = true;
+                  }
                 } else if (state is LoginLoadedState) {
                   print('loaded');
 
@@ -69,6 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           builder: (context) => LandingScreen()));
                     }
                     _loginBloc.add(resetState());
+                    isLoading = false;
                   });
                 }
 
@@ -108,14 +111,12 @@ class _LoginScreenState extends State<LoginScreen> {
                               Text(Strings().getSinginSlogan(),
                                   style: titleStyle(
                                       fontFamily: mediumFontFamily,
-                                      color:
-                                          Color.fromRGBO(122, 134, 154, 1))),
+                                      color: Color.fromRGBO(122, 134, 154, 1))),
                               SizedBox(height: 20),
                               Text(Strings().getMobileNumberString(),
                                   style: titleStyle(
                                       fontFamily: semiBoldFontFamily,
-                                      color:
-                                          Color.fromRGBO(193, 199, 208, 1))),
+                                      color: Color.fromRGBO(193, 199, 208, 1))),
                               SizedBox(height: 20),
                               Container(
                                 height: 50,
@@ -155,8 +156,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                       Icon(Icons.arrow_drop_down),
                                       SizedBox(width: 10),
                                       Container(
-                                          color: Color.fromRGBO(
-                                              239, 239, 244, 1),
+                                          color:
+                                              Color.fromRGBO(239, 239, 244, 1),
                                           width: 2,
                                           height: 60),
                                       SizedBox(width: 10),
@@ -175,21 +176,18 @@ class _LoginScreenState extends State<LoginScreen> {
                                             decoration: InputDecoration(
                                               hintText: widget.mobileNumber,
                                               hintStyle: titleStyle(
-                                                  fontFamily:
-                                                      mediumFontFamily,
+                                                  fontFamily: mediumFontFamily,
                                                   color: greyColor,
                                                   fontSize: 16),
-                                              labelStyle: titleStyle(
-                                                  color: greyColor),
+                                              labelStyle:
+                                                  titleStyle(color: greyColor),
                                               border: InputBorder.none,
                                               focusedBorder: InputBorder.none,
                                               enabledBorder: InputBorder.none,
                                               errorBorder: InputBorder.none,
-                                              disabledBorder:
-                                                  InputBorder.none,
+                                              disabledBorder: InputBorder.none,
                                             ),
-                                            keyboardType:
-                                                TextInputType.number,
+                                            keyboardType: TextInputType.number,
                                             onChanged: (value) {
                                               setState(() {});
                                             },
@@ -204,8 +202,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               Text(Strings().getPasswordStrings(),
                                   style: titleStyle(
                                       fontFamily: semiBoldFontFamily,
-                                      color:
-                                          Color.fromRGBO(193, 199, 208, 1))),
+                                      color: Color.fromRGBO(193, 199, 208, 1))),
                               SizedBox(height: 20),
                               textField(
                                   Strings().getEnterPasswordStrings(), () {},

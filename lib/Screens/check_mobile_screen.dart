@@ -25,6 +25,7 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
   TextEditingController _mobileController = TextEditingController();
   String selectedCountry = '';
   FocusNode focusNode = FocusNode();
+  bool isLoading = false;
 
   @override
   void initState() {
@@ -65,7 +66,10 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
               bloc: _loginBloc,
               builder: (context, state) {
                 if (state is LoginLoadingState) {
-                  showLoadingDialog(context);
+                  if (!isLoading) {
+                    showLoadingDialog(context);
+                    isLoading = true;
+                  }
                 } else if (state is LoginLoadedState) {
                   print('loaded');
 
@@ -82,6 +86,7 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
                     }
 
                     _loginBloc.add(resetState());
+                    isLoading = false;
                   });
                 }
                 return Container(

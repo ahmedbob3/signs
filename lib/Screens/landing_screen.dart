@@ -6,7 +6,6 @@ import 'package:signs/Screens/home_screen.dart';
 import 'package:signs/Screens/hospital_details_screen.dart';
 import 'package:signs/Utils/constants.dart';
 import 'package:signs/Utils/images.dart';
-import 'package:signs/Utils/navigation.dart';
 import 'package:signs/Utils/styles.dart';
 
 class LandingScreen extends StatefulWidget {
