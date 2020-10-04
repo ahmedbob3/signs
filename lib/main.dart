@@ -1,3 +1,4 @@
+import 'package:country_codes/country_codes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -11,7 +12,11 @@ import 'package:signs/Utils/styles.dart';
 
 import 'Utils/constants.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await CountryCodes.init();
+  runApp(MyApp());
+}
 
 class MyApp extends StatefulWidget {
   @override
