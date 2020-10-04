@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
     _prefs.then((SharedPreferences prefs) async {
       Constants.languageId =
           languages.values[prefs.getInt('selectedLanguage') ?? 0];
-
+      Constants.updateTextDirection();
       await new Future.delayed(const Duration(seconds: 5), () {
         Navigator.of(context).pushReplacement(MaterialPageRoute(
             builder: (context) => prefs.getInt('selectedLanguage') == null

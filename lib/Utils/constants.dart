@@ -8,6 +8,10 @@ class Constants {
 
   static languages languageId = languages.English;
   static TextDirection textDirection = Constants.languageId == languages.Arabic ? TextDirection.rtl : TextDirection.ltr;
+  
+  static updateTextDirection () {
+    textDirection = Constants.languageId == languages.Arabic ? TextDirection.rtl : TextDirection.ltr;
+  }
 
   //Colors for theme
   static Color lightPrimary = Color(0xfffcfcff);
