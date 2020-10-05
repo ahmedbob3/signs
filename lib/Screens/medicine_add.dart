@@ -6,6 +6,8 @@ import 'package:signs/Utils/strings.dart';
 import 'package:signs/Utils/styles.dart';
 import 'package:signs/widgets/widgets.dart';
 
+import 'medicine_form.dart';
+
 class AddMedication extends StatefulWidget {
   AddMedication({Key key}) : super(key: key);
 
@@ -33,30 +35,32 @@ class _AddMedicationState extends State<AddMedication> {
                   color: Colors.white,
                 ),
                 SingleChildScrollView(
-                  // child: Center(
-                    // height: MediaQuery.of(context).size.height ,
+                  child: Container(
+                    height: MediaQuery.of(context).size.height + 200,
                     // margin: EdgeInsets.only(
                     //     top: (Theme.of(context).platform == TargetPlatform.iOS
-                    //         ? 10
+                    //         ? 120
                     //         : 10)),
-                    // padding:
-                    // EdgeInsets.only(top: 0, right: 20, left: 20, bottom: 5),
+                    padding:
+                    EdgeInsets.only(top: 20, right: 20, left: 20, bottom: 5),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            // Positioned(
-                            //     child: IconButton(
-                            //       icon: Icon(
-                            //         Icons.arrow_back_ios,
-                            //         color: Color.fromRGBO(130, 130, 130, 1),
-                            //       ),
-                            //       onPressed: () {
-                            //         Navigator.of(context).pop();
-                            //       },
-                            //     ),),
+                            Positioned(
+
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child:  Image.asset(
+                                  Arrow_back_grey,
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 10),
                             Positioned(
                                 child: Text(
                                   Strings().getMedicineAddStrings(),
@@ -133,12 +137,20 @@ class _AddMedicationState extends State<AddMedication> {
                                     fontSize: 17)),
                             SizedBox(
                                 width: MediaQuery.of(context).size.width - 240),
-                            Text(
-                              "View more",
-                              style: titleStyle(
-                                  fontFamily: boldFontFamily,
-                                  color: defaultBackgroundColor,
-                                  fontSize: 14),
+
+
+                            new GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => MedicineForm()));
+                              },
+                              child: Text(
+                                "View more",
+                                style: titleStyle(
+                                    fontFamily: boldFontFamily,
+                                    color: defaultBackgroundColor,
+                                    fontSize: 14),
+                              ),
                             ),
                           ],
                         ),
@@ -421,6 +433,7 @@ class _AddMedicationState extends State<AddMedication> {
                 //     ),
                 //     top: 60,
                 //     left: 30),
+                ),
               ],
             ),
           ),
