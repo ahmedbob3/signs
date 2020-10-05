@@ -4,6 +4,10 @@
 
 import 'dart:convert';
 
+HospitalsModel hospitalsModelFromMap(String str) => HospitalsModel.fromMap(json.decode(str));
+
+String hospitalsModelToMap(HospitalsModel data) => json.encode(data.toMap());
+
 class HospitalsModel {
     HospitalsModel({
         this.code,
@@ -14,10 +18,6 @@ class HospitalsModel {
     final int code;
     final String status;
     final List<Datum> data;
-
-    factory HospitalsModel.fromJson(String str) => HospitalsModel.fromMap(json.decode(str));
-
-    String toJson() => json.encode(toMap());
 
     factory HospitalsModel.fromMap(Map<String, dynamic> json) => HospitalsModel(
         code: json["code"],
@@ -54,10 +54,6 @@ class Datum {
     final String hImage;
     final String hIcon;
     final List<String> gallery;
-
-    factory Datum.fromJson(String str) => Datum.fromMap(json.decode(str));
-
-    String toJson() => json.encode(toMap());
 
     factory Datum.fromMap(Map<String, dynamic> json) => Datum(
         hId: json["h_id"],

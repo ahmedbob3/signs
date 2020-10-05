@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:signs/Models/hospitals_model.dart';
 import 'package:signs/Utils/images.dart';
 import 'package:signs/Utils/styles.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HospitalDetailsScreen extends StatefulWidget {
-  HospitalDetailsScreen({Key key}) : super(key: key);
+  Datum hospitalItem;
+  HospitalDetailsScreen(this.hospitalItem, {Key key}) : super(key: key);
 
   @override
   _HospitalDetailsScreenState createState() => _HospitalDetailsScreenState();
@@ -47,11 +50,17 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
                       children: [
                         SizedBox(height: 80),
                         CircleAvatar(
+                          radius: 43,
                           backgroundColor: Colors.white,
-                          radius: 40,
+                          child: CircleAvatar(
+                            backgroundColor: Colors.white,
+                            radius: 40,
+                            backgroundImage:
+                                NetworkImage(widget.hospitalItem.hImage),
+                          ),
                         ),
                         SizedBox(height: 10),
-                        Text('New Mowasat Hospital',
+                        Text(widget.hospitalItem.hName,
                             style: titleStyle(
                                 color: Colors.white,
                                 fontFamily: boldFontFamily,
@@ -65,7 +74,7 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
                               color: Colors.white,
                             ),
                             SizedBox(width: 10),
-                            Text('Salem Al Mubarak St,',
+                            Text(widget.hospitalItem.hLocation,
                                 style: titleStyle(
                                     color: Color.fromRGBO(226, 232, 239, 1)))
                           ],
@@ -89,51 +98,71 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
                     ),
                     SizedBox(height: 10),
                     Text(
-                      'The New Mowasat Hospital is one of the first private hospital in kuwait establish over half a century ago. Ever since, the hospital has grown to become a leading provider of premium healthcare in Kuwait.',
+                      widget.hospitalItem.hAbout,
                       style: titleStyle(fontSize: 18, color: payneGray),
                     ),
                     SizedBox(height: 20),
                     Row(
                       children: [
-                        Container(
-                          width: 150,
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          decoration: BoxDecoration(
-                              color: Color.fromRGBO(33, 99, 206, 0.15),
-                              borderRadius: BorderRadius.circular(7)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset(DirectionIcon),
-                              SizedBox(width: 10),
-                              Text(
-                                'Get Direction',
-                                style: titleStyle(
-                                    color: defaultBackgroundColor,
-                                    fontFamily: mediumFontFamily),
-                              )
-                            ],
+                        MaterialButton(
+                          onPressed: () async {
+                            var latitude =
+                                widget.hospitalItem.hLatlang.split(',')[0];
+                            var longitude =
+                                widget.hospitalItem.hLatlang.split(',')[1];
+                            String googleUrl =
+                                'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude';
+                            if (await canLaunch(googleUrl)) {
+                              await launch(googleUrl);
+                            } else {
+                              throw 'Could not open the map.';
+                            }
+                          },
+                          child: Container(
+                            width: 150,
+                            padding: EdgeInsets.symmetric(vertical: 10),
+                            decoration: BoxDecoration(
+                                color: Color.fromRGBO(33, 99, 206, 0.15),
+                                borderRadius: BorderRadius.circular(7)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(DirectionIcon),
+                                SizedBox(width: 10),
+                                Text(
+                                  'Get Direction',
+                                  style: titleStyle(
+                                      color: defaultBackgroundColor,
+                                      fontFamily: mediumFontFamily),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                         SizedBox(width: 10),
-                        Container(
-                          width: 150,
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          decoration: BoxDecoration(
-                              color: Color.fromRGBO(33, 99, 206, 0.15),
-                              borderRadius: BorderRadius.circular(7)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset(CallIcon),
-                              SizedBox(width: 10),
-                              Text(
-                                'Call',
-                                style: titleStyle(
-                                    color: defaultBackgroundColor,
-                                    fontFamily: mediumFontFamily),
-                              )
-                            ],
+                        MaterialButton(
+                          onPressed: () async {
+                            await launch("tel://${widget.hospitalItem.hPhone}");
+                          },
+                          child: Container(
+                            width: 150,
+                            padding: EdgeInsets.symmetric(vertical: 10),
+                            decoration: BoxDecoration(
+                                color: Color.fromRGBO(33, 99, 206, 0.15),
+                                borderRadius: BorderRadius.circular(7)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(CallIcon),
+                                SizedBox(width: 10),
+                                Text(
+                                  'Call',
+                                  style: titleStyle(
+                                      color: defaultBackgroundColor,
+                                      fontFamily: mediumFontFamily),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ],
@@ -164,22 +193,21 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
                       height: 120,
                       width: double.infinity,
                       child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 5,
-                        itemBuilder: (context, index){
-                        return Container(
-                          margin: EdgeInsets.all(5),
-                          width: 120,
-                          height: 120,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            image: DecorationImage(
-                              image: NetworkImage('https://upload.wikimedia.org/wikipedia/commons/1/10/Professional_Hospital_Guaynabo_2019.jpg'),
-                              fit: BoxFit.cover
-                            )
-                          ),
-                        );
-                      }),
+                          scrollDirection: Axis.horizontal,
+                          itemCount: widget.hospitalItem.gallery.length,
+                          itemBuilder: (context, index) {
+                            return Container(
+                              margin: EdgeInsets.all(5),
+                              width: 120,
+                              height: 120,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  image: DecorationImage(
+                                      image: NetworkImage(
+                                          widget.hospitalItem.gallery[index]),
+                                      fit: BoxFit.cover)),
+                            );
+                          }),
                     )
                   ],
                 ),

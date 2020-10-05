@@ -3,5 +3,6 @@ class APIS {
   static const String CHECK_MOBILE_API = "check_mobile";
   static const String SIGNUP_API = "register";
   static const String LOGIN_API = "login";
+  static const String HOSPITALS_API = "get_hospitals";
 
 }

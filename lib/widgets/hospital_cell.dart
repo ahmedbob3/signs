@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:signs/Blocs/navigation%20bloc/navigation_bloc.dart';
+import 'package:signs/Models/hospitals_model.dart';
 import 'package:signs/Screens/hospital_details_screen.dart';
 import 'package:signs/Utils/images.dart';
 import 'package:signs/Utils/styles.dart';
 
-
 class HospitalCell extends StatelessWidget {
-  const HospitalCell({Key key}) : super(key: key);
+  Datum hospitalItem;
+  HospitalCell(this.hospitalItem, {Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: () {
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => HospitalDetailsScreen()));
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => HospitalDetailsScreen(hospitalItem)));
       },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 10),
@@ -28,7 +30,7 @@ class HospitalCell extends StatelessWidget {
         child: ListTile(
           leading: Image.asset(Male_inactive),
           title: Text(
-            'New Mowasat Hospital',
+            hospitalItem.hName,
             style: titleStyle(
                 fontFamily: semiBoldFontFamily, color: defaultBackgroundColor),
           ),
@@ -36,10 +38,14 @@ class HospitalCell extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Icon(Icons.location_on),
-              Text('Salem Al Mubarak St,',
-                  style: titleStyle(
-                      fontFamily: mediumFontFamily,
-                      color: Color.fromRGBO(62, 86, 119, 1)))
+              Expanded(
+                child: Text(hospitalItem.hLocation,
+                overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: titleStyle(
+                        fontFamily: mediumFontFamily,
+                        color: Color.fromRGBO(62, 86, 119, 1))),
+              )
             ],
           ),
           trailing: Image.asset(Direction),

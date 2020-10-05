@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:signs/Blocs/home%20bloc/home_bloc.dart';
 import 'package:signs/Medication%20bloc/medication_bloc.dart';
+import 'package:signs/Models/hospitals_model.dart';
 import 'package:signs/Screens/medication_section.dart';
 import 'package:signs/Screens/signup_sub_screen_step1.dart';
 import 'package:signs/Utils/images.dart';
@@ -19,6 +20,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   HomeBloc _homeBloc;
   List<MedicationBloc> medicationList = [];
+  HospitalsModel _hospitalsModel;
   bool isLoading = false;
 
   @override
@@ -27,6 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     _homeBloc = HomeBloc();
     _homeBloc.add(loadMedicationsEvent());
+    _homeBloc.add(getHospitalsEvent());
   }
 
   @override
@@ -53,7 +56,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     isLoading = false;
                   }
                 });
-              }
+              } else if (state is HospitalsLoadedState) {
+                _hospitalsModel = state.hospitalsModel;
+                Future.delayed(Duration(milliseconds: 1000), () {
+                  if (isLoading) {
+                    _homeBloc.add(resetHomeEvent());
+                    Navigator.of(context).pop();
+                    isLoading = false;
+                  }
+                });
+              } 
 
               return Container(
                 padding: EdgeInsets.all(20),
@@ -136,89 +148,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         )
                       ],
                     ),
-                    SizedBox(height: 20),
-                    // health title
-                    Text(
-                      'How is your Health ?',
-                      style:
-                          titleStyle(fontFamily: boldFontFamily, fontSize: 19),
-                    ),
-                    SizedBox(height: 20),
-                    // health details ..
-                    Row(
-                      children: <Widget>[
-                        Expanded(
-                            child: Container(
-                          decoration: BoxDecoration(
-                              color: Colors.red,
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Padding(
-                                padding: EdgeInsets.all(10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Text('Blood pressure',
-                                        style: titleStyle(
-                                            fontFamily: mediumFontFamily)),
-                                    SizedBox(height: 10),
-                                    Text('120/70',
-                                        style: titleStyle(
-                                            fontFamily: boldFontFamily,
-                                            fontSize: 18)),
-                                    SizedBox(height: 10),
-                                    Text('Normal',
-                                        style: titleStyle(
-                                            fontFamily: semiBoldFontFamily)),
-                                  ],
-                                ),
-                              ),
-                              Image.asset(Blood_Pressure)
-                            ],
-                          ),
-                        )),
-                        SizedBox(width: 10),
-                        Expanded(
-                            child: Container(
-                          decoration: BoxDecoration(
-                              color: Color.fromRGBO(233, 178, 9, 1),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Padding(
-                                padding: EdgeInsets.all(10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Text('Heart Rate',
-                                        style: titleStyle(
-                                            fontFamily: mediumFontFamily)),
-                                    SizedBox(height: 10),
-                                    Text('120 bpm',
-                                        style: titleStyle(
-                                            fontFamily: boldFontFamily,
-                                            fontSize: 18)),
-                                    SizedBox(height: 10),
-                                    Text('Normal',
-                                        style: titleStyle(
-                                            fontFamily: semiBoldFontFamily)),
-                                  ],
-                                ),
-                              ),
-                              Image.asset(Heartbeat)
-                            ],
-                          ),
-                        ))
-                      ],
-                    ),
-                    SizedBox(height: 20),
+
+                    SizedBox(height: 80),
                     // Upcoming reminder ..
                     MediciationSection(
                       medicationList: medicationList,
@@ -233,9 +164,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       width: double.infinity,
                       height: 200,
                       child: ListView.builder(
-                        itemCount: 4,
+                        itemCount: _hospitalsModel?.data?.length ?? 0,
                         itemBuilder: (BuildContext context, int index) {
-                          return HospitalCell();
+                          return HospitalCell(_hospitalsModel.data[index]);
                         },
                       ),
                     ),

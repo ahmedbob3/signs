@@ -11,3 +11,8 @@ class HomeLoadedState extends HomeState {
   List<MedicationBloc> medicationList;
   HomeLoadedState(this.medicationList);
 }
+
+class HospitalsLoadedState extends HomeState {
+  HospitalsModel hospitalsModel;
+  HospitalsLoadedState(this.hospitalsModel);
+}
