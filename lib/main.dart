@@ -41,11 +41,11 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         fontFamily: 'Font-Regular',
-        backgroundColor: defaultBackgroundColor,
-        canvasColor: defaultBackgroundColor,
+        // backgroundColor: defaultBackgroundColor,
+        // canvasColor: defaultBackgroundColor,
         //  theme: ThemeData(canvasColor: Colors.transparent)
         primaryColor: defaultBackgroundColor,
-        scaffoldBackgroundColor: defaultBackgroundColor,
+        // scaffoldBackgroundColor: defaultBackgroundColor,
       ),
       home: SplashScreen()
     );

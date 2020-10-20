@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:signs/Blocs/home%20bloc/home_bloc.dart';
 import 'package:signs/Screens/home_screen.dart';
 import 'package:signs/Screens/hospital_details_screen.dart';
+import 'package:signs/Screens/medication_screen.dart';
 import 'package:signs/Utils/constants.dart';
 import 'package:signs/Utils/images.dart';
 import 'package:signs/Utils/styles.dart';
@@ -16,6 +17,8 @@ class LandingScreen extends StatefulWidget {
 }
 
 class _LandingScreenState extends State<LandingScreen> {
+  int selectedTabIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -23,13 +26,14 @@ class _LandingScreenState extends State<LandingScreen> {
       child: WillPopScope(
         onWillPop: () async => false,
         child: new Scaffold(
+          backgroundColor: Colors.white,
           body: Container(
             child: Container(
               height: MediaQuery.of(context).size.height,
               color: Color.fromRGBO(245, 248, 252, 1),
               child: Stack(
                 children: <Widget>[
-                  Container(
+                  selectedTabIndex == 0 ? Container(
                     height: 250,
                     width: double.infinity,
                     decoration: BoxDecoration(
@@ -37,11 +41,11 @@ class _LandingScreenState extends State<LandingScreen> {
                           image: AssetImage(Login_background),
                           fit: BoxFit.cover),
                     ),
-                  ),
-                  HomeScreen()
+                  ) : Container(),
+                  getCurrentScreen()
                 ],
               ),
-            ),
+            )
           ),
           floatingActionButton: Container(
             height: 70,
@@ -76,7 +80,12 @@ class _LandingScreenState extends State<LandingScreen> {
                   children: <Widget>[
                     Expanded(
                         child: IconButton(
-                      icon: Image.asset(Home_Active),
+                          onPressed: (){
+                            setState(() {
+                              selectedTabIndex = 0 ;
+                            });
+                          },
+                      icon: Image.asset(selectedTabIndex == 0 ? Home_Active : Home_Inactive),
                       iconSize: 140,
                     )),
                     Expanded(
@@ -92,7 +101,12 @@ class _LandingScreenState extends State<LandingScreen> {
                             icon: Image.asset(History_inctive), iconSize: 140)),
                     Expanded(
                         child: IconButton(
-                            icon: Image.asset(Medicine_inctive),
+                            onPressed: () {
+                              setState(() {
+                                selectedTabIndex = 3;
+                              });
+                            },
+                            icon: Image.asset(selectedTabIndex == 3 ? Medicine_Active : Medicine_inctive ),
                             iconSize: 140)),
                   ],
                   // unselectedItemColor: Colors.grey,
@@ -107,5 +121,18 @@ class _LandingScreenState extends State<LandingScreen> {
         ),
       ),
     );
+  }
+
+  Widget getCurrentScreen(){
+    switch (selectedTabIndex) {
+      case 0:
+        return HomeScreen();
+        break;
+      case 3:
+        return MedicationScreen();
+        break;
+      default:
+      return HomeScreen();
+    }
   }
 }
