@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:signs/Screens/hospital_details_screen.dart';
+import 'package:Signs/Screens/hospital_details_screen.dart';
 
 part 'navigation_event.dart';
 part 'navigation_state.dart';

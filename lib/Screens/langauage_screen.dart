@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:signs/Screens/welcome_screen.dart';
-import 'package:signs/Utils/constants.dart';
-import 'package:signs/Utils/images.dart';
-import 'package:signs/Utils/strings.dart';
-import 'package:signs/Utils/styles.dart';
-import 'package:signs/widgets/widgets.dart';
+import 'package:Signs/Screens/welcome_screen.dart';
+import 'package:Signs/Utils/constants.dart';
+import 'package:Signs/Utils/images.dart';
+import 'package:Signs/Utils/strings.dart';
+import 'package:Signs/Utils/styles.dart';
+import 'package:Signs/widgets/widgets.dart';
 
 class LangauageScreen extends StatefulWidget {
   LangauageScreen({Key key}) : super(key: key);
@@ -35,7 +35,19 @@ class _LangauageScreenState extends State<LangauageScreen> {
               height: MediaQuery.of(context).size.height,
               child: Stack(
                 children: <Widget>[
-                  headerBg(),
+              Container(
+              width: double.infinity,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage(Login_background), fit: BoxFit.cover)),
+                child: Padding(
+                  padding: EdgeInsets.only(top: 10),
+                  child: Image.asset(
+                    Hello_BG,
+                    fit: BoxFit.contain,
+                  ),
+                ),
+              ),
                   SingleChildScrollView(
                     physics: NeverScrollableScrollPhysics(),
                     child: Container(
@@ -43,8 +55,8 @@ class _LangauageScreenState extends State<LangauageScreen> {
                       margin: EdgeInsets.only(
                           top: MediaQuery.of(context).size.height *
                               (Theme.of(context).platform == TargetPlatform.iOS
-                                  ? 0.33
-                                  : 0.25)),
+                                  ? 0.36
+                                  : 0.28)),
                       padding: EdgeInsets.all(35),
                       decoration: BoxDecoration(
                         color: Colors.white,

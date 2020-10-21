@@ -13,6 +13,8 @@ class Strings_AR {
   static const String SING_UP_STEP2 = 'Step 2/3';
   static const String SING_UP_STEP3 = 'Step 3/3';
   static const String SING_UP_PASSWORD = 'Password';
+  static const String SING_UP_PASSWORD_LENGTH = 'Password Must be Greater Than 8 Characters';
+  static const String SING_UP_PASSWORD_CONFIRM = 'Password & Confirm Password Must be Identical';
   static const String SING_UP_CONFIRM = 'confirm';
   static const String SING_UP_ENTER_PASSWORD = 'Enter Password';
   static const String SING_UP_CONFIRM_PASSWORD = 'Confirm Password';
@@ -68,6 +70,10 @@ class Strings_AR {
   static const String SELECT = 'إختر';
   static const String FORGET_PASSWORD = 'هل نسيت كلمة المرور ؟';
   static const String SAVE = 'Save';
+  static const String EMAIL_VERIFY = 'Enter Valid Email';
+  static const String NAME_LENGTH = 'First & Last Name > 2 & < 20 characters';
+  static const String FILL_DATA = 'Please Fill All Data Correctly';
+
 
 
 

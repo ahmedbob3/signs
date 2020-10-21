@@ -1,10 +1,14 @@
+import 'package:Signs/Blocs/signUp%20bloc/signUp_bloc.dart';
+import 'package:Signs/Models/signUp_data.dart';
 import 'package:flutter/material.dart';
-import 'package:signs/Screens/hospital_details_screen.dart';
+import 'package:Signs/Screens/hospital_details_screen.dart';
 
 enum languages { English, Arabic, Indian }
 
 class Constants {
   static String appName = "Signs";
+  static SignUpData signUpData = SignUpData();
+
 
   static languages languageId = languages.English;
   static TextDirection textDirection = Constants.languageId == languages.Arabic ? TextDirection.rtl : TextDirection.ltr;

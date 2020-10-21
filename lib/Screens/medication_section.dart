@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:signs/Medication%20bloc/medication_bloc.dart';
-import 'package:signs/Utils/styles.dart';
-import 'package:signs/widgets/pill_cell.dart';
+import 'package:Signs/Medication%20bloc/medication_bloc.dart';
+import 'package:Signs/Utils/styles.dart';
+import 'package:Signs/widgets/pill_cell.dart';
 
 class MediciationSection extends StatefulWidget {
   List<MedicationBloc> medicationList;

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:signs/Blocs/home%20bloc/home_bloc.dart';
-import 'package:signs/Medication%20bloc/medication_bloc.dart';
-import 'package:signs/Models/hospitals_model.dart';
-import 'package:signs/Screens/medication_section.dart';
-import 'package:signs/Screens/signup_sub_screen_step1.dart';
-import 'package:signs/Utils/images.dart';
-import 'package:signs/Utils/styles.dart';
-import 'package:signs/widgets/hospital_cell.dart';
-import 'package:signs/widgets/widgets.dart';
+import 'package:Signs/Blocs/home%20bloc/home_bloc.dart';
+import 'package:Signs/Medication%20bloc/medication_bloc.dart';
+import 'package:Signs/Models/hospitals_model.dart';
+import 'package:Signs/Screens/medication_section.dart';
+import 'package:Signs/Screens/signup_sub_screen_step1.dart';
+import 'package:Signs/Utils/images.dart';
+import 'package:Signs/Utils/styles.dart';
+import 'package:Signs/widgets/hospital_cell.dart';
+import 'package:Signs/widgets/widgets.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);

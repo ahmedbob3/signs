@@ -7,6 +7,6 @@ class SignUpInitial extends SignUpState {}
 
 class SignUpLoadingState extends SignUpState{}
 class SignUpLoadedState extends SignUpState{
-  SigUpModel response;
-  SignUpLoadedState(this.response);
+  SigUpModel sigupresponse;
+  SignUpLoadedState(this.sigupresponse);
 }

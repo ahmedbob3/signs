@@ -13,6 +13,8 @@ class Strings_EN {
   static const String SING_UP_STEP2 = 'Step 2/3';
   static const String SING_UP_STEP3 = 'Step 3/3';
   static const String SING_UP_PASSWORD = 'Password';
+  static const String SING_UP_PASSWORD_LENGTH = 'Password Must be Greater Than 8 Characters';
+  static const String SING_UP_PASSWORD_CONFIRM = 'Password & Confirm Password Must be Identical';
   static const String SING_UP_CONFIRM = 'Confirm';
   static const String SING_UP_ENTER_PASSWORD = 'Enter Password';
   static const String SING_UP_CONFIRM_PASSWORD = 'Confirm Password';
@@ -68,6 +70,9 @@ class Strings_EN {
   static const String SELECT = 'Select';
   static const String FORGET_PASSWORD = 'Forget Password ?';
   static const String SAVE = 'Save';
+  static const String EMAIL_VERIFY = 'Enter Valid Email';
+  static const String NAME_LENGTH = 'First & Last Name > 2 & < 20 characters';
+  static const String FILL_DATA = 'Please Fill All Data Correctly';
 
 
 }

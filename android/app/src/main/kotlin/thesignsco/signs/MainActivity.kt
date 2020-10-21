@@ -1,4 +1,4 @@
-package thesignsco.signs
+package theSignsco.Signs
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

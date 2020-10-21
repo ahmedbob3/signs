@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:signs/Blocs/navigation%20bloc/navigation_bloc.dart';
-import 'package:signs/Models/hospitals_model.dart';
-import 'package:signs/Screens/hospital_details_screen.dart';
-import 'package:signs/Utils/images.dart';
-import 'package:signs/Utils/styles.dart';
+import 'package:Signs/Blocs/navigation%20bloc/navigation_bloc.dart';
+import 'package:Signs/Models/hospitals_model.dart';
+import 'package:Signs/Screens/hospital_details_screen.dart';
+import 'package:Signs/Utils/images.dart';
+import 'package:Signs/Utils/styles.dart';
 
 class HospitalCell extends StatelessWidget {
   Datum hospitalItem;

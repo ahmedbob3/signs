@@ -2,13 +2,13 @@ import 'package:country_codes/country_codes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:signs/Screens/check_mobile_screen.dart';
-import 'package:signs/Screens/landing_screen.dart';
-import 'package:signs/Screens/langauage_screen.dart';
-import 'package:signs/Screens/login_screen.dart';
-import 'package:signs/Screens/splash_screen.dart';
-import 'package:signs/Screens/welcome_screen.dart';
-import 'package:signs/Utils/styles.dart';
+import 'package:Signs/Screens/check_mobile_screen.dart';
+import 'package:Signs/Screens/landing_screen.dart';
+import 'package:Signs/Screens/langauage_screen.dart';
+import 'package:Signs/Screens/login_screen.dart';
+import 'package:Signs/Screens/splash_screen.dart';
+import 'package:Signs/Screens/welcome_screen.dart';
+import 'package:Signs/Utils/styles.dart';
 
 import 'Utils/constants.dart';
 

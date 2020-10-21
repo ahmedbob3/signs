@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:signs/Screens/signup_screen_step1.dart';
-import 'package:signs/Screens/signup_screen_step2.dart';
-import 'package:signs/Screens/signup_screen_step3.dart';
-import 'package:signs/Screens/signup_sub_screen_step1.dart';
-import 'package:signs/Utils/images.dart';
-import 'package:signs/Utils/strings.dart';
-import 'package:signs/Utils/styles.dart';
-import 'package:signs/widgets/widgets.dart';
+import 'package:Signs/Screens/signup_screen_step1.dart';
+import 'package:Signs/Screens/signup_screen_step2.dart';
+import 'package:Signs/Screens/signup_screen_step3.dart';
+import 'package:Signs/Screens/signup_sub_screen_step1.dart';
+import 'package:Signs/Utils/images.dart';
+import 'package:Signs/Utils/strings.dart';
+import 'package:Signs/Utils/styles.dart';
+import 'package:Signs/widgets/widgets.dart';
 
 import 'check_mobile_screen.dart';
 

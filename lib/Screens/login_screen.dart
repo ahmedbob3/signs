@@ -3,13 +3,13 @@ import 'package:country_codes/country_codes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:signs/Blocs/login%20mobile%20bloc/login_mobile_bloc.dart';
-import 'package:signs/Screens/landing_screen.dart';
-import 'package:signs/Utils/constants.dart';
-import 'package:signs/Utils/images.dart';
-import 'package:signs/Utils/strings.dart';
-import 'package:signs/Utils/styles.dart';
-import 'package:signs/widgets/widgets.dart';
+import 'package:Signs/Blocs/login%20mobile%20bloc/login_mobile_bloc.dart';
+import 'package:Signs/Screens/landing_screen.dart';
+import 'package:Signs/Utils/constants.dart';
+import 'package:Signs/Utils/images.dart';
+import 'package:Signs/Utils/strings.dart';
+import 'package:Signs/Utils/styles.dart';
+import 'package:Signs/widgets/widgets.dart';
 
 class LoginScreen extends StatefulWidget {
   String mobileNumber;

@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:signs/Medication%20bloc/medication_bloc.dart';
-import 'package:signs/Models/hospitals_model.dart';
-import 'package:signs/Repos/LoginRepos/login_repo.dart';
-import 'package:signs/Repos/hospitals_repo.dart';
+import 'package:Signs/Medication%20bloc/medication_bloc.dart';
+import 'package:Signs/Models/hospitals_model.dart';
+import 'package:Signs/Repos/LoginRepos/login_repo.dart';
+import 'package:Signs/Repos/hospitals_repo.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';

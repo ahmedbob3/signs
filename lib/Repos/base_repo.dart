@@ -1,7 +1,7 @@
 
 // import 'package:firebase_analytics/firebase_analytics.dart';
 
-import 'package:signs/Exceptions/network_error.dart';
+import 'package:Signs/Exceptions/network_error.dart';
 
 abstract class Repo {
   void handleError(SignsError error);

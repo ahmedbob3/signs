@@ -1,11 +1,12 @@
+import 'package:Signs/Utils/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:signs/Screens/signup_screen_step1.dart';
-import 'package:signs/Screens/signup_screen_step3.dart';
-import 'package:signs/Screens/signup_sub_screen_step1.dart';
-import 'package:signs/Utils/images.dart';
-import 'package:signs/Utils/strings.dart';
-import 'package:signs/Utils/styles.dart';
-import 'package:signs/widgets/widgets.dart';
+import 'package:Signs/Screens/signup_screen_step1.dart';
+import 'package:Signs/Screens/signup_screen_step3.dart';
+import 'package:Signs/Screens/signup_sub_screen_step1.dart';
+import 'package:Signs/Utils/images.dart';
+import 'package:Signs/Utils/strings.dart';
+import 'package:Signs/Utils/styles.dart';
+import 'package:Signs/widgets/widgets.dart';
 
 import 'check_mobile_screen.dart';
 
@@ -18,10 +19,21 @@ class SignupScreenStep2 extends StatefulWidget {
 
 class _SignupScreenStep2State extends State<SignupScreenStep2> {
 
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  TextEditingController _firstNameController = TextEditingController();
+  TextEditingController _lastNameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+
+
+
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   var maleKey = GlobalKey<FormFieldState>();
   var femaleKey = GlobalKey<FormFieldState>();
   bool isActive= false;
+
+
+
+
   final bedTimeController = TextEditingController();
   final wakeTimeController = TextEditingController();
 
@@ -106,6 +118,7 @@ class _SignupScreenStep2State extends State<SignupScreenStep2> {
                                 Expanded(
                                   child: Container(
                                     child: TextField(
+                                      controller: _firstNameController,
                                       decoration: InputDecoration(
                                         hintText:
                                             Strings().getEnterFirstStrings(),
@@ -121,7 +134,8 @@ class _SignupScreenStep2State extends State<SignupScreenStep2> {
                                         errorBorder: InputBorder.none,
                                         disabledBorder: InputBorder.none,
                                       ),
-                                      keyboardType: TextInputType.number,
+                                      textInputAction: TextInputAction.next,
+                                      keyboardType: TextInputType.text,
                                     ),
                                   ),
                                 ),
@@ -151,6 +165,7 @@ class _SignupScreenStep2State extends State<SignupScreenStep2> {
                                 Expanded(
                                   child: Container(
                                     child: TextField(
+                                      controller: _lastNameController,
                                       decoration: InputDecoration(
                                         hintText:
                                             Strings().getEnterLastStrings(),
@@ -166,7 +181,8 @@ class _SignupScreenStep2State extends State<SignupScreenStep2> {
                                         errorBorder: InputBorder.none,
                                         disabledBorder: InputBorder.none,
                                       ),
-                                      keyboardType: TextInputType.number,
+                                      textInputAction: TextInputAction.next,
+                                      keyboardType: TextInputType.text,
                                     ),
                                   ),
                                 ),
@@ -189,6 +205,8 @@ class _SignupScreenStep2State extends State<SignupScreenStep2> {
                                 onTap: () {
                                   setState(() {
                                     isActive=!isActive;
+                                    if(isActive==true)
+                                      Constants.signUpData.setGender(Strings().getMaleStrings());
                                   });
                                 },
                                 child:
@@ -204,6 +222,8 @@ class _SignupScreenStep2State extends State<SignupScreenStep2> {
                                 onTap: () {
                                 setState(() {
                                   isActive=!isActive;
+                                  if(isActive==true)
+                                    Constants.signUpData.setGender(Strings().getFemaleStrings());
                                 });
                                 },
                                 child:
@@ -236,6 +256,7 @@ class _SignupScreenStep2State extends State<SignupScreenStep2> {
                                 Expanded(
                                   child: Container(
                                     child: TextField(
+                                      controller: _emailController,
                                       decoration: InputDecoration(
                                         hintText:
                                             Strings().getEnterEmailStrings(),
@@ -251,7 +272,8 @@ class _SignupScreenStep2State extends State<SignupScreenStep2> {
                                         errorBorder: InputBorder.none,
                                         disabledBorder: InputBorder.none,
                                       ),
-                                      keyboardType: TextInputType.number,
+                                      textInputAction: TextInputAction.done,
+                                      keyboardType: TextInputType.text,
                                     ),
                                   ),
                                 ),
@@ -259,16 +281,7 @@ class _SignupScreenStep2State extends State<SignupScreenStep2> {
                             ),
                           ),
                         ),
-                        SizedBox(height: 20),
-
-                        // new GestureDetector(
-                        //   onTap: () {
-                        //     Navigator.of(context).push(MaterialPageRoute(
-                        //         builder: (context) => SignupSubAccountScreenStep1()));
-                        //   },
-                        //   child: buttonWithIcon(Add_subaccount, Strings().getSubaccountStrings(),isBackground: true),
-                        // ),
-                        SizedBox(height: 110),
+                        SizedBox(height: 130),
                         Row(
                           children: <Widget>[
                             Expanded(
@@ -284,8 +297,31 @@ class _SignupScreenStep2State extends State<SignupScreenStep2> {
                             SizedBox(width: 20),
                             Expanded(
                               child: button(() {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => SignupScreenStep3()));
+
+                                if((_firstNameController.text.toString().length > 2 && _firstNameController.text.toString().length <= 20) && (_lastNameController.text.toString().length > 2 && _lastNameController.text.toString().length <= 20)){
+                                  if(_emailController.text.toString().contains('@')&&_emailController.text.toString().contains('.')){
+                                    Constants.signUpData.setFirstName(_firstNameController.text.toString());
+                                    Constants.signUpData.setLastName(_lastNameController.text.toString());
+                                    Constants.signUpData.setEmail(_emailController.text.toString());
+                                    Navigator.of(context).push(MaterialPageRoute(
+                                        builder: (context) => SignupScreenStep3()));
+                                  }
+                                  else {
+                                    _scaffoldKey.currentState.showSnackBar(
+                                        SnackBar(
+                                          content: Text(Strings().getEmailVerifyStrings()),
+                                          duration: Duration(seconds: 3),
+                                        ));
+                                  }
+                                }
+                                else {
+                                  _scaffoldKey.currentState.showSnackBar(
+                                      SnackBar(
+                                        content: Text(Strings().getNameLengthStrings()),
+                                        duration: Duration(seconds: 3),
+                                      ));
+                                }
+
                               }, Strings().getNextStrings(),
                                   isFilledColor: true),
                             ),

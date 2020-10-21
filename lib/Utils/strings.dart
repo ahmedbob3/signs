@@ -1,7 +1,7 @@
-import 'package:signs/Utils/Strings%20Data/strings_ar.dart';
-import 'package:signs/Utils/Strings%20Data/strings_en.dart';
-import 'package:signs/Utils/Strings%20Data/strings_inr.dart';
-import 'package:signs/Utils/constants.dart';
+import 'package:Signs/Utils/Strings%20Data/strings_ar.dart';
+import 'package:Signs/Utils/Strings%20Data/strings_en.dart';
+import 'package:Signs/Utils/Strings%20Data/strings_inr.dart';
+import 'package:Signs/Utils/constants.dart';
 
 class Strings {
   String appName() {
@@ -212,7 +212,8 @@ class Strings {
     }
   }
 
-  String getPasswordStrings() {
+
+  String getPasswordLength() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SING_UP_PASSWORD;
@@ -222,6 +223,54 @@ class Strings {
         break;
       default:
         return Strings_EN.SING_UP_PASSWORD;
+    }
+  }
+  String getConfirmPassword() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP_PASSWORD_CONFIRM;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP_PASSWORD_CONFIRM;
+        break;
+      default:
+        return Strings_EN.SING_UP_PASSWORD_CONFIRM;
+    }
+  }
+  String getPasswordStrings() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP_PASSWORD_LENGTH;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP_PASSWORD_LENGTH;
+        break;
+      default:
+        return Strings_EN.SING_UP_PASSWORD_LENGTH;
+    }
+  }
+  String getNameLengthStrings() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.NAME_LENGTH;
+        break;
+      case languages.Indian:
+        return Strings_INR.NAME_LENGTH;
+        break;
+      default:
+        return Strings_EN.NAME_LENGTH;
+    }
+  }
+  String getEmailVerifyStrings() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.EMAIL_VERIFY;
+        break;
+      case languages.Indian:
+        return Strings_INR.EMAIL_VERIFY;
+        break;
+      default:
+        return Strings_EN.EMAIL_VERIFY;
     }
   }
 
@@ -900,5 +949,17 @@ class Strings {
         return Strings_EN.FORGET_PASSWORD;
     }
   }
-  
+  String getFillDataString(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.FILL_DATA;
+        break;
+      case languages.Indian:
+        return Strings_INR.FILL_DATA;
+        break;
+      default:
+        return Strings_EN.FILL_DATA;
+    }
+  }
+
 }

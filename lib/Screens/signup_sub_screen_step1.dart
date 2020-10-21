@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:signs/Screens/signup_screen_step1.dart';
-import 'package:signs/Screens/signup_screen_step2.dart';
-import 'package:signs/Screens/signup_screen_step3.dart';
-import 'package:signs/Utils/images.dart';
-import 'package:signs/Utils/strings.dart';
-import 'package:signs/Utils/styles.dart';
-import 'package:signs/widgets/widgets.dart';
+import 'package:Signs/Screens/signup_screen_step2.dart';
+import 'package:Signs/Utils/images.dart';
+import 'package:Signs/Utils/strings.dart';
+import 'package:Signs/Utils/styles.dart';
+import 'package:Signs/widgets/widgets.dart';
+
 
 import 'check_mobile_screen.dart';
 
@@ -17,6 +16,36 @@ class SignupSubAccountScreenStep1 extends StatefulWidget {
 }
 
 class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep1> {
+
+
+
+  List<ListItem> _dropdownItems = [
+    ListItem(1, "My Son"),
+    ListItem(2, "My Mother")
+  ];
+
+  List<DropdownMenuItem<ListItem>> _dropdownMenuItems;
+  ListItem _selectedItem;
+
+  void initState() {
+    super.initState();
+    _dropdownMenuItems = buildDropDownMenuItems(_dropdownItems);
+    _selectedItem = _dropdownMenuItems[0].value;
+  }
+
+  List<DropdownMenuItem<ListItem>> buildDropDownMenuItems(List listItems) {
+    List<DropdownMenuItem<ListItem>> items = List();
+    for (ListItem listItem in listItems) {
+      items.add(
+        DropdownMenuItem(
+          child: Text(listItem.name),
+          value: listItem,
+        ),
+      );
+    }
+    return items;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -189,29 +218,47 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
                             child: Row(
                               children: <Widget>[
                                 Expanded(
-                                  child: Container(
-                                    child: TextField(
-                                      decoration: InputDecoration(
-                                        hintText:
-                                            Strings().getSingSonStrings(),
-                                        hintStyle: titleStyle(
-                                            fontFamily: mediumFontFamily,
-                                            color: greyColor,
-                                            fontSize: 16),
-                                        labelStyle:
-                                            titleStyle(color: greyColor),
-                                        border: InputBorder.none,
-                                        focusedBorder: InputBorder.none,
-                                        enabledBorder: InputBorder.none,
-                                        errorBorder: InputBorder.none,
-                                        disabledBorder: InputBorder.none,
-                                      ),
-                                      keyboardType: TextInputType.number,
-                                    ),
-                                  ),
+
+                                    child: DropdownButton(
+                                        elevation: 5,
+                                        dropdownColor: textFieldFill,
+                                        style: titleStyle(color: greyColor),
+                                        icon: Icon(Icons.arrow_drop_down),
+                                        underline: SizedBox(),
+                                        isExpanded: true,
+                                        value: _selectedItem,
+                                        items: _dropdownMenuItems,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            _selectedItem = value;
+                                          });
+                                        }),
+                                    // child:Container(
+                                    //   child: TextField(
+                                    //     decoration: InputDecoration(
+                                    //       hintText:
+                                    //       Strings().getSingSonStrings(),
+                                    //       hintStyle: titleStyle(
+                                    //           fontFamily: mediumFontFamily,
+                                    //           color: greyColor,
+                                    //           fontSize: 16),
+                                    //       labelStyle:
+                                    //       titleStyle(color: greyColor),
+                                    //       border: InputBorder.none,
+                                    //       focusedBorder: InputBorder.none,
+                                    //       enabledBorder: InputBorder.none,
+                                    //       errorBorder: InputBorder.none,
+                                    //       disabledBorder: InputBorder.none,
+                                    //     ),
+                                    //     keyboardType: TextInputType.number,
+                                    //   ),
+                                    // ),
+
+
                                 ),
-                                SizedBox(width: 5),
-                                Icon(Icons.arrow_drop_down),                              ],
+                                // SizedBox(width: 5),
+                                // Icon(Icons.arrow_drop_down),
+                              ],
                             ),
                           ),
                         ),
@@ -295,4 +342,12 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
       ),
     );
   }
+
+
+}
+class ListItem {
+  int value;
+  String name;
+
+  ListItem(this.value, this.name);
 }

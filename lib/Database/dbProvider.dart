@@ -22,7 +22,7 @@ class DBProvider {
   }
 
   static  fetchDataBasePath() async {
-    String dbName = "signs.db";
+    String dbName = "Signs.db";
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
     String path = join(documentsDirectory.path, dbName);
     return path;

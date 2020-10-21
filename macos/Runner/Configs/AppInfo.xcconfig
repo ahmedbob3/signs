@@ -8,7 +8,7 @@
 PRODUCT_NAME = Signs
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = thesignsco.Signs
+PRODUCT_BUNDLE_IDENTIFIER = theSignsco.Signs
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2020 thesignsco. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2020 theSignsco. All rights reserved.

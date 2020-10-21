@@ -1,11 +1,15 @@
+import 'package:Signs/Utils/constants.dart';
+import 'package:Signs/Utils/constants.dart';
+import 'package:Signs/Utils/constants.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:country_codes/country_codes.dart';
 import 'package:flutter/material.dart';
-import 'package:signs/Screens/signup_screen_step2.dart';
-import 'package:signs/Utils/images.dart';
-import 'package:signs/Utils/strings.dart';
-import 'package:signs/Utils/styles.dart';
-import 'package:signs/widgets/widgets.dart';
+import 'package:Signs/Blocs/signUp%20bloc/signUp_bloc.dart';
+import 'package:Signs/Screens/signup_screen_step2.dart';
+import 'package:Signs/Utils/images.dart';
+import 'package:Signs/Utils/strings.dart';
+import 'package:Signs/Utils/styles.dart';
+import 'package:Signs/widgets/widgets.dart';
 
 class SignupScreenStep1 extends StatefulWidget {
   SignupScreenStep1({Key key}) : super(key: key);
@@ -15,9 +19,19 @@ class SignupScreenStep1 extends StatefulWidget {
 }
 
 class _SignupScreenStep1State extends State<SignupScreenStep1> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   TextEditingController _mobileController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  TextEditingController _confirmController = TextEditingController();
+
   String selectedCountry = '';
-  
+
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,6 +39,7 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
       child: SafeArea(
         bottom: false,
         child: Scaffold(
+          key : _scaffoldKey,
           body: Container(
             height: MediaQuery.of(context).size.height,
             child: Stack(
@@ -82,61 +97,6 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                                 color: greyHeader,
                                 fontSize: 14)),
                         SizedBox(height: 15),
-                        // Container(
-                        //   height: 50,
-                        //   decoration: BoxDecoration(
-                        //       color: textFieldFill,
-                        //       border: Border.all(
-                        //         color: textFieldBorder,
-                        //       ),
-                        //       borderRadius: BorderRadius.circular(18)),
-                        //   child: Padding(
-                        //     padding: const EdgeInsets.symmetric(horizontal: 15),
-                        //     child: Row(
-                        //       children: <Widget>[
-                        //         Image.asset(Kuwait_flag),
-                        //         SizedBox(width: 5),
-                        //         Icon(Icons.arrow_drop_down),
-                        //         SizedBox(width: 10),
-                        //         Container(
-                        //             color: Color.fromRGBO(239, 239, 244, 1),
-                        //             width: 2,
-                        //             height: 60),
-                        //         SizedBox(width: 10),
-                        //         Text(
-                        //           '+995',
-                        //           style: titleStyle(
-                        //               fontFamily: mediumFontFamily,
-                        //               color: Colors.black,
-                        //               fontSize: 17),
-                        //         ),
-                        //         SizedBox(width: 10),
-                        //         Expanded(
-                        //           child: Container(
-                        //             child: TextField(
-                        //               decoration: InputDecoration(
-                        //                 hintText: Strings()
-                        //                     .getEnterMobileNumberString(),
-                        //                 hintStyle: titleStyle(
-                        //                     fontFamily: mediumFontFamily,
-                        //                     color: greyColor,
-                        //                     fontSize: 16),
-                        //                 labelStyle:
-                        //                     titleStyle(color: greyColor),
-                        //                 border: InputBorder.none,
-                        //                 focusedBorder: InputBorder.none,
-                        //                 enabledBorder: InputBorder.none,
-                        //                 errorBorder: InputBorder.none,
-                        //                 disabledBorder: InputBorder.none,
-                        //               ),
-                        //               keyboardType: TextInputType.number,
-                        //             ),
-                        //           ),
-                        //         ),
-                        //       ],
-                        //     ),
-                        //   ),
-                        // ),
                         Container(
                               height: 50,
                               decoration: BoxDecoration(
@@ -209,7 +169,7 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                                             errorBorder: InputBorder.none,
                                             disabledBorder: InputBorder.none,
                                           ),
-                                          keyboardType: TextInputType.number,
+                                          keyboardType: TextInputType.phone,
                                           onChanged: (value) {
                                             setState(() {});
                                           },
@@ -242,6 +202,7 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                                 Expanded(
                                   child: Container(
                                     child: TextField(
+                                      controller: _passwordController,
                                       decoration: InputDecoration(
                                         hintText:
                                             Strings().getEnterPasswordStrings(),
@@ -257,7 +218,9 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                                         errorBorder: InputBorder.none,
                                         disabledBorder: InputBorder.none,
                                       ),
-                                      keyboardType: TextInputType.number,
+                                      textInputAction: TextInputAction.next,
+                                      obscureText: true,
+                                      keyboardType: TextInputType.text,
                                     ),
                                   ),
                                 ),
@@ -287,6 +250,7 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                                 Expanded(
                                   child: Container(
                                     child: TextField(
+                                      controller: _confirmController,
                                       decoration: InputDecoration(
                                         hintText: Strings()
                                             .getConfirmPasswordStrings(),
@@ -302,7 +266,9 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                                         errorBorder: InputBorder.none,
                                         disabledBorder: InputBorder.none,
                                       ),
-                                      keyboardType: TextInputType.number,
+                                      textInputAction: TextInputAction.done,
+                                      obscureText: true,
+                                      keyboardType: TextInputType.text,
                                     ),
                                   ),
                                 ),
@@ -312,8 +278,32 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                         ),
                         SizedBox(height: 25),
                         button(() {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => SignupScreenStep2()));
+
+                        if (_passwordController.text.toString().length >= 8) {
+                          if(_passwordController.text.toString() == _confirmController.text.toString()){
+                            Constants.signUpData.setMobileNumber(_mobileController.text.toString());
+                            Constants.signUpData.setPassword(_passwordController.text.toString());
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => SignupScreenStep2()));
+                          }
+                          else{
+                            _scaffoldKey.currentState.showSnackBar(
+                                SnackBar(
+                                  content: Text(Strings().getConfirmPassword()),
+                                  duration: Duration(seconds: 3),
+                                ));
+                          }
+
+                        }
+                        else{
+                          _scaffoldKey.currentState.showSnackBar(
+                              SnackBar(
+                                content: Text(Strings().getPasswordLength()),
+                                duration: Duration(seconds: 3),
+                              ));
+
+                        }
+
                         }, Strings().getNextStrings(), isFilledColor: true),
                         SizedBox(height: 10),
                         Row(

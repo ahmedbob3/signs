@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:signs/Screens/medicine_add.dart';
-import 'package:signs/Utils/images.dart';
-import 'package:signs/Utils/styles.dart';
+import 'package:Signs/Screens/medicine_add.dart';
+import 'package:Signs/Utils/images.dart';
+import 'package:Signs/Utils/styles.dart';
 
 class PillCell extends StatelessWidget {
   bool isNewPill;

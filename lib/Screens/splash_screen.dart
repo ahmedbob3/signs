@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:signs/Screens/langauage_screen.dart';
-import 'package:signs/Screens/welcome_screen.dart';
-import 'package:signs/Utils/constants.dart';
-import 'package:signs/Utils/images.dart';
+import 'package:Signs/Screens/langauage_screen.dart';
+import 'package:Signs/Screens/welcome_screen.dart';
+import 'package:Signs/Utils/constants.dart';
+import 'package:Signs/Utils/images.dart';
 
 class SplashScreen extends StatefulWidget {
   SplashScreen({Key key}) : super(key: key);

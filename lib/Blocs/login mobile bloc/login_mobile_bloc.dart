@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:signs/Models/check_mobile.dart';
-import 'package:signs/Models/login_model.dart';
-import 'package:signs/Repos/LoginRepos/login_repo.dart';
+import 'package:Signs/Models/check_mobile.dart';
+import 'package:Signs/Models/login_model.dart';
+import 'package:Signs/Repos/LoginRepos/login_repo.dart';
 
 part 'login_mobile_event.dart';
 part 'login_mobile_state.dart';

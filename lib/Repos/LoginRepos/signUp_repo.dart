@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:signs/Models/check_mobile.dart';
-import 'package:signs/Models/sign_up.dart';
-import 'package:signs/Utils/apis.dart';
+import 'package:Signs/Models/check_mobile.dart';
+import 'package:Signs/Models/sign_up.dart';
+import 'package:Signs/Utils/apis.dart';
 import 'package:http/http.dart' as http;
 import '../base_repo.dart';
 

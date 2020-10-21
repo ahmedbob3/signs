@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:signs/Models/sign_up.dart';
-import 'package:signs/Repos/LoginRepos/signUp_repo.dart';
+import 'package:Signs/Models/sign_up.dart';
+import 'package:Signs/Repos/LoginRepos/signUp_repo.dart';
 
 part 'signUp_event.dart';
 part 'signUp_state.dart';
@@ -14,7 +14,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   Stream<SignUpState> mapEventToState(
       SignUpEvent event,
   ) async* {
-    if (event is SignUpEvent) {
+    if (event is doSignUpEvent) {
       yield SignUpLoadingState();
       var response =
           await SignUpRepo().signUp(
@@ -31,6 +31,10 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
               event.wakeupTime);
       yield SignUpLoadedState(response);
     }
+    else if ( event is resetSignupState ){
+      yield SignUpInitial();
+    }
+
   }
 
   @override

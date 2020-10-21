@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:signs/Models/hospitals_model.dart';
-import 'package:signs/Utils/images.dart';
-import 'package:signs/Utils/styles.dart';
+import 'package:Signs/Models/hospitals_model.dart';
+import 'package:Signs/Utils/images.dart';
+import 'package:Signs/Utils/styles.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HospitalDetailsScreen extends StatefulWidget {
