@@ -12,7 +12,7 @@ class Strings_EN {
   static const String SING_UP_STEP1 = 'Step 1/3';
   static const String SING_UP_STEP2 = 'Step 2/3';
   static const String SING_UP_STEP3 = 'Step 3/3';
-  static const String SING_UP_PASSWORD = 'Password';
+  static const String SING_UP_PASSWORD = 'Empty Password';
   static const String SING_UP_PASSWORD_LENGTH = 'Password Must be Greater Than 8 Characters';
   static const String SING_UP_PASSWORD_CONFIRM = 'Password & Confirm Password Must be Identical';
   static const String SING_UP_CONFIRM = 'Confirm';

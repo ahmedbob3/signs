@@ -1,3 +1,4 @@
+import 'package:Signs/Utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:Signs/Screens/signup_screen_step1.dart';
 import 'package:Signs/Screens/signup_screen_step2.dart';
@@ -19,8 +20,9 @@ class MedicineForm extends StatefulWidget {
 
 class _MedicineFormState extends State<MedicineForm> {
 
-  List<bool> medications = [false, false, false,false, false, false,false, false, false,false, false];
   bool isActive= false;
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  TextEditingController _nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -55,13 +57,13 @@ class _MedicineFormState extends State<MedicineForm> {
                               new GestureDetector(
                                 onTap: () {
                                   setState(() {
-                                    isActive= !medications[0];
-                                    medications = [isActive, false, false,false, false, false,false, false, false,false, false];
+                                    isActive= !Constants.medications[0];
+                                    Constants.medications = [isActive, false, false,false, false, false,false, false, false,false, false];
                                   });
                                 },
                                 child: cardChangeState(true,
                                     Tablet_active,Tablet_inactive, Strings().getTabletStrings(),
-                                    isFActive: medications[0]),
+                                    isFActive: Constants.medications[0]),
                               ),
                             ),
                             Expanded(
@@ -71,14 +73,14 @@ class _MedicineFormState extends State<MedicineForm> {
                               new GestureDetector(
                                 onTap: () {
                                   setState(() {
-                                    isActive= !medications[1];
-                                    medications = [false, isActive, false,false, false, false,false, false, false,false, false];
+                                    isActive= !Constants.medications[1];
+                                    Constants.medications = [false, isActive, false,false, false, false,false, false, false,false, false];
                                   });
                                 },
                                 child:
                                 cardChangeState(true,
                                     Capsule_active,Capsule_inactive, Strings().getCapsuleStrings(),
-                                    isFActive: medications[1]),
+                                    isFActive: Constants.medications[1]),
                               ),
 
                             ),
@@ -88,14 +90,14 @@ class _MedicineFormState extends State<MedicineForm> {
                               new GestureDetector(
                                 onTap: () {
                                   setState(() {
-                                    isActive= !medications[2];
-                                    medications = [false, false, isActive,false, false, false,false, false, false,false, false];
+                                    isActive= !Constants.medications[2];
+                                    Constants.medications = [false, false, isActive,false, false, false,false, false, false,false, false];
                                   });
                                 },
                                 child:
                                 cardChangeState(true,
                                     Liquid_active,Liquid_inactive, Strings().getLiquidStrings(),
-                                    isFActive: medications[2]),
+                                    isFActive: Constants.medications[2]),
                               ),
 
                             ),
@@ -113,14 +115,14 @@ class _MedicineFormState extends State<MedicineForm> {
                               new GestureDetector(
                                 onTap: () {
                                   setState(() {
-                                    isActive= !medications[3];
-                                    medications = [false, false, false,isActive, false, false,false, false, false,false, false];
+                                    isActive= !Constants.medications[3];
+                                    Constants.medications = [false, false, false,isActive, false, false,false, false, false,false, false];
                                   });
                                 },
                                 child:
                                 cardChangeState(true,
                                     Drops_Active,Drops_inactive, Strings().getDropsStrings(),
-                                    isFActive: medications[3]),
+                                    isFActive: Constants.medications[3]),
                               ),
 
                             ),
@@ -130,14 +132,14 @@ class _MedicineFormState extends State<MedicineForm> {
                               new GestureDetector(
                                 onTap: () {
                                   setState(() {
-                                    isActive= !medications[4];
-                                    medications = [false, false, false,false, isActive, false,false, false, false,false, false];
+                                    isActive= !Constants.medications[4];
+                                    Constants.medications = [false, false, false,false, isActive, false,false, false, false,false, false];
                                   });
                                 },
                                 child:
                                 cardChangeState(true,
                                     Suppository_active,Suppository_inactive, Strings().getSuppositoryStrings(),
-                                    isFActive: medications[4]),
+                                    isFActive: Constants.medications[4]),
                               ),
 
 
@@ -149,14 +151,14 @@ class _MedicineFormState extends State<MedicineForm> {
                               new GestureDetector(
                                 onTap: () {
                                   setState(() {
-                                    isActive= !medications[5];
-                                    medications = [false, false, false,false, false, isActive,false, false, false,false, false];
+                                    isActive= !Constants.medications[5];
+                                    Constants.medications = [false, false, false,false, false, isActive,false, false, false,false, false];
                                   });
                                 },
                                 child:
                                 cardChangeState(true,
                                     Topical_active,Topical_inactive, Strings().getTopicalStrings(),
-                                    isFActive: medications[5]),
+                                    isFActive: Constants.medications[5]),
                               ),
 
                             ),
@@ -172,14 +174,14 @@ class _MedicineFormState extends State<MedicineForm> {
                               new GestureDetector(
                                 onTap: () {
                                   setState(() {
-                                    isActive= !medications[6];
-                                    medications = [false, false, false,false, false, false,isActive, false, false,false, false];
+                                    isActive= !Constants.medications[6];
+                                    Constants.medications = [false, false, false,false, false, false,isActive, false, false,false, false];
                                   });
                                 },
                                 child:
                                 cardChangeState(true,
                                     Inhalator_active,Inhalator_inactive, Strings().getInhalersStrings(),
-                                    isFActive: medications[6]),
+                                    isFActive: Constants.medications[6]),
                               ),
 
                             ),
@@ -190,14 +192,14 @@ class _MedicineFormState extends State<MedicineForm> {
                               new GestureDetector(
                                 onTap: () {
                                   setState(() {
-                                    isActive= !medications[7];
-                                    medications = [false, false, false,false, false, false,false, isActive, false,false, false];
+                                    isActive= !Constants.medications[7];
+                                    Constants.medications = [false, false, false,false, false, false,false, isActive, false,false, false];
                                   });
                                 },
                                 child:
                                 cardChangeState(true,
                                     Implant_active,Implant_inactive, Strings().getImplantsStrings(),
-                                    isFActive: medications[7]),
+                                    isFActive: Constants.medications[7]),
                               ),
 
                             ),
@@ -207,14 +209,14 @@ class _MedicineFormState extends State<MedicineForm> {
                               new GestureDetector(
                                 onTap: () {
                                   setState(() {
-                                    isActive= !medications[8];
-                                    medications = [false, false, false,false, false, false,false, false, isActive,false, false];
+                                    isActive= !Constants.medications[8];
+                                    Constants.medications = [false, false, false,false, false, false,false, false, isActive,false, false];
                                   });
                                 },
                                 child:
                                 cardChangeState(true,
                                     Patches_active,Patches_inactive, Strings().getPatchesStrings(),
-                                    isFActive: medications[8]),
+                                    isFActive: Constants.medications[8]),
                               ),
 
                             ),
@@ -229,14 +231,14 @@ class _MedicineFormState extends State<MedicineForm> {
                               new GestureDetector(
                                 onTap: () {
                                   setState(() {
-                                    isActive= !medications[9];
-                                    medications = [false, false, false,false, false, false,false, false, false,isActive, false];
+                                    isActive= !Constants.medications[9];
+                                    Constants.medications = [false, false, false,false, false, false,false, false, false,isActive, false];
                                   });
                                 },
                                 child:
                                 cardChangeState(true,
                                     Injection_active,Injection_inactive, Strings().getInjectionsStrings(),
-                                    isFActive: medications[9]),
+                                    isFActive: Constants.medications[9]),
                               ),
 
                             ),
@@ -246,14 +248,14 @@ class _MedicineFormState extends State<MedicineForm> {
                               new GestureDetector(
                                 onTap: () {
                                   setState(() {
-                                    isActive= !medications[10];
-                                    medications = [false, false, false,false, false, false,false, false, false,false, isActive];
+                                    isActive= !Constants.medications[10];
+                                    Constants.medications = [false, false, false,false, false, false,false, false, false,false, isActive];
                                   });
                                 },
                                 child:
                                 cardChangeState(true,
                                     Sachets_active,Sachets_inactive, Strings().getSachetsStrings(),
-                                    isFActive: medications[10]),
+                                    isFActive: Constants.medications[10]),
                               ),
 
                             ),

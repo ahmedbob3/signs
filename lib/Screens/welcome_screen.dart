@@ -12,6 +12,7 @@ import 'package:Signs/Utils/strings.dart';
 import 'package:Signs/Utils/styles.dart';
 import 'package:Signs/widgets/widgets.dart';
 
+import 'home_screen.dart';
 import 'medicine_add.dart';
 import 'medicine_form.dart';
 
@@ -82,8 +83,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                               Navigator.of(context).push(MaterialPageRoute(
                                   // builder: (context) => MedicineForm()));
                                   // builder: (context) => AddMedication()));
-                              // builder: (context) => HomeScreen()));
-                              builder: (context) => SignupScreenStep1()));
+                              builder: (context) => HomeScreen()));
+                              // builder: (context) => SignupScreenStep1()));
                             }, Strings().getCreateAccountText(),
                                 isFilledColor: true),
                             Spacer(),

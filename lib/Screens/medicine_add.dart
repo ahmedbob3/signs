@@ -1,3 +1,4 @@
+import 'package:Signs/Utils/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Signs/Screens/signup_screen_step2.dart';
@@ -5,6 +6,8 @@ import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/strings.dart';
 import 'package:Signs/Utils/styles.dart';
 import 'package:Signs/widgets/widgets.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:intl/intl.dart';
 
 import 'medicine_form.dart';
 
@@ -16,11 +19,18 @@ class AddMedication extends StatefulWidget {
 }
 
 class _AddMedicationState extends State<AddMedication> {
-  List<bool> medications = [false, false, false, false, false];
   bool isActive = false;
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _timeController = TextEditingController();
+  TextEditingController _numberController = TextEditingController(text: '0');
+
+
+
 
   @override
   Widget build(BuildContext context) {
+    Constants.medications = [false, false, false,false, false, false,false, false, false,false, false];
     return Container(
       color: defaultBackgroundColor,
       child: SafeArea(
@@ -94,6 +104,7 @@ class _AddMedicationState extends State<AddMedication> {
                                 Expanded(
                                   child: Container(
                                     child: TextField(
+                                      controller: _nameController,
                                       decoration: InputDecoration(
                                         hintText: 'ibuprofen , 200 mg',
                                         hintStyle: titleStyle(
@@ -196,13 +207,15 @@ class _AddMedicationState extends State<AddMedication> {
                                         fit: BoxFit.fill,
                                       ),
                                       onPressed: () {
-                                        Navigator.of(context).pop();
+                                        if(int.parse(_numberController.text.toString()) >0)
+                                        _numberController.text = (int.parse(_numberController.text.toString()) - 1).toString() ;
                                       },
                                     ),
                                     right: 50),
                                 Expanded(
                                   child: Container(
                                     child: TextField(
+                                      controller: _numberController,
                                       textAlign: TextAlign.center,
                                       decoration: InputDecoration(
                                         hintText: '2',
@@ -229,7 +242,8 @@ class _AddMedicationState extends State<AddMedication> {
                                         fit: BoxFit.fill,
                                       ),
                                       onPressed: () {
-                                        Navigator.of(context).pop();
+                                        if(int.parse(_numberController.text.toString()) <=30)
+                                          _numberController.text = (int.parse(_numberController.text.toString()) + 1).toString() ;
                                       },
                                     ),
                                     left: 50),
@@ -270,6 +284,7 @@ class _AddMedicationState extends State<AddMedication> {
                                 Expanded(
                                   child: Container(
                                     child: TextField(
+                                      controller: _timeController,
                                       textAlign: TextAlign.center,
                                       decoration: InputDecoration(
                                         hintText: '10 : 00 AM',
@@ -296,7 +311,30 @@ class _AddMedicationState extends State<AddMedication> {
                                         fit: BoxFit.fill,
                                       ),
                                       onPressed: () {
-                                        Navigator.of(context).pop();
+                                        DatePicker.showTime12hPicker(
+                                            context,
+                                            showTitleActions: true,
+                                            onChanged: (date) {
+                                              _timeController.text =
+                                              (DateFormat('kk:mm a')
+                                                  .format(date)
+                                                  .toString());
+                                              print(
+                                                  'change $date in time zone ' +
+                                                      date.timeZoneOffset
+                                                          .inHours
+                                                          .toString());
+                                            }, onConfirm: (date) {
+                                          _timeController.text =
+                                          (DateFormat('kk:mm a')
+                                              .format(date)
+                                              .toString());
+                                          Constants.signUpData
+                                              .setWakeupTime(
+                                              DateFormat('kk:mm')
+                                                  .format(date)
+                                                  .toString());
+                                        }, currentTime: DateTime.now());
                                       },
                                     ),
                                     left: 50),
@@ -457,8 +495,8 @@ class _AddMedicationState extends State<AddMedication> {
                     setState(() {
                       switch (index) {
                         case 0:
-                          isActive = !medications[0];
-                          medications = [
+                          isActive = !Constants.medications[0];
+                          Constants.medications = [
                             isActive,
                             false,
                             false,
@@ -473,8 +511,8 @@ class _AddMedicationState extends State<AddMedication> {
                           ];
                           break;
                         case 1:
-                          isActive = !medications[1];
-                          medications = [
+                          isActive = !Constants.medications[1];
+                          Constants.medications = [
                             false,
                             isActive,
                             false,
@@ -489,8 +527,8 @@ class _AddMedicationState extends State<AddMedication> {
                           ];
                           break;
                         case 2:
-                          isActive = !medications[2];
-                          medications = [
+                          isActive = !Constants.medications[2];
+                          Constants.medications = [
                             false,
                             false,
                             isActive,
@@ -505,8 +543,8 @@ class _AddMedicationState extends State<AddMedication> {
                           ];
                           break;
                         case 3:
-                          isActive = !medications[3];
-                          medications = [
+                          isActive = !Constants.medications[3];
+                          Constants.medications = [
                             false,
                             false,
                             false,
@@ -521,8 +559,8 @@ class _AddMedicationState extends State<AddMedication> {
                           ];
                           break;
                         case 4:
-                          isActive = !medications[4];
-                          medications = [
+                          isActive = !Constants.medications[4];
+                          Constants.medications = [
                             false,
                             false,
                             false,
@@ -541,26 +579,26 @@ class _AddMedicationState extends State<AddMedication> {
                   },
                   child: index == 0
                       ? cardChangeState(true, Tablet_active, Tablet_inactive, Strings().getTabletStrings(),
-                          isFActive: medications[0])
+                          isFActive: Constants.medications[0])
                       : index == 1
                           ? cardChangeState(
                               true, Capsule_active, Capsule_inactive, Strings().getCapsuleStrings(),
-                              isFActive: medications[1])
+                              isFActive: Constants.medications[1])
                           : index == 2
                               ? cardChangeState(
                                   true, Liquid_active, Liquid_inactive, Strings().getLiquidStrings(),
-                                  isFActive: medications[2])
+                                  isFActive: Constants.medications[2])
                               : index == 3
                                   ? cardChangeState(
                                       true, Drops_Active, Drops_inactive, Strings().getDropsStrings(),
-                                      isFActive: medications[3])
+                                      isFActive: Constants.medications[3])
                                   : index == 4
                                       ? cardChangeState(
                                           true,
                                           Suppository_active,
                                           Suppository_inactive,
                                           Strings().getSuppositoryStrings(),
-                                          isFActive: medications[4])
+                                          isFActive: Constants.medications[4])
                                       : Container(),
                 ),
               ),

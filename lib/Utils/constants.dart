@@ -8,6 +8,8 @@ enum languages { English, Arabic, Indian }
 class Constants {
   static String appName = "Signs";
   static SignUpData signUpData = SignUpData();
+  static List<bool> medications = [false, false, false,false, false, false,false, false, false,false, false];
+
 
 
   static languages languageId = languages.English;
