@@ -1,10 +1,7 @@
+import 'package:Signs/Utils/styles.dart';
+import 'package:Signs/widgets/medication_cell.dart';
 import 'package:flutter/material.dart';
-import 'package:signs/Utils/images.dart';
-import 'package:signs/Utils/styles.dart';
-import 'package:signs/widgets/medication_cell.dart';
-import 'package:signs/widgets/pill_cell.dart';
-import 'package:flutter_swipe_action_cell/flutter_swipe_action_cell.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
+
 
 class MedicationScreen extends StatefulWidget {
   MedicationScreen({Key key}) : super(key: key);

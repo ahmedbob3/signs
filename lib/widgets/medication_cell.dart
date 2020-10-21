@@ -1,10 +1,10 @@
 import 'dart:math';
 
+import 'package:Signs/Utils/images.dart';
+import 'package:Signs/Utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:signs/Screens/medicine_add.dart';
-import 'package:signs/Utils/images.dart';
-import 'package:signs/Utils/styles.dart';
+
 
 class MedicationCell extends StatefulWidget {
   bool isActive;
