@@ -71,5 +71,9 @@ const String CallIcon = 'assets/images/ic_Call.png';
 const String SplashBG = 'assets/images/splash_bg.png';
 const String SignsLogo = 'assets/images/signs_Logo.png';
 const String CloseWhite = 'assets/images/ic_close_white.png';
-
+const String Home_Inactive = 'assets/images/ic_Home_inctive.png';
+const String Medicine_Active = 'assets/images/ic_History_Active.png';
+const String Medicine_Deactive = 'assets/images/ic_Deactivate.png';
+const String Medicine_Aactive = 'assets/images/ic_activate.png';
+const String Medicine_Delete = 'assets/images/ic_Delete.png';
 
