@@ -7,10 +7,10 @@ import '../base_repo.dart';
 
 class MedicationRepo extends BaseRepo {
   Future<MedicationModel> medicationInsert(
-  int medicationNumber,
+      String medicationNumber,
   String medicationName,
-  String medicationFormId,
-  String medicationDose,
+      String medicationFormId,
+      String medicationDose,
   String medicationDuration,
   String medicationNote,
   String medicationTime

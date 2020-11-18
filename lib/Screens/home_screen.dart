@@ -1,11 +1,10 @@
+import 'package:Signs/Utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:Signs/Blocs/home%20bloc/home_bloc.dart';
-import 'package:Signs/Medication%20bloc/medication_bloc.dart';
 import 'package:Signs/Models/hospitals_model.dart';
 import 'package:Signs/Screens/medication_section.dart';
 import 'package:Signs/Screens/signup_sub_screen_step1.dart';
-import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/styles.dart';
 import 'package:Signs/widgets/hospital_cell.dart';
 import 'package:Signs/widgets/widgets.dart';
@@ -19,7 +18,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   HomeBloc _homeBloc;
-  List<MedicationBloc> medicationList = [];
   HospitalsModel _hospitalsModel;
   bool isLoading = false;
 
@@ -48,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   isLoading = true;
                 }
               } else if (state is HomeLoadedState) {
-                medicationList = state.medicationList;
+                Constants.medicationList = state.medicationList;
                 Future.delayed(Duration(milliseconds: 1000), () {
                   if (isLoading) {
                     _homeBloc.add(resetHomeEvent());
@@ -152,7 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(height: 80),
                     // Upcoming reminder ..
                     MediciationSection(
-                      medicationList: medicationList,
+                      medicationList: Constants.medicationList,
                     ),
                     // hospitals list ..
                     Text('Hospitals',

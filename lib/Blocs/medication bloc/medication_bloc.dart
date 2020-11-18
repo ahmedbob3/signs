@@ -28,7 +28,7 @@ class MedicationBloc extends Bloc<MedicationEvent, MedicationState> {
           );
       yield MedicationLoadedState(response);
     }
-    else if ( event is resetSignupState ){
+    else if ( event is resetMedicationState ){
       yield MedicationInitial();
     }
 

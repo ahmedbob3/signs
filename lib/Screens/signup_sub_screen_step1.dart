@@ -1,9 +1,12 @@
+import 'package:Signs/Blocs/subAccount%20bloc/subAccount_bloc.dart';
+import 'package:Signs/Utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:Signs/Screens/signup_screen_step2.dart';
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/strings.dart';
 import 'package:Signs/Utils/styles.dart';
 import 'package:Signs/widgets/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 
 import 'check_mobile_screen.dart';
@@ -16,9 +19,6 @@ class SignupSubAccountScreenStep1 extends StatefulWidget {
 }
 
 class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep1> {
-
-
-
   List<ListItem> _dropdownItems = [
     ListItem(1, "My Son"),
     ListItem(2, "My Mother")
@@ -26,11 +26,34 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
 
   List<DropdownMenuItem<ListItem>> _dropdownMenuItems;
   ListItem _selectedItem;
+  subAccountBloc _subAccountBloc;
+  bool isActive = false;
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  TextEditingController _firstNameController = TextEditingController();
+  TextEditingController _lastNameController = TextEditingController();
+  TextEditingController _genderController = TextEditingController(text: '0');
+  TextEditingController _relationController = TextEditingController();
+  bool isLoading = false;
+  String gender="";
+
+
+  @override
+  void dispose() {
+    super.dispose();
+    _firstNameController.dispose();
+    _lastNameController.dispose();
+    _genderController.dispose();
+    _relationController.dispose();
+  }
+
+
 
   void initState() {
     super.initState();
     _dropdownMenuItems = buildDropDownMenuItems(_dropdownItems);
     _selectedItem = _dropdownMenuItems[0].value;
+    _subAccountBloc = subAccountBloc();
+
   }
 
   List<DropdownMenuItem<ListItem>> buildDropDownMenuItems(List listItems) {
@@ -53,7 +76,43 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
       child: SafeArea(
         bottom: false,
         child: Scaffold(
-          body: Container(
+          key: _scaffoldKey,
+
+
+        body: BlocBuilder<subAccountBloc, subAccountState>(
+        bloc: _subAccountBloc,
+        builder: (context, state) {
+
+      if (state is subAccountLoadingState) {
+        if (!isLoading) {
+          showLoadingDialog(context);
+          isLoading = true;
+        }
+      }
+      else if (state is subAccountLoadedState) {
+        print('loaded');
+
+        Future.delayed(Duration(milliseconds: 1), () {
+          if (state.subAccountresponse.code != 200) {
+            Constants.subAccountList.add(_subAccountBloc);
+            _scaffoldKey.currentState.showSnackBar(
+                SnackBar(content: Text(state.subAccountresponse.msg)));
+            Navigator.of(context).pop();
+          }
+          else {
+
+            _scaffoldKey.currentState.showSnackBar(
+                SnackBar(content: Text(state.subAccountresponse.msg)));
+          Navigator.of(context).pop();
+
+          }
+          _subAccountBloc.add(resetsubAccountState());
+          isLoading = false;
+        });
+      }
+
+
+      return Container(
             height: MediaQuery.of(context).size.height,
             child: Stack(
               children: <Widget>[
@@ -108,6 +167,7 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
                                 Expanded(
                                   child: Container(
                                     child: TextField(
+                                    controller : _firstNameController,
                                       decoration: InputDecoration(
                                         hintText:
                                             Strings().getEnterFirstStrings(),
@@ -153,6 +213,7 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
                                 Expanded(
                                   child: Container(
                                     child: TextField(
+                                      controller : _lastNameController,
                                       decoration: InputDecoration(
                                         hintText:
                                             Strings().getEnterLastStrings(),
@@ -186,16 +247,39 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
                         Row(
                           children: <Widget>[
                             Expanded(
-                              child: buttonChangeState(
+                              child:
+                              new GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      isActive=!isActive;
+                                      if(isActive==true)
+                                        gender= Strings().getMaleStrings();
+                                    });
+                                  },
+                                  child:
+                              buttonChangeState(
                                   Male_inactive, Strings().getMaleStrings(),
                                   isFActive: false),
                             ),
+                            ),
                             SizedBox(width: 10),
                             Expanded(
-                              child: buttonChangeState(
+
+                              child:
+                              new GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      isActive=!isActive;
+                                      if(isActive==true)
+                                        gender= Strings().getFemaleStrings();
+                                    });
+                                  },
+                                  child:
+                              buttonChangeState(
                                   Female_active, Strings().getFemaleStrings(),
                                   isFActive: true),
                             ),
+      ),
                           ],
                         ),
                         SizedBox(height: 20),
@@ -273,8 +357,27 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
                         ),
                         SizedBox(height: 30),
                         button(() {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => SignupScreenStep2()));
+
+                          //gender
+
+                          if(_firstNameController.text.toString().isNotEmpty && _lastNameController.text.toString().isNotEmpty ){
+                            _subAccountBloc.add(dosubAccountEvent(
+                                (Constants.subAccountList.length+1),
+                                _firstNameController.text.toString(),
+                                _lastNameController.text.toString(),
+                                gender,
+                                _selectedItem.toString()
+                            ));
+                          }
+                          else{
+                            _scaffoldKey.currentState.showSnackBar(
+                                SnackBar(
+                                  content: Text(Strings().getFillDataString()),
+                                  duration: Duration(seconds: 3),
+                                ));
+                          }
+
+
                         }, Strings().getSaveStrings(), isFilledColor: true),
                         // SizedBox(height: 20),
                         // Row(
@@ -337,7 +440,9 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
 
               ],
             ),
-          ),
+          );
+        },
+        ),
         ),
       ),
     );

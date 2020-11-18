@@ -1,3 +1,5 @@
+import 'package:Signs/Blocs/home%20bloc/home_bloc.dart';
+import 'package:Signs/Blocs/medication%20bloc/medication_bloc.dart';
 import 'package:Signs/Utils/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,9 +8,12 @@ import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/strings.dart';
 import 'package:Signs/Utils/styles.dart';
 import 'package:Signs/widgets/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:intl/intl.dart';
 
+import 'home_screen.dart';
+import 'landing_screen.dart';
 import 'medicine_form.dart';
 
 class AddMedication extends StatefulWidget {
@@ -24,20 +29,66 @@ class _AddMedicationState extends State<AddMedication> {
   TextEditingController _nameController = TextEditingController();
   TextEditingController _timeController = TextEditingController();
   TextEditingController _numberController = TextEditingController(text: '0');
+  TextEditingController _noteController = TextEditingController();
+  TextEditingController _durationController = TextEditingController();
+  MedicationBloc _medicationBloc;
+  bool isLoading = false;
 
+  @override
+  void dispose() {
+    super.dispose();
+    _nameController.dispose();
+    _timeController.dispose();
+    _numberController.dispose();
+    _noteController.dispose();
+    _durationController.dispose();
 
+  }
 
+  @override
+  void initState() {
+    super.initState();
+    _medicationBloc = MedicationBloc();
+  }
 
   @override
   Widget build(BuildContext context) {
-    Constants.medications = [false, false, false,false, false, false,false, false, false,false, false];
     return Container(
       color: defaultBackgroundColor,
       child: SafeArea(
         bottom: false,
         child: Scaffold(
-          body: Container(
-            // height: MediaQuery.of(context).size.height,
+          key: _scaffoldKey,
+          body: BlocBuilder<MedicationBloc, MedicationState>(
+          bloc: _medicationBloc,
+          builder: (context, state) {
+
+            if (state is MedicationLoadingState) {
+              if (!isLoading) {
+                showLoadingDialog(context);
+                isLoading = true;
+              }
+            }
+            else if (state is MedicationLoadedState) {
+              print('loaded');
+
+              Future.delayed(Duration(milliseconds: 1), () {
+                if (state.medicationresponse.code != 200) {
+                  Constants.medicationList.add(_medicationBloc);
+                  _scaffoldKey.currentState.showSnackBar(
+                      SnackBar(content: Text(state.medicationresponse.msg)));
+                  Navigator.of(context).pop();
+                } else {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => HomeScreen()));
+                }
+                _medicationBloc.add(resetMedicationState());
+                isLoading = false;
+              });
+            }
+
+
+          return Container(
             child: Stack(
               children: <Widget>[
                 Container(
@@ -119,7 +170,7 @@ class _AddMedicationState extends State<AddMedication> {
                                         errorBorder: InputBorder.none,
                                         disabledBorder: InputBorder.none,
                                       ),
-                                      keyboardType: TextInputType.number,
+                                      keyboardType: TextInputType.text,
                                     ),
                                   ),
                                 ),
@@ -148,8 +199,6 @@ class _AddMedicationState extends State<AddMedication> {
                                     fontSize: 17)),
                             SizedBox(
                                 width: MediaQuery.of(context).size.width - 240),
-
-
                             new GestureDetector(
                               onTap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
@@ -166,7 +215,10 @@ class _AddMedicationState extends State<AddMedication> {
                           ],
                         ),
                         SizedBox(height: 10),
-                        Container(
+                    // Container(
+                    // ),
+
+                      Container(
                           width: double.infinity,
                           height: 120,
                           child: ListView.builder(
@@ -300,7 +352,33 @@ class _AddMedicationState extends State<AddMedication> {
                                         errorBorder: InputBorder.none,
                                         disabledBorder: InputBorder.none,
                                       ),
-                                      keyboardType: TextInputType.number,
+                                      // keyboardType: TextInputType.number,
+                                      onTap: () {
+                                        DatePicker.showTime12hPicker(
+                                            context,
+                                            showTitleActions: true,
+                                            onChanged: (date) {
+                                              _timeController.text =
+                                              (DateFormat('kk:mm a')
+                                                  .format(date)
+                                                  .toString());
+                                              print(
+                                                  'change $date in time zone ' +
+                                                      date.timeZoneOffset
+                                                          .inHours
+                                                          .toString());
+                                            }, onConfirm: (date) {
+                                          _timeController.text =
+                                          (DateFormat('kk:mm a')
+                                              .format(date)
+                                              .toString());
+                                          Constants.signUpData
+                                              .setWakeupTime(
+                                              DateFormat('kk:mm')
+                                                  .format(date)
+                                                  .toString());
+                                        }, currentTime: DateTime.now());
+                                      },
                                     ),
                                   ),
                                 ),
@@ -369,6 +447,7 @@ class _AddMedicationState extends State<AddMedication> {
                                 Expanded(
                                   child: Container(
                                     child: TextField(
+                                      controller: _durationController,
                                       textAlign: TextAlign.center,
                                       decoration: InputDecoration(
                                         hintText: '20 days',
@@ -414,6 +493,7 @@ class _AddMedicationState extends State<AddMedication> {
                                 Expanded(
                                   child: Container(
                                     child: TextField(
+                                        controller: _noteController,
                                         textAlign: TextAlign.center,
                                         decoration: InputDecoration(
                                           hintText:
@@ -441,8 +521,26 @@ class _AddMedicationState extends State<AddMedication> {
                         ),
                         SizedBox(height: 20),
                         button(() {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => SignupScreenStep2()));
+
+                          if(_timeController.text.toString().isNotEmpty && _nameController.text.toString().isNotEmpty && _durationController.text.toString().isNotEmpty && _noteController.text.toString().isNotEmpty && _numberController.text.toString().isNotEmpty){
+                            _medicationBloc.add(doMedicationEvent(
+                                 (Constants.medicationList.length+1).toString(),
+                                _nameController.text.toString(),
+                                getid(Constants.medications).toString(),
+                                _numberController.text.toString(),
+                                _durationController.text.toString(),
+                                _noteController.text.toString(),
+                                _timeController.text.toString()
+                            ));
+                          }
+                          else{
+                            _scaffoldKey.currentState.showSnackBar(
+                                SnackBar(
+                                  content: Text(Strings().getFillDataString()),
+                                  duration: Duration(seconds: 3),
+                                ));
+                          }
+
                         }, Strings().getDoneStrings(), isFilledColor: true),
                         Spacer()
                       ],
@@ -474,6 +572,9 @@ class _AddMedicationState extends State<AddMedication> {
                 ),
               ],
             ),
+          );
+
+          },
           ),
         ),
       ),
@@ -607,5 +708,14 @@ class _AddMedicationState extends State<AddMedication> {
         ],
       ),
     );
+  }
+
+  int getid(List<bool> medications) {
+    int result=0;
+    for (int i=0;i<medications.length -1;i++){
+      if(medications[i]== true)
+        result=i+1;
+    }
+    return result;
   }
 }

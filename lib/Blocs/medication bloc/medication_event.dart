@@ -5,7 +5,7 @@ abstract class MedicationEvent {}
 
 
 class doMedicationEvent extends MedicationEvent {
-  int medicationNumber;
+  String medicationNumber;
   String medicationName;
   String medicationFormId;
   String medicationDose;
@@ -23,4 +23,4 @@ class doMedicationEvent extends MedicationEvent {
       this.medicationTime);
 }
 
-class resetSignupState extends MedicationEvent {}
+class resetMedicationState extends MedicationEvent {}
