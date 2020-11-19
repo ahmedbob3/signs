@@ -36,6 +36,8 @@ dependencies:
   url_launcher: ^5.7.2
   flutter_swipe_action_cell: ^1.2.2
   flutter_slidable: ^0.5.7
+  wc_form_validators: ^0.1.1
+
 
 
 
@@ -100,6 +102,11 @@ flutter:
     - family: Font-SemiBold
       fonts:
         - asset: assets/fonts/SF-Pro-Display-Semibold.otf
+    - family: Font-HeavyBold
+      fonts:
+        - asset: assets/fonts/SF-Pro-Display-Heavy.otf
+
+
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

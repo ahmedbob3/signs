@@ -8,6 +8,10 @@ const lightFontFamily = 'Font-Light';
 const mediumFontFamily = 'Font-Medium';
 const boldFontFamily = 'Font-Bold';
 const semiBoldFontFamily = 'Font-SemiBold';
+const HeavyBoldFontFamily = 'Font-HeavyBold';
+
+
+
 
 const defaultBackgroundColor = Color.fromRGBO(0, 81, 173, 1);
 const greyColor = Color.fromRGBO(122, 134, 154, 1);

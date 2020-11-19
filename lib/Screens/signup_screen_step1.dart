@@ -40,7 +40,11 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
         bottom: false,
         child: Scaffold(
           key : _scaffoldKey,
-          body: Container(
+        body: new GestureDetector(
+        onTap: () {
+      FocusScope.of(context).requestFocus(new FocusNode());
+    },
+          child: Container(
             height: MediaQuery.of(context).size.height,
             child: Stack(
               children: <Widget>[
@@ -69,7 +73,7 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                             Text(
                               Strings().getSignupStrings(),
                               style: titleStyle(
-                                  fontFamily: boldFontFamily,
+                                  fontFamily: HeavyBoldFontFamily,
                                   color: headerColor,
                                   fontSize: 24),
                             ),
@@ -181,7 +185,7 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                               ),
                             ),
                         SizedBox(height: 20),
-                        Text(Strings().getPasswordStrings(),
+                        Text(Strings().getPassword(),
                             style: titleStyle(
                                 fontFamily: semiBoldFontFamily,
                                 color: greyHeader,
@@ -219,6 +223,7 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                                         disabledBorder: InputBorder.none,
                                       ),
                                       textInputAction: TextInputAction.next,
+                                      onEditingComplete: () => FocusScope.of(context).nextFocus(), // Move focus to next
                                       obscureText: true,
                                       keyboardType: TextInputType.text,
                                     ),
@@ -229,7 +234,7 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                           ),
                         ),
                         SizedBox(height: 20),
-                        Text(Strings().getConfirmStrings(),
+                        Text(Strings().getConfirmPasswordStrings(),
                             style: titleStyle(
                                 fontFamily: semiBoldFontFamily,
                                 color: greyHeader,
@@ -253,7 +258,7 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                                       controller: _confirmController,
                                       decoration: InputDecoration(
                                         hintText: Strings()
-                                            .getConfirmPasswordStrings(),
+                                            .getEnterPasswordStrings(),
                                         hintStyle: titleStyle(
                                             fontFamily: mediumFontFamily,
                                             color: greyColor,
@@ -298,7 +303,7 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                         else{
                           _scaffoldKey.currentState.showSnackBar(
                               SnackBar(
-                                content: Text(Strings().getPasswordLength()),
+                                content: Text(Strings().getPasswordStrings()),
                                 duration: Duration(seconds: 3),
                               ));
 
@@ -352,6 +357,7 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
             ),
           ),
         ),
+      ),
       ),
     );
   }

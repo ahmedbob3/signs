@@ -237,6 +237,19 @@ class Strings {
         return Strings_EN.SING_UP_PASSWORD_CONFIRM;
     }
   }
+
+  String getPassword() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SING_UP_PASSWORD_TEXT;
+        break;
+      case languages.Indian:
+        return Strings_INR.SING_UP_PASSWORD_TEXT;
+        break;
+      default:
+        return Strings_EN.SING_UP_PASSWORD_TEXT;
+    }
+  }
   String getPasswordStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:

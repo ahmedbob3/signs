@@ -13,6 +13,7 @@ class Strings_AR {
   static const String SING_UP_STEP2 = 'Step 2/3';
   static const String SING_UP_STEP3 = 'Step 3/3';
   static const String SING_UP_PASSWORD = 'Empty Password';
+  static const String SING_UP_PASSWORD_TEXT = 'Password';
   static const String SING_UP_PASSWORD_LENGTH = 'Password Must be Greater Than 8 Characters';
   static const String SING_UP_PASSWORD_CONFIRM = 'Password & Confirm Password Must be Identical';
   static const String SING_UP_CONFIRM = 'confirm';
@@ -26,7 +27,7 @@ class Strings_AR {
   static const String SING_UP_FIRST_NAME = 'First Name';
   static const String SING_UP_ENTER_FIRST = 'Enter Your First Name';
   static const String SING_UP_LAST_NAME = 'Last Name';
-  static const String SING_UP_ENTER_LAST = 'Enter Your First Name';
+  static const String SING_UP_ENTER_LAST = 'Enter Your Last Name';
   static const String SING_UP_EMAIL = 'Email address';
   static const String SING_UP_ENTER_EMAIL = 'Enter your email address';
   static const String SING_UP_ADD_SUB_ACCOUNT = 'Add Sub account';
