@@ -8,7 +8,7 @@ import '../base_repo.dart';
 
 class SubAccountRepo extends BaseRepo {
   Future<SubAccountModel> subAccountInsert(
-  int subAccountId,
+      String subAccountId,
   String subAccountFirstName,
   String subAccountLastName,
   String subAccountGender,

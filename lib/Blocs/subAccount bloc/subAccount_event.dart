@@ -5,7 +5,7 @@ abstract class subAccountEvent {}
 
 
 class dosubAccountEvent extends subAccountEvent {
-  int subAccountId;
+  String subAccountId;
   String subAccountFirstName;
   String subAccountLastName;
   String subAccountGender;

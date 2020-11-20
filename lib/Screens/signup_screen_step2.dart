@@ -29,7 +29,9 @@ class _SignupScreenStep2State extends State<SignupScreenStep2> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   var maleKey = GlobalKey<FormFieldState>();
   var femaleKey = GlobalKey<FormFieldState>();
-  bool isActive = false;
+  bool isActiveFemale = false;
+  bool isActiveMale = false;
+
 
   final bedTimeController = TextEditingController();
   final wakeTimeController = TextEditingController();
@@ -253,15 +255,16 @@ class _SignupScreenStep2State extends State<SignupScreenStep2> {
                                 child: new GestureDetector(
                                   onTap: () {
                                     setState(() {
-                                      isActive = !isActive;
-                                      if (isActive == true)
+                                      isActiveMale = !isActiveMale;
+                                      isActiveFemale = !isActiveMale;
+                                      if (isActiveMale == true)
                                         Constants.signUpData.setGender(
                                             Strings().getMaleStrings());
                                     });
                                   },
                                   child: buttonChangeState(
                                       Male_inactive, Strings().getMaleStrings(),
-                                      isFActive: !isActive),
+                                      isFActive: isActiveMale),
                                 ),
                               ),
                               SizedBox(width: 10),
@@ -269,15 +272,16 @@ class _SignupScreenStep2State extends State<SignupScreenStep2> {
                                 child: new GestureDetector(
                                   onTap: () {
                                     setState(() {
-                                      isActive = !isActive;
-                                      if (isActive == true)
+                                      isActiveFemale = !isActiveFemale;
+                                      isActiveMale = !isActiveFemale;
+                                      if (isActiveFemale == true)
                                         Constants.signUpData.setGender(
                                             Strings().getFemaleStrings());
                                     });
                                   },
                                   child: buttonChangeState(Female_active,
                                       Strings().getFemaleStrings(),
-                                      isFActive: isActive),
+                                      isFActive: isActiveFemale),
                                 ),
                               ),
                             ],
@@ -350,38 +354,12 @@ class _SignupScreenStep2State extends State<SignupScreenStep2> {
                               Expanded(
                                 child: button(() {
 
-                                  if ((_firstNameController.text
-                                                  .toString()
-                                                  .length >
-                                              2 &&
-                                          _firstNameController.text
-                                                  .toString()
-                                                  .length <=
-                                              20) &&
-                                      (_lastNameController.text
-                                                  .toString()
-                                                  .length >
-                                              2 &&
-                                          _lastNameController.text
-                                                  .toString()
-                                                  .length <=
-                                              20)) {
-                                    if (_emailController.text
-                                            .toString()
-                                            .contains('@') &&
-                                        _emailController.text
-                                            .toString()
-                                            .contains('.')) {
-                                      Constants.signUpData.setFirstName(
-                                          _firstNameController.text.toString());
-                                      Constants.signUpData.setLastName(
-                                          _lastNameController.text.toString());
-                                      Constants.signUpData.setEmail(
-                                          _emailController.text.toString());
-                                      Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  SignupScreenStep3()));
+                                  if ((_firstNameController.text.toString().length > 2 && _firstNameController.text.toString().length <= 20) && (_lastNameController.text.toString().length > 2 && _lastNameController.text.toString().length <= 20)) {
+                                    if (_emailController.text.toString().contains('@') && _emailController.text.toString().contains('.')) {
+                                      Constants.signUpData.setFirstName(_firstNameController.text.toString());
+                                      Constants.signUpData.setLastName(_lastNameController.text.toString());
+                                      Constants.signUpData.setEmail(_emailController.text.toString());
+                                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => SignupScreenStep3()));
                                     } else {
                                       _scaffoldKey.currentState
                                           .showSnackBar(SnackBar(

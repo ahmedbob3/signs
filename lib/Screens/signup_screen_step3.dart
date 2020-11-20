@@ -54,8 +54,12 @@ class _SignupScreenStep3State extends State<SignupScreenStep3> {
         child: SafeArea(
           bottom: false,
           child: Scaffold(
-            key: _scaffoldKey,
-            body: BlocBuilder<SignUpBloc, SignUpState>(
+          key : _scaffoldKey,
+          body: new GestureDetector(
+        onTap: () {
+      FocusScope.of(context).requestFocus(new FocusNode());
+    },
+    child: BlocBuilder<SignUpBloc, SignUpState>(
               bloc: _signUpBloc,
               builder: (context, state) {
                 if (state is SignUpLoadingState) {
@@ -160,7 +164,7 @@ class _SignupScreenStep3State extends State<SignupScreenStep3> {
                                           child: TextField(
                                             controller: dateOfBirthController,
                                             decoration: InputDecoration(
-                                              hintText: "1992-05-07",
+                                              hintText: "07-05-1992",
                                               hintStyle: titleStyle(
                                                   fontFamily: mediumFontFamily,
                                                   color: greyColor,
@@ -173,7 +177,7 @@ class _SignupScreenStep3State extends State<SignupScreenStep3> {
                                               errorBorder: InputBorder.none,
                                               disabledBorder: InputBorder.none,
                                             ),
-                                            keyboardType: TextInputType.number,
+                                            // keyboardType: TextInputType.number,
                                             onTap: () {
                                               DatePicker.showDatePicker(context,
                                                   showTitleActions: true,
@@ -194,7 +198,7 @@ class _SignupScreenStep3State extends State<SignupScreenStep3> {
                                                           fontSize: 16)),
                                                   onChanged: (date) {
                                                 dateOfBirthController.text =
-                                                    (DateFormat('yyyy-MM-dd')
+                                                    (DateFormat('dd-MM-yyyy')
                                                         .format(date)
                                                         .toString());
                                                 print(
@@ -204,7 +208,7 @@ class _SignupScreenStep3State extends State<SignupScreenStep3> {
                                                             .toString());
                                               }, onConfirm: (date) {
                                                 dateOfBirthController.text =
-                                                    (DateFormat('yyyy-MM-dd')
+                                                    (DateFormat('dd-MM-yyyy')
                                                         .format(date)
                                                         .toString());
                                                 Constants.signUpData
@@ -397,14 +401,14 @@ class _SignupScreenStep3State extends State<SignupScreenStep3> {
                                               errorBorder: InputBorder.none,
                                               disabledBorder: InputBorder.none,
                                             ),
-                                            keyboardType: TextInputType.number,
+                                            // keyboardType: TextInputType.number,
                                             onTap: () {
                                               DatePicker.showTime12hPicker(
                                                   context,
                                                   showTitleActions: true,
                                                   onChanged: (date) {
                                                 bedTimeController.text =
-                                                    (DateFormat('kk:mm a')
+                                                    (DateFormat('hh:mm a')
                                                         .format(date)
                                                         .toString());
                                                 print(
@@ -414,11 +418,11 @@ class _SignupScreenStep3State extends State<SignupScreenStep3> {
                                                             .toString());
                                               }, onConfirm: (date) {
                                                 bedTimeController.text =
-                                                    (DateFormat('kk:mm a')
+                                                    (DateFormat('hh:mm a')
                                                         .format(date)
                                                         .toString());
                                                 Constants.signUpData.setBedTime(
-                                                    DateFormat('kk:mm')
+                                                    DateFormat('hh:mm')
                                                         .format(date)
                                                         .toString());
                                               }, currentTime: DateTime.now());
@@ -468,14 +472,14 @@ class _SignupScreenStep3State extends State<SignupScreenStep3> {
                                               errorBorder: InputBorder.none,
                                               disabledBorder: InputBorder.none,
                                             ),
-                                            keyboardType: TextInputType.number,
+                                            // keyboardType: TextInputType.number,
                                             onTap: () {
                                               DatePicker.showTime12hPicker(
                                                   context,
                                                   showTitleActions: true,
                                                   onChanged: (date) {
                                                 wakeTimeController.text =
-                                                    (DateFormat('kk:mm a')
+                                                    (DateFormat('hh:mm a')
                                                         .format(date)
                                                         .toString());
                                                 print(
@@ -485,12 +489,12 @@ class _SignupScreenStep3State extends State<SignupScreenStep3> {
                                                             .toString());
                                               }, onConfirm: (date) {
                                                 wakeTimeController.text =
-                                                    (DateFormat('kk:mm a')
+                                                    (DateFormat('hh:mm a')
                                                         .format(date)
                                                         .toString());
                                                 Constants.signUpData
                                                     .setWakeupTime(
-                                                        DateFormat('kk:mm')
+                                                        DateFormat('hh:mm')
                                                             .format(date)
                                                             .toString());
                                               }, currentTime: DateTime.now());
@@ -614,6 +618,7 @@ class _SignupScreenStep3State extends State<SignupScreenStep3> {
 
               },
             ),
+          ),
           ),
         ),
       ),

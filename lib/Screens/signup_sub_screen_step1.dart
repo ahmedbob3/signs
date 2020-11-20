@@ -10,6 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 
 import 'check_mobile_screen.dart';
+import 'landing_screen.dart';
 
 class SignupSubAccountScreenStep1 extends StatefulWidget {
   SignupSubAccountScreenStep1({Key key}) : super(key: key);
@@ -27,12 +28,14 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
   List<DropdownMenuItem<ListItem>> _dropdownMenuItems;
   ListItem _selectedItem;
   subAccountBloc _subAccountBloc;
-  bool isActive = false;
+  bool isActiveFemale = false;
+  bool isActiveMale = false;
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   TextEditingController _firstNameController = TextEditingController();
   TextEditingController _lastNameController = TextEditingController();
   TextEditingController _genderController = TextEditingController(text: '0');
   TextEditingController _relationController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
   bool isLoading = false;
   String gender="";
 
@@ -77,9 +80,12 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
         bottom: false,
         child: Scaffold(
           key: _scaffoldKey,
+        body: new GestureDetector(
+        onTap: () {
+      FocusScope.of(context).requestFocus(new FocusNode());
+    },
 
-
-        body: BlocBuilder<subAccountBloc, subAccountState>(
+        child: BlocBuilder<subAccountBloc, subAccountState>(
         bloc: _subAccountBloc,
         builder: (context, state) {
 
@@ -101,9 +107,11 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
           }
           else {
 
-            _scaffoldKey.currentState.showSnackBar(
-                SnackBar(content: Text(state.subAccountresponse.msg)));
-          Navigator.of(context).pop();
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) => LandingScreen()));
+          //   _scaffoldKey.currentState.showSnackBar(
+          //       SnackBar(content: Text(state.subAccountresponse.msg)));
+          // Navigator.of(context).pop();
 
           }
           _subAccountBloc.add(resetsubAccountState());
@@ -114,6 +122,8 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
 
       return Container(
             height: MediaQuery.of(context).size.height,
+          child: Form(
+          key: formKey,
             child: Stack(
               children: <Widget>[
                 Container(
@@ -157,7 +167,7 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
                           decoration: BoxDecoration(
                               color: textFieldFill,
                               border: Border.all(
-                                color: textFieldBorder,
+                                color: _firstNameController.text.isNotEmpty  ? textFieldBorder : Colors.red[700],
                               ),
                               borderRadius: BorderRadius.circular(18)),
                           child: Padding(
@@ -166,8 +176,10 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
                               children: <Widget>[
                                 Expanded(
                                   child: Container(
-                                    child: TextField(
+                                    child: TextFormField(
                                     controller : _firstNameController,
+                                        textCapitalization:
+                                        TextCapitalization.sentences,
                                       decoration: InputDecoration(
                                         hintText:
                                             Strings().getEnterFirstStrings(),
@@ -177,13 +189,32 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
                                             fontSize: 16),
                                         labelStyle:
                                             titleStyle(color: greyColor),
+
                                         border: InputBorder.none,
                                         focusedBorder: InputBorder.none,
                                         enabledBorder: InputBorder.none,
                                         errorBorder: InputBorder.none,
                                         disabledBorder: InputBorder.none,
                                       ),
-                                      keyboardType: TextInputType.number,
+                                        validator: (value) {
+                                          setState(() {
+                                            if (value.isEmpty) {
+                                              _scaffoldKey.currentState
+                                                  .showSnackBar(SnackBar(
+                                                content: Text(
+                                                    Strings().getEnterFirstStrings()),
+                                                duration: Duration(seconds: 2),
+                                              ));
+                                            }
+                                          });
+
+                                          return null;
+                                        },
+                                        textInputAction: TextInputAction.next,
+                                        keyboardType: TextInputType.text,
+                                        onEditingComplete: () {
+                                          FocusScope.of(context).nextFocus();
+                                        } // Move focus to next
                                     ),
                                   ),
                                 ),
@@ -203,7 +234,7 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
                           decoration: BoxDecoration(
                               color: textFieldFill,
                               border: Border.all(
-                                color: textFieldBorder,
+                                color: _firstNameController.text.isNotEmpty  ? textFieldBorder : Colors.red[700],
                               ),
                               borderRadius: BorderRadius.circular(18)),
                           child: Padding(
@@ -212,7 +243,7 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
                               children: <Widget>[
                                 Expanded(
                                   child: Container(
-                                    child: TextField(
+                                    child: TextFormField(
                                       controller : _lastNameController,
                                       decoration: InputDecoration(
                                         hintText:
@@ -229,7 +260,28 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
                                         errorBorder: InputBorder.none,
                                         disabledBorder: InputBorder.none,
                                       ),
-                                      keyboardType: TextInputType.number,
+                                        validator: (value) {
+                                          setState(() {
+                                            if (value.isEmpty) {
+                                              _scaffoldKey.currentState
+                                                  .showSnackBar(SnackBar(
+                                                content: Text(
+                                                    Strings().getEnterLastStrings()),
+                                                duration: Duration(seconds: 2),
+                                              ));
+                                            }
+                                          });
+
+                                          return null;
+                                        },
+                                        textInputAction: TextInputAction.done,
+                                        keyboardType: TextInputType.text,
+                                        onEditingComplete: () => FocusScope.of(
+                                            context)
+                                            .nextFocus(), // Move focus to next
+                                        onTap: () {
+                                          formKey.currentState.validate();
+                                        }
                                     ),
                                   ),
                                 ),
@@ -251,15 +303,16 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
                               new GestureDetector(
                                   onTap: () {
                                     setState(() {
-                                      isActive=!isActive;
-                                      if(isActive==true)
+                                      isActiveMale = !isActiveMale;
+                                      isActiveFemale = !isActiveMale;
+                                      if(isActiveMale==true)
                                         gender= Strings().getMaleStrings();
                                     });
                                   },
                                   child:
                               buttonChangeState(
                                   Male_inactive, Strings().getMaleStrings(),
-                                  isFActive: false),
+                                  isFActive: isActiveMale),
                             ),
                             ),
                             SizedBox(width: 10),
@@ -269,15 +322,16 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
                               new GestureDetector(
                                   onTap: () {
                                     setState(() {
-                                      isActive=!isActive;
-                                      if(isActive==true)
+                                      isActiveFemale = !isActiveFemale;
+                                      isActiveMale = !isActiveFemale;
+                                      if (isActiveFemale == true)
                                         gender= Strings().getFemaleStrings();
                                     });
                                   },
                                   child:
                               buttonChangeState(
                                   Female_active, Strings().getFemaleStrings(),
-                                  isFActive: true),
+                                  isFActive: isActiveFemale),
                             ),
       ),
                           ],
@@ -346,27 +400,27 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
                             ),
                           ),
                         ),
-                        SizedBox(height: 20),
+                        // SizedBox(height: 40),
 
-                        new GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => SignupSubAccountScreenStep1()));
-                          },
-                          child: buttonWithIcon(Add_subaccount, Strings().getSingAddAnotherStrings(),isBackground: true),
-                        ),
-                        SizedBox(height: 30),
+                        // new GestureDetector(
+                        //   onTap: () {
+                        //     Navigator.of(context).push(MaterialPageRoute(
+                        //         builder: (context) => SignupSubAccountScreenStep1()));
+                        //   },
+                        //   child: buttonWithIcon(Add_subaccount, Strings().getSingAddAnotherStrings(),isBackground: true),
+                        // ),
+                        SizedBox(height: 80),
                         button(() {
 
                           //gender
 
                           if(_firstNameController.text.toString().isNotEmpty && _lastNameController.text.toString().isNotEmpty ){
                             _subAccountBloc.add(dosubAccountEvent(
-                                (Constants.subAccountList.length+1),
+                                (Constants.subAccountList.length+1).toString(),
                                 _firstNameController.text.toString(),
                                 _lastNameController.text.toString(),
                                 gender,
-                                _selectedItem.toString()
+                                _selectedItem.name.toString()
                             ));
                           }
                           else{
@@ -440,11 +494,16 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
 
               ],
             ),
+      ),
+
           );
         },
         ),
         ),
-      ),
+        ),
+        ),
+    // ),
+    // ),
     );
   }
 
