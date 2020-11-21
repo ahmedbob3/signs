@@ -7,6 +7,7 @@ import 'package:Signs/Models/login_model.dart';
 import 'package:Signs/Utils/apis.dart';
 import 'package:Signs/Utils/constants.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import '../base_repo.dart';
 
 class LoginRepo extends BaseRepo {
@@ -26,13 +27,20 @@ class LoginRepo extends BaseRepo {
   }
 
   Future<LoginModel> doLogin(String mobileNumber, String password) async {
-    Map<String, dynamic> params = {"mobile": mobileNumber, "password" : password};
+    Map<String, dynamic> params = {
+      "mobile": mobileNumber,
+      "password": password
+    };
     var response = await http.post(
       Uri.encodeFull(APIS.serverURL + APIS.LOGIN_API),
       body: params,
     );
     var decodedResponse = json.decode(response.body);
-    print('response .. ${response.body}');
+    print('login response .. ${response.body}');
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('mobileNumber', mobileNumber);
+    prefs.setString('password', password);
     // if (response is SignsError) {
     //   throw NetworkException(decodedResponse.errorMessage);
     // }

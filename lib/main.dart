@@ -1,6 +1,7 @@
 import 'package:country_codes/country_codes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:Signs/Screens/check_mobile_screen.dart';
 import 'package:Signs/Screens/landing_screen.dart';
@@ -10,6 +11,7 @@ import 'package:Signs/Screens/splash_screen.dart';
 import 'package:Signs/Screens/welcome_screen.dart';
 import 'package:Signs/Utils/styles.dart';
 
+import 'Blocs/login mobile bloc/login_mobile_bloc.dart';
 import 'Utils/constants.dart';
 
 void main() async {
@@ -24,7 +26,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -36,18 +37,20 @@ class _MyAppState extends State<MyApp> {
       DeviceOrientation.portraitDown,
     ]);
     return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        fontFamily: 'Font-Regular',
-        // backgroundColor: defaultBackgroundColor,
-        // canvasColor: defaultBackgroundColor,
-        //  theme: ThemeData(canvasColor: Colors.transparent)
-        primaryColor: defaultBackgroundColor,
-        // scaffoldBackgroundColor: defaultBackgroundColor,
-      ),
-      home: SplashScreen()
-    );
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          fontFamily: 'Font-Regular',
+          // backgroundColor: defaultBackgroundColor,
+          // canvasColor: defaultBackgroundColor,
+          //  theme: ThemeData(canvasColor: Colors.transparent)
+          primaryColor: defaultBackgroundColor,
+          // scaffoldBackgroundColor: defaultBackgroundColor,
+        ),
+        home: BlocProvider(
+          create: (context) => LoginBloc(),
+          child: SplashScreen(),
+        ));
   }
 }
