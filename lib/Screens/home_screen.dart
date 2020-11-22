@@ -99,52 +99,78 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     SizedBox(height: 20),
                     // subaccounts ..
-                    Row(
-                      children: <Widget>[
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) =>
-                                      SignupSubAccountScreenStep1()));
-                            });
-                          },
-                          child: CircleAvatar(
-                            radius: 24,
-                            backgroundColor: Colors.white,
-                            child: CircleAvatar(
-                                radius: 22,
-                                backgroundColor: Color.fromRGBO(0, 54, 115, 1),
-                                child: Icon(
-                                  Icons.add,
-                                  color: Colors.white,
-                                )),
-                          ),
-                        ),
-                        SizedBox(width: 10),
-                        CircleAvatar(
-                          radius: 24,
-                          backgroundColor: Colors.white,
-                          child: CircleAvatar(
-                            radius: 22,
-                            backgroundColor: Color.fromRGBO(0, 54, 115, 1),
-                            child: Text('NH',
-                                style: titleStyle(
-                                    fontFamily: boldFontFamily, fontSize: 18)),
-                          ),
-                        ),
-                        SizedBox(width: 10),
-                        CircleAvatar(
-                          radius: 24,
-                          backgroundColor: Colors.white70,
-                          child: Text('ML',
-                              style: titleStyle(
-                                  fontFamily: boldFontFamily,
-                                  fontSize: 18,
-                                  color: Color.fromRGBO(163, 172, 194, 1))),
-                        )
-                      ],
+                    Container(
+                      width: double.infinity,
+                      height: 50,
+                      child: ListView.builder(
+                          itemCount: Constants.subAccountList.length + 1,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return index == 0
+                                ? GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    SignupSubAccountScreenStep1()));
+                                      });
+                                    },
+                                    child: CircleAvatar(
+                                      radius: 24,
+                                      backgroundColor: Colors.white,
+                                      child: CircleAvatar(
+                                          radius: 22,
+                                          backgroundColor:
+                                              Color.fromRGBO(0, 54, 115, 1),
+                                          child: Icon(
+                                            Icons.add,
+                                            color: Colors.white,
+                                          )),
+                                    ),
+                                  )
+                                : CircleAvatar(
+                                    radius: 24,
+                                    backgroundColor: Colors.white,
+                                    child: CircleAvatar(
+                                      radius: 22,
+                                      backgroundColor:
+                                          Color.fromRGBO(0, 54, 115, 1),
+                                      child: Text('NH',
+                                          style: titleStyle(
+                                              fontFamily: boldFontFamily,
+                                              fontSize: 18)),
+                                    ),
+                                  );
+                          }),
                     ),
+                    // Row(
+                    //   children: <Widget>[
+
+                    //     SizedBox(width: 10),
+                    //     CircleAvatar(
+                    //       radius: 24,
+                    //       backgroundColor: Colors.white,
+                    //       child: CircleAvatar(
+                    //         radius: 22,
+                    //         backgroundColor: Color.fromRGBO(0, 54, 115, 1),
+                    //         child: Text('NH',
+                    //             style: titleStyle(
+                    //                 fontFamily: boldFontFamily, fontSize: 18)),
+                    //       ),
+                    //     ),
+                    //     SizedBox(width: 10),
+                    //     CircleAvatar(
+                    //       radius: 24,
+                    //       backgroundColor: Colors.white70,
+                    //       child: Text('ML',
+                    //           style: titleStyle(
+                    //               fontFamily: boldFontFamily,
+                    //               fontSize: 18,
+                    //               color: Color.fromRGBO(163, 172, 194, 1))),
+                    //     )
+                    //   ],
+                    // ),
 
                     SizedBox(height: 80),
                     // Upcoming reminder ..
