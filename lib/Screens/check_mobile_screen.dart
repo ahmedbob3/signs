@@ -126,13 +126,13 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
                                   style: titleStyle(
                                       fontFamily: mediumFontFamily,
                                       color: greyColor,
-                                      fontSize: 14)),
+                                      fontSize: 16)),
                               SizedBox(height: 20),
                               Text(Strings().getMobileNumberString(),
                                   style: titleStyle(
                                       fontFamily: semiBoldFontFamily,
                                       color: greyHeader,
-                                      fontSize: 14)),
+                                      fontSize: 16)),
                               SizedBox(height: 15),
                               Container(
                                 height: 50,

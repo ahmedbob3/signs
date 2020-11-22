@@ -37,7 +37,7 @@ dependencies:
   flutter_swipe_action_cell: ^1.2.2
   flutter_slidable: ^0.5.7
   wc_form_validators: ^0.1.1
-
+  pin_code_fields: 
 
 
 

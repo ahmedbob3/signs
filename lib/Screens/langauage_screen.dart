@@ -73,14 +73,14 @@ class _LangauageScreenState extends State<LangauageScreen> {
                             style: titleStyle(
                                 fontFamily: boldFontFamily,
                                 color: Colors.black,
-                                fontSize: 20),
+                                fontSize: 32),
                           ),
                           SizedBox(height: 10),
                           Text(Strings().getSelectAppLanguageStrings(),
                               style: titleStyle(
-                                  fontSize: 18,
-                                  fontFamily: mediumFontFamily,
-                                  color: defaultBackgroundColor)),
+                                  fontSize: 20,
+                                  fontFamily: boldFontFamily,
+                                  color: Color.fromRGBO(38, 114, 212, 1))),
                           SizedBox(height: 20),
 
                           // arabic language
@@ -99,7 +99,7 @@ class _LangauageScreenState extends State<LangauageScreen> {
                                   Image.asset(Arabic_Flag),
                                   SizedBox(width: 10),
                                   Text(
-                                    'Arabic',
+                                    'Arabic - العربية',
                                     style: titleStyle(
                                         fontFamily: boldFontFamily,
                                         color: Color.fromRGBO(0, 34, 81, 1)),

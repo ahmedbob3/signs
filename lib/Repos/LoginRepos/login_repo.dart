@@ -6,6 +6,7 @@ import 'package:Signs/Models/check_mobile.dart';
 import 'package:Signs/Models/login_model.dart';
 import 'package:Signs/Utils/apis.dart';
 import 'package:Signs/Utils/constants.dart';
+import 'package:Signs/Utils/singleton.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import '../base_repo.dart';
@@ -41,10 +42,9 @@ class LoginRepo extends BaseRepo {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('mobileNumber', mobileNumber);
     prefs.setString('password', password);
-    // if (response is SignsError) {
-    //   throw NetworkException(decodedResponse.errorMessage);
-    // }
     LoginModel modelResponse = LoginModel.fromMap(decodedResponse);
+
+    Singleton().loginModel = modelResponse;
     return modelResponse;
   }
 }

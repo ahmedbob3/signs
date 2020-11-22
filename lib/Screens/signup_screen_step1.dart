@@ -257,8 +257,7 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                                     child: TextField(
                                       controller: _confirmController,
                                       decoration: InputDecoration(
-                                        hintText: Strings()
-                                            .getEnterPasswordStrings(),
+                                        hintText: Strings().getConfirmPasswordStrings(),
                                         hintStyle: titleStyle(
                                             fontFamily: mediumFontFamily,
                                             color: greyColor,

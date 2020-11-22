@@ -103,21 +103,21 @@ class _LoginScreenState extends State<LoginScreen> {
                               Text(
                                 Strings().getSingInText(),
                                 style: titleStyle(
-                                    fontFamily: boldFontFamily,
+                                    fontFamily: HeavyBoldFontFamily,
                                     color: Colors.black,
-                                    fontSize: 20),
+                                    fontSize: 28),
                               ),
                               SizedBox(height: 10),
                               Text(Strings().getSinginSlogan(),
                                   style: titleStyle(
                                       fontFamily: mediumFontFamily,
                                       color: Color.fromRGBO(122, 134, 154, 1))),
-                              SizedBox(height: 20),
+                              SizedBox(height: 22),
                               Text(Strings().getMobileNumberString(),
                                   style: titleStyle(
                                       fontFamily: semiBoldFontFamily,
                                       color: Color.fromRGBO(193, 199, 208, 1))),
-                              SizedBox(height: 20),
+                              SizedBox(height: 22),
                               Container(
                                 height: 50,
                                 decoration: BoxDecoration(
@@ -149,7 +149,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                           hideMainText: true,
                                           dialogTextStyle: titleStyle(
                                               fontFamily: mediumFontFamily,
-                                              color: Colors.black),
+                                              color: Colors.black,),
                                         ),
                                       ),
                                       SizedBox(width: 5),

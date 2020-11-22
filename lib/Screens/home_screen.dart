@@ -1,4 +1,5 @@
 import 'package:Signs/Utils/constants.dart';
+import 'package:Signs/Utils/singleton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:Signs/Blocs/home%20bloc/home_bloc.dart';
@@ -63,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     isLoading = false;
                   }
                 });
-              } 
+              }
 
               return Container(
                 padding: EdgeInsets.all(20),
@@ -80,15 +81,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              Text('Hi Henrietta',
-                                  style: titleStyle(
-                                      fontFamily: boldFontFamily,
-                                      fontSize: 20)),
-                              SizedBox(height: 10),
-                              Text('Nina’s Profile',
-                                  style: titleStyle(
-                                      fontFamily: mediumFontFamily,
-                                      fontSize: 18)),
+                              Text(
+                                Singleton().loginModel.data.uFirstName +
+                                    ' ' +
+                                    Singleton().loginModel.data.uLastName,
+                                style: titleStyle(
+                                    fontFamily: boldFontFamily, fontSize: 20),
+                              ),
                             ],
                           ),
                         ),
