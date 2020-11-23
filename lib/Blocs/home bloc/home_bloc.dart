@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:Signs/Blocs/medication%20bloc/medication_bloc.dart';
+import 'package:Signs/Models/medication_data.dart';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:Signs/Models/hospitals_model.dart';
@@ -19,7 +20,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       yield HomeLoadingState();
      // var response = await LoginRepo().doLogin('01063813377', '123456');
      //  var list = List<String>();
-      var list = List<MedicationBloc>();
+      var list = List<MedicationData>();
       //list.add("medication list ..");
       yield HomeLoadedState(list);
     } else if ( event is resetHomeEvent ){

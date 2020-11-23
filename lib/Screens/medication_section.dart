@@ -1,10 +1,11 @@
 import 'package:Signs/Blocs/medication%20bloc/medication_bloc.dart';
+import 'package:Signs/Models/medication_data.dart';
 import 'package:flutter/material.dart';
 import 'package:Signs/Utils/styles.dart';
 import 'package:Signs/widgets/pill_cell.dart';
 
 class MediciationSection extends StatefulWidget {
-  List<MedicationBloc> medicationList;
+  List<MedicationData> medicationList;
   MediciationSection({Key key, this.medicationList}) : super(key: key);
 
   @override
