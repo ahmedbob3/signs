@@ -41,8 +41,8 @@
 	<string>$(PRODUCT_NAME) needs Location access for Allow Location Access</string>
 	<key>NSMotionUsageDescription</key>
 	<string>$(PRODUCT_NAME) needs Location access for Allow Motion Access</string>
-    <key>NSSpeechRecognitionUsageDescription</key>
-    <string>$(PRODUCT_NAME) needs Location access for Allow Speech Access</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>$(PRODUCT_NAME) needs Location access for Allow Speech Access</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

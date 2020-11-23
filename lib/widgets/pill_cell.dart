@@ -11,7 +11,7 @@ class PillCell extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(10),
-      width: isNewPill ? (MediaQuery.of(context).size.width * 0.87) : 220,
+      width: isNewPill ? (MediaQuery.of(context).size.width * 0.88) : 220,
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),

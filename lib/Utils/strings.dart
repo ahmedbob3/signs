@@ -975,4 +975,29 @@ class Strings {
     }
   }
 
+  String getRemindersStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.UPCOMING_REMINDERS;
+        break;
+      case languages.Indian:
+        return Strings_INR.UPCOMING_REMINDERS;
+        break;
+      default:
+        return Strings_EN.UPCOMING_REMINDERS;
+    }
+  }
+
+  String getHospitalsStrings(){
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.HOSPITALS;
+        break;
+      case languages.Indian:
+        return Strings_INR.HOSPITALS;
+        break;
+      default:
+        return Strings_EN.HOSPITALS;
+    }
+  }
 }

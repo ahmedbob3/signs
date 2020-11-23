@@ -32,7 +32,7 @@ class _LandingScreenState extends State<LandingScreen> {
               child: Stack(
                 children: <Widget>[
                   selectedTabIndex == 0 ? Container(
-                    height: 250,
+                    height: 290,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       image: DecorationImage(

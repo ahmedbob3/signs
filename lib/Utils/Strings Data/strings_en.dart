@@ -74,6 +74,7 @@ class Strings_EN {
   static const String EMAIL_VERIFY = 'Enter Valid Email';
   static const String NAME_LENGTH = 'First & Last Name > 2 & < 20 characters';
   static const String FILL_DATA = 'Please Fill All Data Correctly';
-
+static const String UPCOMING_REMINDERS = 'Upcoming Reminders';
+  static const String HOSPITALS = 'Hospitals';
 
 }

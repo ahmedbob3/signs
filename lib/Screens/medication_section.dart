@@ -1,4 +1,5 @@
 import 'package:Signs/Blocs/medication%20bloc/medication_bloc.dart';
+import 'package:Signs/Utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:Signs/Utils/styles.dart';
 import 'package:Signs/widgets/pill_cell.dart';
@@ -17,13 +18,17 @@ class MediciationSectionState extends State<MediciationSection> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Upcoming Reminder',
-            style: titleStyle(
-                fontFamily: boldFontFamily,
-                fontSize: 22,
-                color: defaultBackgroundColor)),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: Text(Strings().getRemindersStrings(),
+              style: titleStyle(
+                  fontFamily: boldFontFamily,
+                  fontSize: 22,
+                  color: Colors.white)),
+        ),
         Container(
           height: 140,
+          padding: EdgeInsets.symmetric(horizontal: 10),
           child: widget.medicationList.length > 0 ? ListView.builder(
             itemCount: widget.medicationList.length,
             scrollDirection: Axis.horizontal,
