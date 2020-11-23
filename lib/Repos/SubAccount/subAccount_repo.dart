@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:Signs/Models/medication_model.dart';
-import 'package:Signs/Models/subAccount_model.dart';
+import 'package:Signs/Models/response/medication_model.dart';
+import 'package:Signs/Models/response/subAccount_model.dart';
 import 'package:Signs/Utils/apis.dart';
 import 'package:http/http.dart' as http;
 import '../base_repo.dart';

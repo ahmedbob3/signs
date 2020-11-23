@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:Signs/Models/medication_model.dart';
+import 'package:Signs/Models/response/medication_model.dart';
 import 'package:Signs/Repos/Medication/medication_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';

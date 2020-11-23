@@ -1,4 +1,5 @@
 import 'package:Signs/Blocs/subAccount%20bloc/subAccount_bloc.dart';
+import 'package:Signs/Models/subAccount_data.dart';
 import 'package:Signs/Utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:Signs/Screens/signup_screen_step2.dart';
@@ -28,6 +29,7 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
   List<DropdownMenuItem<ListItem>> _dropdownMenuItems;
   ListItem _selectedItem;
   subAccountBloc _subAccountBloc;
+  SubAccountData _subAccountData;
   bool isActiveFemale = false;
   bool isActiveMale = false;
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -56,6 +58,8 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
     _dropdownMenuItems = buildDropDownMenuItems(_dropdownItems);
     _selectedItem = _dropdownMenuItems[0].value;
     _subAccountBloc = subAccountBloc();
+   _subAccountData=SubAccountData();
+
 
   }
 
@@ -100,13 +104,12 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
 
         Future.delayed(Duration(milliseconds: 1), () {
           if (state.subAccountresponse.code != 200) {
-            Constants.subAccountList.add(_subAccountBloc);
             _scaffoldKey.currentState.showSnackBar(
                 SnackBar(content: Text(state.subAccountresponse.msg)));
             Navigator.of(context).pop();
           }
           else {
-
+            Constants.subAccountList.add(_subAccountData);
             Navigator.of(context).pushReplacement(MaterialPageRoute(
                 builder: (context) => LandingScreen()));
           //   _scaffoldKey.currentState.showSnackBar(
@@ -415,6 +418,14 @@ class _SignupSubAccountScreenStep1State extends State<SignupSubAccountScreenStep
                           //gender
 
                           if(_firstNameController.text.toString().isNotEmpty && _lastNameController.text.toString().isNotEmpty ){
+
+                            _subAccountData.setSubAccountId((Constants.subAccountList.length+1).toString());
+                            _subAccountData.setSubAccountFirstName(_firstNameController.text.toString());
+                            _subAccountData.setSubAccountLastName(_lastNameController.text.toString());
+                            _subAccountData.setSubAccountGender(gender);
+                            _subAccountData.setSubAccountRelation(_selectedItem.name.toString());
+
+
                             _subAccountBloc.add(dosubAccountEvent(
                                 (Constants.subAccountList.length+1).toString(),
                                 _firstNameController.text.toString(),

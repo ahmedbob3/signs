@@ -8,7 +8,7 @@ class HomeInitial extends HomeState {}
 class HomeLoadingState extends HomeState {}
 
 class HomeLoadedState extends HomeState {
-  List<MedicationBloc> medicationList;
+  List<MedicationData> medicationList;
   HomeLoadedState(this.medicationList);
 }
 
