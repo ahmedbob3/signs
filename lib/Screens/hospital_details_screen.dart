@@ -1,8 +1,11 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:Signs/Models/hospitals_model.dart';
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/styles.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_share/flutter_share.dart';
 
 class HospitalDetailsScreen extends StatefulWidget {
   Datum hospitalItem;
@@ -22,7 +25,15 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
         iconTheme: IconThemeData(color: Colors.white),
         actions: [
           Image.asset(SearchIcon),
-          Image.asset(ShareIcon),
+          IconButton(
+            icon: Image.asset(ShareIcon),
+            onPressed: () async {
+              await FlutterShare.share(
+                title: 'Hospital',
+                text: widget.hospitalItem.hAbout,
+              );
+            },
+          ),
         ],
         actionsIconTheme: IconThemeData(color: Colors.white),
       ),
@@ -193,10 +204,11 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
                       height: 120,
                       width: double.infinity,
                       child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: widget.hospitalItem.gallery.length,
-                          itemBuilder: (context, index) {
-                            return Container(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: widget.hospitalItem.gallery.length,
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                            child: Container(
                               margin: EdgeInsets.all(5),
                               width: 120,
                               height: 120,
@@ -206,8 +218,36 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
                                       image: NetworkImage(
                                           widget.hospitalItem.gallery[index]),
                                       fit: BoxFit.cover)),
-                            );
-                          }),
+                            ),
+                            onTap: () {
+                              showDialog(
+                                context: (context),
+                                barrierDismissible: true,
+                                builder: (context) {
+                                  return CarouselSlider(
+                                    items: widget.hospitalItem.gallery
+                                        .map((item) => Container(
+                                              child: Center(
+                                                  child: Image.network(item,
+                                                      fit: BoxFit.cover,
+                                                      width: 1000)),
+                                            ))
+                                        .toList(),
+                                    options: CarouselOptions(
+                                      autoPlay: false,
+                                      enlargeCenterPage: true,
+                                      viewportFraction: 0.8,
+                                      aspectRatio: 2.0,
+                                      enableInfiniteScroll: false,
+                                      initialPage: 0,
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                          );
+                        },
+                      ),
                     )
                   ],
                 ),

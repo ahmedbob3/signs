@@ -2,6 +2,8 @@ PODS:
   - country_codes (0.0.1):
     - Flutter
   - Flutter (1.0.0)
+  - flutter_share (0.0.1):
+    - Flutter
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
@@ -20,6 +22,7 @@ PODS:
 DEPENDENCIES:
   - country_codes (from `.symlinks/plugins/country_codes/ios`)
   - Flutter (from `Flutter`)
+  - flutter_share (from `.symlinks/plugins/flutter_share/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
   - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
@@ -35,6 +38,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/country_codes/ios"
   Flutter:
     :path: Flutter
+  flutter_share:
+    :path: ".symlinks/plugins/flutter_share/ios"
   path_provider:
     :path: ".symlinks/plugins/path_provider/ios"
   permission_handler:
@@ -49,6 +54,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   country_codes: b0900f46ad686281d5dab438e354e44ad10f5941
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  flutter_share: 4be0208963c60b537e6255ed2ce1faae61cd9ac2
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
   permission_handler: eac8e15b4a1a3fba55b761d19f3f4e6b005d15b6

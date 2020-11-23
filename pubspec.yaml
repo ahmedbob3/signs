@@ -38,6 +38,8 @@ dependencies:
   flutter_slidable: ^0.5.7
   wc_form_validators: ^0.1.1
   pin_code_fields: 
+  flutter_share: ^1.0.5
+  carousel_slider: ^2.3.1
 
 
 

@@ -119,34 +119,41 @@ class _HomeScreenState extends State<HomeScreen> {
                                                       SignupSubAccountScreenStep1()));
                                         });
                                       },
-                                      child: CircleAvatar(
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(right: 5, left: 5),
+                                        child: CircleAvatar(
+                                          radius: 24,
+                                          backgroundColor: Colors.white,
+                                          child: CircleAvatar(
+                                              radius: 22,
+                                              backgroundColor:
+                                                  Color.fromRGBO(0, 54, 115, 1),
+                                              child: Icon(
+                                                Icons.add,
+                                                color: Colors.white,
+                                              )),
+                                        ),
+                                      ),
+                                    )
+                                  : Padding(
+                                    padding: const EdgeInsets.only(right: 5, left: 5),
+                                    child: CircleAvatar(
                                         radius: 24,
                                         backgroundColor: Colors.white,
                                         child: CircleAvatar(
-                                            radius: 22,
-                                            backgroundColor:
-                                                Color.fromRGBO(0, 54, 115, 1),
-                                            child: Icon(
-                                              Icons.add,
-                                              color: Colors.white,
-                                            )),
-                                      ),
-                                    )
-                                  : CircleAvatar(
-                                      radius: 24,
-                                      backgroundColor: Colors.white,
-                                      child: CircleAvatar(
-                                        radius: 22,
-                                        backgroundColor:
-                                            Color.fromRGBO(0, 54, 115, 1),
-                                        child: Text(
-                                          'NH',
-                                          style: titleStyle(
-                                              fontFamily: boldFontFamily,
-                                              fontSize: 18),
+                                          radius: 22,
+                                          backgroundColor:
+                                              Color.fromRGBO(0, 54, 115, 1),
+                                          child: Text(
+                                            Constants.subAccountList[index-1].subAccountFirstName[0].toUpperCase() + ''+
+                                            Constants.subAccountList[index-1].subAccountLastName[0].toUpperCase(),
+                                            style: titleStyle(
+                                                fontFamily: boldFontFamily,
+                                                fontSize: 18),
+                                          ),
                                         ),
                                       ),
-                                    );
+                                  );
                             },
                           ),
                         ),
