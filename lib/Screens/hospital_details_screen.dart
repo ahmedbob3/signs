@@ -49,12 +49,14 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
                 children: [
                   Container(
                     width: double.infinity,
+                    height: 250,
                     child: Image.asset(
                       Hospital_BG,
-                      fit: BoxFit.fitWidth,
+                      fit: BoxFit.fill,
                     ),
                   ),
                   Container(
+                    // color: Colors.red,
                     width: double.infinity,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -115,64 +117,69 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
                     SizedBox(height: 20),
                     Row(
                       children: [
-                        MaterialButton(
-                          onPressed: () async {
-                            var latitude =
-                                widget.hospitalItem.hLatlang.split(',')[0];
-                            var longitude =
-                                widget.hospitalItem.hLatlang.split(',')[1];
-                            String googleUrl =
-                                'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude';
-                            if (await canLaunch(googleUrl)) {
-                              await launch(googleUrl);
-                            } else {
-                              throw 'Could not open the map.';
-                            }
-                          },
-                          child: Container(
-                            width: 150,
-                            padding: EdgeInsets.symmetric(vertical: 10),
-                            decoration: BoxDecoration(
-                                color: Color.fromRGBO(33, 99, 206, 0.15),
-                                borderRadius: BorderRadius.circular(7)),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Image.asset(DirectionIcon),
-                                SizedBox(width: 10),
-                                Text(
-                                  'Get Direction',
-                                  style: titleStyle(
-                                      color: defaultBackgroundColor,
-                                      fontFamily: mediumFontFamily),
-                                )
-                              ],
+                        Expanded(
+                          child: MaterialButton(
+                            onPressed: () async {
+                              var latitude =
+                                  widget.hospitalItem.hLatlang.split(',')[0];
+                              var longitude =
+                                  widget.hospitalItem.hLatlang.split(',')[1];
+                              String googleUrl =
+                                  'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude';
+                              if (await canLaunch(googleUrl)) {
+                                await launch(googleUrl);
+                              } else {
+                                throw 'Could not open the map.';
+                              }
+                            },
+                            child: Container(
+                              width: 150,
+                              padding: EdgeInsets.symmetric(vertical: 10),
+                              decoration: BoxDecoration(
+                                  color: Color.fromRGBO(33, 99, 206, 0.15),
+                                  borderRadius: BorderRadius.circular(7)),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset(DirectionIcon),
+                                  SizedBox(width: 10),
+                                  Text(
+                                    'Get Direction',
+                                    style: titleStyle(
+                                        color: defaultBackgroundColor,
+                                        fontFamily: mediumFontFamily),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         ),
                         SizedBox(width: 10),
-                        MaterialButton(
-                          onPressed: () async {
-                            await launch("tel://${widget.hospitalItem.hPhone}");
-                          },
-                          child: Container(
-                            width: 150,
-                            padding: EdgeInsets.symmetric(vertical: 10),
-                            decoration: BoxDecoration(
-                                color: Color.fromRGBO(33, 99, 206, 0.15),
-                                borderRadius: BorderRadius.circular(7)),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Image.asset(CallIcon),
-                                SizedBox(width: 10),
-                                Text(
-                                  'Call',
-                                  style: titleStyle(
-                                      color: defaultBackgroundColor,
-                                      fontFamily: mediumFontFamily),
-                                )
-                              ],
+                        Expanded(
+                          child: MaterialButton(
+                            onPressed: () async {
+                              await launch(
+                                  "tel://${widget.hospitalItem.hPhone}");
+                            },
+                            child: Container(
+                              width: 150,
+                              padding: EdgeInsets.symmetric(vertical: 10),
+                              decoration: BoxDecoration(
+                                  color: Color.fromRGBO(33, 99, 206, 0.15),
+                                  borderRadius: BorderRadius.circular(7)),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset(CallIcon),
+                                  SizedBox(width: 10),
+                                  Text(
+                                    'Call',
+                                    style: titleStyle(
+                                        color: defaultBackgroundColor,
+                                        fontFamily: mediumFontFamily),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         ),

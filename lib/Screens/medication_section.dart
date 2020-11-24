@@ -28,16 +28,22 @@ class MediciationSectionState extends State<MediciationSection> {
                   color: Colors.white)),
         ),
         Container(
-          height: 140,
-          padding: EdgeInsets.symmetric(horizontal: 10),
-          child: widget.medicationList.length > 0 ? ListView.builder(
-            itemCount: widget.medicationList.length,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (BuildContext context, int index) {
-              return PillCell(isNewPill: false);
-            },
-          ) : PillCell(isNewPill: true)
-        ),
+            height: 140,
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: widget.medicationList.length > 0
+                ? ListView.builder(
+                    itemCount: widget.medicationList.length + 1,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (BuildContext context, int index) {
+                      return index == 0 && widget.medicationList.length >= 1
+                          ? Container(
+                              width: 230,
+                              child: PillCell(isNewPill: true),
+                            )
+                          : PillCell(isNewPill: false);
+                    },
+                  )
+                : PillCell(isNewPill: true)),
       ],
     );
   }

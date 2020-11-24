@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:Signs/Screens/signup_screen_step1.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:country_codes/country_codes.dart';
 import 'package:flutter/material.dart';
@@ -83,9 +84,13 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
 
                     Future.delayed(Duration(milliseconds: 1), () {
                       if (state.checkMobileResponse.code == 200) {
-                        Scaffold.of(context).showSnackBar(SnackBar(
-                            content: Text(state.checkMobileResponse.msg)));
+                        // Scaffold.of(context).showSnackBar(SnackBar(
+                        //     content: Text(state.checkMobileResponse.msg)));
                         Navigator.of(context).pop();
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => SignupScreenStep1(
+                                phoneNumber: _mobileController.text,
+                                countryCode: selectedCountry)));
                       } else {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => LoginScreen(
@@ -190,12 +195,16 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
                                             width: 2,
                                             height: 60),
                                         SizedBox(width: 10),
-                                        Text(
-                                          selectedCountry,
-                                          style: titleStyle(
-                                              fontFamily: mediumFontFamily,
-                                              color: Colors.black,
-                                              fontSize: 17),
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              bottom: 3.0),
+                                          child: Text(
+                                            selectedCountry,
+                                            style: titleStyle(
+                                                fontFamily: mediumFontFamily,
+                                                color: Colors.black,
+                                                fontSize: 17),
+                                          ),
                                         ),
                                         SizedBox(width: 10),
                                         Expanded(
@@ -203,7 +212,10 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
                                             child: TextField(
                                               controller: _mobileController,
                                               focusNode: focusNode,
+                                              maxLength: 11,
+                                              maxLines: 1,
                                               decoration: InputDecoration(
+                                                counter: SizedBox.shrink(),
                                                 hintText: Strings()
                                                     .getEnterMobileNumberString(),
                                                 hintStyle: titleStyle(

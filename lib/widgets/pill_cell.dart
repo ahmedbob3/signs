@@ -1,3 +1,4 @@
+import 'package:Signs/Models/response/medication_model.dart';
 import 'package:flutter/material.dart';
 import 'package:Signs/Screens/medicine_add.dart';
 import 'package:Signs/Utils/images.dart';
@@ -5,7 +6,8 @@ import 'package:Signs/Utils/styles.dart';
 
 class PillCell extends StatelessWidget {
   bool isNewPill;
-  PillCell({Key key, this.isNewPill}) : super(key: key);
+  MedicationModel medicationModel;
+  PillCell({Key key, this.isNewPill, this.medicationModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
