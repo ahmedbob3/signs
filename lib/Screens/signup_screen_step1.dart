@@ -25,6 +25,8 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
   TextEditingController _mobileController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _confirmController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+
 
   String selectedCountry = '';
 
@@ -47,6 +49,8 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
             },
             child: Container(
               height: MediaQuery.of(context).size.height,
+              child: Form(
+                key: formKey,
               child: Stack(
                 children: <Widget>[
                   headerBg(),
@@ -208,7 +212,7 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                             decoration: BoxDecoration(
                                 color: textFieldFill,
                                 border: Border.all(
-                                  color: textFieldBorder,
+                                  color:  _passwordController.text.isNotEmpty && _passwordController.text.length >=  8 ? textFieldBorder : Colors.red[700],
                                 ),
                                 borderRadius: BorderRadius.circular(18)),
                             child: Padding(
@@ -218,8 +222,9 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                                 children: <Widget>[
                                   Expanded(
                                     child: Container(
-                                      child: TextField(
+                                      child: TextFormField(
                                         controller: _passwordController,
+
                                         decoration: InputDecoration(
                                           hintText: Strings()
                                               .getEnterPasswordStrings(),
@@ -235,12 +240,30 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                                           errorBorder: InputBorder.none,
                                           disabledBorder: InputBorder.none,
                                         ),
+                                        validator: (value) {
+                                          setState(() {
+                                            if (value.isEmpty && value.length <
+                                                8) {
+                                              _scaffoldKey.currentState
+                                                  .showSnackBar(SnackBar(
+                                                content: Text(
+                                                    Strings().getPasswordStrings()),
+                                                duration: Duration(seconds: 2),
+                                              ));
+                                            }
+                                          });
+
+                                          return null;
+                                        },
                                         textInputAction: TextInputAction.next,
                                         onEditingComplete: () => FocusScope.of(
                                                 context)
                                             .nextFocus(), // Move focus to next
                                         obscureText: true,
                                         keyboardType: TextInputType.text,
+                                          onTap: () {
+                                            formKey.currentState.validate();
+                                          }
                                       ),
                                     ),
                                   ),
@@ -260,7 +283,7 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                             decoration: BoxDecoration(
                                 color: textFieldFill,
                                 border: Border.all(
-                                  color: textFieldBorder,
+                                  color: _confirmController.text.isNotEmpty && _confirmController.text.length >=  8 ? textFieldBorder : Colors.red[700],
                                 ),
                                 borderRadius: BorderRadius.circular(18)),
                             child: Padding(
@@ -270,7 +293,7 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                                 children: <Widget>[
                                   Expanded(
                                     child: Container(
-                                      child: TextField(
+                                      child: TextFormField(
                                         controller: _confirmController,
                                         decoration: InputDecoration(
                                           hintText: Strings()
@@ -287,9 +310,27 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                                           errorBorder: InputBorder.none,
                                           disabledBorder: InputBorder.none,
                                         ),
+                                        validator: (value) {
+                                          setState(() {
+                                            if (value.isEmpty && value.length <
+                                                8) {
+                                              _scaffoldKey.currentState
+                                                  .showSnackBar(SnackBar(
+                                                content: Text(
+                                                    Strings().getConfirmPassword()),
+                                                duration: Duration(seconds: 2),
+                                              ));
+                                            }
+                                          });
+
+                                          return null;
+                                        },
                                         textInputAction: TextInputAction.done,
                                         obscureText: true,
                                         keyboardType: TextInputType.text,
+                                          onTap: () {
+                                            formKey.currentState.validate();
+                                          }
                                       ),
                                     ),
                                   ),
@@ -367,6 +408,7 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                       left: 5),
                 ],
               ),
+            ),
             ),
           ),
         ),
