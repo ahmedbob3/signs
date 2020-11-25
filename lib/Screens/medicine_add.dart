@@ -1,6 +1,7 @@
 import 'package:Signs/Blocs/home%20bloc/home_bloc.dart';
 import 'package:Signs/Blocs/medication%20bloc/medication_bloc.dart';
 import 'package:Signs/Models/medication_data.dart';
+import 'package:Signs/Models/response/medication_model.dart';
 import 'package:Signs/Utils/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,7 @@ class _AddMedicationState extends State<AddMedication> {
   TextEditingController _noteController = TextEditingController();
   TextEditingController _durationController = TextEditingController();
   MedicationBloc _medicationBloc;
-  MedicationData _medicationData;
+  Datum _medicationData;
   bool isLoading = false;
 
   @override
@@ -51,7 +52,7 @@ class _AddMedicationState extends State<AddMedication> {
   void initState() {
     super.initState();
     _medicationBloc = MedicationBloc();
-    _medicationData = MedicationData();
+    _medicationData = Datum();
   }
 
   @override
@@ -78,7 +79,7 @@ class _AddMedicationState extends State<AddMedication> {
               Future.delayed(Duration(milliseconds: 1), () {
                 if (state.medicationresponse.code != 200) {
                   _scaffoldKey.currentState.showSnackBar(
-                      SnackBar(content: Text(state.medicationresponse.msg)));
+                      SnackBar(content: Text('error')));
                   Navigator.of(context).pop();
                 } else {
                   Constants.medicationList.add(_medicationData);
@@ -526,13 +527,13 @@ class _AddMedicationState extends State<AddMedication> {
                         button(() {
 
                           if(_timeController.text.toString().isNotEmpty && _nameController.text.toString().isNotEmpty && _durationController.text.toString().isNotEmpty && _noteController.text.toString().isNotEmpty && _numberController.text.toString().isNotEmpty){
-                            _medicationData.setMedicationNumber( (Constants.medicationList.length+1).toString());
-                            _medicationData.setMedicationName(_nameController.text.toString());
-                            _medicationData.setMedicationFormId( getid(Constants.medications).toString());
-                            _medicationData.setMedicationDose(_numberController.text.toString());
-                            _medicationData.setMedicationDuration(_durationController.text.toString());
-                            _medicationData.setMedicationNote(_noteController.text.toString());
-                            _medicationData.setMedicationTime(_timeController.text.toString());
+                            // _medicationData.setMedicationNumber( (Constants.medicationList.length+1).toString());
+                            // _medicationData.setMedicationName(_nameController.text.toString());
+                            // _medicationData.setMedicationFormId( getid(Constants.medications).toString());
+                            // _medicationData.setMedicationDose(_numberController.text.toString());
+                            // _medicationData.setMedicationDuration(_durationController.text.toString());
+                            // _medicationData.setMedicationNote(_noteController.text.toString());
+                            // _medicationData.setMedicationTime(_timeController.text.toString());
                             _medicationBloc.add(doMedicationEvent(
                                  (Constants.medicationList.length+1).toString(),
                                 _nameController.text.toString(),

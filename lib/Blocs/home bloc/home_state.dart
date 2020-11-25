@@ -8,8 +8,8 @@ class HomeInitial extends HomeState {}
 class HomeLoadingState extends HomeState {}
 
 class HomeLoadedState extends HomeState {
-  List<MedicationData> medicationList;
-  HomeLoadedState(this.medicationList);
+  final MedicationsModel medicationModel;
+  HomeLoadedState({this.medicationModel});
 }
 
 class HospitalsLoadedState extends HomeState {

@@ -1,3 +1,4 @@
+import 'package:Signs/Blocs/medication%20bloc/medication_bloc.dart';
 import 'package:Signs/Utils/constants.dart';
 import 'package:Signs/Utils/singleton.dart';
 import 'package:Signs/Utils/strings.dart';
@@ -20,6 +21,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   HomeBloc _homeBloc;
+  MedicationBloc _medicationBloc;
+
   HospitalsModel _hospitalsModel;
   bool isLoading = false;
 
@@ -47,7 +50,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 isLoading = true;
               }
             } else if (state is HomeLoadedState) {
-              Constants.medicationList = state.medicationList;
+              if ( state.medicationModel != null )
+                Constants.medicationList = state.medicationModel.data;
               Future.delayed(Duration(milliseconds: 1000), () {
                 if (isLoading) {
                   _homeBloc.add(resetHomeEvent());

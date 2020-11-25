@@ -1,12 +1,13 @@
 import 'package:Signs/Blocs/medication%20bloc/medication_bloc.dart';
 import 'package:Signs/Models/medication_data.dart';
+import 'package:Signs/Models/response/medication_model.dart';
 import 'package:Signs/Utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:Signs/Utils/styles.dart';
 import 'package:Signs/widgets/pill_cell.dart';
 
 class MediciationSection extends StatefulWidget {
-  List<MedicationData> medicationList;
+  List<Datum> medicationList;
   MediciationSection({Key key, this.medicationList}) : super(key: key);
 
   @override
@@ -40,7 +41,7 @@ class MediciationSectionState extends State<MediciationSection> {
                               width: 230,
                               child: PillCell(isNewPill: true),
                             )
-                          : PillCell(isNewPill: false);
+                          : PillCell(isNewPill: false,data: widget.medicationList[index-1]);
                     },
                   )
                 : PillCell(isNewPill: true)),

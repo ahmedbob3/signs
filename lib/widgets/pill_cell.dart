@@ -6,8 +6,9 @@ import 'package:Signs/Utils/styles.dart';
 
 class PillCell extends StatelessWidget {
   bool isNewPill;
-  MedicationModel medicationModel;
-  PillCell({Key key, this.isNewPill, this.medicationModel}) : super(key: key);
+  Datum data ;
+
+  PillCell({Key key, this.isNewPill, this.data}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,7 @@ class PillCell extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                    Image.asset(!isNewPill ? Add_pill_Active : Add_pill),
-                    !isNewPill ? Text('8-9 AM', style: titleStyle(fontFamily: semiBoldFontFamily, fontSize: 16, color: Color.fromRGBO(96, 96, 96, 1),)) : Container()
+                    !isNewPill ? Text(data.mDuration, style: titleStyle(fontFamily: semiBoldFontFamily, fontSize: 16, color: Color.fromRGBO(96, 96, 96, 1),)) : Container()
                   ],
                 ),
                 SizedBox(height: 10),
@@ -40,8 +41,8 @@ class PillCell extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                  Text('Metformin', style: titleStyle(fontFamily: semiBoldFontFamily, fontSize: 20, color: Colors.black),),
-                  Text('2 pills', style: titleStyle(fontFamily: semiBoldFontFamily, fontSize: 16, color: Color.fromRGBO(96, 96, 96, 1),))
+                  Text(data.mName, style: titleStyle(fontFamily: semiBoldFontFamily, fontSize: 20, color: Colors.black),),
+                  Text(data.mReminderNote, style: titleStyle(fontFamily: semiBoldFontFamily, fontSize: 16, color: Color.fromRGBO(96, 96, 96, 1),))
                 ],):
                 Row(
                   children: <Widget>[

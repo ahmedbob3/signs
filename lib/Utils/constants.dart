@@ -2,6 +2,7 @@ import 'package:Signs/Blocs/medication%20bloc/medication_bloc.dart';
 import 'package:Signs/Blocs/signUp%20bloc/signUp_bloc.dart';
 import 'package:Signs/Blocs/subAccount%20bloc/subAccount_bloc.dart';
 import 'package:Signs/Models/medication_data.dart';
+import 'package:Signs/Models/response/medication_model.dart';
 import 'package:Signs/Models/signUp_data.dart';
 import 'package:Signs/Models/subAccount_data.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,7 @@ class Constants {
   static String appName = "Signs";
   static SignUpData signUpData = SignUpData();
   static List<bool> medications = [false, false, false,false, false, false,false, false, false,false, false];
-  static List<MedicationData> medicationList = [];
+  static List<Datum> medicationList = [];
   static List<SubAccountData> subAccountList = [];
 
 

@@ -6,6 +6,7 @@ class APIS {
   static const String HOSPITALS_API = "get_hospitals";
   static const String MEDICATION_API = "medication_insert";
   static const String SUB_ACCOUNT_API = "sub_account_insert";
+  static const String GET_MEDICATION_LIST = 'get_medication_by_user';
 
 
 
