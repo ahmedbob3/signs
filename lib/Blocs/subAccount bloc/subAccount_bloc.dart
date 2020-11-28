@@ -1,7 +1,7 @@
 import 'dart:async';
 
 
-import 'package:Signs/Models/response/subAccount_model.dart';
+import 'package:Signs/Models/subaccounts_model.dart';
 import 'package:Signs/Repos/SubAccount/subAccount_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';

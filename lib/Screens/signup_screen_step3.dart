@@ -1,4 +1,5 @@
 import 'package:Signs/Blocs/signUp%20bloc/signUp_bloc.dart';
+import 'package:Signs/Screens/login_screen.dart';
 import 'package:Signs/Utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -78,7 +79,7 @@ class _SignupScreenStep3State extends State<SignupScreenStep3> {
                       Navigator.of(context).pop();
                     } else {
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => LandingScreen()));
+                          builder: (context) => LoginScreen(mobileNumber: Constants.signUpData.mobileNumber,selectedCountry: Constants.signUpData.countryCode,)));
                       //builder: (context) => CheckMobileScreen()));
                     }
                     _signUpBloc.add(resetSignupState());

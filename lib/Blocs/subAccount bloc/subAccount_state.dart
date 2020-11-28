@@ -7,6 +7,6 @@ class subAccountInitial extends subAccountState {}
 
 class subAccountLoadingState extends subAccountState{}
 class subAccountLoadedState extends subAccountState{
-  SubAccountModel subAccountresponse;
+  SubaccountsModel subAccountresponse;
   subAccountLoadedState(this.subAccountresponse);
 }

@@ -4,64 +4,69 @@
 
 import 'dart:convert';
 
-LoginModel loginModelFromMap(String str) => LoginModel.fromMap(json.decode(str));
+LoginModel loginModelFromMap(String str) =>
+    LoginModel.fromMap(json.decode(str));
 
 String loginModelToMap(LoginModel data) => json.encode(data.toMap());
 
 class LoginModel {
-    LoginModel({
-        this.code,
-        this.status,
-        this.msg,
-        this.data,
-    });
+  LoginModel({
+    this.code,
+    this.status,
+    this.msg,
+    this.data,
+  });
 
-    final int code;
-    final String status;
-    final String msg;
-    final Data data;
+  final int code;
+  final String status;
+  final String msg;
+  final Data data;
 
-    factory LoginModel.fromMap(Map<String, dynamic> json) => LoginModel(
+  factory LoginModel.fromMap(Map<String, dynamic> json) => LoginModel(
         code: json["code"],
         status: json["status"],
         msg: json["msg"],
         data: Data.fromMap(json["data"]),
-    );
+      );
 
-    Map<String, dynamic> toMap() => {
+  Map<String, dynamic> toMap() => {
         "code": code,
         "status": status,
         "msg": msg,
         "data": data.toMap(),
-    };
+      };
 }
 
 class Data {
-    Data({
-        this.uMobile,
-        this.uFirstName,
-        this.uLastName,
-        this.uEmail,
-        this.uGender,
-        this.uBirthDate,
-        this.uWeight,
-        this.uHeight,
-        this.uBedTime,
-        this.uWakeUp,
-    });
+  Data({
+    this.uId,
+    this.uMobile,
+    this.uFirstName,
+    this.uLastName,
+    this.uEmail,
+    this.uGender,
+    this.uBirthDate,
+    this.uWeight,
+    this.uHeight,
+    this.uBedTime,
+    this.uWakeUp,
+  });
 
-    final String uMobile;
-    final String uFirstName;
-    final String uLastName;
-    final String uEmail;
-    final String uGender;
-    final String uBirthDate;
-    final String uWeight;
-    final String uHeight;
-    final String uBedTime;
-    final String uWakeUp;
+  final String uId;
+  final String uMobile;
+  final String uFirstName;
+  final String uLastName;
+  final String uEmail;
+  final String uGender;
+  final String uBirthDate;
+  final String uWeight;
+  final String uHeight;
+  final String uBedTime;
+  final String uWakeUp;
 
-    factory Data.fromMap(Map<String, dynamic> json) => Data(
+  factory Data.fromMap(Map<String, dynamic> json) => Data(
+            uId: json["u_id"],
+
         uMobile: json["u_mobile"],
         uFirstName: json["u_first_name"],
         uLastName: json["u_last_name"],
@@ -72,9 +77,11 @@ class Data {
         uHeight: json["u_height"],
         uBedTime: json["u_bed_time"],
         uWakeUp: json["u_wake_up"],
-    );
+      );
 
-    Map<String, dynamic> toMap() => {
+  Map<String, dynamic> toMap() => {
+            "u_id": uId,
+
         "u_mobile": uMobile,
         "u_first_name": uFirstName,
         "u_last_name": uLastName,
@@ -85,5 +92,5 @@ class Data {
         "u_height": uHeight,
         "u_bed_time": uBedTime,
         "u_wake_up": uWakeUp,
-    };
+      };
 }

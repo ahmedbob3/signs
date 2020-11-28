@@ -9,7 +9,8 @@ class HomeLoadingState extends HomeState {}
 
 class HomeLoadedState extends HomeState {
   final MedicationsModel medicationModel;
-  HomeLoadedState({this.medicationModel});
+  final SubaccountsModel subaccountsModel;
+  HomeLoadedState({this.medicationModel, this.subaccountsModel});
 }
 
 class HospitalsLoadedState extends HomeState {

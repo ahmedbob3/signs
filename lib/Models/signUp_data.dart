@@ -12,9 +12,13 @@ class SignUpData {
   String height;
   String bedTime;
   String wakeupTime;
+  String countryCode;
 
   void setMobileNumber(String mNumber) {
     mobileNumber=mNumber;
+  }
+  void setCountryCode(String cCode) {
+    countryCode=cCode;
   }
   void setFirstName(String fName) {
     firstName=fName;

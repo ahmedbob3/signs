@@ -21,7 +21,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   HomeBloc _homeBloc;
-  MedicationBloc _medicationBloc;
 
   HospitalsModel _hospitalsModel;
   bool isLoading = false;
@@ -30,13 +29,19 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _homeBloc = HomeBloc();
-    _homeBloc.add(loadMedicationsEvent());
-    _homeBloc.add(getHospitalsEvent());
   }
 
   @override
   Widget build(BuildContext context) {
+
+if(_homeBloc ==null ){
+      _homeBloc = HomeBloc();
+    _homeBloc.add(loadMedicationsEvent());
+    _homeBloc.add(getSubaccountsEvent());
+    _homeBloc.add(getHospitalsEvent());
+
+}
+  
     return WillPopScope(
       onWillPop: () async => false,
       child: SafeArea(
@@ -50,8 +55,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 isLoading = true;
               }
             } else if (state is HomeLoadedState) {
-              if ( state.medicationModel != null )
+              if (state.medicationModel != null)
                 Constants.medicationList = state.medicationModel.data;
+              if (state.subaccountsModel != null)
+                Constants.subaccountsList = state.subaccountsModel.data;
+
               Future.delayed(Duration(milliseconds: 1000), () {
                 if (isLoading) {
                   _homeBloc.add(resetHomeEvent());
@@ -91,12 +99,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ' ' +
                                       Singleton().loginModel.data.uLastName,
                                   style: titleStyle(
-                                      fontFamily: boldFontFamily,
-                                      fontSize: 20),
+                                      fontFamily: boldFontFamily, fontSize: 20),
                                 ),
                               ),
-                              Icon(Icons.search,
-                                  color: Colors.white, size: 30),
+                              Icon(Icons.search, color: Colors.white, size: 30),
                               SizedBox(width: 20),
                               Icon(Icons.notifications,
                                   color: Colors.white, size: 30),
@@ -105,69 +111,72 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         SizedBox(height: 20),
                         // subaccounts ..
-                        Container(
-                          padding: EdgeInsets.symmetric(horizontal: 20),
-                          width: double.infinity,
-                          height: 50,
-                          child: ListView.builder(
-                            itemCount: Constants.subAccountList.length + 1,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) {
-                              return index == 0
-                                  ? GestureDetector(
-                                      onTap: () {
-                                        setState(() {
-                                          Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      SignupSubAccountScreenStep1()));
-                                        });
-                                      },
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(right: 5, left: 5),
-                                        child: CircleAvatar(
-                                          radius: 24,
-                                          backgroundColor: Colors.white,
-                                          child: CircleAvatar(
-                                              radius: 22,
-                                              backgroundColor:
-                                                  Color.fromRGBO(0, 54, 115, 1),
-                                              child: Icon(
-                                                Icons.add,
-                                                color: Colors.white,
-                                              )),
-                                        ),
-                                      ),
-                                    )
-                                  : Padding(
-                                    padding: const EdgeInsets.only(right: 5, left: 5),
-                                    child: CircleAvatar(
-                                        radius: 24,
-                                        backgroundColor: Colors.white,
-                                        child: CircleAvatar(
-                                          radius: 22,
-                                          backgroundColor:
-                                              Color.fromRGBO(0, 54, 115, 1),
-                                          child: Text(
-                                            Constants.subAccountList[index-1].subAccountFirstName[0].toUpperCase() + ''+
-                                            Constants.subAccountList[index-1].subAccountLastName[0].toUpperCase(),
-                                            style: titleStyle(
-                                                fontFamily: boldFontFamily,
-                                                fontSize: 18),
-                                          ),
-                                        ),
-                                      ),
-                                  );
-                            },
-                          ),
-                        ),
+                        Constants.subaccountsList.length == 0 ||
+                                Constants.subaccountsList == null
+                            ? Padding(
+                                padding:
+                                    const EdgeInsets.only(right: 5, left: 5),
+                                child: Align(
+                                    child: addSubAccount(),
+                                    alignment: Alignment.centerLeft),
+                              )
+                            : Container(
+                                padding: EdgeInsets.symmetric(horizontal: 20),
+                                width: double.infinity,
+                                height: 50,
+                                child: ListView.builder(
+                                  itemCount:
+                                      Constants.subaccountsList.length + 1,
+                                  scrollDirection: Axis.horizontal,
+                                  itemBuilder: (context, index) {
+                                    return index == 0
+                                        ? addSubAccount()
+                                        : Padding(
+                                            padding: const EdgeInsets.only(
+                                                right: 5, left: 5),
+                                            child: CircleAvatar(
+                                              radius: 24,
+                                              backgroundColor: Colors.white,
+                                              child: CircleAvatar(
+                                                radius: 22,
+                                                backgroundColor: Color.fromRGBO(
+                                                    0, 54, 115, 1),
+                                                child: Text(
+                                                  (Constants
+                                                          .subaccountsList[
+                                                              index - 1]
+                                                          .saFirstName != null ? Constants
+                                                          .subaccountsList[
+                                                              index - 1]
+                                                          .saFirstName[0]
+                                                          .toUpperCase() :
+                                                      '' )+
+                                                      (Constants
+                                                          .subaccountsList[
+                                                              index - 1]
+                                                          .saLastName != null ? Constants
+                                                          .subaccountsList[
+                                                              index - 1]
+                                                          .saLastName[0]
+                                                          .toUpperCase() : ''),
+                                                  style: titleStyle(
+                                                      fontFamily:
+                                                          boldFontFamily,
+                                                      fontSize: 18),
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                  },
+                                ),
+                              ),
                       ],
                     ),
                   ),
                   SizedBox(height: 30),
                   // Upcoming reminder ..
                   Expanded(
-                    flex: Constants.medicationList.length > 1 ? 3 : 1,
+                    flex: 1,
                     child: MediciationSection(
                       medicationList: Constants.medicationList,
                     ),
@@ -210,6 +219,31 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             );
           },
+        ),
+      ),
+    );
+  }
+
+  addSubAccount() {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => SignupSubAccountScreenStep1()));
+        });
+      },
+      child: Padding(
+        padding: const EdgeInsets.only(right: 5, left: 5),
+        child: CircleAvatar(
+          radius: 24,
+          backgroundColor: Colors.white,
+          child: CircleAvatar(
+              radius: 22,
+              backgroundColor: Color.fromRGBO(0, 54, 115, 1),
+              child: Icon(
+                Icons.add,
+                color: Colors.white,
+              )),
         ),
       ),
     );

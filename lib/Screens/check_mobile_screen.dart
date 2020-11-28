@@ -36,9 +36,18 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
   }
 
   Future<void> getSimInfo() async {
-    await CountryCodes.init();
+    try {
+    await CountryCodes.init();  
+    } catch (e) {
+      print('xxx');
+    }
+    
     setState(() {
-      selectedCountry = CountryCodes.dialCode();
+      try {
+      selectedCountry = CountryCodes.dialCode();  
+      } catch (e) {
+        selectedCountry = 'EG';
+      }
     });
   }
 
