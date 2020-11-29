@@ -32,7 +32,8 @@ class PillCell extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                   Image.asset(!isNewPill ? Add_pill_Active : Add_pill),
+                   Image.asset(!isNewPill ? data.mfImage : Add_pill,height: 30,
+                       fit:BoxFit.contain),
                     !isNewPill ? Text(data.mDuration, style: titleStyle(fontFamily: semiBoldFontFamily, fontSize: 16, color: Color.fromRGBO(96, 96, 96, 1),)) : Container()
                   ],
                 ),
@@ -41,8 +42,9 @@ class PillCell extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                  Text(data.mName, style: titleStyle(fontFamily: semiBoldFontFamily, fontSize: 20, color: Colors.black),),
-                  Text(data.mReminderNote, style: titleStyle(fontFamily: semiBoldFontFamily, fontSize: 16, color: Color.fromRGBO(96, 96, 96, 1),))
+                  Text(data.mName, style: titleStyle(fontFamily: semiBoldFontFamily, fontSize: 19, color: Colors.black),),
+                    SizedBox(height: 2),
+                    Text(data.mDose + " " + data.mfName, style: titleStyle(fontFamily: semiBoldFontFamily, fontSize: 16, color: Color.fromRGBO(96, 96, 96, 1),))
                 ],):
                 Row(
                   children: <Widget>[

@@ -1,3 +1,4 @@
+import 'package:Signs/Utils/constants.dart';
 import 'package:Signs/Utils/styles.dart';
 import 'package:Signs/widgets/medication_cell.dart';
 import 'package:flutter/material.dart';
@@ -51,9 +52,9 @@ class _MedicationScreenState extends State<MedicationScreen> {
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: 10,
+                itemCount: Constants.medicationList.length,
                 itemBuilder: (context, index) {
-                  return MedicationCell(shouldOpenAllItems: shouldOpenAllItems ? 1 : 2);
+                  return  MedicationCell(shouldOpenAllItems: shouldOpenAllItems ? 1 : 2, data: Constants.medicationList[index]);
                 },
               ),
             )

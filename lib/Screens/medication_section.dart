@@ -44,7 +44,8 @@ class MediciationSectionState extends State<MediciationSection> {
                           : PillCell(isNewPill: false,data: widget.medicationList[index-1]);
                     },
                   )
-                : PillCell(isNewPill: true)),
+                : PillCell(isNewPill: true)
+        ),
       ],
     );
   }

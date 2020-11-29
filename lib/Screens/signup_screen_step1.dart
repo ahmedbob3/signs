@@ -29,6 +29,8 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
   final formKey = GlobalKey<FormState>();
 
   String selectedCountry = '';
+  int whichVerified = 0;
+
 
   @override
   void initState() {
@@ -217,11 +219,10 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                               decoration: BoxDecoration(
                                   color: textFieldFill,
                                   border: Border.all(
-                                    color: _passwordController
-                                                .text.isNotEmpty &&
-                                            _passwordController.text.length >= 8
-                                        ? textFieldBorder
-                                        : Colors.red[700],
+                                    color: whichVerified == 1 ||
+                                        whichVerified == 12
+                                        ? Colors.red[700]
+                                        : textFieldBorder,
                                   ),
                                   borderRadius: BorderRadius.circular(18)),
                               child: Padding(
@@ -250,30 +251,35 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                                             ),
                                             validator: (value) {
                                               setState(() {
-                                                if (value.isEmpty &&
-                                                    value.length < 8) {
-                                                  _scaffoldKey.currentState
-                                                      .showSnackBar(SnackBar(
-                                                    content: Text(Strings()
-                                                        .getPasswordStrings()),
-                                                    duration:
-                                                        Duration(seconds: 2),
-                                                  ));
-                                                }
+                                                // if (value.isEmpty &&
+                                                //     value.length < 8) {
+                                                //   _scaffoldKey.currentState
+                                                //       .showSnackBar(SnackBar(
+                                                //     content: Text(Strings()
+                                                //         .getPasswordStrings()),
+                                                //     duration:
+                                                //         Duration(seconds: 2),
+                                                //   ));
+                                                // }
+                                                checkWhichVerified();
                                               });
 
                                               return null;
                                             },
                                             textInputAction:
-                                                TextInputAction.next,
-                                            onEditingComplete: () => FocusScope
-                                                    .of(context)
-                                                .nextFocus(), // Move focus to next
+                                                TextInputAction.next, // Move focus to next
                                             obscureText: true,
                                             keyboardType: TextInputType.text,
+                                            onEditingComplete: () {
+                                              FocusScope.of(context).nextFocus();
+                                              checkWhichVerified();
+                                            },
                                             onTap: () {
-                                              formKey.currentState.validate();
-                                            }),
+                                              formKey.currentState
+                                                  .validate();
+                                            }// Move focus to next
+
+                                            ),
                                       ),
                                     ),
                                   ],
@@ -292,10 +298,10 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                               decoration: BoxDecoration(
                                   color: textFieldFill,
                                   border: Border.all(
-                                    color: _confirmController.text.isNotEmpty &&
-                                            _confirmController.text.length >= 8
-                                        ? textFieldBorder
-                                        : Colors.red[700],
+                                    color: whichVerified == 2 ||
+                                        whichVerified == 12
+                                        ? Colors.red[700]
+                                        : textFieldBorder,
                                   ),
                                   borderRadius: BorderRadius.circular(18)),
                               child: Padding(
@@ -324,16 +330,18 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                                             ),
                                             validator: (value) {
                                               setState(() {
-                                                if (value.isEmpty &&
-                                                    value.length < 8) {
-                                                  _scaffoldKey.currentState
-                                                      .showSnackBar(SnackBar(
-                                                    content: Text(Strings()
-                                                        .getConfirmPassword()),
-                                                    duration:
-                                                        Duration(seconds: 2),
-                                                  ));
-                                                }
+                                                // if (value.isEmpty &&
+                                                //     value.length < 8) {
+                                                //   _scaffoldKey.currentState
+                                                //       .showSnackBar(SnackBar(
+                                                //     content: Text(Strings()
+                                                //         .getConfirmPassword()),
+                                                //     duration:
+                                                //         Duration(seconds: 2),
+                                                //   ));
+                                                // }
+                                                checkWhichVerified();
+
                                               });
 
                                               return null;
@@ -342,9 +350,16 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                                                 TextInputAction.done,
                                             obscureText: true,
                                             keyboardType: TextInputType.text,
+                                            onEditingComplete: () {
+                                              FocusScope.of(context).nextFocus();
+                                              checkWhichVerified();
+                                            },
                                             onTap: () {
-                                              formKey.currentState.validate();
-                                            }),
+                                              formKey.currentState
+                                                  .validate();
+                                            }// Move focus to next
+
+                                            ),
                                       ),
                                     ),
                                   ],
@@ -375,12 +390,14 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                                         Text(Strings().getConfirmPassword()),
                                     duration: Duration(seconds: 3),
                                   ));
+                                  checkWhichVerified();
                                 }
                               } else {
                                 _scaffoldKey.currentState.showSnackBar(SnackBar(
                                   content: Text(Strings().getPasswordStrings()),
                                   duration: Duration(seconds: 3),
                                 ));
+                                checkWhichVerified();
                               }
                             }, Strings().getNextStrings(), isFilledColor: true),
                             SizedBox(height: 10),
@@ -435,4 +452,19 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
       ),
     );
   }
+
+  void checkWhichVerified() {
+    if ((_passwordController.text.toString().isEmpty || _passwordController.text.length < 8 ) && (_confirmController.text.toString().isEmpty || _confirmController.text.length < 8 )) {
+      whichVerified = 12;
+    }
+    else if ((_passwordController.text.toString().isEmpty || _passwordController.text.length < 8 )) {
+      whichVerified = 1;
+    }
+    else if ((_confirmController.text.toString().isEmpty || _confirmController.text.length < 8 )) {
+      whichVerified = 2;
+    }
+    else whichVerified=0;
+  }
+
+
 }

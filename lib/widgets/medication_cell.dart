@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:Signs/Models/response/medication_model.dart';
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/styles.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,9 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 class MedicationCell extends StatefulWidget {
   bool isActive;
   int shouldOpenAllItems = -1;
-  MedicationCell({Key key, this.isActive = true, this.shouldOpenAllItems})
+  Datum data ;
+
+  MedicationCell({Key key, this.isActive = true, this.shouldOpenAllItems, this.data})
       : super(key: key);
 
   @override
@@ -63,7 +66,6 @@ class _MedicationCellState extends State<MedicationCell> {
     } else if (widget.shouldOpenAllItems == 2 && _slidableKey.currentState != null) { // 2 to be closed
       _slidableKey.currentState.close();
     }
-
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 18, vertical: 10),
       child: Slidable(
@@ -162,10 +164,10 @@ class _MedicationCellState extends State<MedicationCell> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Image.asset(Add_pill_Active),
+                            Image.asset(widget.data != null ? widget.data.mfImage:Add_pill_Active),
                             SizedBox(height: 10),
                             Text(
-                              'Metformin',
+                              widget.data.mName,
                               style: titleStyle(
                                   fontFamily: semiBoldFontFamily,
                                   fontSize: 20,
@@ -173,7 +175,7 @@ class _MedicationCellState extends State<MedicationCell> {
                             ),
                             SizedBox(height: 10),
                             Text(
-                              '2 pills',
+                              widget.data.mDose + " " + widget.data.mfName,
                               style: titleStyle(
                                 fontFamily: semiBoldFontFamily,
                                 fontSize: 16,
@@ -193,7 +195,7 @@ class _MedicationCellState extends State<MedicationCell> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 10),
                               child: Text(
-                                '8-9 AM',
+                                  widget.data.rememberTime.length !=0 ? widget.data.rememberTime.elementAt(0) : "",
                                 style: titleStyle(
                                   fontFamily: semiBoldFontFamily,
                                   fontSize: 16,
@@ -227,7 +229,7 @@ class _MedicationCellState extends State<MedicationCell> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 10),
                               child: Text(
-                                '20 days',
+                                widget.data.mDuration + ' days',
                                 style: titleStyle(
                                   fontFamily: semiBoldFontFamily,
                                   fontSize: 16,

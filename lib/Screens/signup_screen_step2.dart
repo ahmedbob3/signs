@@ -31,6 +31,8 @@ class _SignupScreenStep2State extends State<SignupScreenStep2> {
   var femaleKey = GlobalKey<FormFieldState>();
   bool isActiveFemale = false;
   bool isActiveMale = false;
+  int whichVerified = 0;
+
 
 
   final bedTimeController = TextEditingController();
@@ -423,4 +425,19 @@ class _SignupScreenStep2State extends State<SignupScreenStep2> {
       ),
     );
   }
+
+  void checkWhichVerified() {
+    if (_firstNameController.text.toString().isEmpty && _lastNameController.text.toString().isEmpty && _emailController.text.toString().contains('@') && _emailController.text.toString().contains('.')) {
+      whichVerified = 4;
+    }
+    else if (_firstNameController.text.toString().isEmpty) {
+      whichVerified = 1;
+    }
+    else if (_lastNameController.text.toString().isEmpty) {
+      whichVerified = 2;
+    }
+    else whichVerified=0;
+  }
+
+
 }

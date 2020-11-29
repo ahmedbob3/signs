@@ -4,6 +4,9 @@
 
 import 'dart:convert';
 
+import 'package:Signs/Utils/images.dart';
+import 'package:Signs/Utils/strings.dart';
+
 class MedicationsModel {
   MedicationsModel({
     this.code,
@@ -57,7 +60,7 @@ class Datum {
   final String mDose;
   final String mDuration;
   final String mReminderNote;
-  final MfName mfName;
+  final String mfName;
   final String mfImage;
   final List<String> rememberTime;
 
@@ -72,7 +75,7 @@ class Datum {
         mDuration: json["m_duration"],
         mReminderNote: json["m_reminder_note"],
         mfName: mfNameValues.map[json["mf_name"]],
-        mfImage: json["mf_image"],
+        mfImage: mfImageValues.map[json["mf_name"]],
         rememberTime: List<String>.from(json["remember_time"].map((x) => x)),
       );
 
@@ -83,15 +86,43 @@ class Datum {
         "m_duration": mDuration,
         "m_reminder_note": mReminderNote,
         "mf_name": mfNameValues.reverse[mfName],
-        "mf_image": mfImage,
+        "mf_image": mfImageValues.reverse[mfName],
         "remember_time": List<dynamic>.from(rememberTime.map((x) => x)),
       };
 }
 
-enum MfName { TABLET, CAPSULES }
+// enum MfName { TABLET, CAPSULES ,}
 
 final mfNameValues =
-    EnumValues({"Capsules": MfName.CAPSULES, "Tablet": MfName.TABLET});
+    EnumValues({
+      "Capsules": Strings().getCapsuleStrings(),
+      "Tablet": Strings().getTabletStrings(),
+      "Liquid": Strings().getLiquidStrings(),
+      "Drops": Strings().getDropsStrings(),
+      "Suppository": Strings().getSuppositoryStrings(),
+      "Topical": Strings().getTopicalStrings(),
+      "Sachets": Strings().getSachetsStrings(),
+      "Inhalers": Strings().getInhalersStrings(),
+      "Implants": Strings().getImplantsStrings(),
+      "Patches": Strings().getPatchesStrings() ,
+      "Injections": Strings().getInjectionsStrings()
+    });
+
+
+final mfImageValues =
+    EnumValues({
+      "Capsules": Capsule_active,
+      "Tablet": Tablet_active,
+      "Liquid": Liquid_active,
+      "Drops": Drops_Active,
+      "Suppository": Suppository_active,
+      "Topical": Topical_active,
+      "Sachets": Sachets_active,
+      "Inhalers": Inhalator_active,
+      "Implants": Implant_active,
+      "Patches": Patches_active,
+      "Injections":  Injection_active
+    });
 
 class EnumValues<T> {
   Map<String, T> map;
