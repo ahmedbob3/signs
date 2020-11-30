@@ -1000,4 +1000,20 @@ class Strings {
         return Strings_EN.HOSPITALS;
     }
   }
+
+
+  static String TimeNotification() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.TIME_NOTIFICATION;
+        break;
+      case languages.Indian:
+        return Strings_INR.TIME_NOTIFICATION;
+        break;
+      default:
+        return Strings_EN.TIME_NOTIFICATION;
+    }
+  }
+
+
 }
