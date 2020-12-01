@@ -3,7 +3,7 @@ class SharedPrefsKeys {
   static const String PRAYER_TIME = "prayer time";
   static const String METHOD_NAME = "methodName";
   static const String SHOROUQ_OFFSET = "shorouqOffset";
-  static const String FAJR_OFFSET = "fajrOffset";
+  static const String MEDICATION_OFFSET = "medicationOffset";
   static const String DUHR_OFFSET = "duhrOffset";
   static const String ASR_OFFSET = "asrOffset";
   static const String MAGHRIB_OFFSET = "maghribOffset";
@@ -21,12 +21,8 @@ class SharedPrefsKeys {
   static const String CALENDAR_SETTINGS = "calendarSettings";
   static const String PERMISSION_GRANTED = "permissionGranted";
   static const String ACTIVE_DAYLIGHT_MANULA = "activeDaylightManual";
-  static const String ADHAN_NOTIFICATION_SETTINGS_FOR_FAJR = "fajr";
-  static const String ADHAN_NOTIFICATION_SETTINGS_FOR_ZOHR = "zohr";
-  static const String ADHAN_NOTIFICATION_SETTINGS_FOR_SHROQ = "shroq";
-  static const String ADHAN_NOTIFICATION_SETTINGS_FOR_MAGHREB = "maghreb";
-  static const String ADHAN_NOTIFICATION_SETTINGS_FOR_ASR = "asr";
-  static const String ADHAN_NOTIFICATION_SETTINGS_FOR_ESHA = "esha";
+  static const String MEDICATION_NOTIFICATION_SETTINGS = "Medication";
+
 
   static String MID_NIGHT = "mid_night";
   static const String ADHAN_FAJR_SLIDER_VALUE = "fajr_slider_value";

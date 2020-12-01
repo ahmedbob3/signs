@@ -1015,5 +1015,18 @@ class Strings {
     }
   }
 
+  static String maoeed() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.MAOEED;
+        break;
+      case languages.Indian:
+        return Strings_INR.MAOEED;
+        break;
+      default:
+        return Strings_EN.MAOEED;
+    }
+  }
+
 
 }
