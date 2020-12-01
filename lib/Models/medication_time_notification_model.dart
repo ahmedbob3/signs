@@ -4,7 +4,7 @@ import 'package:Signs/Utils/strings.dart';
 
 class MedicationTimeNotificationModel{
   Map<String,NotificationSettings> timeNotificationMap = new Map();
-  PrayerTimeNotificationModel(){
+  MedicationTimeNotificationModel(){
     timeNotificationMap[Strings.TimeNotification()] = new NotificationSettings(groupID: 1);
   }
 

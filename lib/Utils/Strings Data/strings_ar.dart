@@ -76,9 +76,12 @@ class Strings_AR {
   static const String FILL_DATA = 'Please Fill All Data Correctly';
   static const String UPCOMING_REMINDERS = 'Upcoming Reminders';
   static const String HOSPITALS = 'Hospitals';
-
-
-
+  static const String TIME_NOTIFICATION = "Medication Time Notifications";
+  static const String MAOEED = "Time";
+  static const String REMAINING = "متبقي";
+  static const String MINUTE = "دقيقة";
+  static const String MINUTES = "دقائق";
+  static const String AT_WORD = "على";
 
 
 

@@ -1028,5 +1028,30 @@ class Strings {
     }
   }
 
+  static String notifBody(int numOfMin, String medName) {
+    if (languages.English ?? false) {
+      return Strings_EN.REMAINING +
+          " " +
+          "$numOfMin" +
+          " " +
+          Strings_EN.MINUTE +
+          " " +
+          Strings_EN.AT_WORD +
+          " " +
+          medName;
+    } else {
+      return Strings_AR.REMAINING +
+          " " +
+          "$numOfMin" +
+          " " +
+          ((numOfMin <= 10 || numOfMin >= 3)
+              ? Strings_AR.MINUTES
+              : Strings_AR.MINUTE) +
+          " " +
+          Strings_AR.AT_WORD +
+          " " +
+          medName;
+    }
+  }
 
 }

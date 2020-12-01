@@ -1,7 +1,5 @@
 import 'dart:convert';
 import 'dart:core';
-import 'dart:io';
-
 import 'package:Signs/Constants/SharedPreferencesKeys.dart';
 import 'package:Signs/Helpers/shared_prefrences.dart';
 import 'package:Signs/Helpers/utilities.dart';
@@ -43,7 +41,7 @@ class NotificationsHelper {
     if (notificationKey == Strings.TimeNotification()) {
       return;
     }
-    reInitPrayerNotifications();
+    reInitMedicationNotifications();
   }
 
   Future<void> _scheduleAgain(String notificationKey) async {
@@ -101,15 +99,13 @@ class NotificationsHelper {
     return medicationTimingMap;
   }
 
-  DateTime calculateMedicationTimeWithOffset(DateTime prayerDate, String offset) {
-    prayerDate = prayerDate.add(new Duration(minutes: int.parse(offset)));
+  DateTime calculateMedicationTimeWithOffset(DateTime medicationDate, String offset) {
+    medicationDate = medicationDate.add(new Duration(minutes: int.parse(offset)));
 
-    if (Utilities.getPrayerSettingsFromSharedPrefs().isChangeToSummerTime &&
-        Utilities.getActiveManualDaylightFromSharedPrefs()
-            .activedaylightManual) {
-      prayerDate = prayerDate.add(new Duration(hours: 1));
+    if (Utilities.getPrayerSettingsFromSharedPrefs().isChangeToSummerTime && Utilities.getActiveManualDaylightFromSharedPrefs().activedaylightManual) {
+      medicationDate = medicationDate.add(new Duration(hours: 1));
     }
-    return prayerDate;
+    return medicationDate;
   }
 
   Future _configurePrayerNotifications(
@@ -202,17 +198,8 @@ class NotificationsHelper {
     String firstTime = formater.format(date).split(" ").first;
     String secondTime = replaceAmPm(formater.format(date).toLowerCase().split(" ").last);
     String timeTitle = " ("+ firstTime+"" +secondTime+") ";
-    if (medicationName == Strings.shorouq()) {
       title = medicationName+timeTitle;
-    } else if (medicationName == Strings.beforSunrise()) {
-      title = Strings.beforSunrise()+timeTitle;
-    } else {
-      if (languages.English.toString() == "English" ?? false) {
-        title = medicationName + " " + Strings.prayer()+timeTitle;
-      } else {
-        title = Strings.prayer() + " " + prayerName+ timeTitle;
-      }
-    }
+
 
     if (notificationKey == Strings.TimeNotification()) {
       notifBody = Strings.notifBody(numOfMin, medicationName);
@@ -236,6 +223,7 @@ class NotificationsHelper {
 
   Future<bool> _removeOldNotifications(String notificationKey) async {
     bool canceled = true;
+    _notificationMedicationIndex = 1;
     var pendingNotificationRequests =
     await _flutterLocalNotificationsPlugin.pendingNotificationRequests();
     // print("total pending notifications: ${pendingNotificationRequests.length}");
@@ -260,10 +248,9 @@ class NotificationsHelper {
     return canceled;
   }
 
-  reInitPrayerNotifications() async {
+  reInitMedicationNotifications() async {
     print("=======================reInitPrayerNotifications");
 
-    _currentMonthPrayerModelResponse = Utilities.getMainPrayerFromSharedPreference();
     _notificationMedicationIndex = 1;
 
     await _flutterLocalNotificationsPlugin.cancelAll();

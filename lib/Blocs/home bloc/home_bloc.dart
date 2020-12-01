@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:Signs/Blocs/medication%20bloc/medication_bloc.dart';
+import 'package:Signs/Helpers/notifications_helper.dart';
 import 'package:Signs/Models/medication_data.dart';
 import 'package:Signs/Models/response/medication_model.dart';
 import 'package:Signs/Models/subaccounts_model.dart';
@@ -26,6 +27,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       var response = await MedicationRepo().getMedicicationsList();
       print('reesss ${response.data}');
       Constants.medicationList = response.data;
+      NotificationsHelper().schedulePrayerNotifications("Medication");
+
 
       yield HomeLoadedState(medicationModel: response);
     } else if (event is resetHomeEvent) {

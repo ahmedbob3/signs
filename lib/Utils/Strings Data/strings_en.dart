@@ -78,5 +78,8 @@ class Strings_EN {
   static const String HOSPITALS = 'Hospitals';
   static const String TIME_NOTIFICATION = "Medication Time Notifications";
   static const String MAOEED = "Time";
+  static const String REMAINING = "Remaining";
+  static const String MINUTE = "Min";
+  static const String AT_WORD = "At";
 
 }
