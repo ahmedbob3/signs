@@ -36,6 +36,8 @@ class _AddMedicationState extends State<AddMedication> {
   MedicationBloc _medicationBloc;
   Datum _medicationData;
   bool isLoading = false;
+  String timeForRemember = "";
+
 
   @override
   void dispose() {
@@ -363,7 +365,7 @@ class _AddMedicationState extends State<AddMedication> {
                                             showTitleActions: true,
                                             onChanged: (date) {
                                               _timeController.text =
-                                              (DateFormat('kk:mm a')
+                                              (DateFormat('hh:mm a')
                                                   .format(date)
                                                   .toString());
                                               print(
@@ -373,7 +375,7 @@ class _AddMedicationState extends State<AddMedication> {
                                                           .toString());
                                             }, onConfirm: (date) {
                                           _timeController.text =
-                                          (DateFormat('kk:mm a')
+                                          (DateFormat('hh:mm a')
                                               .format(date)
                                               .toString());
                                           Constants.signUpData
@@ -398,7 +400,7 @@ class _AddMedicationState extends State<AddMedication> {
                                             showTitleActions: true,
                                             onChanged: (date) {
                                               _timeController.text =
-                                              (DateFormat('kk:mm a')
+                                              (DateFormat('hh:mm a')
                                                   .format(date)
                                                   .toString());
                                               print(
@@ -408,7 +410,10 @@ class _AddMedicationState extends State<AddMedication> {
                                                           .toString());
                                             }, onConfirm: (date) {
                                           _timeController.text =
-                                          (DateFormat('kk:mm a')
+                                          (DateFormat('hh:mm a')
+                                              .format(date)
+                                              .toString());
+                                          timeForRemember= (DateFormat('kk:mm')
                                               .format(date)
                                               .toString());
                                           Constants.signUpData
@@ -541,7 +546,9 @@ class _AddMedicationState extends State<AddMedication> {
                                 _numberController.text.toString(),
                                 _durationController.text.toString(),
                                 _noteController.text.toString(),
-                                _timeController.text.toString()
+                                timeForRemember
+
+
                             ));
                           }
                           else{

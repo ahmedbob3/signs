@@ -1,3 +1,5 @@
+
+import 'package:Signs/Notifications/NotificationPlugin.dart';
 import 'package:Signs/Utils/constants.dart';
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/styles.dart';
@@ -14,11 +16,14 @@ class LandingScreen extends StatefulWidget {
   _LandingScreenState createState() => _LandingScreenState();
 }
 
+
 class _LandingScreenState extends State<LandingScreen> {
   int selectedTabIndex = 0;
+  BuildContext _context;
 
   @override
   Widget build(BuildContext context) {
+    _context=context;
     return Directionality(
       textDirection: Constants.textDirection,
       child: WillPopScope(
@@ -133,4 +138,36 @@ class _LandingScreenState extends State<LandingScreen> {
       return HomeScreen();
     }
   }
+
+
+  @override
+  void initState() {
+    super.initState();
+    notificationPlugin.setListenerForLowerVersions(onNotificationInLowerVersions);
+    notificationPlugin.setOnNotificationClick(onNotificationClick);
+   // test();
+  }
+
+  // test() async {
+  //   // for(int i=0;i<Constants.medicationList.length-1;i++){
+  //     await notificationPlugin.showNotification();
+  //   // }
+  //   // await notificationPlugin.scheduleNotification();
+  // }
+
+  onNotificationInLowerVersions(ReceivedNotification receivedNotification) {
+    print('Notification Received ${receivedNotification.id}');
+  }
+
+  onNotificationClick(String payload) {
+    print('Payload $payload');
+    selectedTabIndex=3;
+    Navigator.push(_context, MaterialPageRoute(builder: (coontext) {
+      return getCurrentScreen();
+    }));
+  }
+
+
+
+
 }
