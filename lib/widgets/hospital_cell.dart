@@ -20,7 +20,7 @@ class HospitalCell extends StatelessWidget {
       },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 10),
-        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+        padding: EdgeInsets.symmetric(vertical: 10).copyWith(right: 10),
         width: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white,
@@ -34,13 +34,14 @@ class HospitalCell extends StatelessWidget {
             Expanded(
               flex: 1,
               child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 10),
+                margin: EdgeInsets.symmetric(horizontal: 13),
                 height: 90,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   image: DecorationImage(
                     image: NetworkImage(
-                        'https://image.shutterstock.com/image-photo/modern-hospital-style-building-260nw-212251981.jpg'),
+                        hospitalItem.hImage),
+                        fit: BoxFit.cover
                   ),
                 ),
               ),
@@ -53,12 +54,17 @@ class HospitalCell extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          hospitalItem.hName,
-                          style: titleStyle(
-                              fontFamily: semiBoldFontFamily,
-                              color: Color.fromRGBO(0, 62, 151, 1),
-                              fontSize: 20),
+                        Expanded(
+                          child: Text(
+                            hospitalItem.hName,
+                            style: titleStyle(
+                                fontFamily: semiBoldFontFamily,
+                                color: Color.fromRGBO(0, 62, 151, 1),
+                                fontSize: 20),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            softWrap: true,
+                          ),
                         ),
                         GestureDetector(
                             onTap: () async {
@@ -80,8 +86,12 @@ class HospitalCell extends StatelessWidget {
                     SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Icon(Icons.location_on),
+                        Image.asset(
+                          MapMarker,
+                        ),
+                        SizedBox(width: 5),
                         Expanded(
                           child: Text(
                             hospitalItem.hLocation,

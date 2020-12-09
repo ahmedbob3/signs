@@ -33,15 +33,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-
-if(_homeBloc ==null ){
+    if (_homeBloc == null) {
       _homeBloc = HomeBloc();
-    _homeBloc.add(loadMedicationsEvent());
-    _homeBloc.add(getSubaccountsEvent());
-    _homeBloc.add(getHospitalsEvent());
+      _homeBloc.add(loadMedicationsEvent());
+      _homeBloc.add(getSubaccountsEvent());
+      _homeBloc.add(getHospitalsEvent());
+    }
 
-}
-  
     return WillPopScope(
       onWillPop: () async => false,
       child: SafeArea(
@@ -91,6 +89,21 @@ if(_homeBloc ==null ){
                             children: <Widget>[
                               CircleAvatar(
                                 radius: 30,
+                                child: Text(
+                                  Singleton()
+                                          .loginModel
+                                          .data
+                                          .uFirstName[0]
+                                          .toUpperCase() +
+                                      '' +
+                                      Singleton()
+                                          .loginModel
+                                          .data
+                                          .uLastName[0]
+                                          .toUpperCase(),
+                                  style: titleStyle(
+                                      fontFamily: boldFontFamily, fontSize: 20),
+                                ),
                               ),
                               SizedBox(width: 10),
                               Expanded(
@@ -143,22 +156,27 @@ if(_homeBloc ==null ){
                                                     0, 54, 115, 1),
                                                 child: Text(
                                                   (Constants
-                                                          .subaccountsList[
-                                                              index - 1]
-                                                          .saFirstName != null ? Constants
-                                                          .subaccountsList[
-                                                              index - 1]
-                                                          .saFirstName[0]
-                                                          .toUpperCase() :
-                                                      '' )+
+                                                                  .subaccountsList[
+                                                                      index - 1]
+                                                                  .saFirstName !=
+                                                              null
+                                                          ? Constants
+                                                              .subaccountsList[
+                                                                  index - 1]
+                                                              .saFirstName[0]
+                                                              .toUpperCase()
+                                                          : '') +
                                                       (Constants
-                                                          .subaccountsList[
-                                                              index - 1]
-                                                          .saLastName != null ? Constants
-                                                          .subaccountsList[
-                                                              index - 1]
-                                                          .saLastName[0]
-                                                          .toUpperCase() : ''),
+                                                                  .subaccountsList[
+                                                                      index - 1]
+                                                                  .saLastName !=
+                                                              null
+                                                          ? Constants
+                                                              .subaccountsList[
+                                                                  index - 1]
+                                                              .saLastName[0]
+                                                              .toUpperCase()
+                                                          : ''),
                                                   style: titleStyle(
                                                       fontFamily:
                                                           boldFontFamily,
@@ -191,7 +209,7 @@ if(_homeBloc ==null ){
                         children: [
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10),
-                            child: Text(Strings().getRemindersStrings(),
+                            child: Text(Strings().getHospitalsStrings(),
                                 style: titleStyle(
                                     fontFamily: boldFontFamily,
                                     fontSize: 22,
