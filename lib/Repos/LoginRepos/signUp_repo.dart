@@ -1,9 +1,12 @@
 import 'dart:convert';
 
 import 'package:Signs/Models/check_mobile.dart';
+import 'package:Signs/Models/login_model.dart' as loginMod;
 import 'package:Signs/Models/sign_up.dart';
 import 'package:Signs/Utils/apis.dart';
+import 'package:Signs/Utils/singleton.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import '../base_repo.dart';
 
 class SignUpRepo extends BaseRepo {
@@ -40,7 +43,31 @@ class SignUpRepo extends BaseRepo {
     );
     var decodedResponse = json.decode(response.body);
     print('response .. ${response.body}');
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('mobileNumber', mobileNumber);
+    prefs.setString('password', password);
+
     SigUpModel modelResponse = SigUpModel.fromMap(decodedResponse);
+    loginMod.Data data = loginMod.Data (
+      uBedTime: modelResponse.data.uBedTime,
+      uBirthDate: modelResponse.data.uBirthDate.toString(),
+      uEmail: modelResponse.data.uEmail,
+      uFirstName: modelResponse.data.uFirstName,
+      uGender: modelResponse.data.uGender,
+      uHeight: modelResponse.data.uHeight,
+      uId: modelResponse.data.uId,
+      uLastName: modelResponse.data.uLastName,
+      uMobile: modelResponse.data.uMobile,
+      uWakeUp: modelResponse.data.uWakeUp,
+      uWeight: modelResponse.data.uWeight
+    );
+    
+    loginMod.LoginModel loginModel = loginMod.LoginModel(
+      data: data
+    );
+
+    Singleton().loginModel = loginModel;
     return modelResponse;
   }
 }
