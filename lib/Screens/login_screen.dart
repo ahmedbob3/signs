@@ -1,3 +1,4 @@
+import 'package:Signs/Screens/signup_screen_step1.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:country_codes/country_codes.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController passwordController = TextEditingController();
   LoginBloc _loginBloc;
   bool isLoading = false;
-
+  String selectedCountry = '';
   @override
   void dispose() {
     super.dispose();
@@ -37,6 +38,23 @@ class _LoginScreenState extends State<LoginScreen> {
   void initState() {
     super.initState();
     _loginBloc = LoginBloc();
+    getSimInfo();
+  }
+
+  Future<void> getSimInfo() async {
+    try {
+      await CountryCodes.init();
+    } catch (e) {
+      print('xxx');
+    }
+
+    setState(() {
+      try {
+        selectedCountry = CountryCodes.dialCode();
+      } catch (e) {
+        selectedCountry = 'EG';
+      }
+    });
   }
 
   @override
@@ -146,8 +164,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                           child: CountryCodePicker(
                                             enabled: false,
                                             // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
-                                            initialSelection:
-                                                widget.selectedCountry,
+                                            initialSelection: selectedCountry,
                                             favorite: ['+20', '+965'],
                                             // optional. Shows only country name and flag
                                             showCountryOnly: false,
@@ -254,23 +271,28 @@ class _LoginScreenState extends State<LoginScreen> {
                                     Strings().getSingInText(),
                                     isFilledColor: true),
                                 SizedBox(height: 30),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Text(
-                                      'Already Have An Account ?',
-                                      style: titleStyle(
-                                          color: greyColor,
-                                          fontFamily: mediumFontFamily),
-                                    ),
-                                    SizedBox(width: 5),
-                                    Text(
-                                      Strings().getSingInText(),
-                                      style: titleStyle(
-                                          color: defaultBackgroundColor,
-                                          fontFamily: mediumFontFamily),
-                                    ),
-                                  ],
+                                MaterialButton(
+                                  onPressed: () {
+                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignupScreenStep1()));
+                                  },
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Text(
+                                        'Don\'t Have An Account ?',
+                                        style: titleStyle(
+                                            color: greyColor,
+                                            fontFamily: mediumFontFamily),
+                                      ),
+                                      SizedBox(width: 5),
+                                      Text(
+                                        Strings().getSignupStrings(),
+                                        style: titleStyle(
+                                            color: defaultBackgroundColor,
+                                            fontFamily: mediumFontFamily),
+                                      ),
+                                    ],
+                                  ),
                                 )
                               ],
                             ),
