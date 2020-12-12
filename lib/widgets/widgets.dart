@@ -64,11 +64,11 @@ Widget textField(String hintText, Function callback,
         filled: true,
         // labelStyle: Constants.fontLight(color: Colors.grey, fontSize: fontSize),
         // helperStyle: Constants.fontLight(color: Colors.grey),
-        suffixIcon: isPassword
-            ? IconButton(
-                icon: Icon(Icons.remove_red_eye, color: Colors.white),
-                onPressed: showPassword)
-            : icon == null ? null : icon,
+        // suffixIcon: isPassword
+        //     ? IconButton(
+        //         icon: Icon(Icons.remove_red_eye, color: Colors.grey),
+        //         onPressed: showPassword)
+        //     : icon == null ? null : icon,
         prefixIcon: prefixIcon != null
             ? Container(
                 child: prefixIcon,

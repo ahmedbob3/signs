@@ -2,6 +2,7 @@
 import 'package:Signs/Notifications/NotificationPlugin.dart';
 import 'package:Signs/Utils/constants.dart';
 import 'package:Signs/Utils/images.dart';
+import 'package:Signs/Utils/singleton.dart';
 import 'package:Signs/Utils/styles.dart';
 import 'package:flutter/material.dart';
 
@@ -50,7 +51,7 @@ class _LandingScreenState extends State<LandingScreen> {
               ),
             )
           ),
-          floatingActionButton: Container(
+          floatingActionButton: Singleton().loginModel == null ? Container() : Container(
             height: 70,
             width: 70,
             margin: EdgeInsets.only(top: 30),

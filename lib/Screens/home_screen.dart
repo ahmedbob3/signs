@@ -89,7 +89,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: <Widget>[
                               CircleAvatar(
                                 radius: 30,
-                                child: Text(
+                                child: Singleton()
+                                          .loginModel == null ? Container(
+                                            child: Image.asset('assets/images/ic_Avatar.png'),
+                                          ):
+                                  Text(
                                   Singleton()
                                           .loginModel
                                           .data
@@ -108,6 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               SizedBox(width: 10),
                               Expanded(
                                 child: Text(
+                                  Singleton().loginModel == null ? Strings().getWelcomeText():
                                   Singleton().loginModel.data.uFirstName +
                                       ' ' +
                                       Singleton().loginModel.data.uLastName,
@@ -124,6 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         SizedBox(height: 20),
                         // subaccounts ..
+                        Singleton().loginModel == null ? Container() :
                         Constants.subaccountsList.length == 0 ||
                                 Constants.subaccountsList == null
                             ? Padding(

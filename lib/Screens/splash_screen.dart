@@ -37,6 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   checkForLanguage() async {
     _prefs.then((SharedPreferences prefs) async {
+      prefs.clear();
       Constants.languageId =
           languages.values[prefs.getInt('selectedLanguage') ?? 0];
       Constants.updateTextDirection();

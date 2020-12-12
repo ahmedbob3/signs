@@ -561,12 +561,12 @@ class _SignupScreenStep3State extends State<SignupScreenStep3> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: <Widget>[
                                     new GestureDetector(
-                                      // onTap: () {
-                                      //   Navigator.of(context).push(
-                                      //       MaterialPageRoute(
-                                      //           builder: (context) =>
-                                      //               LandingScreen()));
-                                      // },
+                                      onTap: () {
+                                        Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    LandingScreen()));
+                                      },
                                       child: new Text(
                                         Strings().getSkipStrings(),
                                         style: titleStyle(
