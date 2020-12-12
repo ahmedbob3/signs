@@ -82,8 +82,10 @@ class Strings_AR {
   static const String MINUTE = "دقيقة";
   static const String MINUTES = "دقائق";
   static const String AT_WORD = "على";
-
-
-
+  static const String PHONE_VERIFICATION = "Phone Verification";
+  static const String GET_OTP_DESCRIPTION = "Enter Your OTP Code Here";
+static const String NOT_GET_CODE = "Didn't you receive any code? ";
+static const String GET_RESEND_OTP = "Resend New Code";
+static const String VERIFY_OTP = 'Verify';
 
 }

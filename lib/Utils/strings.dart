@@ -212,7 +212,6 @@ class Strings {
     }
   }
 
-
   String getPasswordLength() {
     switch (Constants.languageId) {
       case languages.Arabic:
@@ -225,6 +224,7 @@ class Strings {
         return Strings_EN.SING_UP_PASSWORD;
     }
   }
+
   String getConfirmPassword() {
     switch (Constants.languageId) {
       case languages.Arabic:
@@ -250,6 +250,7 @@ class Strings {
         return Strings_EN.SING_UP_PASSWORD_TEXT;
     }
   }
+
   String getPasswordStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
@@ -262,6 +263,7 @@ class Strings {
         return Strings_EN.SING_UP_PASSWORD_LENGTH;
     }
   }
+
   String getNameLengthStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
@@ -274,6 +276,7 @@ class Strings {
         return Strings_EN.NAME_LENGTH;
     }
   }
+
   String getEmailVerifyStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
@@ -938,7 +941,7 @@ class Strings {
     }
   }
 
-  String getSelectLabelStrings(){
+  String getSelectLabelStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.SELECT;
@@ -950,7 +953,8 @@ class Strings {
         return Strings_EN.SELECT;
     }
   }
-  String getForgetPasswordStrings(){
+
+  String getForgetPasswordStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.FORGET_PASSWORD;
@@ -962,7 +966,8 @@ class Strings {
         return Strings_EN.FORGET_PASSWORD;
     }
   }
-  String getFillDataString(){
+
+  String getFillDataString() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.FILL_DATA;
@@ -975,7 +980,7 @@ class Strings {
     }
   }
 
-  String getRemindersStrings(){
+  String getRemindersStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.UPCOMING_REMINDERS;
@@ -988,7 +993,7 @@ class Strings {
     }
   }
 
-  String getHospitalsStrings(){
+  String getHospitalsStrings() {
     switch (Constants.languageId) {
       case languages.Arabic:
         return Strings_AR.HOSPITALS;
@@ -1000,7 +1005,6 @@ class Strings {
         return Strings_EN.HOSPITALS;
     }
   }
-
 
   static String TimeNotification() {
     switch (Constants.languageId) {
@@ -1054,4 +1058,78 @@ class Strings {
     }
   }
 
+  static String getPhoneVerificationString() {
+    // 'Phone Verification'
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.PHONE_VERIFICATION;
+        break;
+      case languages.Indian:
+        return Strings_INR.PHONE_VERIFICATION;
+        break;
+      default:
+        return Strings_EN.PHONE_VERIFICATION;
+    }
+  }
+
+  static String getEnterOTPString() {
+    // 'Phone Verification'
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.GET_OTP_DESCRIPTION;
+        break;
+      case languages.Indian:
+        return Strings_INR.GET_OTP_DESCRIPTION;
+        break;
+      default:
+        return Strings_EN.GET_OTP_DESCRIPTION;
+    }
+  }
+
+static String getNotGetCodeString() {
+    // 'Phone Verification'
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.NOT_GET_CODE;
+        break;
+      case languages.Indian:
+        return Strings_INR.NOT_GET_CODE;
+        break;
+      default:
+        return Strings_EN.NOT_GET_CODE;
+    }
+  }
+
+static String getResendOTPString() {
+    // 'Phone Verification'
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.GET_RESEND_OTP;
+        break;
+      case languages.Indian:
+        return Strings_INR.GET_RESEND_OTP;
+        break;
+      default:
+        return Strings_EN.GET_RESEND_OTP;
+    }
+  }
+
+  static String getVerifiyString() {
+    // 'Phone Verification'
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.VERIFY_OTP;
+        break;
+      case languages.Indian:
+        return Strings_INR.VERIFY_OTP;
+        break;
+      default:
+        return Strings_EN.VERIFY_OTP;
+    }
+  }
+
+  
+  
+
+  
 }

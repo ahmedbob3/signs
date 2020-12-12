@@ -1,6 +1,7 @@
 import 'package:Signs/Blocs/signUp%20bloc/signUp_bloc.dart';
 import 'package:Signs/Screens/home_screen.dart';
 import 'package:Signs/Screens/login_screen.dart';
+import 'package:Signs/Screens/otp_screen.dart';
 import 'package:Signs/Utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -90,7 +91,7 @@ class _SignupScreenStep3State extends State<SignupScreenStep3> {
                         });
                       } else {
                         Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) => LandingScreen()));
+                            builder: (context) => PinCodeVerificationScreen(Constants.signUpData.mobileNumber)));
                       }
                       _signUpBloc.add(resetSignupState());
                       isLoading = false;

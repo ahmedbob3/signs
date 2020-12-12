@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:Signs/Screens/landing_screen.dart';
+import 'package:Signs/Utils/strings.dart';
 import 'package:Signs/Utils/styles.dart';
 import 'package:Signs/widgets/widgets.dart';
 import 'package:flutter/gestures.dart';
@@ -65,7 +67,7 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                   padding:
                       const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20),
                   child: Text(
-                    'Phone Verification',
+                    Strings.getPhoneVerificationString(),
                     style: titleStyle(
                         fontFamily: boldFontFamily,
                         fontSize: 28,
@@ -79,7 +81,7 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
               ),
               Align(
                 alignment: Alignment.center,
-                child: Text("Enter Your OTP Code Here",
+                child: Text(Strings.getEnterOTPString(),
                     style: titleStyle(
                         color: Colors.black,
                         fontFamily: boldFontFamily,
@@ -115,7 +117,7 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                           fieldHeight: 70,
                           fieldWidth: 60,
                           activeFillColor:
-                              defaultBackgroundColor,
+                              hasError ? Colors.red : defaultBackgroundColor,
                           activeColor: defaultBackgroundColor,
                           selectedFillColor: defaultBackgroundColor,
                           selectedColor: defaultBackgroundColor,
@@ -123,13 +125,17 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                           disabledColor: Colors.white,
                           inactiveColor: Colors.grey[300]),
                       animationDuration: Duration(milliseconds: 300),
-                      textStyle: titleStyle(fontSize: 24),
+                      textStyle:
+                          titleStyle(fontSize: 30, fontFamily: boldFontFamily),
                       enableActiveFill: true,
                       errorAnimationController: errorController,
                       controller: textEditingController,
                       keyboardType: TextInputType.number,
                       onCompleted: (v) {
                         print("Completed");
+                        setState(() {
+                          hasError = v != '1234';
+                        });
                       },
                       // onTap: () {
                       //   print("Pressed");
@@ -138,6 +144,9 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                         print(value);
                         setState(() {
                           currentText = value;
+                          if (currentText.length < 4) {
+                            hasError = false;
+                          }
                         });
                       },
                       beforeTextPaste: (text) {
@@ -152,7 +161,7 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                 height: 90,
               ),
               Center(
-                child: Text("Didn't receive the code? ",
+                child: Text(Strings.getNotGetCodeString(),
                     style: TextStyle(
                       color: Colors.black38,
                       fontSize: 18,
@@ -165,7 +174,7 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
               Center(
                 child: InkWell(
                   // onTap: onTapRecognizer,
-                  child: Text("Resend New Code",
+                  child: Text(Strings.getResendOTPString(),
                       style: TextStyle(
                           color: defaultBackgroundColor,
                           fontFamily: mediumFontFamily,
@@ -180,7 +189,7 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                 child: button(() {
                   formKey.currentState.validate();
                   // conditions for validating
-                  if (currentText.length != 6 || currentText != "towtow") {
+                  if (currentText.length != 4 || currentText != "1234") {
                     errorController.add(ErrorAnimationType
                         .shake); // Triggering error shake animation
                     setState(() {
@@ -189,13 +198,15 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                   } else {
                     setState(() {
                       hasError = false;
-                      scaffoldKey.currentState.showSnackBar(SnackBar(
-                        content: Text("Aye!!"),
-                        duration: Duration(seconds: 2),
-                      ));
+                      Future.delayed(Duration(milliseconds: 1), () {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LandingScreen()));
+                      });
                     });
                   }
-                }, 'Verify', isFilledColor: true),
+                }, Strings.getVerifiyString(), isFilledColor: true),
               ),
               SizedBox(
                 height: 16,
