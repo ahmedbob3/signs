@@ -1128,6 +1128,20 @@ static String getResendOTPString() {
     }
   }
 
+   static String getGuestUserString() {
+    // 'Phone Verification'
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.GUEST_USER;
+        break;
+      case languages.Indian:
+        return Strings_INR.GUEST_USER;
+        break;
+      default:
+        return Strings_EN.GUEST_USER;
+    }
+  }
+
   
   
 

@@ -1,4 +1,6 @@
 import 'package:Signs/Blocs/medication%20bloc/medication_bloc.dart';
+import 'package:Signs/Screens/check_mobile_screen.dart';
+import 'package:Signs/Screens/login_screen.dart';
 import 'package:Signs/Utils/constants.dart';
 import 'package:Signs/Utils/singleton.dart';
 import 'package:Signs/Utils/strings.dart';
@@ -89,35 +91,51 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: <Widget>[
                               CircleAvatar(
                                 radius: 30,
-                                child: Singleton()
-                                          .loginModel == null ? Container(
-                                            child: Image.asset('assets/images/ic_Avatar.png'),
-                                          ):
-                                  Text(
-                                  Singleton()
-                                          .loginModel
-                                          .data
-                                          .uFirstName[0]
-                                          .toUpperCase() +
-                                      '' +
-                                      Singleton()
-                                          .loginModel
-                                          .data
-                                          .uLastName[0]
-                                          .toUpperCase(),
-                                  style: titleStyle(
-                                      fontFamily: boldFontFamily, fontSize: 20),
-                                ),
+                                child: Singleton().loginModel == null
+                                    ? Container(
+                                        child: Image.asset(
+                                            'assets/images/ic_Avatar.png'),
+                                      )
+                                    : Text(
+                                        Singleton()
+                                                .loginModel
+                                                .data
+                                                .uFirstName[0]
+                                                .toUpperCase() +
+                                            '' +
+                                            Singleton()
+                                                .loginModel
+                                                .data
+                                                .uLastName[0]
+                                                .toUpperCase(),
+                                        style: titleStyle(
+                                            fontFamily: boldFontFamily,
+                                            fontSize: 20),
+                                      ),
                               ),
                               SizedBox(width: 10),
                               Expanded(
-                                child: Text(
-                                  Singleton().loginModel == null ? Strings().getWelcomeText():
-                                  Singleton().loginModel.data.uFirstName +
-                                      ' ' +
-                                      Singleton().loginModel.data.uLastName,
-                                  style: titleStyle(
-                                      fontFamily: boldFontFamily, fontSize: 20),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => CheckMobileScreen()));
+                                  },
+                                  child: Text(
+                                    Singleton().loginModel == null
+                                        ? Strings().getWelcomeText() +
+                                            " ${Strings.getGuestUserString()}"
+                                        : Singleton()
+                                                .loginModel
+                                                .data
+                                                .uFirstName +
+                                            ' ' +
+                                            Singleton()
+                                                .loginModel
+                                                .data
+                                                .uLastName,
+                                    style: titleStyle(
+                                        fontFamily: boldFontFamily,
+                                        fontSize: 20),
+                                  ),
                                 ),
                               ),
                               Icon(Icons.search, color: Colors.white, size: 30),
@@ -129,71 +147,77 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         SizedBox(height: 20),
                         // subaccounts ..
-                        Singleton().loginModel == null ? Container() :
-                        Constants.subaccountsList.length == 0 ||
-                                Constants.subaccountsList == null
-                            ? Padding(
-                                padding:
-                                    const EdgeInsets.only(right: 5, left: 5),
-                                child: Align(
-                                    child: addSubAccount(),
-                                    alignment: Alignment.centerLeft),
-                              )
-                            : Container(
-                                padding: EdgeInsets.symmetric(horizontal: 20),
-                                width: double.infinity,
-                                height: 50,
-                                child: ListView.builder(
-                                  itemCount:
-                                      Constants.subaccountsList.length + 1,
-                                  scrollDirection: Axis.horizontal,
-                                  itemBuilder: (context, index) {
-                                    return index == 0
-                                        ? addSubAccount()
-                                        : Padding(
-                                            padding: const EdgeInsets.only(
-                                                right: 5, left: 5),
-                                            child: CircleAvatar(
-                                              radius: 24,
-                                              backgroundColor: Colors.white,
-                                              child: CircleAvatar(
-                                                radius: 22,
-                                                backgroundColor: Color.fromRGBO(
-                                                    0, 54, 115, 1),
-                                                child: Text(
-                                                  (Constants
-                                                                  .subaccountsList[
-                                                                      index - 1]
-                                                                  .saFirstName !=
-                                                              null
-                                                          ? Constants
-                                                              .subaccountsList[
-                                                                  index - 1]
-                                                              .saFirstName[0]
-                                                              .toUpperCase()
-                                                          : '') +
+                        Singleton().loginModel == null
+                            ? Container()
+                            : Constants.subaccountsList.length == 0 ||
+                                    Constants.subaccountsList == null
+                                ? Padding(
+                                    padding: const EdgeInsets.only(
+                                        right: 5, left: 5),
+                                    child: Align(
+                                        child: addSubAccount(),
+                                        alignment: Alignment.centerLeft),
+                                  )
+                                : Container(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 20),
+                                    width: double.infinity,
+                                    height: 50,
+                                    child: ListView.builder(
+                                      itemCount:
+                                          Constants.subaccountsList.length + 1,
+                                      scrollDirection: Axis.horizontal,
+                                      itemBuilder: (context, index) {
+                                        return index == 0
+                                            ? addSubAccount()
+                                            : Padding(
+                                                padding: const EdgeInsets.only(
+                                                    right: 5, left: 5),
+                                                child: CircleAvatar(
+                                                  radius: 24,
+                                                  backgroundColor: Colors.white,
+                                                  child: CircleAvatar(
+                                                    radius: 22,
+                                                    backgroundColor:
+                                                        Color.fromRGBO(
+                                                            0, 54, 115, 1),
+                                                    child: Text(
                                                       (Constants
+                                                                      .subaccountsList[
+                                                                          index -
+                                                                              1]
+                                                                      .saFirstName !=
+                                                                  null
+                                                              ? Constants
                                                                   .subaccountsList[
                                                                       index - 1]
-                                                                  .saLastName !=
-                                                              null
-                                                          ? Constants
-                                                              .subaccountsList[
-                                                                  index - 1]
-                                                              .saLastName[0]
-                                                              .toUpperCase()
-                                                          : ''),
-                                                  style: titleStyle(
-                                                      fontFamily:
-                                                          boldFontFamily,
-                                                      fontSize: 18),
+                                                                  .saFirstName[
+                                                                      0]
+                                                                  .toUpperCase()
+                                                              : '') +
+                                                          (Constants
+                                                                      .subaccountsList[
+                                                                          index -
+                                                                              1]
+                                                                      .saLastName !=
+                                                                  null
+                                                              ? Constants
+                                                                  .subaccountsList[
+                                                                      index - 1]
+                                                                  .saLastName[0]
+                                                                  .toUpperCase()
+                                                              : ''),
+                                                      style: titleStyle(
+                                                          fontFamily:
+                                                              boldFontFamily,
+                                                          fontSize: 18),
+                                                    ),
+                                                  ),
                                                 ),
-                                              ),
-                                            ),
-                                          );
-                                  },
-                                ),
-                              ),
+                                              );
+                                      },
+                                    ),
+                                  ),
                       ],
                     ),
                   ),
