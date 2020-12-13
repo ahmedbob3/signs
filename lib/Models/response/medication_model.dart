@@ -81,7 +81,7 @@ class Datum {
         mDose: json["m_dose"],
         mDuration: json["m_duration"],
         mReminderNote: json["m_reminder_note"],
-        mfName: mfNameValues.map[json["mf_name"]],
+        mfName: mfNameValues.map[json["mf_id"]],
         mfImage: mfImageValues.map[json["mf_id"]],
         rememberTime: List<String>.from(json["remember_time"].map((x) => x)),
         isActive: json["m_active"]!= null ? json["m_active"]: true,
@@ -94,7 +94,7 @@ class Datum {
         "m_dose": mDose,
         "m_duration": mDuration,
         "m_reminder_note": mReminderNote,
-        "mf_name": mfNameValues.reverse[mfName],
+        "mf_name": mfName,
         "mf_image": mfImage,
         "remember_time": List<dynamic>.from(rememberTime.map((x) => x)),
           "m_active": isActive,
@@ -106,17 +106,17 @@ class Datum {
 
 final mfNameValues =
     EnumValues({
-      "Capsules": Strings().getCapsuleStrings(),
-      "Tablet": Strings().getTabletStrings(),
-      "Liquid": Strings().getLiquidStrings(),
-      "Drops": Strings().getDropsStrings(),
-      "Suppository": Strings().getSuppositoryStrings(),
-      "Topical": Strings().getTopicalStrings(),
-      "Sachets": Strings().getSachetsStrings(),
-      "Inhalers": Strings().getInhalersStrings(),
-      "Implants": Strings().getImplantsStrings(),
-      "Patches": Strings().getPatchesStrings() ,
-      "Injections": Strings().getInjectionsStrings()
+      "1": Strings().getCapsuleStrings(),
+      "2": Strings().getTabletStrings(),
+      "3": Strings().getLiquidStrings(),
+      "4": Strings().getDropsStrings(),
+      "5": Strings().getSuppositoryStrings(),
+      "6": Strings().getTopicalStrings(),
+      "7": Strings().getSachetsStrings(),
+      "8": Strings().getInhalersStrings(),
+      "9": Strings().getImplantsStrings(),
+      "10": Strings().getPatchesStrings() ,
+      "11": Strings().getInjectionsStrings()
     });
 
 
