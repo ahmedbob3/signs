@@ -11,11 +11,13 @@ class MedicationsModel {
   MedicationsModel({
     this.code,
     this.status,
+    this.msg,
     this.data,
   });
 
   final int code;
   final String status;
+  final String msg;
   final List<Datum> data;
 
   factory MedicationsModel.fromJson(String str) =>
@@ -31,6 +33,7 @@ class MedicationsModel {
       data = [];
     return MedicationsModel(
       code: json["code"],
+      msg: json["msg"],
       status: json["status"],
       data: data != null ? List<Datum>.from(data.map((x) => Datum.fromMap(x))) : [],
     );
@@ -38,6 +41,7 @@ class MedicationsModel {
 
   Map<String, dynamic> toMap() => {
         "code": code,
+        "msg": msg,
         "status": status,
         "data": List<dynamic>.from(data.map((x) => x.toMap())),
       };
@@ -53,6 +57,7 @@ class Datum {
     this.mfName,
     this.mfImage,
     this.rememberTime,
+    this.isActive,
   });
 
   final String mId;
@@ -63,6 +68,8 @@ class Datum {
   final String mfName;
   final String mfImage;
   final List<String> rememberTime;
+   bool isActive;
+
 
   factory Datum.fromJson(String str) => Datum.fromMap(json.decode(str));
 
@@ -75,8 +82,10 @@ class Datum {
         mDuration: json["m_duration"],
         mReminderNote: json["m_reminder_note"],
         mfName: mfNameValues.map[json["mf_name"]],
-        mfImage: mfImageValues.map[json["mf_name"]],
+        mfImage: mfImageValues.map[json["mf_id"]],
         rememberTime: List<String>.from(json["remember_time"].map((x) => x)),
+        isActive: json["m_active"]!= null ? json["m_active"]: true,
+
       );
 
   Map<String, dynamic> toMap() => {
@@ -86,9 +95,11 @@ class Datum {
         "m_duration": mDuration,
         "m_reminder_note": mReminderNote,
         "mf_name": mfNameValues.reverse[mfName],
-        "mf_image": mfImageValues.reverse[mfName],
+        "mf_image": mfImage,
         "remember_time": List<dynamic>.from(rememberTime.map((x) => x)),
-      };
+          "m_active": isActive,
+
+  };
 }
 
 // enum MfName { TABLET, CAPSULES ,}
@@ -111,17 +122,17 @@ final mfNameValues =
 
 final mfImageValues =
     EnumValues({
-      "Capsules": Capsule_active,
-      "Tablet": Tablet_active,
-      "Liquid": Liquid_active,
-      "Drops": Drops_Active,
-      "Suppository": Suppository_active,
-      "Topical": Topical_active,
-      "Sachets": Sachets_active,
-      "Inhalers": Inhalator_active,
-      "Implants": Implant_active,
-      "Patches": Patches_active,
-      "Injections":  Injection_active
+      "1": Capsule_active,
+      "2": Tablet_active,
+      "3": Liquid_active,
+      "4": Drops_Active,
+      "5": Suppository_active,
+      "6": Topical_active,
+      "7": Sachets_active,
+      "8": Inhalator_active,
+      "9": Implant_active,
+      "10": Patches_active,
+      "11":  Injection_active
     });
 
 class EnumValues<T> {

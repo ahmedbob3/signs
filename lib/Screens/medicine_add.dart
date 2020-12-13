@@ -1,11 +1,9 @@
-import 'package:Signs/Blocs/home%20bloc/home_bloc.dart';
 import 'package:Signs/Blocs/medication%20bloc/medication_bloc.dart';
-import 'package:Signs/Models/medication_data.dart';
 import 'package:Signs/Models/response/medication_model.dart';
 import 'package:Signs/Utils/constants.dart';
+import 'package:Signs/Utils/singleton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:Signs/Screens/signup_screen_step2.dart';
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/strings.dart';
 import 'package:Signs/Utils/styles.dart';
@@ -13,8 +11,6 @@ import 'package:Signs/widgets/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:intl/intl.dart';
-
-import 'home_screen.dart';
 import 'landing_screen.dart';
 import 'medicine_form.dart';
 
@@ -38,7 +34,6 @@ class _AddMedicationState extends State<AddMedication> {
   bool isLoading = false;
   String timeForRemember = "";
 
-
   @override
   void dispose() {
     super.dispose();
@@ -47,7 +42,6 @@ class _AddMedicationState extends State<AddMedication> {
     _numberController.dispose();
     _noteController.dispose();
     _durationController.dispose();
-
   }
 
   @override
@@ -66,533 +60,561 @@ class _AddMedicationState extends State<AddMedication> {
         child: Scaffold(
           key: _scaffoldKey,
           body: BlocBuilder<MedicationBloc, MedicationState>(
-          bloc: _medicationBloc,
-          builder: (context, state) {
-
-            if (state is MedicationLoadingState) {
-              if (!isLoading) {
-                showLoadingDialog(context);
-                isLoading = true;
-              }
-            }
-            else if (state is MedicationLoadedState) {
-              print('loaded');
-
-              Future.delayed(Duration(milliseconds: 1), () {
-                if (state.medicationresponse.code != 200) {
-                  _scaffoldKey.currentState.showSnackBar(
-                      SnackBar(content: Text('error')));
-                  Navigator.of(context).pop();
-                } else {
-                  Constants.medicationList.add(_medicationData);
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => LandingScreen()));
+            bloc: _medicationBloc,
+            builder: (context, state) {
+              if (state is MedicationLoadingState) {
+                if (!isLoading) {
+                  showLoadingDialog(context);
+                  isLoading = true;
                 }
-                _medicationBloc.add(resetMedicationState());
-                isLoading = false;
-              });
-            }
+              } else if (state is MedicationLoadedState) {
+                print('loaded');
 
+                Future.delayed(Duration(milliseconds: 1), () {
+                  if (state.medicationresponse.code != 200) {
+                    _scaffoldKey.currentState.showSnackBar(
+                        SnackBar(content: Text(state.medicationresponse.msg)));
+                    Navigator.of(context).pop();
+                  } else {
+                    Constants.medicationList.add(_medicationData);
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => LandingScreen()));
+                  }
+                  _medicationBloc.add(resetMedicationState());
+                  isLoading = false;
+                });
+              }
 
-          return Container(
-            child: Stack(
-              children: <Widget>[
-                Container(
-                  width: double.infinity,
-                  color: Colors.white,
-                ),
-                SingleChildScrollView(
-                  child: Container(
-                    height: MediaQuery.of(context).size.height + 200,
-                    // margin: EdgeInsets.only(
-                    //     top: (Theme.of(context).platform == TargetPlatform.iOS
-                    //         ? 120
-                    //         : 10)),
-                    padding:
-                    EdgeInsets.only(top: 20, right: 20, left: 20, bottom: 5),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Column(
+              return Container(
+                child: Stack(
+                  children: <Widget>[
+                    Container(
+                      width: double.infinity,
+                      color: Colors.white,
+                    ),
+                    SingleChildScrollView(
+                      child: Container(
+                        height: MediaQuery.of(context).size.height + 200,
+                        // margin: EdgeInsets.only(
+                        //     top: (Theme.of(context).platform == TargetPlatform.iOS
+                        //         ? 120
+                        //         : 10)),
+                        padding: EdgeInsets.only(
+                            top: 20, right: 20, left: 20, bottom: 5),
+                        child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Positioned(
-
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.of(context).pop();
-                                },
-                                child:  Image.asset(
-                                  Arrow_back_grey,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            Positioned(
-                                child: Text(
-                                  Strings().getMedicineAddStrings(),
-                                  style: titleStyle(
-                                      fontFamily: boldFontFamily,
-                                      color: defaultBackgroundColor,
-                                      fontSize: 24),
-                                ),
-                                ),
-                          ],
-                        ),
-                        SizedBox(height: 10),
-                        Text(Strings().getMedicationNameStrings(),
-                            style: titleStyle(
-                                fontFamily: semiBoldFontFamily,
-                                color: greyColor,
-                                fontSize: 17)),
-                        SizedBox(height: 10),
-                        Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                              color: textFieldFill,
-                              border: Border.all(
-                                color: textFieldBorder,
-                              ),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 0, left: 15),
-                            child: Row(
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                Expanded(
-                                  child: Container(
-                                    child: TextField(
-                                      controller: _nameController,
-                                      decoration: InputDecoration(
-                                        hintText: 'ibuprofen , 200 mg',
-                                        hintStyle: titleStyle(
-                                            fontFamily: mediumFontFamily,
-                                            color: greyColor,
-                                            fontSize: 16),
-                                        labelStyle:
-                                            titleStyle(color: greyColor),
-                                        border: InputBorder.none,
-                                        focusedBorder: InputBorder.none,
-                                        enabledBorder: InputBorder.none,
-                                        errorBorder: InputBorder.none,
-                                        disabledBorder: InputBorder.none,
-                                      ),
-                                      keyboardType: TextInputType.text,
+                                Positioned(
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Image.asset(
+                                      Arrow_back_grey,
                                     ),
                                   ),
                                 ),
+                                SizedBox(height: 10),
                                 Positioned(
-                                    child: IconButton(
-                                      icon: Image.asset(
-                                        Camera_rectangle,
-                                        fit: BoxFit.fitHeight,
-                                      ),
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                    ),
-                                    left: 30),
+                                  child: Text(
+                                    Strings().getMedicineAddStrings(),
+                                    style: titleStyle(
+                                        fontFamily: boldFontFamily,
+                                        color: defaultBackgroundColor,
+                                        fontSize: 24),
+                                  ),
+                                ),
                               ],
                             ),
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        Row(
-                          children: <Widget>[
-                            Text(Strings().getMedicineStrings(),
+                            SizedBox(height: 10),
+                            Text(Strings().getMedicationNameStrings(),
                                 style: titleStyle(
                                     fontFamily: semiBoldFontFamily,
                                     color: greyColor,
                                     fontSize: 17)),
-                            SizedBox(
-                                width: MediaQuery.of(context).size.width - 240),
-                            new GestureDetector(
-                              onTap: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => MedicineForm()));
-                              },
-                              child: Text(
-                                "View more",
-                                style: titleStyle(
-                                    fontFamily: boldFontFamily,
-                                    color: defaultBackgroundColor,
-                                    fontSize: 14),
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 10),
-                    // Container(
-                    // ),
-
-                      Container(
-                          width: double.infinity,
-                          height: 120,
-                          child: ListView.builder(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: 5,
-                              itemBuilder: (context, index) {
-                                return medicationForm(index);
-                              }),
-                        ),
-                        SizedBox(height: 10),
-                        Text(Strings().getDropsStrings(),
-                            style: titleStyle(
-                                fontFamily: semiBoldFontFamily,
-                                color: greyColor,
-                                fontSize: 17)),
-                        Text(Strings().getMedicationHowStrings(),
-                            style: titleStyle(
-                                fontFamily: mediumFontFamily,
-                                color: greyColor,
-                                fontSize: 14)),
-                        SizedBox(height: 10),
-                        Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                              color: textFieldFill,
-                              border: Border.all(
-                                color: textFieldBorder,
-                              ),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 15, left: 15),
-                            child: Row(
-                              children: <Widget>[
-                                Positioned(
-                                    child: IconButton(
-                                      icon: Image.asset(
-                                        Minus_rectangle,
-                                        fit: BoxFit.fill,
-                                      ),
-                                      onPressed: () {
-                                        if(int.parse(_numberController.text.toString()) >0)
-                                        _numberController.text = (int.parse(_numberController.text.toString()) - 1).toString() ;
-                                      },
-                                    ),
-                                    right: 50),
-                                Expanded(
-                                  child: Container(
-                                    child: TextField(
-                                      controller: _numberController,
-                                      textAlign: TextAlign.center,
-                                      decoration: InputDecoration(
-                                        hintText: '2',
-                                        hintStyle: titleStyle(
-                                            fontFamily: mediumFontFamily,
-                                            color: greyColor,
-                                            fontSize: 16),
-                                        labelStyle:
-                                            titleStyle(color: greyColor),
-                                        border: InputBorder.none,
-                                        focusedBorder: InputBorder.none,
-                                        enabledBorder: InputBorder.none,
-                                        errorBorder: InputBorder.none,
-                                        disabledBorder: InputBorder.none,
-                                      ),
-                                      keyboardType: TextInputType.number,
-                                    ),
+                            SizedBox(height: 10),
+                            Container(
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  color: textFieldFill,
+                                  border: Border.all(
+                                    color: textFieldBorder,
                                   ),
-                                ),
-                                Positioned(
-                                    child: IconButton(
-                                      icon: Image.asset(
-                                        Plus_rectangle,
-                                        fit: BoxFit.fill,
-                                      ),
-                                      onPressed: () {
-                                        if(int.parse(_numberController.text.toString()) <=30)
-                                          _numberController.text = (int.parse(_numberController.text.toString()) + 1).toString() ;
-                                      },
-                                    ),
-                                    left: 50),
-                              ],
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        Text(Strings().getMedicationReminderStrings(),
-                            style: titleStyle(
-                                fontFamily: semiBoldFontFamily,
-                                color: greyColor,
-                                fontSize: 17)),
-                        SizedBox(height: 10),
-                        Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                              color: textFieldFill,
-                              border: Border.all(
-                                color: textFieldBorder,
-                              ),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 15, left: 15),
-                            child: Row(
-                              children: <Widget>[
-                                Positioned(
-                                    child: IconButton(
-                                      icon: Image.asset(
-                                        Medicine_notification,
-                                        fit: BoxFit.fill,
-                                      ),
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                    ),
-                                    right: 50),
-                                Expanded(
-                                  child: Container(
-                                    child: TextField(
-                                      controller: _timeController,
-                                      textAlign: TextAlign.center,
-                                      decoration: InputDecoration(
-                                        hintText: '10 : 00 AM',
-                                        hintStyle: titleStyle(
-                                            fontFamily: mediumFontFamily,
-                                            color: greyColor,
-                                            fontSize: 16),
-                                        labelStyle:
-                                            titleStyle(color: greyColor),
-                                        border: InputBorder.none,
-                                        focusedBorder: InputBorder.none,
-                                        enabledBorder: InputBorder.none,
-                                        errorBorder: InputBorder.none,
-                                        disabledBorder: InputBorder.none,
-                                      ),
-                                      // keyboardType: TextInputType.number,
-                                      onTap: () {
-                                        DatePicker.showTime12hPicker(
-                                            context,
-                                            showTitleActions: true,
-                                            onChanged: (date) {
-                                              _timeController.text =
-                                              (DateFormat('hh:mm a')
-                                                  .format(date)
-                                                  .toString());
-                                              print(
-                                                  'change $date in time zone ' +
-                                                      date.timeZoneOffset
-                                                          .inHours
-                                                          .toString());
-                                            }, onConfirm: (date) {
-                                          _timeController.text =
-                                          (DateFormat('hh:mm a')
-                                              .format(date)
-                                              .toString());
-                                          Constants.signUpData
-                                              .setWakeupTime(
-                                              DateFormat('kk:mm')
-                                                  .format(date)
-                                                  .toString());
-                                        }, currentTime: DateTime.now());
-                                      },
-                                    ),
-                                  ),
-                                ),
-                                Positioned(
-                                    child: IconButton(
-                                      icon: Image.asset(
-                                        Plus_rectangle,
-                                        fit: BoxFit.fill,
-                                      ),
-                                      onPressed: () {
-                                        DatePicker.showTime12hPicker(
-                                            context,
-                                            showTitleActions: true,
-                                            onChanged: (date) {
-                                              _timeController.text =
-                                              (DateFormat('hh:mm a')
-                                                  .format(date)
-                                                  .toString());
-                                              print(
-                                                  'change $date in time zone ' +
-                                                      date.timeZoneOffset
-                                                          .inHours
-                                                          .toString());
-                                            }, onConfirm: (date) {
-                                          _timeController.text =
-                                          (DateFormat('hh:mm a')
-                                              .format(date)
-                                              .toString());
-                                          timeForRemember= (DateFormat('kk:mm')
-                                              .format(date)
-                                              .toString());
-                                          Constants.signUpData
-                                              .setWakeupTime(
-                                              DateFormat('kk:mm')
-                                                  .format(date)
-                                                  .toString());
-                                        }, currentTime: DateTime.now());
-                                      },
-                                    ),
-                                    left: 50),
-                              ],
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        Text(Strings().getMedicationDurationStrings(),
-                            style: titleStyle(
-                                fontFamily: semiBoldFontFamily,
-                                color: greyColor,
-                                fontSize: 17)),
-                        Text(Strings().getMedicationHowLongStrings(),
-                            style: titleStyle(
-                                fontFamily: mediumFontFamily,
-                                color: greyColor,
-                                fontSize: 14)),
-                        SizedBox(height: 10),
-                        Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                              color: textFieldFill,
-                              border: Border.all(
-                                color: textFieldBorder,
-                              ),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 15, left: 15),
-                            child: Row(
-                              children: <Widget>[
-                                Expanded(
-                                  child: Container(
-                                    child: TextField(
-                                      controller: _durationController,
-                                      textAlign: TextAlign.center,
-                                      decoration: InputDecoration(
-                                        hintText: '20 days',
-                                        hintStyle: titleStyle(
-                                            fontFamily: mediumFontFamily,
-                                            color: greyColor,
-                                            fontSize: 16),
-                                        labelStyle:
-                                            titleStyle(color: greyColor),
-                                        border: InputBorder.none,
-                                        focusedBorder: InputBorder.none,
-                                        enabledBorder: InputBorder.none,
-                                        errorBorder: InputBorder.none,
-                                        disabledBorder: InputBorder.none,
-                                      ),
-                                      keyboardType: TextInputType.number,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        Text(Strings().getMedicationNoteStrings(),
-                            style: titleStyle(
-                                fontFamily: semiBoldFontFamily,
-                                color: greyColor,
-                                fontSize: 17)),
-                        SizedBox(height: 10),
-                        Container(
-                          height: 100,
-                          decoration: BoxDecoration(
-                              color: textFieldFill,
-                              border: Border.all(
-                                color: textFieldBorder,
-                              ),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 15, left: 15),
-                            child: Row(
-                              children: <Widget>[
-                                Expanded(
-                                  child: Container(
-                                    child: TextField(
-                                        controller: _noteController,
-                                        textAlign: TextAlign.center,
-                                        decoration: InputDecoration(
-                                          hintText:
-                                              'ex: That’s my painkiller to my teeth',
-                                          hintStyle: titleStyle(
-                                              fontFamily: mediumFontFamily,
-                                              color: greyColor,
-                                              fontSize: 16),
-                                          labelStyle:
-                                              titleStyle(color: greyColor),
-                                          border: InputBorder.none,
-                                          focusedBorder: InputBorder.none,
-                                          enabledBorder: InputBorder.none,
-                                          errorBorder: InputBorder.none,
-                                          disabledBorder: InputBorder.none,
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.only(right: 0, left: 15),
+                                child: Row(
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: Container(
+                                        child: TextField(
+                                          controller: _nameController,
+                                          decoration: InputDecoration(
+                                            hintText: 'ibuprofen , 200 mg',
+                                            hintStyle: titleStyle(
+                                                fontFamily: mediumFontFamily,
+                                                color: greyColor,
+                                                fontSize: 16),
+                                            labelStyle:
+                                                titleStyle(color: greyColor),
+                                            border: InputBorder.none,
+                                            focusedBorder: InputBorder.none,
+                                            enabledBorder: InputBorder.none,
+                                            errorBorder: InputBorder.none,
+                                            disabledBorder: InputBorder.none,
+                                          ),
+                                          keyboardType: TextInputType.text,
                                         ),
-                                        keyboardType: TextInputType.multiline,
-                                        minLines: 3,
-                                        maxLines: null),
+                                      ),
+                                    ),
+                                    Positioned(
+                                        child: IconButton(
+                                          icon: Image.asset(
+                                            Camera_rectangle,
+                                            fit: BoxFit.fitHeight,
+                                          ),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                        left: 30),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 20),
+                            Row(
+                              children: <Widget>[
+                                Text(Strings().getMedicineStrings(),
+                                    style: titleStyle(
+                                        fontFamily: semiBoldFontFamily,
+                                        color: greyColor,
+                                        fontSize: 17)),
+                                SizedBox(
+                                    width: MediaQuery.of(context).size.width -
+                                        240),
+                                new GestureDetector(
+                                  onTap: () {
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                MedicineForm()));
+                                  },
+                                  child: Text(
+                                    "View more",
+                                    style: titleStyle(
+                                        fontFamily: boldFontFamily,
+                                        color: defaultBackgroundColor,
+                                        fontSize: 14),
                                   ),
                                 ),
                               ],
                             ),
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        button(() {
+                            SizedBox(height: 10),
+                            // Container(
+                            // ),
 
-                          if(_timeController.text.toString().isNotEmpty && _nameController.text.toString().isNotEmpty && _durationController.text.toString().isNotEmpty && _noteController.text.toString().isNotEmpty && _numberController.text.toString().isNotEmpty){
-                            // _medicationData.setMedicationNumber( (Constants.medicationList.length+1).toString());
-                            // _medicationData.setMedicationName(_nameController.text.toString());
-                            // _medicationData.setMedicationFormId( getid(Constants.medications).toString());
-                            // _medicationData.setMedicationDose(_numberController.text.toString());
-                            // _medicationData.setMedicationDuration(_durationController.text.toString());
-                            // _medicationData.setMedicationNote(_noteController.text.toString());
-                            // _medicationData.setMedicationTime(_timeController.text.toString());
-                            _medicationBloc.add(doMedicationEvent(
-                                 (Constants.medicationList.length+1).toString(),
-                                _nameController.text.toString(),
-                                getid(Constants.medications).toString(),
-                                _numberController.text.toString(),
-                                _durationController.text.toString(),
-                                _noteController.text.toString(),
-                                timeForRemember
-
-
-                            ));
-                          }
-                          else{
-                            _scaffoldKey.currentState.showSnackBar(
-                                SnackBar(
+                            Container(
+                              width: double.infinity,
+                              height: 120,
+                              child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: 5,
+                                  itemBuilder: (context, index) {
+                                    return medicationForm(index);
+                                  }),
+                            ),
+                            SizedBox(height: 10),
+                            Text(Strings().getDropsStrings(),
+                                style: titleStyle(
+                                    fontFamily: semiBoldFontFamily,
+                                    color: greyColor,
+                                    fontSize: 17)),
+                            Text(Strings().getMedicationHowStrings(),
+                                style: titleStyle(
+                                    fontFamily: mediumFontFamily,
+                                    color: greyColor,
+                                    fontSize: 14)),
+                            SizedBox(height: 10),
+                            Container(
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  color: textFieldFill,
+                                  border: Border.all(
+                                    color: textFieldBorder,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.only(right: 15, left: 15),
+                                child: Row(
+                                  children: <Widget>[
+                                    Positioned(
+                                        child: IconButton(
+                                          icon: Image.asset(
+                                            Minus_rectangle,
+                                            fit: BoxFit.fill,
+                                          ),
+                                          onPressed: () {
+                                            if (int.parse(_numberController.text
+                                                    .toString()) >
+                                                0)
+                                              _numberController.text =
+                                                  (int.parse(_numberController
+                                                              .text
+                                                              .toString()) -
+                                                          1)
+                                                      .toString();
+                                          },
+                                        ),
+                                        right: 50),
+                                    Expanded(
+                                      child: Container(
+                                        child: TextField(
+                                          controller: _numberController,
+                                          textAlign: TextAlign.center,
+                                          decoration: InputDecoration(
+                                            hintText: '2',
+                                            hintStyle: titleStyle(
+                                                fontFamily: mediumFontFamily,
+                                                color: greyColor,
+                                                fontSize: 16),
+                                            labelStyle:
+                                                titleStyle(color: greyColor),
+                                            border: InputBorder.none,
+                                            focusedBorder: InputBorder.none,
+                                            enabledBorder: InputBorder.none,
+                                            errorBorder: InputBorder.none,
+                                            disabledBorder: InputBorder.none,
+                                          ),
+                                          keyboardType: TextInputType.number,
+                                        ),
+                                      ),
+                                    ),
+                                    Positioned(
+                                        child: IconButton(
+                                          icon: Image.asset(
+                                            Plus_rectangle,
+                                            fit: BoxFit.fill,
+                                          ),
+                                          onPressed: () {
+                                            if (int.parse(_numberController.text
+                                                    .toString()) <=
+                                                30)
+                                              _numberController.text =
+                                                  (int.parse(_numberController
+                                                              .text
+                                                              .toString()) +
+                                                          1)
+                                                      .toString();
+                                          },
+                                        ),
+                                        left: 50),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 20),
+                            Text(Strings().getMedicationReminderStrings(),
+                                style: titleStyle(
+                                    fontFamily: semiBoldFontFamily,
+                                    color: greyColor,
+                                    fontSize: 17)),
+                            SizedBox(height: 10),
+                            Container(
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  color: textFieldFill,
+                                  border: Border.all(
+                                    color: textFieldBorder,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.only(right: 15, left: 15),
+                                child: Row(
+                                  children: <Widget>[
+                                    Positioned(
+                                        child: IconButton(
+                                          icon: Image.asset(
+                                            Medicine_notification,
+                                            fit: BoxFit.fill,
+                                          ),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                        right: 50),
+                                    Expanded(
+                                      child: Container(
+                                        child: TextField(
+                                          controller: _timeController,
+                                          textAlign: TextAlign.center,
+                                          decoration: InputDecoration(
+                                            hintText: '10 : 00 AM',
+                                            hintStyle: titleStyle(
+                                                fontFamily: mediumFontFamily,
+                                                color: greyColor,
+                                                fontSize: 16),
+                                            labelStyle:
+                                                titleStyle(color: greyColor),
+                                            border: InputBorder.none,
+                                            focusedBorder: InputBorder.none,
+                                            enabledBorder: InputBorder.none,
+                                            errorBorder: InputBorder.none,
+                                            disabledBorder: InputBorder.none,
+                                          ),
+                                          // keyboardType: TextInputType.number,
+                                          onTap: () {
+                                            DatePicker.showTime12hPicker(
+                                                context,
+                                                showTitleActions: true,
+                                                onChanged: (date) {
+                                              _timeController.text =
+                                                  (DateFormat('hh:mm a')
+                                                      .format(date)
+                                                      .toString());
+                                              print(
+                                                  'change $date in time zone ' +
+                                                      date.timeZoneOffset
+                                                          .inHours
+                                                          .toString());
+                                            }, onConfirm: (date) {
+                                              _timeController.text =
+                                                  (DateFormat('hh:mm a')
+                                                      .format(date)
+                                                      .toString());
+                                              Constants.signUpData
+                                                  .setWakeupTime(
+                                                      DateFormat('kk:mm')
+                                                          .format(date)
+                                                          .toString());
+                                            }, currentTime: DateTime.now());
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                    Positioned(
+                                        child: IconButton(
+                                          icon: Image.asset(
+                                            Plus_rectangle,
+                                            fit: BoxFit.fill,
+                                          ),
+                                          onPressed: () {
+                                            DatePicker.showTime12hPicker(
+                                                context,
+                                                showTitleActions: true,
+                                                onChanged: (date) {
+                                              _timeController.text =
+                                                  (DateFormat('hh:mm a')
+                                                      .format(date)
+                                                      .toString());
+                                              print(
+                                                  'change $date in time zone ' +
+                                                      date.timeZoneOffset
+                                                          .inHours
+                                                          .toString());
+                                            }, onConfirm: (date) {
+                                              _timeController.text =
+                                                  (DateFormat('hh:mm a')
+                                                      .format(date)
+                                                      .toString());
+                                              timeForRemember =
+                                                  (DateFormat('kk:mm')
+                                                      .format(date)
+                                                      .toString());
+                                              _onSubmit(_timeController.text
+                                                  .toString());
+                                              Constants.signUpData
+                                                  .setWakeupTime(
+                                                      DateFormat('kk:mm')
+                                                          .format(date)
+                                                          .toString());
+                                            }, currentTime: DateTime.now());
+                                          },
+                                        ),
+                                        left: 50),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            _listViewData.length > 0
+                                ? AddRemoveListView()
+                                : Container(),
+                            SizedBox(height: 20),
+                            Text(Strings().getMedicationDurationStrings(),
+                                style: titleStyle(
+                                    fontFamily: semiBoldFontFamily,
+                                    color: greyColor,
+                                    fontSize: 17)),
+                            Text(Strings().getMedicationHowLongStrings(),
+                                style: titleStyle(
+                                    fontFamily: mediumFontFamily,
+                                    color: greyColor,
+                                    fontSize: 14)),
+                            SizedBox(height: 10),
+                            Container(
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  color: textFieldFill,
+                                  border: Border.all(
+                                    color: textFieldBorder,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.only(right: 15, left: 15),
+                                child: Row(
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: Container(
+                                        child: TextField(
+                                          controller: _durationController,
+                                          textAlign: TextAlign.center,
+                                          decoration: InputDecoration(
+                                            hintText: '20 days',
+                                            hintStyle: titleStyle(
+                                                fontFamily: mediumFontFamily,
+                                                color: greyColor,
+                                                fontSize: 16),
+                                            labelStyle:
+                                                titleStyle(color: greyColor),
+                                            border: InputBorder.none,
+                                            focusedBorder: InputBorder.none,
+                                            enabledBorder: InputBorder.none,
+                                            errorBorder: InputBorder.none,
+                                            disabledBorder: InputBorder.none,
+                                          ),
+                                          keyboardType: TextInputType.number,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 20),
+                            Text(Strings().getMedicationNoteStrings(),
+                                style: titleStyle(
+                                    fontFamily: semiBoldFontFamily,
+                                    color: greyColor,
+                                    fontSize: 17)),
+                            SizedBox(height: 10),
+                            Container(
+                              height: 100,
+                              decoration: BoxDecoration(
+                                  color: textFieldFill,
+                                  border: Border.all(
+                                    color: textFieldBorder,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.only(right: 15, left: 15),
+                                child: Row(
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: Container(
+                                        child: TextField(
+                                            controller: _noteController,
+                                            textAlign: TextAlign.center,
+                                            decoration: InputDecoration(
+                                              hintText:
+                                                  'ex: That’s my painkiller to my teeth',
+                                              hintStyle: titleStyle(
+                                                  fontFamily: mediumFontFamily,
+                                                  color: greyColor,
+                                                  fontSize: 16),
+                                              labelStyle:
+                                                  titleStyle(color: greyColor),
+                                              border: InputBorder.none,
+                                              focusedBorder: InputBorder.none,
+                                              enabledBorder: InputBorder.none,
+                                              errorBorder: InputBorder.none,
+                                              disabledBorder: InputBorder.none,
+                                            ),
+                                            keyboardType:
+                                                TextInputType.multiline,
+                                            minLines: 3,
+                                            maxLines: null),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 20),
+                            button(() {
+                              if (_timeController.text.toString().isNotEmpty &&
+                                  _nameController.text.toString().isNotEmpty &&
+                                  _durationController.text
+                                      .toString()
+                                      .isNotEmpty &&
+                                  _noteController.text.toString().isNotEmpty &&
+                                  _numberController.text
+                                      .toString()
+                                      .isNotEmpty) {
+                                // _medicationData.setMedicationNumber( (Constants.medicationList.length+1).toString());
+                                // _medicationData.setMedicationName(_nameController.text.toString());
+                                // _medicationData.setMedicationFormId( getid(Constants.medications).toString());
+                                // _medicationData.setMedicationDose(_numberController.text.toString());
+                                // _medicationData.setMedicationDuration(_durationController.text.toString());
+                                // _medicationData.setMedicationNote(_noteController.text.toString());
+                                // _medicationData.setMedicationTime(_timeController.text.toString());
+                                _medicationData.isActive = true;
+                                _medicationBloc.add(doMedicationEvent(
+                                    Singleton().loginModel.data.uId.toString(),
+                                    // (Constants.medicationList.length+1).toString(),
+                                    _nameController.text.toString(),
+                                    getid(Constants.medications).toString(),
+                                    _numberController.text.toString(),
+                                    _durationController.text.toString(),
+                                    _noteController.text.toString(),
+                                    getReminderData(_listViewData)
+                                    ));
+                              } else {
+                                _scaffoldKey.currentState.showSnackBar(SnackBar(
                                   content: Text(Strings().getFillDataString()),
                                   duration: Duration(seconds: 3),
                                 ));
-                          }
-
-                        }, Strings().getDoneStrings(), isFilledColor: true),
-                        Spacer()
-                      ],
+                              }
+                            }, Strings().getDoneStrings(), isFilledColor: true),
+                            Spacer()
+                          ],
+                        ),
+                        // ),
+                      ),
+                      // Positioned(
+                      //     child: IconButton(
+                      //       icon: Icon(
+                      //         Icons.arrow_back_ios,
+                      //         color: Color.fromRGBO(130, 130, 130, 1),
+                      //       ),
+                      //       onPressed: () {
+                      //         Navigator.of(context).pop();
+                      //       },
+                      //     ),
+                      //     top: 5,
+                      //     left: 5),
+                      // Positioned(
+                      //     child: Text(
+                      //       Strings().getMedicineAddStrings(),
+                      //       style: titleStyle(
+                      //           fontFamily: boldFontFamily,
+                      //           color: defaultBackgroundColor,
+                      //           fontSize: 24),
+                      //     ),
+                      //     top: 60,
+                      //     left: 30),
                     ),
-                  // ),
+                  ],
                 ),
-                // Positioned(
-                //     child: IconButton(
-                //       icon: Icon(
-                //         Icons.arrow_back_ios,
-                //         color: Color.fromRGBO(130, 130, 130, 1),
-                //       ),
-                //       onPressed: () {
-                //         Navigator.of(context).pop();
-                //       },
-                //     ),
-                //     top: 5,
-                //     left: 5),
-                // Positioned(
-                //     child: Text(
-                //       Strings().getMedicineAddStrings(),
-                //       style: titleStyle(
-                //           fontFamily: boldFontFamily,
-                //           color: defaultBackgroundColor,
-                //           fontSize: 24),
-                //     ),
-                //     top: 60,
-                //     left: 30),
-                ),
-              ],
-            ),
-          );
-
-          },
+              );
+            },
           ),
         ),
       ),
@@ -729,11 +751,136 @@ class _AddMedicationState extends State<AddMedication> {
   }
 
   int getid(List<bool> medications) {
-    int result=0;
-    for (int i=0;i<medications.length -1;i++){
-      if(medications[i]== true)
-        result=i+1;
+    int result = 0;
+    for (int i = 0; i < medications.length - 1; i++) {
+      if (medications[i] == true) result = i + 1;
     }
     return result;
   }
+
+  List<String> _listViewData = [];
+
+  _onSubmit(String data) {
+    setState(() {
+      _listViewData.add(data);
+    });
+  }
+
+  AddRemoveListView() {
+    return Container(
+      width: double.infinity,
+      height: 120,
+      child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: _listViewData.length,
+          itemBuilder: (context, index) {
+            return medicationAlarm(index);
+          }),
+    );
+  }
+
+  medicationAlarm(int index) {
+    return Container(
+      width: 120,
+      height: 120,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              Expanded(
+                  child: Container(
+                height: 120,
+                padding: EdgeInsets.only(left: 5, right: 5),
+                    child: GestureDetector(
+                      onTap: () {
+    setState(() {
+      _listViewData.remove(_listViewData[index]);
+                     });
+                      },
+                      child: Card(
+                        elevation: 5,
+                        color: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            new Icon(
+                              Icons.delete,
+                              color: Colors.red,
+                            ),
+                            SizedBox(height: 20),
+                            Text(
+                              _listViewData[index],
+                              style: TextStyle(
+                                  color: headerColor,
+                                  fontSize: 16,
+                                  fontFamily: mediumFontFamily),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+
+
+              )),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  String getReminderData(List<String> listViewData) {
+    String result="[";
+    for (int i=0;i<listViewData.length;i++){
+      if(i==listViewData.length-1)
+        result = result + listViewData[i] + "]";
+else
+      result = result + listViewData[i] + ",";
+
+
+    }
+    return result;
+  }
+  // return Expanded(
+  //   child: ListView(
+  //     shrinkWrap:true, //just set this property
+  //     padding: EdgeInsets.only(right : 10.0 , left: 10.0),
+  //     children: _listViewData.reversed.map((data) {
+  //       return Dismissible(
+  //         key: Key(data),
+  //         child: Container(
+  //       height: 50,
+  //           alignment: Alignment.center,
+  //           child: Card(
+  //           shape: RoundedRectangleBorder(
+  //             borderRadius: BorderRadius.circular(10.0),
+  //           ),
+  //           color: textFieldFill,
+  //           child: ListTile(
+  //             dense: true,
+  //             title: new Text(
+  //               data,
+  //             ),
+  //             trailing: new Icon(
+  //               Icons.delete,
+  //               color: Colors.red,
+  //             ),
+  //               onTap:    () {
+  //                 setState(() {
+  //                   _listViewData.remove(data);
+  //                 });
+  //               },
+  //           ),
+  //         ),
+  //       ),
+  //       );
+  //     }).toList(),
+  //   ),
+  // );
+  // }
 }

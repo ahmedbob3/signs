@@ -81,5 +81,6 @@ class Strings_INR {
   static const String REMAINING = "Remaining";
   static const String MINUTE = "Min";
   static const String AT_WORD = "At";
+  static const String EMPTY = "Empty Data";
 
 }

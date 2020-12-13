@@ -1,4 +1,5 @@
 import 'package:Signs/Models/response/medication_model.dart';
+import 'package:Signs/Utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:Signs/Screens/medicine_add.dart';
 import 'package:Signs/Utils/images.dart';
@@ -32,8 +33,7 @@ class PillCell extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                   Image.asset(!isNewPill ? data.mfImage : Add_pill,height: 30,
-                       fit:BoxFit.contain),
+                   Image.asset(!isNewPill ? Add_pill : Add_pill,height: 20, fit:BoxFit.contain),
                     !isNewPill ? Text(data.mDuration, style: titleStyle(fontFamily: semiBoldFontFamily, fontSize: 16, color: Color.fromRGBO(96, 96, 96, 1),)) : Container()
                   ],
                 ),
@@ -59,6 +59,7 @@ class PillCell extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         !isNewPill ? (){} :
+                        Constants.medications = [false, false, false,false, false, false,false, false, false,false, false];
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => AddMedication()));
                       },

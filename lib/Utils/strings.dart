@@ -1054,4 +1054,17 @@ class Strings {
     }
   }
 
+  static String empty() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.EMPTY;
+        break;
+      case languages.Indian:
+        return Strings_INR.EMPTY;
+        break;
+      default:
+        return Strings_EN.EMPTY;
+    }
+  }
+
 }

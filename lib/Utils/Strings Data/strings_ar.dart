@@ -82,6 +82,7 @@ class Strings_AR {
   static const String MINUTE = "دقيقة";
   static const String MINUTES = "دقائق";
   static const String AT_WORD = "على";
+  static const String EMPTY = "Empty Data";
 
 
 

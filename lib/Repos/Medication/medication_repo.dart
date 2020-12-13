@@ -17,7 +17,7 @@ class MedicationRepo extends BaseRepo {
       String medicationNote,
       String medicationTime) async {
     Map<String, dynamic> params = {
-      "u_id": Singleton().loginModel.data.uId,
+      "u_id": medicationNumber,
       "m_name": medicationName,
       "mf_id": medicationFormId,
       "m_dose": medicationDose,
@@ -29,6 +29,55 @@ class MedicationRepo extends BaseRepo {
       Uri.encodeFull(APIS.serverURL + APIS.MEDICATION_API),
       body: params,
     );
+    var decodedResponse = json.decode(response.body);
+    print('response .. ${response.body}');
+    MedicationsModel modelResponse = MedicationsModel.fromMap(decodedResponse);
+    return modelResponse;
+  }
+  Future<MedicationsModel> medicationEdit(
+      String medicationNumber,
+      String medicationName,
+      String medicationFormId,
+      String medicationDose,
+      String medicationDuration,
+      String medicationNote,
+      String medicationTime,
+      String medicationServerId
+      ) async {
+    Map<String, dynamic> params = {
+      "u_id": medicationNumber,
+      "m_name": medicationName,
+      "mf_id": medicationFormId,
+      "m_dose": medicationDose,
+      "m_duration": medicationDuration,
+      "m_reminder_note": medicationNote,
+      "remember_time": medicationTime,
+      "m_id": medicationServerId
+    };
+    var response = await http.post(
+      Uri.encodeFull(APIS.serverURL + APIS.Edit_MEDICATION),
+      body: params,
+    );
+    var decodedResponse = json.decode(response.body);
+    print('response .. ${response.body}');
+    MedicationsModel modelResponse = MedicationsModel.fromMap(decodedResponse);
+    return modelResponse;
+  }
+
+  Future<MedicationsModel> medicationDelete(
+    String medicationNumber,
+        String medicationStatus
+      ) async {
+    Map<String, dynamic> params = {
+      "m_id": medicationNumber,
+      "m_active": medicationStatus
+    };
+
+    var response = await http.post(
+      Uri.encodeFull(APIS.serverURL + APIS.Edit_MEDICATION_STATUS),
+      body: params,
+    );
+
     var decodedResponse = json.decode(response.body);
     print('response .. ${response.body}');
     MedicationsModel modelResponse = MedicationsModel.fromMap(decodedResponse);

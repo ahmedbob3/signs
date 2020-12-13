@@ -24,4 +24,4 @@ class doMedicationEvent extends MedicationEvent {
 }
 
 class resetMedicationState extends MedicationEvent {}
-class getMedicicationListEvent extends MedicationEvent{}
+class getMedicicationEvent extends MedicationEvent{}
