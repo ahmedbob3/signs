@@ -32,7 +32,9 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
             onPressed: () async {
               await FlutterShare.share(
                 title: 'Hospital',
-                text: widget.hospitalItem.hAbout,
+                text: widget.hospitalItem.hName + " \n " + 
+                widget.hospitalItem.hLocation + "\n" +
+                'http://maps.google.com/maps?q=${widget.hospitalItem.hLatlang.split(',')[0]},${widget.hospitalItem.hLatlang.split(',')[1]}'
               );
             },
           ),

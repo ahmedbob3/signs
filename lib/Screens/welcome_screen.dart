@@ -1,3 +1,4 @@
+import 'package:Signs/Screens/landing_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -84,18 +85,24 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                               Navigator.of(context).push(MaterialPageRoute(
                                   // builder: (context) => MedicineForm()));
                                   // builder: (context) => AddMedication()));
-                              // builder: (context) => SignupSubAccountScreenStep1()));
-                              builder: (context) => SignupScreenStep1()));
+                                  // builder: (context) => SignupSubAccountScreenStep1()));
+                                  builder: (context) => SignupScreenStep1()));
                             }, Strings().getCreateAccountText(),
                                 isFilledColor: true),
                             Spacer(),
-                            Center(
-                              child: Text(
-                                Strings().getDiscoverApp(),
-                                style: titleStyle().copyWith(
-                                    decoration: TextDecoration.underline,
-                                    fontFamily: mediumFontFamily,
-                                    fontSize: 14),
+                            MaterialButton(
+                              onPressed: (){
+                                 Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => LandingScreen()));
+                              },
+                              child: Center(
+                                child: Text(
+                                  Strings().getDiscoverApp(),
+                                  style: titleStyle().copyWith(
+                                      decoration: TextDecoration.underline,
+                                      fontFamily: mediumFontFamily,
+                                      fontSize: 14),
+                                ),
                               ),
                             ),
                             Spacer(),

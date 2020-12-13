@@ -106,10 +106,6 @@ class _SignupSubAccountScreenStep1State
                       Constants.subaccountsList.add(_subAccountData);
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
                           builder: (context) => LandingScreen()));
-                      //   _scaffoldKey.currentState.showSnackBar(
-                      //       SnackBar(content: Text(state.subAccountresponse.msg)));
-                      // Navigator.of(context).pop();
-
                     }
                     _subAccountBloc.add(resetsubAccountState());
                     isLoading = false;
