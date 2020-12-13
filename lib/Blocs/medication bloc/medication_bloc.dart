@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:Signs/Models/response/medication_model.dart';
 import 'package:Signs/Repos/Medication/medication_repo.dart';
+import 'package:Signs/Utils/singleton.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
@@ -18,7 +19,7 @@ class MedicationBloc extends Bloc<MedicationEvent, MedicationState> {
       yield MedicationLoadingState();
       var response =
           await MedicationRepo().medicationInsert(
-              event.medicationNumber,
+              Singleton().loginModel.data.uId,
               event.medicationName,
               event.medicationFormId,
               event.medicationDose,

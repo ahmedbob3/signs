@@ -1,18 +1,24 @@
-import 'dart:math';
 
+import 'package:Signs/Blocs/medication%20bloc/medication_bloc.dart';
+import 'package:Signs/Blocs/medicationList%20bloc/medicationList_bloc.dart';
 import 'package:Signs/Models/response/medication_model.dart';
+import 'package:Signs/Utils/constants.dart';
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:intl/intl.dart';
+
 
 
 class MedicationCell extends StatefulWidget {
   bool isActive;
   int shouldOpenAllItems = -1;
   Datum data ;
+  int index ;
+  MedicationListBloc bloc;
 
-  MedicationCell({Key key, this.isActive = true, this.shouldOpenAllItems, this.data})
+  MedicationCell({Key key, this.isActive = true, this.shouldOpenAllItems, this.data,this.index,this.bloc})
       : super(key: key);
 
   @override
@@ -59,6 +65,10 @@ class _MedicationCellState extends State<MedicationCell> {
     );
   }
 
+
+
+
+
   @override
   Widget build(BuildContext context) {
     if (widget.shouldOpenAllItems == 1 && _slidableKey.currentState != null) { // 1 to be opened 
@@ -98,21 +108,29 @@ class _MedicationCellState extends State<MedicationCell> {
         ],
         secondaryActions: <Widget>[
           IconSlideAction(
-            color: widget.isActive
-                ? Color.fromRGBO(199, 199, 204, 1)
-                : Colors.orange,
+            color: Constants.medicationList.elementAt(widget.index).isActive
+                ? Colors.orange
+                : Color.fromRGBO(199, 199, 204, 1),
             iconWidget: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                    widget.isActive ? Medicine_Deactive : Medicine_Aactive),
+                    Constants.medicationList.elementAt(widget.index).isActive ? Medicine_Aactive : Medicine_Deactive),
                 SizedBox(height: 10),
-                Text(widget.isActive ? 'Deactivate' : 'Activate',
+                Text(Constants.medicationList.elementAt(widget.index).isActive ? 'Activate' : 'Deactivate',
                     style: titleStyle(
-                        color: Colors.white, fontFamily: regularFontFamily))
+                        color: Colors.white, fontFamily: semiBoldFontFamily,fontSize: 14))
               ],
             ),
-            onTap: () {},
+            onTap: () {
+              setState(() {
+                Constants.medicationList.elementAt(widget.index).isActive = !Constants.medicationList.elementAt(widget.index).isActive;
+                widget.bloc.add(doMedicationListEvent(
+                    Constants.medicationList.elementAt(widget.index).mId.toString(),
+                    widget.isActive ? "1":"0"
+                ));
+              });
+            },
           ),
           IconSlideAction(
             color: Colors.red,
@@ -126,16 +144,22 @@ class _MedicationCellState extends State<MedicationCell> {
                         color: Colors.white, fontFamily: regularFontFamily))
               ],
             ),
-            onTap: () {},
+            onTap: () {
+              Constants.isActive =2;
+              widget.bloc.add(doMedicationListEvent(
+                  Constants.medicationList.elementAt(widget.index).mId.toString(),
+                  "2"
+              ));
+            },
           ),
         ],
         child: Container(
           decoration: BoxDecoration(
             color: !isOpened
                 ? Colors.transparent
-                : widget.isActive
-                    ? Color.fromRGBO(199, 199, 204, 1)
-                    : Colors.orange,
+                : Constants.medicationList.elementAt(widget.index).isActive
+                    ? Colors.orange
+                    : Color.fromRGBO(199, 199, 204, 1),
             borderRadius: BorderRadiusDirectional.only(
               topStart: Radius.circular(10),
               bottomStart: Radius.circular(10),
@@ -195,7 +219,10 @@ class _MedicationCellState extends State<MedicationCell> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 10),
                               child: Text(
-                                  widget.data.rememberTime.length !=0 ? widget.data.rememberTime.elementAt(0) : "",
+                                  widget.data.rememberTime.length !=0 ?
+                                  DateFormat("hh:mm a").format(DateFormat('kk:mm').parse(widget.data.rememberTime.elementAt(0).toString()))
+
+                                  : "",
                                 style: titleStyle(
                                   fontFamily: semiBoldFontFamily,
                                   fontSize: 16,
@@ -218,7 +245,7 @@ class _MedicationCellState extends State<MedicationCell> {
                                         'Deactivated',
                                         style: titleStyle(
                                           fontFamily: semiBoldFontFamily,
-                                          fontSize: 16,
+                                          fontSize: 14,
                                           color: Color.fromRGBO(96, 96, 96, 1),
                                         ),
                                       ),

@@ -24,7 +24,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       var response = await MedicationRepo().getMedicicationsList();
       print('reesss ${response.data}');
       Constants.medicationList = response.data;
-      test();
+      setNotification();
       yield HomeLoadedState(medicationModel: response);
     } else if (event is resetHomeEvent) {
       yield HomeInitial();
@@ -45,7 +45,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
 
-  test() async {
+  setNotification() async {
     for(int i=0;i<Constants.medicationList.length;i++){
       if(Constants.medicationList.elementAt(i).rememberTime.toString().length > 2){
         await notificationPlugin.showDailyAtTime(

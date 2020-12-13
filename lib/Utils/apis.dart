@@ -8,8 +8,6 @@ class APIS {
   static const String SUB_ACCOUNT_API = "sub_account_insert";
   static const String GET_MEDICATION_LIST = 'get_medication_by_user';
   static const String GET_SUBACCOUNTS_LIST = 'get_sub_account_by_user';
-
-
-
-
+  static const String Edit_MEDICATION = 'medication_update';
+  static const String Edit_MEDICATION_STATUS = 'medication_status_update';
 }

@@ -11,6 +11,8 @@ class Constants {
   static List<bool> medications = [false, false, false,false, false, false,false, false, false,false, false];
   static List<Datum> medicationList = [];
   static List<Data> subaccountsList = [];
+  static int isActive=0;
+
 
 
 
