@@ -30,6 +30,7 @@ class _SignupScreenStep3State extends State<SignupScreenStep3> {
   TextEditingController weightController = TextEditingController();
   SignUpBloc _signUpBloc;
   bool isLoading = false;
+  bool isSkipClicked = false;
 
   @override
   void dispose() {
@@ -78,7 +79,7 @@ class _SignupScreenStep3State extends State<SignupScreenStep3> {
                         _scaffoldKey.currentState.showSnackBar(
                             SnackBar(content: Text(state.sigupresponse.msg)));
                         Navigator.of(context).pop();
-                        
+
                         Future.delayed(Duration(seconds: 2), () {
                           Navigator.of(context)
                               .pushReplacement(MaterialPageRoute(
@@ -90,8 +91,11 @@ class _SignupScreenStep3State extends State<SignupScreenStep3> {
                                       )));
                         });
                       } else {
+                        isSkipClicked ? Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            builder: (context) => LandingScreen())) : 
                         Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) => PinCodeVerificationScreen(Constants.signUpData.mobileNumber)));
+                            builder: (context) => PinCodeVerificationScreen(
+                                Constants.signUpData.mobileNumber)));
                       }
                       _signUpBloc.add(resetSignupState());
                       isLoading = false;
@@ -562,10 +566,12 @@ class _SignupScreenStep3State extends State<SignupScreenStep3> {
                                   children: <Widget>[
                                     new GestureDetector(
                                       onTap: () {
-                                        Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    LandingScreen()));
+                                        // Navigator.of(context).push(
+                                        //     MaterialPageRoute(
+                                        //         builder: (context) =>
+                                        //             LandingScreen()));
+                                        isSkipClicked = true;
+                                        doSignup();
                                       },
                                       child: new Text(
                                         Strings().getSkipStrings(),
@@ -593,52 +599,7 @@ class _SignupScreenStep3State extends State<SignupScreenStep3> {
                                     SizedBox(width: 20),
                                     Expanded(
                                       child: button(() {
-                                        if (dateOfBirthController.text
-                                                .toString()
-                                                .isNotEmpty &&
-                                            bedTimeController.text
-                                                .toString()
-                                                .isNotEmpty &&
-                                            wakeTimeController.text
-                                                .toString()
-                                                .isNotEmpty &&
-                                            heightController.text
-                                                .toString()
-                                                .isNotEmpty &&
-                                            weightController.text
-                                                .toString()
-                                                .isNotEmpty) {
-                                          Constants.signUpData.setWeight(
-                                              weightController.text.toString());
-                                          Constants.signUpData.setHeight(
-                                              heightController.text.toString());
-
-                                          _signUpBloc.add(doSignUpEvent(
-                                              Constants.signUpData
-                                                  .getMobileNumber(),
-                                              Constants.signUpData
-                                                  .getFirstName(),
-                                              Constants.signUpData
-                                                  .getLastName(),
-                                              Constants.signUpData.getEmail(),
-                                              Constants.signUpData
-                                                  .getPassword(),
-                                              Constants.signUpData.getGender(),
-                                              Constants.signUpData
-                                                  .getBirthDate(),
-                                              Constants.signUpData.getWeight(),
-                                              Constants.signUpData.getHeight(),
-                                              Constants.signUpData.getBedTime(),
-                                              Constants.signUpData
-                                                  .getWakeupTime()));
-                                        } else {
-                                          _scaffoldKey.currentState
-                                              .showSnackBar(SnackBar(
-                                            content: Text(
-                                                Strings().getFillDataString()),
-                                            duration: Duration(seconds: 3),
-                                          ));
-                                        }
+                                        doSignup();
                                       }, Strings().getSignupStrings(),
                                           isFilledColor: true),
                                     ),
@@ -688,5 +649,34 @@ class _SignupScreenStep3State extends State<SignupScreenStep3> {
         ),
       ),
     );
+  }
+
+  doSignup() {
+    if (dateOfBirthController.text.toString().isNotEmpty &&
+        bedTimeController.text.toString().isNotEmpty &&
+        wakeTimeController.text.toString().isNotEmpty &&
+        heightController.text.toString().isNotEmpty &&
+        weightController.text.toString().isNotEmpty || isSkipClicked) {
+      Constants.signUpData.setWeight(isSkipClicked ? '' : weightController.text.toString());
+      Constants.signUpData.setHeight(isSkipClicked ? '' : heightController.text.toString());
+
+      _signUpBloc.add(doSignUpEvent(
+          Constants.signUpData.getMobileNumber(),
+          Constants.signUpData.getFirstName(),
+          Constants.signUpData.getLastName(),
+          Constants.signUpData.getEmail(),
+          Constants.signUpData.getPassword(),
+          Constants.signUpData.getGender(),
+          isSkipClicked ? '' : Constants.signUpData.getBirthDate(),
+          isSkipClicked ? '' : Constants.signUpData.getWeight(),
+          isSkipClicked ? '' : Constants.signUpData.getHeight(),
+          isSkipClicked ? '' : Constants.signUpData.getBedTime(),
+          isSkipClicked ? '' : Constants.signUpData.getWakeupTime()));
+    } else {
+      _scaffoldKey.currentState.showSnackBar(SnackBar(
+        content: Text(Strings().getFillDataString()),
+        duration: Duration(seconds: 3),
+      ));
+    }
   }
 }
