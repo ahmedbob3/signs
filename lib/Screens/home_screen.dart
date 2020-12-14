@@ -117,7 +117,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               Expanded(
                                 child: GestureDetector(
                                   onTap: () {
+                                    if (Singleton().loginModel == null )
                                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => CheckMobileScreen()));
+                                    
                                   },
                                   child: Text(
                                     Singleton().loginModel == null

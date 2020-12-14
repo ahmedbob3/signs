@@ -39,6 +39,7 @@ class _SignupScreenStep3State extends State<SignupScreenStep3> {
     wakeTimeController.dispose();
     heightController.dispose();
     weightController.dispose();
+    _signUpBloc.close();
   }
 
   @override
