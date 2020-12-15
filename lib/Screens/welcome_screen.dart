@@ -78,7 +78,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             Spacer(),
                             button(() {
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => CheckMobileScreen()));
+                                  builder: (context) => CheckMobileScreen(isSignIn: true,)));
                             }, Strings().getSingInText(), isFilledColor: false),
                             SizedBox(height: 20),
                             button(() {
@@ -86,7 +86,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                   // builder: (context) => MedicineForm()));
                                   // builder: (context) => AddMedication()));
                                   // builder: (context) => SignupSubAccountScreenStep1()));
-                                  builder: (context) => SignupScreenStep1()));
+                                  builder: (context) => CheckMobileScreen(isSignIn: false)));
                             }, Strings().getCreateAccountText(),
                                 isFilledColor: true),
                             Spacer(),

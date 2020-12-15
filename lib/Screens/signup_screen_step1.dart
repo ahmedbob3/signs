@@ -35,6 +35,7 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
   @override
   void initState() {
     super.initState();
+    _mobileController.text = widget.phoneNumber??'';
   }
 
   @override

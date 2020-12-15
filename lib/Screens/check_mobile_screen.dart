@@ -15,7 +15,8 @@ import 'package:Signs/Utils/styles.dart';
 import 'package:Signs/widgets/widgets.dart';
 
 class CheckMobileScreen extends StatefulWidget {
-  CheckMobileScreen({Key key}) : super(key: key);
+  bool isSignIn;
+  CheckMobileScreen({Key key, this.isSignIn = false}) : super(key: key);
 
   @override
   _CheckMobileScreenState createState() => _CheckMobileScreenState();
@@ -37,14 +38,14 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
 
   Future<void> getSimInfo() async {
     try {
-    await CountryCodes.init();  
+      await CountryCodes.init();
     } catch (e) {
       print('xxx');
     }
-    
+
     setState(() {
       try {
-      selectedCountry = CountryCodes.dialCode();  
+        selectedCountry = CountryCodes.dialCode();
       } catch (e) {
         selectedCountry = 'EG';
       }
@@ -92,10 +93,8 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
                     print('loaded');
 
                     Future.delayed(Duration(milliseconds: 1), () {
+                      Navigator.of(context).pop();
                       if (state.checkMobileResponse.code == 200) {
-                        // Scaffold.of(context).showSnackBar(SnackBar(
-                        //     content: Text(state.checkMobileResponse.msg)));
-                        Navigator.of(context).pop();
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => SignupScreenStep1(
                                 phoneNumber: _mobileController.text,
@@ -137,14 +136,16 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  Strings().getSingInText(),
+                                  widget.isSignIn ? Strings().getSingInText() : 
+                                  Strings().getSignupStrings(),
                                   style: titleStyle(
                                       fontFamily: boldFontFamily,
                                       color: headerColor,
                                       fontSize: 24),
                                 ),
                                 SizedBox(height: 10),
-                                Text(Strings().getSinginSlogan(),
+                                Text(widget.isSignIn ? Strings().getSinginSlogan() : 
+                                Strings().getSingupSlogan(),
                                     style: titleStyle(
                                         fontFamily: mediumFontFamily,
                                         color: greyColor,
