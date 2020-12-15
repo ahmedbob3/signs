@@ -88,4 +88,5 @@ static const String NOT_GET_CODE = "Didn't you receive any code? ";
 static const String GET_RESEND_OTP = "Resend New Code";
 static const String VERIFY_OTP = 'Verify';
 static const String GUEST_USER = 'Guest User';
+static const String SHOULD_LOGIN = "For making a medication reminder you must be logged in or signed up first";
 }

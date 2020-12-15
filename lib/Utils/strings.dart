@@ -1156,6 +1156,21 @@ static String getResendOTPString() {
     }
   }
 
+ String getShouldLoggedInString() {
+    // 'Phone Verification'
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SHOULD_LOGIN;
+        break;
+      case languages.Indian:
+        return Strings_INR.SHOULD_LOGIN;
+        break;
+      default:
+        return Strings_EN.SHOULD_LOGIN;
+    }
+  }
+  
+
   
   
 
