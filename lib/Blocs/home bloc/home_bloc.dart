@@ -36,7 +36,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       }
     } else if (event is getSubaccountsEvent) {
       yield HomeLoadingState();
+
       var response = await SubAccountRepo().getSubAccountsList();
+
       print('reesss ${response.data}');
       Constants.subaccountsList= response.data;
 

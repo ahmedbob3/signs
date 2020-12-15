@@ -33,7 +33,7 @@ class PillCell extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                   Image.asset(!isNewPill ? data.mfImage : Add_pill,height: 20, fit:BoxFit.contain),
+                   Image.asset(!isNewPill ? data.mfImage : Add_pill,height: 25),
                     !isNewPill ? Text(data.mDuration, style: titleStyle(fontFamily: semiBoldFontFamily, fontSize: 16, color: Color.fromRGBO(96, 96, 96, 1),)) : Container()
                   ],
                 ),

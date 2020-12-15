@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:Signs/Blocs/medication%20bloc/medication_bloc.dart';
 import 'package:Signs/Models/response/medication_model.dart';
 import 'package:Signs/Utils/apis.dart';
+import 'package:Signs/Utils/constants.dart';
 import 'package:Signs/Utils/singleton.dart';
 import 'package:http/http.dart' as http;
 import '../base_repo.dart';
@@ -87,6 +88,7 @@ class MedicationRepo extends BaseRepo {
   Future<MedicationsModel> getMedicicationsList() async {
     Map<String, dynamic> params = {
       "id": Singleton().loginModel.data.uId,
+      "user_type":Constants.userType.toString(),
     };
 
     var response = await http.post(

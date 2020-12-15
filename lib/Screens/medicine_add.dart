@@ -33,6 +33,8 @@ class _AddMedicationState extends State<AddMedication> {
   Datum _medicationData;
   bool isLoading = false;
   String timeForRemember = "";
+  final formKey = GlobalKey<FormState>();
+
 
   @override
   void dispose() {
@@ -59,6 +61,8 @@ class _AddMedicationState extends State<AddMedication> {
         bottom: false,
         child: Scaffold(
           key: _scaffoldKey,
+
+
           body: BlocBuilder<MedicationBloc, MedicationState>(
             bloc: _medicationBloc,
             builder: (context, state) {
@@ -84,7 +88,14 @@ class _AddMedicationState extends State<AddMedication> {
                   isLoading = false;
                 });
               }
-              return Container(
+
+              return new GestureDetector(
+                onTap: () {
+                  FocusScope.of(context).requestFocus(new FocusNode());
+                },
+              child:  Container(
+                  child: Form(
+                  key: formKey,
                   child: Stack(
                     children: <Widget>[
                       Container(
@@ -156,19 +167,23 @@ class _AddMedicationState extends State<AddMedication> {
                                             errorBorder: InputBorder.none,
                                             disabledBorder: InputBorder.none,
                                           ),
-                                          keyboardType: TextInputType.text,
+                                            textInputAction: TextInputAction.next,
+                                            keyboardType: TextInputType.text,
+                                            onEditingComplete: () {
+                                              FocusScope.of(context).nextFocus();
+                                            } // Move focus to next
                                         ),
                                       ),
                                     ),
-                                    IconButton(
-                                      icon: Image.asset(
-                                        Camera_rectangle,
-                                        fit: BoxFit.fitHeight,
-                                      ),
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                    ),
+                                    // IconButton(
+                                    //   icon: Image.asset(
+                                    //     Camera_rectangle,
+                                    //     fit: BoxFit.fitHeight,
+                                    //   ),
+                                    //   onPressed: () {
+                                    //     Navigator.of(context).pop();
+                                    //   },
+                                    // ),
                                   ],
                                 ),
                               ),
@@ -212,8 +227,9 @@ class _AddMedicationState extends State<AddMedication> {
                                     return medicationForm(index);
                                   }),
                             ),
-                            SizedBox(height: 10),
-                            Text(Strings().getDropsStrings(),
+                            SizedBox(height: 20),
+                            Text(
+                                getid(Constants.medications) != -1 ? mfNameValues.mapString[getid(Constants.medications).toString()] : Strings().getDropsStrings(),
                                 style: titleStyle(
                                     fontFamily: semiBoldFontFamily,
                                     color: greyColor,
@@ -273,6 +289,10 @@ class _AddMedicationState extends State<AddMedication> {
                                             disabledBorder: InputBorder.none,
                                           ),
                                           keyboardType: TextInputType.number,
+                                            textInputAction: TextInputAction.next,
+                                            onEditingComplete: () {
+                                              FocusScope.of(context).nextFocus();
+                                            } // Move focus to next
                                         ),
                                       ),
                                     ),
@@ -345,6 +365,10 @@ class _AddMedicationState extends State<AddMedication> {
                                             disabledBorder: InputBorder.none,
                                           ),
                                           // keyboardType: TextInputType.number,
+                                            textInputAction: TextInputAction.next,
+                                            onEditingComplete: () {
+                                              FocusScope.of(context).nextFocus();
+                                            }, // Move focus to next
                                           onTap: () {
                                             DatePicker.showTime12hPicker(
                                                 context,
@@ -459,6 +483,10 @@ class _AddMedicationState extends State<AddMedication> {
                                             disabledBorder: InputBorder.none,
                                           ),
                                           keyboardType: TextInputType.number,
+                                            textInputAction: TextInputAction.next,
+                                            onEditingComplete: () {
+                                              FocusScope.of(context).nextFocus();
+                                            } // Move focus to next
                                         ),
                                       ),
                                     ),
@@ -508,6 +536,10 @@ class _AddMedicationState extends State<AddMedication> {
                                             ),
                                             keyboardType:
                                                 TextInputType.multiline,
+                                            textInputAction: TextInputAction.done,
+                                            onEditingComplete: () {
+                                              FocusScope.of(context).nextFocus();
+                                            }, // Move focus to next
                                             minLines: 3,
                                             maxLines: null),
                                       ),
@@ -552,6 +584,9 @@ class _AddMedicationState extends State<AddMedication> {
                       ),
                     ],
                   ),
+                  ),
+              ),
+
               );
             },
           ),
@@ -659,11 +694,11 @@ class _AddMedicationState extends State<AddMedication> {
                     });
                   },
                   child: index == 0
-                      ? cardChangeState(true, Tablet_active, Tablet_inactive, Strings().getTabletStrings(),
+                      ? cardChangeState(true, Capsule_active, Capsule_inactive, Strings().getCapsuleStrings(),
                           isFActive: Constants.medications[0])
                       : index == 1
                           ? cardChangeState(
-                              true, Capsule_active, Capsule_inactive, Strings().getCapsuleStrings(),
+                              true, Tablet_active, Tablet_inactive, Strings().getTabletStrings(),
                               isFActive: Constants.medications[1])
                           : index == 2
                               ? cardChangeState(
@@ -691,7 +726,7 @@ class _AddMedicationState extends State<AddMedication> {
   }
 
   int getid(List<bool> medications) {
-    int result = 0;
+    int result = -1;
     for (int i = 0; i < medications.length - 1; i++) {
       if (medications[i] == true) result = i + 1;
     }
@@ -772,6 +807,22 @@ class _AddMedicationState extends State<AddMedication> {
     );
   }
 
+  final mfNameValues =
+  EnumValues({
+    "1": Strings().getCapsuleStrings(),
+    "2": Strings().getTabletStrings(),
+    "3": Strings().getLiquidStrings(),
+    "4": Strings().getDropsStrings(),
+    "5": Strings().getSuppositoryStrings(),
+    "6": Strings().getTopicalStrings(),
+    "7": Strings().getSachetsStrings(),
+    "8": Strings().getInhalersStrings(),
+    "9": Strings().getImplantsStrings(),
+    "10": Strings().getPatchesStrings() ,
+    "11": Strings().getInjectionsStrings()
+  });
+
+
   String getReminderData(List<String> listViewData) {
     String result = "[";
     for (int i = 0; i < listViewData.length; i++) {
@@ -781,5 +832,18 @@ class _AddMedicationState extends State<AddMedication> {
         result = result + listViewData[i] + ",";
     }
     return result;
+  }
+}
+class EnumValues<T> {
+  Map<String, T> mapString;
+  Map<T, String> reverseMap;
+
+  EnumValues(this.mapString);
+
+  Map<T, String> get reverse {
+    if (reverseMap == null) {
+      reverseMap = mapString.map((k, v) => new MapEntry(v, k));
+    }
+    return reverseMap;
   }
 }

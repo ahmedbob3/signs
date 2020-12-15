@@ -12,6 +12,8 @@ class Constants {
   static List<Datum> medicationList = [];
   static List<Data> subaccountsList = [];
   static int isActive=0;
+  static int userType=0;
+
 
 
 

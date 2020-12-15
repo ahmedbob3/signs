@@ -23,7 +23,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   HomeBloc _homeBloc;
-
   HospitalsModel _hospitalsModel;
   bool isLoading = false;
 
@@ -117,9 +116,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               Expanded(
                                 child: GestureDetector(
                                   onTap: () {
-                                    if (Singleton().loginModel == null )
-                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => CheckMobileScreen()));
-                                    
+                                    if (Singleton().loginModel == null)
+                                      Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  CheckMobileScreen()));
                                   },
                                   child: Text(
                                     Singleton().loginModel == null
@@ -151,14 +153,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         // subaccounts ..
                         Singleton().loginModel == null
                             ? Container()
-                            : Constants.subaccountsList.length == 0 ||
-                                    Constants.subaccountsList == null
+                            : Constants.subaccountsList.length == 0 || Constants.subaccountsList == null
                                 ? Padding(
                                     padding: const EdgeInsets.only(
                                         right: 5, left: 5),
                                     child: Align(
                                         child: addSubAccount(),
-                                        alignment: Alignment.centerLeft),
+                                        alignment: Alignment.centerLeft) ,
                                   )
                                 : Container(
                                     padding:
@@ -170,53 +171,93 @@ class _HomeScreenState extends State<HomeScreen> {
                                           Constants.subaccountsList.length + 1,
                                       scrollDirection: Axis.horizontal,
                                       itemBuilder: (context, index) {
-                                        return index == 0
-                                            ? addSubAccount()
-                                            : Padding(
-                                                padding: const EdgeInsets.only(
-                                                    right: 5, left: 5),
-                                                child: CircleAvatar(
-                                                  radius: 24,
-                                                  backgroundColor: Colors.white,
-                                                  child: CircleAvatar(
-                                                    radius: 22,
-                                                    backgroundColor:
-                                                        Color.fromRGBO(
-                                                            0, 54, 115, 1),
-                                                    child: Text(
-                                                      (Constants
+                                        return GestureDetector(
+                                            child: index == 0
+                                                ? Constants.userType== 0 ? addSubAccount() : Container()
+                                                : Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            right: 5, left: 5),
+                                                    child: CircleAvatar(
+                                                      radius: 24,
+                                                      backgroundColor:
+                                                          Colors.white,
+                                                      child: CircleAvatar(
+                                                        radius: 22,
+                                                        backgroundColor:
+                                                            Color.fromRGBO(
+                                                                0, 54, 115, 1),
+                                                        child: Text(
+                                                          (Constants.subaccountsList[index - 1].saFirstName !=
+                                                                      null
+                                                                  ? Constants
                                                                       .subaccountsList[
                                                                           index -
                                                                               1]
-                                                                      .saFirstName !=
-                                                                  null
-                                                              ? Constants
-                                                                  .subaccountsList[
-                                                                      index - 1]
-                                                                  .saFirstName[
-                                                                      0]
-                                                                  .toUpperCase()
-                                                              : '') +
-                                                          (Constants
+                                                                      .saFirstName[
+                                                                          0]
+                                                                      .toUpperCase()
+                                                                  : '') +
+                                                              (Constants
+                                                                          .subaccountsList[index -
+                                                                              1]
+                                                                          .saLastName !=
+                                                                      null
+                                                                  ? Constants
                                                                       .subaccountsList[
                                                                           index -
                                                                               1]
-                                                                      .saLastName !=
-                                                                  null
-                                                              ? Constants
-                                                                  .subaccountsList[
-                                                                      index - 1]
-                                                                  .saLastName[0]
-                                                                  .toUpperCase()
-                                                              : ''),
-                                                      style: titleStyle(
-                                                          fontFamily:
-                                                              boldFontFamily,
-                                                          fontSize: 18),
+                                                                      .saLastName[
+                                                                          0]
+                                                                      .toUpperCase()
+                                                                  : ''),
+                                                          style: titleStyle(
+                                                              fontFamily:
+                                                                  boldFontFamily,
+                                                              fontSize: 18),
+                                                        ),
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                              );
+                                            onTap: () {
+                                              setState(() {
+
+                                                _homeBloc = null;
+                                                if(Constants.subaccountsList[index - 1].saRelation == "parent")
+                                                  Constants.userType = 0;
+                                                else
+                                                Constants.userType = 1;
+
+                                                Singleton().loginModel.data.uId = Constants.subaccountsList[index - 1].saId.toString();
+                                                Singleton().loginModel.data.uFirstName = Constants.subaccountsList[index - 1].saFirstName;
+                                                Singleton().loginModel.data.uLastName = Constants.subaccountsList[index - 1].saLastName;
+
+                                              });
+                                            });
+
+                                        // return index == 0
+                                        //     ? addSubAccount()
+                                        //     : Padding(
+                                        //         padding: const EdgeInsets.only(
+                                        //             right: 5, left: 5),
+                                        //         child: CircleAvatar(
+                                        //           radius: 24,
+                                        //           backgroundColor: Colors.white,
+                                        //           child: CircleAvatar(
+                                        //             radius: 22,
+                                        //             backgroundColor: Color.fromRGBO(0, 54, 115, 1),
+                                        //             child: Text(
+                                        //               (Constants.subaccountsList[index - 1].saFirstName != null ? Constants.subaccountsList[index - 1].saFirstName[0].toUpperCase() : '') +
+                                        //                   (Constants.subaccountsList[index - 1].saLastName != null
+                                        //                       ? Constants.subaccountsList[index - 1].saLastName[0].toUpperCase() : ''),
+                                        //               style: titleStyle(
+                                        //                   fontFamily:
+                                        //                       boldFontFamily,
+                                        //                   fontSize: 18),
+                                        //             ),
+                                        //           ),
+                                        //         ),
+                                        //       );
                                       },
                                     ),
                                   ),

@@ -52,10 +52,10 @@ class Data {
     this.uWakeUp,
   });
 
-  final String uId;
+   String uId;
   final String uMobile;
-  final String uFirstName;
-  final String uLastName;
+   String uFirstName;
+   String uLastName;
   final String uEmail;
   final String uGender;
   final String uBirthDate;

@@ -62,7 +62,7 @@ class _MedicineFormState extends State<MedicineForm> {
                                   });
                                 },
                                 child: cardChangeState(true,
-                                    Tablet_active,Tablet_inactive, Strings().getTabletStrings(),
+                                    Capsule_active,Capsule_inactive, Strings().getCapsuleStrings(),
                                     isFActive: Constants.medications[0]),
                               ),
                             ),
@@ -79,7 +79,7 @@ class _MedicineFormState extends State<MedicineForm> {
                                 },
                                 child:
                                 cardChangeState(true,
-                                    Capsule_active,Capsule_inactive, Strings().getCapsuleStrings(),
+                                    Tablet_active,Tablet_inactive, Strings().getTabletStrings(),
                                     isFActive: Constants.medications[1]),
                               ),
 

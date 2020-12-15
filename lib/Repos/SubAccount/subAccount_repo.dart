@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:Signs/Models/response/medication_model.dart';
 import 'package:Signs/Models/subaccounts_model.dart';
 import 'package:Signs/Utils/apis.dart';
+import 'package:Signs/Utils/constants.dart';
 import 'package:Signs/Utils/singleton.dart';
 import 'package:Signs/Utils/singleton.dart';
 import 'package:http/http.dart' as http;
@@ -38,6 +39,7 @@ class SubAccountRepo extends BaseRepo {
   Future<SubaccountsModel> getSubAccountsList() async {
     Map<String, dynamic> params = {
       "id": Singleton().loginModel.data.uId,
+      "user_type": Constants.userType.toString(),
     };
 
     var response = await http.post(
