@@ -84,50 +84,39 @@ class _AddMedicationState extends State<AddMedication> {
                   isLoading = false;
                 });
               }
-
               return Container(
-                child: Stack(
-                  children: <Widget>[
-                    Container(
-                      width: double.infinity,
-                      color: Colors.white,
-                    ),
-                    SingleChildScrollView(
-                      child: Container(
-                        height: MediaQuery.of(context).size.height + 200,
-                        // margin: EdgeInsets.only(
-                        //     top: (Theme.of(context).platform == TargetPlatform.iOS
-                        //         ? 120
-                        //         : 10)),
-                        padding: EdgeInsets.only(
-                            top: 20, right: 20, left: 20, bottom: 5),
-                        child: Column(
+                  child: Stack(
+                    children: <Widget>[
+                      Container(
+                        width: double.infinity,
+                        color: Colors.white,
+                      ),
+                      SingleChildScrollView(
+
+              child: Container(
+              height: MediaQuery.of(context).size.height + 220,
+              padding: EdgeInsets.only(top: 20, right: 20, left: 20, bottom: 5),
+                        child: new Column(
+
+                          mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Positioned(
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                    child: Image.asset(
-                                      Arrow_back_grey,
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(height: 10),
-                                Positioned(
-                                  child: Text(
-                                    Strings().getMedicineAddStrings(),
-                                    style: titleStyle(
-                                        fontFamily: boldFontFamily,
-                                        color: defaultBackgroundColor,
-                                        fontSize: 24),
-                                  ),
-                                ),
-                              ],
+
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Image.asset(
+                                Arrow_back_grey,
+                              ),
+                            ),
+                            SizedBox(height: 10),
+                            new Text(
+                              Strings().getMedicineAddStrings(),
+                              style: titleStyle(
+                                  fontFamily: boldFontFamily,
+                                  color: defaultBackgroundColor,
+                                  fontSize: 24),
                             ),
                             SizedBox(height: 10),
                             Text(Strings().getMedicationNameStrings(),
@@ -171,17 +160,15 @@ class _AddMedicationState extends State<AddMedication> {
                                         ),
                                       ),
                                     ),
-                                    Positioned(
-                                        child: IconButton(
-                                          icon: Image.asset(
-                                            Camera_rectangle,
-                                            fit: BoxFit.fitHeight,
-                                          ),
-                                          onPressed: () {
-                                            Navigator.of(context).pop();
-                                          },
-                                        ),
-                                        left: 30),
+                                    IconButton(
+                                      icon: Image.asset(
+                                        Camera_rectangle,
+                                        fit: BoxFit.fitHeight,
+                                      ),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                    ),
                                   ],
                                 ),
                               ),
@@ -215,9 +202,6 @@ class _AddMedicationState extends State<AddMedication> {
                               ],
                             ),
                             SizedBox(height: 10),
-                            // Container(
-                            // ),
-
                             Container(
                               width: double.infinity,
                               height: 120,
@@ -253,25 +237,22 @@ class _AddMedicationState extends State<AddMedication> {
                                     const EdgeInsets.only(right: 15, left: 15),
                                 child: Row(
                                   children: <Widget>[
-                                    Positioned(
-                                        child: IconButton(
-                                          icon: Image.asset(
-                                            Minus_rectangle,
-                                            fit: BoxFit.fill,
-                                          ),
-                                          onPressed: () {
-                                            if (int.parse(_numberController.text
-                                                    .toString()) >
-                                                0)
-                                              _numberController.text =
-                                                  (int.parse(_numberController
-                                                              .text
-                                                              .toString()) -
-                                                          1)
-                                                      .toString();
-                                          },
-                                        ),
-                                        right: 50),
+                                    IconButton(
+                                      icon: Image.asset(
+                                        Minus_rectangle,
+                                        fit: BoxFit.fill,
+                                      ),
+                                      onPressed: () {
+                                        if (int.parse(_numberController.text
+                                                .toString()) >
+                                            0)
+                                          _numberController.text = (int.parse(
+                                                      _numberController.text
+                                                          .toString()) -
+                                                  1)
+                                              .toString();
+                                      },
+                                    ),
                                     Expanded(
                                       child: Container(
                                         child: TextField(
@@ -295,25 +276,22 @@ class _AddMedicationState extends State<AddMedication> {
                                         ),
                                       ),
                                     ),
-                                    Positioned(
-                                        child: IconButton(
-                                          icon: Image.asset(
-                                            Plus_rectangle,
-                                            fit: BoxFit.fill,
-                                          ),
-                                          onPressed: () {
-                                            if (int.parse(_numberController.text
-                                                    .toString()) <=
-                                                30)
-                                              _numberController.text =
-                                                  (int.parse(_numberController
-                                                              .text
-                                                              .toString()) +
-                                                          1)
-                                                      .toString();
-                                          },
-                                        ),
-                                        left: 50),
+                                    IconButton(
+                                      icon: Image.asset(
+                                        Plus_rectangle,
+                                        fit: BoxFit.fill,
+                                      ),
+                                      onPressed: () {
+                                        if (int.parse(_numberController.text
+                                                .toString()) <=
+                                            30)
+                                          _numberController.text = (int.parse(
+                                                      _numberController.text
+                                                          .toString()) +
+                                                  1)
+                                              .toString();
+                                      },
+                                    ),
                                   ],
                                 ),
                               ),
@@ -338,17 +316,15 @@ class _AddMedicationState extends State<AddMedication> {
                                     const EdgeInsets.only(right: 15, left: 15),
                                 child: Row(
                                   children: <Widget>[
-                                    Positioned(
-                                        child: IconButton(
-                                          icon: Image.asset(
-                                            Medicine_notification,
-                                            fit: BoxFit.fill,
-                                          ),
-                                          onPressed: () {
-                                            Navigator.of(context).pop();
-                                          },
-                                        ),
-                                        right: 50),
+                                    IconButton(
+                                      icon: Image.asset(
+                                        Medicine_notification,
+                                        fit: BoxFit.fill,
+                                      ),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                    ),
                                     Expanded(
                                       child: Container(
                                         child: TextField(
@@ -398,46 +374,39 @@ class _AddMedicationState extends State<AddMedication> {
                                         ),
                                       ),
                                     ),
-                                    Positioned(
-                                        child: IconButton(
-                                          icon: Image.asset(
-                                            Plus_rectangle,
-                                            fit: BoxFit.fill,
-                                          ),
-                                          onPressed: () {
-                                            DatePicker.showTime12hPicker(
-                                                context,
-                                                showTitleActions: true,
-                                                onChanged: (date) {
-                                              _timeController.text =
-                                                  (DateFormat('hh:mm a')
-                                                      .format(date)
-                                                      .toString());
-                                              print(
-                                                  'change $date in time zone ' +
-                                                      date.timeZoneOffset
-                                                          .inHours
-                                                          .toString());
-                                            }, onConfirm: (date) {
-                                              _timeController.text =
-                                                  (DateFormat('hh:mm a')
-                                                      .format(date)
-                                                      .toString());
-                                              timeForRemember =
-                                                  (DateFormat('kk:mm')
-                                                      .format(date)
-                                                      .toString());
-                                              _onSubmit(_timeController.text
+                                    IconButton(
+                                      icon: Image.asset(
+                                        Plus_rectangle,
+                                        fit: BoxFit.fill,
+                                      ),
+                                      onPressed: () {
+                                        DatePicker.showTime12hPicker(context,
+                                            showTitleActions: true,
+                                            onChanged: (date) {
+                                          _timeController.text =
+                                              (DateFormat('hh:mm a')
+                                                  .format(date)
                                                   .toString());
-                                              Constants.signUpData
-                                                  .setWakeupTime(
-                                                      DateFormat('kk:mm')
-                                                          .format(date)
-                                                          .toString());
-                                            }, currentTime: DateTime.now());
-                                          },
-                                        ),
-                                        left: 50),
+                                          print('change $date in time zone ' +
+                                              date.timeZoneOffset.inHours
+                                                  .toString());
+                                        }, onConfirm: (date) {
+                                          _timeController.text =
+                                              (DateFormat('hh:mm a')
+                                                  .format(date)
+                                                  .toString());
+                                          timeForRemember = (DateFormat('kk:mm')
+                                              .format(date)
+                                              .toString());
+                                          _onSubmit(
+                                              _timeController.text.toString());
+                                          Constants.signUpData.setWakeupTime(
+                                              DateFormat('kk:mm')
+                                                  .format(date)
+                                                  .toString());
+                                        }, currentTime: DateTime.now());
+                                      },
+                                    ),
                                   ],
                                 ),
                               ),
@@ -548,6 +517,7 @@ class _AddMedicationState extends State<AddMedication> {
                               ),
                             ),
                             SizedBox(height: 20),
+
                             button(() {
                               if (_timeController.text.toString().isNotEmpty &&
                                   _nameController.text.toString().isNotEmpty &&
@@ -558,24 +528,16 @@ class _AddMedicationState extends State<AddMedication> {
                                   _numberController.text
                                       .toString()
                                       .isNotEmpty) {
-                                // _medicationData.setMedicationNumber( (Constants.medicationList.length+1).toString());
-                                // _medicationData.setMedicationName(_nameController.text.toString());
-                                // _medicationData.setMedicationFormId( getid(Constants.medications).toString());
-                                // _medicationData.setMedicationDose(_numberController.text.toString());
-                                // _medicationData.setMedicationDuration(_durationController.text.toString());
-                                // _medicationData.setMedicationNote(_noteController.text.toString());
-                                // _medicationData.setMedicationTime(_timeController.text.toString());
                                 _medicationData.isActive = true;
                                 _medicationBloc.add(doMedicationEvent(
                                     Singleton().loginModel.data.uId.toString(),
-                                    // (Constants.medicationList.length+1).toString(),
                                     _nameController.text.toString(),
                                     getid(Constants.medications).toString(),
                                     _numberController.text.toString(),
                                     _durationController.text.toString(),
                                     _noteController.text.toString(),
                                     getReminderData(_listViewData)
-                                    ));
+                                ));
                               } else {
                                 _scaffoldKey.currentState.showSnackBar(SnackBar(
                                   content: Text(Strings().getFillDataString()),
@@ -586,39 +548,17 @@ class _AddMedicationState extends State<AddMedication> {
                             Spacer()
                           ],
                         ),
-                        // ),
+              ),
                       ),
-                      // Positioned(
-                      //     child: IconButton(
-                      //       icon: Icon(
-                      //         Icons.arrow_back_ios,
-                      //         color: Color.fromRGBO(130, 130, 130, 1),
-                      //       ),
-                      //       onPressed: () {
-                      //         Navigator.of(context).pop();
-                      //       },
-                      //     ),
-                      //     top: 5,
-                      //     left: 5),
-                      // Positioned(
-                      //     child: Text(
-                      //       Strings().getMedicineAddStrings(),
-                      //       style: titleStyle(
-                      //           fontFamily: boldFontFamily,
-                      //           color: defaultBackgroundColor,
-                      //           fontSize: 24),
-                      //     ),
-                      //     top: 60,
-                      //     left: 30),
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
               );
             },
           ),
         ),
       ),
     );
+
   }
 
   Widget medicationForm(int index) {
@@ -792,40 +732,38 @@ class _AddMedicationState extends State<AddMedication> {
                   child: Container(
                 height: 120,
                 padding: EdgeInsets.only(left: 5, right: 5),
-                    child: GestureDetector(
-                      onTap: () {
-    setState(() {
-      _listViewData.remove(_listViewData[index]);
-                     });
-                      },
-                      child: Card(
-                        elevation: 5,
-                        color: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            new Icon(
-                              Icons.delete,
-                              color: Colors.red,
-                            ),
-                            SizedBox(height: 20),
-                            Text(
-                              _listViewData[index],
-                              style: TextStyle(
-                                  color: headerColor,
-                                  fontSize: 16,
-                                  fontFamily: mediumFontFamily),
-                            ),
-                          ],
-                        ),
-                      ),
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _listViewData.remove(_listViewData[index]);
+                    });
+                  },
+                  child: Card(
+                    elevation: 5,
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
                     ),
-
-
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        new Icon(
+                          Icons.delete,
+                          color: Colors.red,
+                        ),
+                        SizedBox(height: 20),
+                        Text(
+                          _listViewData[index],
+                          style: TextStyle(
+                              color: headerColor,
+                              fontSize: 16,
+                              fontFamily: mediumFontFamily),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               )),
             ],
           ),
@@ -835,52 +773,13 @@ class _AddMedicationState extends State<AddMedication> {
   }
 
   String getReminderData(List<String> listViewData) {
-    String result="[";
-    for (int i=0;i<listViewData.length;i++){
-      if(i==listViewData.length-1)
+    String result = "[";
+    for (int i = 0; i < listViewData.length; i++) {
+      if (i == listViewData.length - 1)
         result = result + listViewData[i] + "]";
-else
-      result = result + listViewData[i] + ",";
-
-
+      else
+        result = result + listViewData[i] + ",";
     }
     return result;
   }
-  // return Expanded(
-  //   child: ListView(
-  //     shrinkWrap:true, //just set this property
-  //     padding: EdgeInsets.only(right : 10.0 , left: 10.0),
-  //     children: _listViewData.reversed.map((data) {
-  //       return Dismissible(
-  //         key: Key(data),
-  //         child: Container(
-  //       height: 50,
-  //           alignment: Alignment.center,
-  //           child: Card(
-  //           shape: RoundedRectangleBorder(
-  //             borderRadius: BorderRadius.circular(10.0),
-  //           ),
-  //           color: textFieldFill,
-  //           child: ListTile(
-  //             dense: true,
-  //             title: new Text(
-  //               data,
-  //             ),
-  //             trailing: new Icon(
-  //               Icons.delete,
-  //               color: Colors.red,
-  //             ),
-  //               onTap:    () {
-  //                 setState(() {
-  //                   _listViewData.remove(data);
-  //                 });
-  //               },
-  //           ),
-  //         ),
-  //       ),
-  //       );
-  //     }).toList(),
-  //   ),
-  // );
-  // }
 }

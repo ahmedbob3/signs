@@ -200,6 +200,8 @@ class _SignupScreenStep2State extends State<SignupScreenStep2> {
                                     child: Container(
                                       child: TextFormField(
                                         controller: _lastNameController,
+                                          textCapitalization:
+                                          TextCapitalization.sentences,
                                         decoration: InputDecoration(
                                           hintText:
                                               Strings().getEnterLastStrings(),
