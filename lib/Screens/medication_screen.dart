@@ -101,6 +101,7 @@ class _MedicationScreenState extends State<MedicationScreen> {
           color: Colors.white,
           child: Column(
             children: [
+              SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

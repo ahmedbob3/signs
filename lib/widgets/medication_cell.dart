@@ -84,27 +84,27 @@ class _MedicationCellState extends State<MedicationCell> {
         // actionExtentRatio: 0.25,
         controller: slidableController,
         actions: <Widget>[
-          IconButton(
-            icon: isSelected
-                ? Icon(
-                    Icons.check_circle,
-                    size: 30,
-                    color: defaultBackgroundColor,
-                  )
-                : CircleAvatar(
-                    radius: 14,
-                    backgroundColor: Colors.grey,
-                    child: CircleAvatar(
-                      radius: 12,
-                      backgroundColor: Colors.white,
-                    ),
-                  ),
-            onPressed: () {
-              setState(() {
-                isSelected = !isSelected;
-              });
-            },
-          )
+          // IconButton(
+          //   icon: isSelected
+          //       ? Icon(
+          //           Icons.check_circle,
+          //           size: 30,
+          //           color: defaultBackgroundColor,
+          //         )
+          //       : CircleAvatar(
+          //           radius: 14,
+          //           backgroundColor: Colors.grey,
+          //           child: CircleAvatar(
+          //             radius: 12,
+          //             backgroundColor: Colors.white,
+          //           ),
+          //         ),
+          //   onPressed: () {
+          //     setState(() {
+          //       isSelected = !isSelected;
+          //     });
+          //   },
+          // )
         ],
         secondaryActions: <Widget>[
           IconSlideAction(
@@ -127,7 +127,7 @@ class _MedicationCellState extends State<MedicationCell> {
                 Constants.medicationList.elementAt(widget.index).isActive = Constants.medicationList.elementAt(widget.index).isActive  == "1" ? "0":"1";
                 widget.bloc.add(doMedicationListEvent(
                     Constants.medicationList.elementAt(widget.index).mId.toString(),
-                    widget.isActive ? "1":"0"
+                    Constants.medicationList.elementAt(widget.index).isActive
                 ));
               });
             },
