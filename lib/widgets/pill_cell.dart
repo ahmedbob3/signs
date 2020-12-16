@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:Signs/Screens/medicine_add.dart';
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/styles.dart';
+import 'package:intl/intl.dart';
+
 
 class PillCell extends StatelessWidget {
   bool isNewPill;
@@ -17,6 +19,8 @@ class PillCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if(data!= null && data.rememberTime!= null)
+    data.lessTime= DateFormat("hh:mm a").format(DateFormat('kk:mm').parse(whichSooner(data.rememberTime))).toString();
     return Container(
       margin: EdgeInsets.all(10),
       width: isNewPill ? (MediaQuery.of(context).size.width * 0.88) : 220,
@@ -37,8 +41,20 @@ class PillCell extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                   Image.asset(!isNewPill ? data.mfImage : Add_pill,height: 25),
-                    !isNewPill ? Text(data.mDuration, style: titleStyle(fontFamily: semiBoldFontFamily, fontSize: 16, color: Color.fromRGBO(96, 96, 96, 1),)) : Container()
+                   Image.asset(!isNewPill ? data.mfImage : Add_pill,height:20 ,fit:BoxFit.contain),
+                    !isNewPill ?
+                    Text(
+                      data.rememberTime.length !=0 ?
+                      data.lessTime
+
+                          : "",
+                      style: titleStyle(
+                        fontFamily: semiBoldFontFamily,
+                        fontSize: 14,
+                        color: Color.fromRGBO(96, 96, 96, 1),
+                      ),
+                    ):  Container(),
+
                   ],
                 ),
                 SizedBox(height: 10),
@@ -54,12 +70,23 @@ class PillCell extends StatelessWidget {
                                 color: Colors.black),
                           ),
                           SizedBox(height: 2),
-                          Text(data.mDose + " " + data.mfName,
-                              style: titleStyle(
-                                fontFamily: semiBoldFontFamily,
-                                fontSize: 16,
-                                color: Color.fromRGBO(96, 96, 96, 1),
-                              ))
+
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+
+                              Text(data.mDose + " " + data.mfName,
+                                  style: titleStyle(
+                                    fontFamily: semiBoldFontFamily,
+                                    fontSize: 16,
+                                    color: Color.fromRGBO(96, 96, 96, 1),
+                                  )),
+                              Text(data.mDuration + " days", style: titleStyle(fontFamily: semiBoldFontFamily, fontSize: 14, color: Color.fromRGBO(96, 96, 96, 1),)),
+                            ],
+                          ),
+
+
+
                         ],
                       )
                     : Row(
@@ -143,5 +170,10 @@ class PillCell extends StatelessWidget {
         return alert;
       },
     );
+  }
+
+  String whichSooner(List<String> rememberTime) {
+    rememberTime.sort();
+    return rememberTime.elementAt(0).toString();
   }
 }

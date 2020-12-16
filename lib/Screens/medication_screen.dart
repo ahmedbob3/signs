@@ -116,17 +116,17 @@ class _MedicationScreenState extends State<MedicationScreen> {
                   ),
                   MaterialButton(
                     onPressed: () {
-                      setState(() {
-                        shouldOpenAllItems = !shouldOpenAllItems;
-                      });
+                      // setState(() {
+                      //   shouldOpenAllItems = !shouldOpenAllItems;
+                      // });
                     },
-                    child: Text(
-                      shouldOpenAllItems ? 'Done' : 'Edit',
-                      style: titleStyle(
-                          color: greyColor,
-                          fontSize: 20,
-                          fontFamily: semiBoldFontFamily),
-                    ),
+                    // child: Text(
+                    //   shouldOpenAllItems ? 'Done' : 'Edit',
+                    //   style: titleStyle(
+                    //       color: greyColor,
+                    //       fontSize: 20,
+                    //       fontFamily: semiBoldFontFamily),
+                    // ),
                   )
                 ],
               ),

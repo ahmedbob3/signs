@@ -1,6 +1,4 @@
-import 'package:Signs/Blocs/medication%20bloc/medication_bloc.dart';
 import 'package:Signs/Screens/check_mobile_screen.dart';
-import 'package:Signs/Screens/login_screen.dart';
 import 'package:Signs/Utils/constants.dart';
 import 'package:Signs/Utils/singleton.dart';
 import 'package:Signs/Utils/strings.dart';

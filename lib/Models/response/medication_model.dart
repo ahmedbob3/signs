@@ -58,6 +58,8 @@ class Datum {
     this.mfImage,
     this.rememberTime,
     this.isActive,
+    this.lessTime,
+
   });
 
   final String mId;
@@ -68,7 +70,8 @@ class Datum {
   final String mfName;
   final String mfImage;
   final List<String> rememberTime;
-   bool isActive;
+  String isActive;
+   String lessTime;
 
 
   factory Datum.fromJson(String str) => Datum.fromMap(json.decode(str));
@@ -84,9 +87,11 @@ class Datum {
         mfName: mfNameValues.map[json["mf_id"]],
         mfImage: mfImageValues.map[json["mf_id"]],
         rememberTime: List<String>.from(json["remember_time"].map((x) => x)),
-        isActive: json["m_active"]!= null ? json["m_active"]: true,
+        isActive: json["m_active"].toString(),
+        lessTime: ""
 
-      );
+
+  );
 
   Map<String, dynamic> toMap() => {
         "m_id": mId,
@@ -98,6 +103,8 @@ class Datum {
         "mf_image": mfImage,
         "remember_time": List<dynamic>.from(rememberTime.map((x) => x)),
           "m_active": isActive,
+          "lessTime": lessTime
+
 
   };
 }

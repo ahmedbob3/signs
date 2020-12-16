@@ -50,14 +50,15 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   setNotification() async {
     for(int i=0;i<Constants.medicationList.length;i++){
       if(Constants.medicationList.elementAt(i).rememberTime.toString().length > 2){
-        await notificationPlugin.showDailyAtTime(
-            Constants.medicationList.elementAt(i).rememberTime.toString().substring(1, Constants.medicationList.elementAt(i).rememberTime.toString().length - 1),
-            Constants.medicationList.elementAt(i).mName.toString(),
-            Constants.medicationList.elementAt(i).mDuration.toString(),
-            Constants.medicationList.elementAt(i).mDose.toString(),
-            Constants.medicationList.elementAt(i).mfName.toString()
-
-        );
+        for (int j=0;j<Constants.medicationList.elementAt(i).rememberTime.length;j++){
+          await notificationPlugin.showDailyAtTime(
+              Constants.medicationList.elementAt(i).rememberTime.elementAt(j).toString().substring(1, Constants.medicationList.elementAt(i).rememberTime.toString().length - 1),
+              Constants.medicationList.elementAt(i).mName.toString(),
+              Constants.medicationList.elementAt(i).mDuration.toString(),
+              Constants.medicationList.elementAt(i).mDose.toString(),
+              Constants.medicationList.elementAt(i).mfName.toString()
+          );
+        }
       }
     // await notificationPlugin.showNotification();
      // await notificationPlugin.scheduleNotification();

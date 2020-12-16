@@ -24,7 +24,9 @@ class MedicationRepo extends BaseRepo {
       "m_dose": medicationDose,
       "m_duration": medicationDuration,
       "m_reminder_note": medicationNote,
-      "remember_time": medicationTime
+      "remember_time": medicationTime,
+      "user_type": Constants.userType.toString()
+
     };
     var response = await http.post(
       Uri.encodeFull(APIS.serverURL + APIS.MEDICATION_API),
@@ -71,7 +73,8 @@ class MedicationRepo extends BaseRepo {
       ) async {
     Map<String, dynamic> params = {
       "m_id": medicationNumber,
-      "m_active": medicationStatus
+      "m_active": medicationStatus,
+      "user_type":Constants.userType.toString(),
     };
 
     var response = await http.post(

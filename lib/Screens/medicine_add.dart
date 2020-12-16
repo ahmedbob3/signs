@@ -34,6 +34,7 @@ class _AddMedicationState extends State<AddMedication> {
   bool isLoading = false;
   String timeForRemember = "";
   final formKey = GlobalKey<FormState>();
+  bool backFromAll=false;
 
 
   @override
@@ -201,6 +202,7 @@ class _AddMedicationState extends State<AddMedication> {
                                         240),
                                 new GestureDetector(
                                   onTap: () {
+                                    backFromAll=true;
                                     Navigator.of(context).push(
                                         MaterialPageRoute(
                                             builder: (context) =>
@@ -560,7 +562,7 @@ class _AddMedicationState extends State<AddMedication> {
                                   _numberController.text
                                       .toString()
                                       .isNotEmpty) {
-                                _medicationData.isActive = true;
+                                _medicationData.isActive =   "1";
                                 _medicationBloc.add(doMedicationEvent(
                                     Singleton().loginModel.data.uId.toString(),
                                     _nameController.text.toString(),
@@ -597,6 +599,9 @@ class _AddMedicationState extends State<AddMedication> {
   }
 
   Widget medicationForm(int index) {
+    if(backFromAll==true)
+    index= getid(Constants.medications);
+    backFromAll=false;
     return Container(
       width: 120,
       height: 120,
@@ -827,9 +832,10 @@ class _AddMedicationState extends State<AddMedication> {
     String result = "[";
     for (int i = 0; i < listViewData.length; i++) {
       if (i == listViewData.length - 1)
-        result = result + listViewData[i] + "]";
+        result = result + '"'+DateFormat('kk:mm').format(DateFormat('hh:mm a').parse(listViewData[i]))+'"'+ "]";
       else
-        result = result + listViewData[i] + ",";
+      result = result +'"' +DateFormat('kk:mm').format(DateFormat('hh:mm a').parse(listViewData[i]))+'"' + ",";
+
     }
     return result;
   }

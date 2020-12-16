@@ -41,7 +41,7 @@ class MediciationSectionState extends State<MediciationSection> {
                               width: 230,
                               child: PillCell(isNewPill: true),
                             )
-                          : PillCell(isNewPill: false,data: widget.medicationList[index-1]);
+                          : widget.medicationList[index-1].isActive ==  "1" ? PillCell(isNewPill: false,data: widget.medicationList[index-1]) : Container();
                     },
                   )
                 : PillCell(isNewPill: true)
