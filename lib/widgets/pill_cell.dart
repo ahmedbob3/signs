@@ -19,7 +19,7 @@ class PillCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if(data!= null && data.rememberTime!= null)
+    if(data!= null && data.rememberTime.length!=0)
     data.lessTime= DateFormat("hh:mm a").format(DateFormat('kk:mm').parse(whichSooner(data.rememberTime))).toString();
     return Container(
       margin: EdgeInsets.all(10),
