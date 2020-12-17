@@ -158,15 +158,15 @@ class _MedicationScreenState extends State<MedicationScreen> {
                   children: <Widget>[
                     Image(
                       image: AssetImage(Medicine_empty),
-                      height: 90,
-                      width: 90,
+                      height: 300,
+                      width: 300,
                     ),
                     Text(
                       Strings.empty(),
                       style: TextStyle(
                           fontFamily: boldFontFamily,
                           color: defaultBackgroundColor,
-                          fontSize: 24),
+                          fontSize: 18),
                     ),
                   ],
                 ),

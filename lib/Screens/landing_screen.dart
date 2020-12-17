@@ -89,7 +89,7 @@ class _LandingScreenState extends State<LandingScreen> {
                               selectedTabIndex = 0 ;
                             });
                           },
-                      icon: Image.asset(selectedTabIndex == 0 ? Home_Active : Home_Inactive),
+                      icon: Image.asset(selectedTabIndex == 0 ? Home_active : Home_inactive),
                       iconSize: 140,
                     )),
                     Expanded(
@@ -102,7 +102,7 @@ class _LandingScreenState extends State<LandingScreen> {
                     Expanded(child: new Text('')),
                     Expanded(
                         child: IconButton(
-                            icon: Image.asset(History_inctive), iconSize: 140)),
+                            icon: Image.asset(History_inactive), iconSize: 140)),
                     Expanded(
                         child: IconButton(
                             onPressed: () {
@@ -110,7 +110,7 @@ class _LandingScreenState extends State<LandingScreen> {
                                 selectedTabIndex = 3;
                               });
                             },
-                            icon: Image.asset(selectedTabIndex == 3 ? Medicine_Active : Medicine_inctive ),
+                            icon: Image.asset(selectedTabIndex == 3 ? Medicine_active : Medicine_inctive ),
                             iconSize: 140)),
                   ],
                   // unselectedItemColor: Colors.grey,

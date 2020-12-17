@@ -24,7 +24,7 @@ class _MedicationReminderScreenState extends State<MedicationReminderScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: snoozeSelected
-            ? SnoozeScreen(closeFunction: widget.closePopup)
+            ? SnoozeScreen(closeFunction: widget.closePopup,data:widget.data)
             : Container(
                 margin: EdgeInsets.symmetric(vertical: 35),
                 child: Column(

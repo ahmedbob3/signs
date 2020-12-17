@@ -1,11 +1,17 @@
+import 'package:Signs/Models/response/medication_model.dart';
+import 'package:Signs/Notifications/NotificationPlugin.dart';
 import 'package:Signs/Screens/medication_reminder_scree.dart';
 import 'package:Signs/Utils/styles.dart';
 import 'package:Signs/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:intl/intl.dart';
+
 
 class SnoozeScreen extends StatefulWidget {
   final Function closeFunction;
-  const SnoozeScreen({Key key, this.closeFunction}) : super(key: key);
+  final Datum data;
+  const SnoozeScreen({Key key, this.closeFunction,this.data}) : super(key: key);
 
   @override
   _SnoozeScreenState createState() => _SnoozeScreenState();
@@ -129,8 +135,15 @@ class _SnoozeScreenState extends State<SnoozeScreen> {
               SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: button(() {
-                  // notification .. 
+                child: button(() async {
+                  // notification ..
+                  await notificationPlugin.showDailyAtTime(
+                      getTime (selectedIndex),
+                      widget.data.mName,
+                      widget.data.mDuration.toString(),
+                      widget.data.mDose.toString(),
+                      widget.data.mfName.toString()
+                  );
                   widget.closeFunction();
                 }, 'Done'),
               )
@@ -139,5 +152,13 @@ class _SnoozeScreenState extends State<SnoozeScreen> {
         ),
       ),
     );
+  }
+
+  String getTime(int selectedIndex) {
+    String resultTime="";
+    var selectedTime = Time(selectedIndex==1 ? 1 : selectedIndex==2? 2 : 3, selectedIndex==0 ? 30 : 0 );
+    var newTime= Time(DateTime.now().hour+selectedTime.hour,DateTime.now().minute+selectedTime.minute);
+    resultTime = '"'+newTime.hour.toString()+':'+newTime.minute.toString()+'"';
+    return resultTime;
   }
 }

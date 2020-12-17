@@ -81,7 +81,7 @@ class Strings_EN {
   static const String REMAINING = "Remaining";
   static const String MINUTE = "Min";
   static const String AT_WORD = "At";
-  static const String EMPTY = "Empty Data";
+  static const String EMPTY = "There’s no Medication Yet !";
 static const String PHONE_VERIFICATION = "Phone Verification";
 static const String GET_OTP_DESCRIPTION = "Enter Your OTP Code Here";
 static const String NOT_GET_CODE = "Didn't you receive any code? ";

@@ -1,6 +1,5 @@
 import 'package:Signs/Models/response/medication_model.dart';
 import 'package:Signs/Screens/check_mobile_screen.dart';
-import 'package:Signs/Screens/login_screen.dart';
 import 'package:Signs/Screens/medication_reminder_scree.dart';
 import 'package:Signs/Utils/constants.dart';
 import 'package:Signs/Utils/singleton.dart';
