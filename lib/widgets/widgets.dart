@@ -96,7 +96,7 @@ Widget textField(String hintText, Function callback,
   );
 }
 
-Widget button(Function onPress, String labelText, {bool isFilledColor = true}) {
+Widget button(Function onPress, String labelText, {bool isFilledColor = true, Color color}) {
   return Container(
     width: double.infinity,
     height: 50,
@@ -109,7 +109,7 @@ Widget button(Function onPress, String labelText, {bool isFilledColor = true}) {
       disabledColor: Color.fromRGBO(144, 156, 179, 1),
       disabledTextColor: Colors.white,
       elevation: 0,
-      color: isFilledColor ? defaultBackgroundColor : Colors.white,
+      color: color != null ? color : (isFilledColor ? defaultBackgroundColor : Colors.white),
       child: Text(
         labelText,
         style: TextStyle(

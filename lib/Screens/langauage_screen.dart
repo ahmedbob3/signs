@@ -35,19 +35,20 @@ class _LangauageScreenState extends State<LangauageScreen> {
               height: MediaQuery.of(context).size.height,
               child: Stack(
                 children: <Widget>[
-              Container(
-              width: double.infinity,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage(Login_background), fit: BoxFit.cover)),
-                child: Padding(
-                  padding: EdgeInsets.only(top: 10),
-                  child: Image.asset(
-                    Hello_BG,
-                    fit: BoxFit.contain,
+                  Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(Login_background),
+                            fit: BoxFit.cover)),
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 10),
+                      child: Image.asset(
+                        Hello_BG,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
                   ),
-                ),
-              ),
                   SingleChildScrollView(
                     physics: NeverScrollableScrollPhysics(),
                     child: Container(

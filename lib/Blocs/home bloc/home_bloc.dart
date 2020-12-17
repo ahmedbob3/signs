@@ -68,7 +68,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   @override
   HomeState get initialState => HomeInitial();
 
-  List<Datum> sort(List<Datum> medicationList) {
+  // List<Datum> sort(List<Datum> medicationList) {
 
-  }
+  // }
 }

@@ -1,4 +1,6 @@
 import 'package:Signs/Screens/landing_screen.dart';
+import 'package:Signs/Screens/medication_reminder_scree.dart';
+import 'package:Signs/Screens/select_snooze_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,6 +28,8 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
+  bool openSnoozeScree = false;
+
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -86,14 +90,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                   // builder: (context) => MedicineForm()));
                                   // builder: (context) => AddMedication()));
                                   // builder: (context) => SignupSubAccountScreenStep1()));
-                                  builder: (context) => CheckMobileScreen(isSignIn: false)));
+                                  builder: (context) =>
+                                      CheckMobileScreen(isSignIn: false)));
                             }, Strings().getCreateAccountText(),
                                 isFilledColor: true),
                             Spacer(),
                             MaterialButton(
-                              onPressed: (){
-                                 Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => LandingScreen()));
+                              onPressed: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => LandingScreen()));
                               },
                               child: Center(
                                 child: Text(
