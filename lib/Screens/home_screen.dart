@@ -140,7 +140,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                 ),
                               ),
-                              Icon(Icons.search, color: Colors.white, size: 30),
+                              // Icon(Icons.search, color: Colors.white, size: 30),
                               SizedBox(width: 20),
                               Icon(Icons.notifications,
                                   color: Colors.white, size: 30),

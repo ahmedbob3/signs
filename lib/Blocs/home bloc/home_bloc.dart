@@ -11,6 +11,7 @@ import 'package:meta/meta.dart';
 import 'package:Signs/Models/hospitals_model.dart';
 import 'package:Signs/Repos/hospitals_repo.dart';
 
+
 part 'home_event.dart';
 part 'home_state.dart';
 
@@ -49,10 +50,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   setNotification() async {
     for(int i=0;i<Constants.medicationList.length;i++){
-      if(Constants.medicationList.elementAt(i).rememberTime.toString().length > 2){
+      if(Constants.medicationList.elementAt(i).rememberTime.toString().length > 2 && Constants.medicationList.elementAt(i).isActive=="1"){
         for (int j=0;j<Constants.medicationList.elementAt(i).rememberTime.length;j++){
           await notificationPlugin.showDailyAtTime(
-              Constants.medicationList.elementAt(i).rememberTime.elementAt(j).toString().substring(1, Constants.medicationList.elementAt(i).rememberTime.toString().length - 1),
+              Constants.medicationList.elementAt(i).rememberTime.elementAt(j).toString().substring(0, Constants.medicationList.elementAt(i).rememberTime.elementAt(j).toString().length),
               Constants.medicationList.elementAt(i).mName.toString(),
               Constants.medicationList.elementAt(i).mDuration.toString(),
               Constants.medicationList.elementAt(i).mDose.toString(),
@@ -66,4 +67,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
   @override
   HomeState get initialState => HomeInitial();
+
+  List<Datum> sort(List<Datum> medicationList) {
+
+  }
 }

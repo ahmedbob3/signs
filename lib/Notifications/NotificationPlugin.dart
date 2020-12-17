@@ -105,8 +105,7 @@ class NotificationPlugin {
       priority: Priority.High,
     );
     var iosChannelSpecifics = IOSNotificationDetails();
-    var platformChannelSpecifics =
-    NotificationDetails(androidChannelSpecifics, iosChannelSpecifics);
+    var platformChannelSpecifics = NotificationDetails(androidChannelSpecifics, iosChannelSpecifics);
     await flutterLocalNotificationsPlugin.showDailyAtTime(
       0,
       'Dose : $mDose $mfName ${time.hour}:${time.minute}',

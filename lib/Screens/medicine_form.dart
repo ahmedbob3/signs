@@ -283,7 +283,8 @@ class _MedicineFormState extends State<MedicineForm> {
                         color: Color.fromRGBO(130, 130, 130, 1),
                       ),
                       onPressed: () {
-                        Navigator.of(context).pop();
+                        // Navigator.of(context).pop();
+                        Navigator.pop(context,true);
                       },
                     ),
                     top: 5,

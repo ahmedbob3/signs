@@ -26,7 +26,7 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
         backgroundColor: Colors.transparent,
         iconTheme: IconThemeData(color: Colors.white),
         actions: [
-          Image.asset(SearchIcon),
+          // Image.asset(SearchIcon),
           IconButton(
             icon: Image.asset(ShareIcon),
             onPressed: () async {

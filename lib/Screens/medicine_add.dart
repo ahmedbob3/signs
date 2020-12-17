@@ -34,7 +34,7 @@ class _AddMedicationState extends State<AddMedication> {
   bool isLoading = false;
   String timeForRemember = "";
   final formKey = GlobalKey<FormState>();
-  bool backFromAll=false;
+  // bool backFromAll=false;
 
 
   @override
@@ -52,6 +52,11 @@ class _AddMedicationState extends State<AddMedication> {
     super.initState();
     _medicationBloc = MedicationBloc();
     _medicationData = Datum();
+  }
+
+  _getRequests()async{
+    setState(() {
+    });
   }
 
   @override
@@ -202,11 +207,15 @@ class _AddMedicationState extends State<AddMedication> {
                                         240),
                                 new GestureDetector(
                                   onTap: () {
-                                    backFromAll=true;
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                MedicineForm()));
+                                    // backFromAll=true;
+                                    // Navigator.of(context).push(
+                                    //     MaterialPageRoute(
+                                    //         builder: (context) =>
+                                    //             MedicineForm()));
+                                    Navigator.of(context).push(new MaterialPageRoute(builder: (_)=>MedicineForm()),)
+                                        .then((val)=>val?_getRequests():null);
+
+
                                   },
                                   child: Text(
                                     "View more",
@@ -599,9 +608,9 @@ class _AddMedicationState extends State<AddMedication> {
   }
 
   Widget medicationForm(int index) {
-    if(backFromAll==true)
-    index= getid(Constants.medications);
-    backFromAll=false;
+    // if(backFromAll==true)
+    // index= getid(Constants.medications);
+    // backFromAll=false;
     return Container(
       width: 120,
       height: 120,
