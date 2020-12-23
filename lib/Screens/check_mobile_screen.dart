@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:Signs/Screens/signup_screen_step1.dart';
 import 'package:country_code_picker/country_code_picker.dart';
@@ -28,6 +29,9 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
   String selectedCountry = '';
   FocusNode focusNode = FocusNode();
   bool isLoading = false;
+  bool hasError = false;
+  final _formKey = GlobalKey<FormState>();
+  String phoneNumber = '';
 
   @override
   void initState() {
@@ -43,13 +47,7 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
       print('xxx');
     }
 
-    setState(() {
-      try {
-        selectedCountry = CountryCodes.dialCode();
-      } catch (e) {
-        selectedCountry = 'EG';
-      }
-    });
+    setState(() {});
   }
 
   @override
@@ -136,16 +134,19 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  widget.isSignIn ? Strings().getSingInText() : 
-                                  Strings().getSignupStrings(),
+                                  widget.isSignIn
+                                      ? Strings().getSingInText()
+                                      : Strings().getSignupStrings(),
                                   style: titleStyle(
                                       fontFamily: boldFontFamily,
                                       color: headerColor,
                                       fontSize: 24),
                                 ),
                                 SizedBox(height: 10),
-                                Text(widget.isSignIn ? Strings().getSinginSlogan() : 
-                                Strings().getSingupSlogan(),
+                                Text(
+                                    widget.isSignIn
+                                        ? Strings().getSinginSlogan()
+                                        : Strings().getSingupSlogan(),
                                     style: titleStyle(
                                         fontFamily: mediumFontFamily,
                                         color: greyColor,
@@ -177,7 +178,32 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
                                               setState(() {
                                                 selectedCountry =
                                                     countryCode.dialCode;
+
+                                                if (selectedCountry == '+965' &&
+                                                    _mobileController
+                                                            .text.length >
+                                                        8) {
+                                                  _mobileController.text =
+                                                      _mobileController.text
+                                                          .replaceRange(
+                                                              8, 11, '');
+                                                }
+                                                selectedCountry =
+                                                    selectedCountry == '+20'
+                                                        ? '+2'
+                                                        : selectedCountry;
                                               });
+                                            },
+                                            onInit: (countryCode) {
+                                              // setState(() {
+                                              selectedCountry =
+                                                  countryCode.dialCode;
+
+                                              selectedCountry =
+                                                  selectedCountry == '+20'
+                                                      ? '+2'
+                                                      : selectedCountry;
+                                              // });
                                             },
                                             // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
                                             initialSelection:
@@ -218,35 +244,62 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
                                         ),
                                         SizedBox(width: 10),
                                         Expanded(
-                                          child: Container(
-                                            child: TextField(
-                                              controller: _mobileController,
-                                              focusNode: focusNode,
-                                              maxLength: 11,
-                                              maxLines: 1,
-                                              decoration: InputDecoration(
-                                                counter: SizedBox.shrink(),
-                                                hintText: Strings()
-                                                    .getEnterMobileNumberString(),
-                                                hintStyle: titleStyle(
-                                                    fontFamily:
-                                                        mediumFontFamily,
-                                                    color: greyColor,
-                                                    fontSize: 16),
-                                                labelStyle: titleStyle(
-                                                    color: greyColor),
-                                                border: InputBorder.none,
-                                                focusedBorder: InputBorder.none,
-                                                enabledBorder: InputBorder.none,
-                                                errorBorder: InputBorder.none,
-                                                disabledBorder:
-                                                    InputBorder.none,
+                                          child: Form(
+                                            key: _formKey,
+                                            child: Container(
+                                              child: TextFormField(
+                                                controller: _mobileController,
+                                                focusNode: focusNode,
+                                                maxLength:
+                                                    selectedCountry == '+2'
+                                                        ? 11
+                                                        : 8,
+                                                maxLines: 1,
+                                                decoration: InputDecoration(
+                                                  counter: SizedBox.shrink(),
+                                                  hintText: Strings()
+                                                      .getEnterMobileNumberString(),
+                                                  hintStyle: titleStyle(
+                                                      fontFamily:
+                                                          mediumFontFamily,
+                                                      color: greyColor,
+                                                      fontSize: 16),
+                                                  labelStyle: titleStyle(
+                                                      color: greyColor),
+                                                  border: InputBorder.none,
+                                                  focusedBorder:
+                                                      InputBorder.none,
+                                                  enabledBorder:
+                                                      InputBorder.none,
+                                                  errorBorder: InputBorder.none,
+                                                  disabledBorder:
+                                                      InputBorder.none,
+                                                ),
+                                                keyboardType:
+                                                    TextInputType.phone,
+                                                onChanged: (value){
+                                                  setState(() {
+                                                  // _mobileController.text = value;  
+                                                  });
+                                                },
+                                                validator: (value) {
+                                                  if ((selectedCountry ==
+                                                              '+2' &&
+                                                          value.length < 10) ||
+                                                      (selectedCountry ==
+                                                              '+965' &&
+                                                          value.length < 8)) {
+                                                    setState(() {
+                                                      hasError = true;
+                                                    });
+                                                  } else {
+                                                    setState(() {
+                                                      hasError = false;
+                                                    });
+                                                  }
+                                                  return null;
+                                                },
                                               ),
-                                              keyboardType:
-                                                  TextInputType.number,
-                                              onChanged: (value) {
-                                                setState(() {});
-                                              },
                                             ),
                                           ),
                                         ),
@@ -254,6 +307,13 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
                                     ),
                                   ),
                                 ),
+                                SizedBox(height: 10),
+                                hasError
+                                    ? Text(
+                                        Strings().getEnterMobileNumberString(),
+                                        style: TextStyle(color: Colors.red),
+                                      )
+                                    : Container(),
                                 SizedBox(height: 30),
                                 button(
                                     _mobileController.text.isEmpty
@@ -279,7 +339,17 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
   }
 
   checkMobileNumber() {
-    focusNode.unfocus();
-    _loginBloc.add(checkMobileNumberEvent(_mobileController.text));
+    _formKey.currentState.validate();
+    if (hasError) {
+    } else {
+      if (selectedCountry == '+2' && _mobileController.text[0] != '0') {
+        setState(() {
+          hasError = true;
+        });
+      } else {
+        focusNode.unfocus();
+        _loginBloc.add(checkMobileNumberEvent(_mobileController.text));
+      }
+    }
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:Signs/Screens/welcome_screen.dart';
@@ -15,7 +17,33 @@ class LangauageScreen extends StatefulWidget {
 }
 
 class _LangauageScreenState extends State<LangauageScreen> {
-  int selectedLanguage = 2;
+  int selectedLanguage = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    final String defaultLocale =
+        Platform.localeName; // Returns locale string in the form 'en_US'
+    setDetectedLanguage(defaultLocale);
+  }
+
+  setDetectedLanguage(String language) {
+    setState(() {
+      if (language.toLowerCase().contains('ar')) {
+        selectedLanguage = 1;
+        Constants.languageId = languages.Arabic;
+        Constants.textDirection = TextDirection.rtl;
+      } else if (language.toLowerCase().contains('en')) {
+        selectedLanguage = 2;
+        Constants.languageId = languages.English;
+        Constants.textDirection = TextDirection.ltr;
+      } else  {
+        selectedLanguage = 3;
+        Constants.languageId = languages.Indian;
+        Constants.textDirection = TextDirection.ltr;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,11 +115,7 @@ class _LangauageScreenState extends State<LangauageScreen> {
                           // arabic language
                           InkWell(
                             onTap: () {
-                              setState(() {
-                                selectedLanguage = 1;
-                                Constants.languageId = languages.Arabic;
-                                Constants.textDirection = TextDirection.rtl;
-                              });
+                                setDetectedLanguage('ar');
                             },
                             child: Container(
                               padding: EdgeInsets.all(15),
@@ -119,11 +143,7 @@ class _LangauageScreenState extends State<LangauageScreen> {
                           // english language
                           InkWell(
                             onTap: () {
-                              setState(() {
-                                selectedLanguage = 2;
-                                Constants.languageId = languages.English;
-                                Constants.textDirection = TextDirection.ltr;
-                              });
+                              setDetectedLanguage('en');
                             },
                             child: Container(
                               padding: EdgeInsets.all(15),
@@ -151,11 +171,7 @@ class _LangauageScreenState extends State<LangauageScreen> {
                           // hindi language
                           InkWell(
                             onTap: () {
-                              setState(() {
-                                selectedLanguage = 3;
-                                Constants.languageId = languages.Indian;
-                                Constants.textDirection = TextDirection.ltr;
-                              });
+                              setDetectedLanguage('in');
                             },
                             child: Container(
                               padding: EdgeInsets.all(15),
@@ -180,13 +196,16 @@ class _LangauageScreenState extends State<LangauageScreen> {
                           ),
 
                           SizedBox(height: 30),
-                          button(() async{
-                            SharedPreferences _sharedPrefs = await SharedPreferences.getInstance();
-                            _sharedPrefs.setInt('selectedLanguage', Constants.languageId.index);
+                          button(() async {
+                            SharedPreferences _sharedPrefs =
+                                await SharedPreferences.getInstance();
+                            _sharedPrefs.setInt(
+                                'selectedLanguage', Constants.languageId.index);
                             Navigator.of(context).pushReplacement(
                                 MaterialPageRoute(
                                     builder: (context) => WelcomeScreen()));
-                          }, Strings().getSelectLabelStrings(), isFilledColor: true),
+                          }, Strings().getSelectLabelStrings(),
+                              isFilledColor: true),
                           SizedBox(height: 30),
                         ],
                       ),

@@ -31,11 +31,11 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
   String selectedCountry = '';
   int whichVerified = 0;
 
-
   @override
   void initState() {
     super.initState();
-    _mobileController.text = widget.phoneNumber??'';
+    _mobileController.text = widget.phoneNumber ?? '';
+    selectedCountry = widget.countryCode == '+2' ? '+20' : widget.countryCode;
   }
 
   @override
@@ -127,16 +127,18 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                                     Container(
                                       width: 40,
                                       child: CountryCodePicker(
-                                        enabled: widget.countryCode == '',
-                                        onChanged: (countryCode) {
-                                          setState(() {
-                                            selectedCountry =
-                                                countryCode.dialCode;
-                                          });
-                                        },
+                                        enabled: false,
+                                        // onChanged: (countryCode) {
+                                        //   setState(() {
+                                        //     selectedCountry =
+                                        //         widget.countryCode;
+                                        //   });
+                                        // },
+                                        // onInit: (value) {
+                                        //   selectedCountry = widget.countryCode;
+                                        // },
                                         // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
-                                        initialSelection:
-                                            CountryCodes.dialCode(),
+                                        initialSelection: selectedCountry,
                                         favorite: ['+20', '+965'],
                                         // optional. Shows only country name and flag
                                         showCountryOnly: false,
@@ -221,7 +223,7 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                                   color: textFieldFill,
                                   border: Border.all(
                                     color: whichVerified == 1 ||
-                                        whichVerified == 12
+                                            whichVerified == 12
                                         ? Colors.red[700]
                                         : textFieldBorder,
                                   ),
@@ -267,18 +269,18 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
 
                                               return null;
                                             },
-                                            textInputAction:
-                                                TextInputAction.next, // Move focus to next
+                                            textInputAction: TextInputAction
+                                                .next, // Move focus to next
                                             obscureText: true,
                                             keyboardType: TextInputType.text,
                                             onEditingComplete: () {
-                                              FocusScope.of(context).nextFocus();
+                                              FocusScope.of(context)
+                                                  .nextFocus();
                                               checkWhichVerified();
                                             },
                                             onTap: () {
-                                              formKey.currentState
-                                                  .validate();
-                                            }// Move focus to next
+                                              formKey.currentState.validate();
+                                            } // Move focus to next
 
                                             ),
                                       ),
@@ -300,7 +302,7 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                                   color: textFieldFill,
                                   border: Border.all(
                                     color: whichVerified == 2 ||
-                                        whichVerified == 12
+                                            whichVerified == 12
                                         ? Colors.red[700]
                                         : textFieldBorder,
                                   ),
@@ -342,7 +344,6 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                                                 //   ));
                                                 // }
                                                 checkWhichVerified();
-
                                               });
 
                                               return null;
@@ -352,13 +353,13 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
                                             obscureText: true,
                                             keyboardType: TextInputType.text,
                                             onEditingComplete: () {
-                                              FocusScope.of(context).nextFocus();
+                                              FocusScope.of(context)
+                                                  .nextFocus();
                                               checkWhichVerified();
                                             },
                                             onTap: () {
-                                              formKey.currentState
-                                                  .validate();
-                                            }// Move focus to next
+                                              formKey.currentState.validate();
+                                            } // Move focus to next
 
                                             ),
                                       ),
@@ -455,17 +456,18 @@ class _SignupScreenStep1State extends State<SignupScreenStep1> {
   }
 
   void checkWhichVerified() {
-    if ((_passwordController.text.toString().isEmpty || _passwordController.text.length < 8 ) && (_confirmController.text.toString().isEmpty || _confirmController.text.length < 8 )) {
+    if ((_passwordController.text.toString().isEmpty ||
+            _passwordController.text.length < 8) &&
+        (_confirmController.text.toString().isEmpty ||
+            _confirmController.text.length < 8)) {
       whichVerified = 12;
-    }
-    else if ((_passwordController.text.toString().isEmpty || _passwordController.text.length < 8 )) {
+    } else if ((_passwordController.text.toString().isEmpty ||
+        _passwordController.text.length < 8)) {
       whichVerified = 1;
-    }
-    else if ((_confirmController.text.toString().isEmpty || _confirmController.text.length < 8 )) {
+    } else if ((_confirmController.text.toString().isEmpty ||
+        _confirmController.text.length < 8)) {
       whichVerified = 2;
-    }
-    else whichVerified=0;
+    } else
+      whichVerified = 0;
   }
-
-
 }

@@ -1,3 +1,4 @@
+import 'package:Signs/Screens/check_mobile_screen.dart';
 import 'package:Signs/Screens/signup_screen_step1.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:country_codes/country_codes.dart';
@@ -39,6 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
     super.initState();
     _loginBloc = LoginBloc();
     getSimInfo();
+    selectedCountry = widget.selectedCountry == '+2' ? '+20' : widget.selectedCountry;
   }
 
   Future<void> getSimInfo() async {
@@ -48,13 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
       print('xxx');
     }
 
-    setState(() {
-      try {
-        selectedCountry = CountryCodes.dialCode();
-      } catch (e) {
-        selectedCountry = 'EG';
-      }
-    });
+    setState(() {});
   }
 
   @override
@@ -165,6 +161,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                             enabled: false,
                                             // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
                                             initialSelection: selectedCountry,
+                                            onInit: (code) {
+                                              selectedCountry = code.code;
+                                            },
                                             favorite: ['+20', '+965'],
                                             // optional. Shows only country name and flag
                                             showCountryOnly: false,
@@ -273,7 +272,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                 SizedBox(height: 30),
                                 MaterialButton(
                                   onPressed: () {
-                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignupScreenStep1()));
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                CheckMobileScreen()));
                                   },
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
