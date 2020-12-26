@@ -90,5 +90,31 @@ static const String GET_RESEND_OTP = "Resend New Code";
 static const String VERIFY_OTP = 'Verify';
 static const String GUEST_USER = 'Guest User';
 static const String SHOULD_LOGIN = "For making a medication reminder you must be logged in or signed up first";
+static const String DONT_HAVE_ACCOUNT = 'Don\'t Have An Account ?';
+static const String ABOUT = 'About';
+static const String DIRECTIONS = 'Get Direction';
+static const String CALL = 'Call';
+static const String GALLERY = 'Gallery';
+static const String REFRESH_COMPLETE = 'Refresh complete';
+static const String RETRY = 'RETRY';
+static const String MEDICATION_LIST = 'Medication List';
+static const String VIEW_ALL = "View more";
+static const String SELECT_SNOOZE = 'Select Snooze';
+static const String SNOOZE_FOR = 'Snooze For';
+static const String HOURS = "Hours";
+static const String ADD_REMOVE_LIST = 'Add & Remove from ListView';
+static const String ENTER_TEXT_TO_ADD = 'enter text to add';
+static const String ADD_TO_LIST = 'Add to List';
+  static const String DELETE = 'Delete';
+  static const String DEACTIVATED = 'Deactivated';
+  static const String DAYS = 'days';
+  static const String ADD_PILL_REMINDER = 'Add a reminder about a pill ';
+  
+
+  
+
+  
+
+  
 
 }

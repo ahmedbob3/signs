@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:Signs/Screens/landing_screen.dart';
+import 'package:Signs/Screens/signup_screen_step1.dart';
 import 'package:Signs/Utils/strings.dart';
 import 'package:Signs/Utils/styles.dart';
 import 'package:Signs/widgets/widgets.dart';
@@ -10,8 +11,8 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 
 class PinCodeVerificationScreen extends StatefulWidget {
   final String phoneNumber;
-
-  PinCodeVerificationScreen(this.phoneNumber);
+  final String countryCode ;
+  PinCodeVerificationScreen(this.phoneNumber, this.countryCode);
 
   @override
   _PinCodeVerificationScreenState createState() =>
@@ -202,7 +203,10 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => LandingScreen()));
+                                builder: (context) => SignupScreenStep1(
+                                  phoneNumber: widget.phoneNumber,
+                                  countryCode: widget.countryCode,
+                                )));
                       });
                     });
                   }

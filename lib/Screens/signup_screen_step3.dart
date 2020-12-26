@@ -94,8 +94,7 @@ class _SignupScreenStep3State extends State<SignupScreenStep3> {
                         isSkipClicked ? Navigator.of(context).pushReplacement(MaterialPageRoute(
                             builder: (context) => LandingScreen())) : 
                         Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) => PinCodeVerificationScreen(
-                                Constants.signUpData.mobileNumber)));
+                            builder: (context) => LandingScreen()));
                       }
                       _signUpBloc.add(resetSignupState());
                       isLoading = false;

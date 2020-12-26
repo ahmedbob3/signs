@@ -1058,7 +1058,6 @@ class Strings {
     }
   }
 
-
   static String empty() {
     switch (Constants.languageId) {
       case languages.Arabic:
@@ -1100,7 +1099,7 @@ class Strings {
     }
   }
 
-static String getNotGetCodeString() {
+  static String getNotGetCodeString() {
     // 'Phone Verification'
     switch (Constants.languageId) {
       case languages.Arabic:
@@ -1114,7 +1113,7 @@ static String getNotGetCodeString() {
     }
   }
 
-static String getResendOTPString() {
+  static String getResendOTPString() {
     // 'Phone Verification'
     switch (Constants.languageId) {
       case languages.Arabic:
@@ -1142,7 +1141,7 @@ static String getResendOTPString() {
     }
   }
 
-   static String getGuestUserString() {
+  static String getGuestUserString() {
     // 'Phone Verification'
     switch (Constants.languageId) {
       case languages.Arabic:
@@ -1156,7 +1155,7 @@ static String getResendOTPString() {
     }
   }
 
- String getShouldLoggedInString() {
+  String getShouldLoggedInString() {
     // 'Phone Verification'
     switch (Constants.languageId) {
       case languages.Arabic:
@@ -1169,10 +1168,268 @@ static String getResendOTPString() {
         return Strings_EN.SHOULD_LOGIN;
     }
   }
-  
 
-  
-  
+  String dontHaveAccount() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.DONT_HAVE_ACCOUNT;
+        break;
+      case languages.Indian:
+        return Strings_INR.DONT_HAVE_ACCOUNT;
+        break;
+      default:
+        return Strings_EN.DONT_HAVE_ACCOUNT;
+    }
+  }
 
-  
+  String getAboutLabel() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.ABOUT;
+        break;
+      case languages.Indian:
+        return Strings_INR.ABOUT;
+        break;
+      default:
+        return Strings_EN.ABOUT;
+    }
+  }
+
+  String getDirectionsLabel() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.DIRECTIONS;
+        break;
+      case languages.Indian:
+        return Strings_INR.DIRECTIONS;
+        break;
+      default:
+        return Strings_EN.DIRECTIONS;
+    }
+  }
+
+  String getCallLabel() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.CALL;
+        break;
+      case languages.Indian:
+        return Strings_INR.CALL;
+        break;
+      default:
+        return Strings_EN.CALL;
+    }
+  }
+
+  String getGalleryLabel() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.GALLERY;
+        break;
+      case languages.Indian:
+        return Strings_INR.GALLERY;
+        break;
+      default:
+        return Strings_EN.GALLERY;
+    }
+  }
+
+  String getRefreshCompleteLabel() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.REFRESH_COMPLETE;
+        break;
+      case languages.Indian:
+        return Strings_INR.REFRESH_COMPLETE;
+        break;
+      default:
+        return Strings_EN.REFRESH_COMPLETE;
+    }
+  }
+
+  String getRetryLabel() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.RETRY;
+        break;
+      case languages.Indian:
+        return Strings_INR.RETRY;
+        break;
+      default:
+        return Strings_EN.RETRY;
+    }
+  }
+
+  String getMedicationListLabel() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.MEDICATION_LIST;
+        break;
+      case languages.Indian:
+        return Strings_INR.MEDICATION_LIST;
+        break;
+      default:
+        return Strings_EN.MEDICATION_LIST;
+    }
+  }
+
+  String getViewAllLabel() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.VIEW_ALL;
+        break;
+      case languages.Indian:
+        return Strings_INR.VIEW_ALL;
+        break;
+      default:
+        return Strings_EN.VIEW_ALL;
+    }
+  }
+
+  String getSelectSnoozeLabel() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SELECT_SNOOZE;
+        break;
+      case languages.Indian:
+        return Strings_INR.SELECT_SNOOZE;
+        break;
+      default:
+        return Strings_EN.SELECT_SNOOZE;
+    }
+  }
+
+  String getSnoozeForLabel() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.SNOOZE_FOR;
+        break;
+      case languages.Indian:
+        return Strings_INR.SNOOZE_FOR;
+        break;
+      default:
+        return Strings_EN.SNOOZE_FOR;
+    }
+  }
+
+  String getMinsLabel() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.MINUTES;
+        break;
+      case languages.Indian:
+        return Strings_INR.MINUTES;
+        break;
+      default:
+        return Strings_EN.MINUTES;
+    }
+  }
+
+  String getHoursLabel() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.HOURS;
+        break;
+      case languages.Indian:
+        return Strings_INR.HOURS;
+        break;
+      default:
+        return Strings_EN.HOURS;
+    }
+  }
+
+  String getAddRemoveLabel() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.ADD_REMOVE_LIST;
+        break;
+      case languages.Indian:
+        return Strings_INR.ADD_REMOVE_LIST;
+        break;
+      default:
+        return Strings_EN.ADD_REMOVE_LIST;
+    }
+  }
+
+  String getEnterTextAddLabel() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.ENTER_TEXT_TO_ADD;
+        break;
+      case languages.Indian:
+        return Strings_INR.ENTER_TEXT_TO_ADD;
+        break;
+      default:
+        return Strings_EN.ENTER_TEXT_TO_ADD;
+    }
+  }
+
+  String getAddListLabel() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.ADD_TO_LIST;
+        break;
+      case languages.Indian:
+        return Strings_INR.ADD_TO_LIST;
+        break;
+      default:
+        return Strings_EN.ADD_TO_LIST;
+    }
+  }
+
+  String getDeleteLabel() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.DELETE;
+        break;
+      case languages.Indian:
+        return Strings_INR.DELETE;
+        break;
+      default:
+        return Strings_EN.DELETE;
+    }
+  }
+
+  String getDeactivatedLabel() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.DEACTIVATED;
+        break;
+      case languages.Indian:
+        return Strings_INR.DEACTIVATED;
+        break;
+      default:
+        return Strings_EN.DEACTIVATED;
+    }
+  }
+
+  String getDaysLabel() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.DAYS;
+        break;
+      case languages.Indian:
+        return Strings_INR.DAYS;
+        break;
+      default:
+        return Strings_EN.DAYS;
+    }
+  }
+
+
+  String getAddPillReminderLabel() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.ADD_PILL_REMINDER;
+        break;
+      case languages.Indian:
+        return Strings_INR.ADD_PILL_REMINDER;
+        break;
+      default:
+        return Strings_EN.ADD_PILL_REMINDER;
+    }
+  }
+
+
+ 
 }

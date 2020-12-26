@@ -15,6 +15,8 @@ import 'package:Signs/Utils/strings.dart';
 import 'package:Signs/Utils/styles.dart';
 import 'package:Signs/widgets/widgets.dart';
 
+import 'otp_screen.dart';
+
 class CheckMobileScreen extends StatefulWidget {
   bool isSignIn;
   CheckMobileScreen({Key key, this.isSignIn = false}) : super(key: key);
@@ -94,9 +96,9 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
                       Navigator.of(context).pop();
                       if (state.checkMobileResponse.code == 200) {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => SignupScreenStep1(
-                                phoneNumber: _mobileController.text,
-                                countryCode: selectedCountry)));
+                            builder: (context) => PinCodeVerificationScreen(
+                                _mobileController.text,
+                                selectedCountry)));
                       } else {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => LoginScreen(
@@ -277,9 +279,9 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
                                                 ),
                                                 keyboardType:
                                                     TextInputType.phone,
-                                                onChanged: (value){
+                                                onChanged: (value) {
                                                   setState(() {
-                                                  // _mobileController.text = value;  
+                                                    // _mobileController.text = value;
                                                   });
                                                 },
                                                 validator: (value) {

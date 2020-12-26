@@ -1,3 +1,4 @@
+import 'package:Signs/Utils/strings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +31,7 @@ class _AddRemoveListViewState extends State<AddRemoveListView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add & Remove from ListView'),
+        title: Text(Strings().getAddRemoveLabel()),
       ),
       body: Column(
         children: <Widget>[
@@ -38,14 +39,14 @@ class _AddRemoveListViewState extends State<AddRemoveListView> {
           TextField(
             controller: _textController,
             decoration: InputDecoration(
-              hintText: 'enter text to add',
+              hintText: Strings().getEnterTextAddLabel(),
             ),
           ),
           SizedBox(height: 15.0),
           Center(
             child: RaisedButton(
               onPressed: _onSubmit,
-              child: Text('Add to List'),
+              child: Text(Strings().getAddListLabel()),
               color: Colors.red,
             ),
           ),

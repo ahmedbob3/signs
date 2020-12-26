@@ -4,6 +4,7 @@ import 'package:Signs/Blocs/medicationList%20bloc/medicationList_bloc.dart';
 import 'package:Signs/Models/response/medication_model.dart';
 import 'package:Signs/Utils/constants.dart';
 import 'package:Signs/Utils/images.dart';
+import 'package:Signs/Utils/strings.dart';
 import 'package:Signs/Utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -139,7 +140,7 @@ class _MedicationCellState extends State<MedicationCell> {
               children: [
                 Image.asset(Medicine_Delete),
                 SizedBox(height: 10),
-                Text('Delete',
+                Text(Strings().getDeleteLabel(),
                     style: titleStyle(
                         color: Colors.white, fontFamily: regularFontFamily))
               ],
@@ -242,7 +243,7 @@ class _MedicationCellState extends State<MedicationCell> {
                                       padding: EdgeInsets.symmetric(
                                           horizontal: 13, vertical: 7),
                                       child: Text(
-                                        'Deactivated',
+                                        Strings().getDeactivatedLabel(),
                                         style: titleStyle(
                                           fontFamily: semiBoldFontFamily,
                                           fontSize: 14,
@@ -256,7 +257,7 @@ class _MedicationCellState extends State<MedicationCell> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 10),
                               child: Text(
-                                widget.data.mDuration + ' days',
+                                widget.data.mDuration + ' ${Strings().getDaysLabel()}',
                                 style: titleStyle(
                                   fontFamily: semiBoldFontFamily,
                                   fontSize: 16,

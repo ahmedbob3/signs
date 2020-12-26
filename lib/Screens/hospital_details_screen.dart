@@ -1,4 +1,5 @@
 import 'package:Signs/Utils/constants.dart';
+import 'package:Signs/Utils/strings.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:Signs/Models/hospitals_model.dart';
@@ -123,7 +124,7 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'About',
+                        Strings().getAboutLabel(),
                         style: titleStyle(
                             color: defaultBackgroundColor,
                             fontFamily: boldFontFamily,
@@ -164,7 +165,7 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
                                   Image.asset(DirectionIcon),
                                   SizedBox(width: 10),
                                   Text(
-                                    'Get Direction',
+                                    Strings().getDirectionsLabel(),
                                     style: titleStyle(
                                         color: defaultBackgroundColor,
                                         fontFamily: mediumFontFamily),
@@ -192,7 +193,7 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
                                   Image.asset(CallIcon),
                                   SizedBox(width: 10),
                                   Text(
-                                    'Call',
+                                    Strings().getCallLabel(),
                                     style: titleStyle(
                                         color: defaultBackgroundColor,
                                         fontFamily: mediumFontFamily),
@@ -218,7 +219,7 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Gallery',
+                        Strings().getGalleryLabel(),
                         style: titleStyle(
                             color: defaultBackgroundColor,
                             fontFamily: boldFontFamily,

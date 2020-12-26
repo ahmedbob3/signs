@@ -161,7 +161,7 @@ class PillCell extends StatelessWidget {
                                       fontSize: 16,
                                       color: Color.fromRGBO(96, 96, 96, 1),
                                     )),
-                                Text(data.mDuration + " days",
+                                Text(data.mDuration + " ${Strings().getDaysLabel()}",
                                     style: titleStyle(
                                       fontFamily: semiBoldFontFamily,
                                       fontSize: 14,
@@ -174,7 +174,7 @@ class PillCell extends StatelessWidget {
                       : Row(
                           children: <Widget>[
                             Expanded(
-                                child: Text('Add a reminder about a pill',
+                                child: Text(Strings().getAddPillReminderLabel(),
                                     style: titleStyle(
                                         fontFamily: semiBoldFontFamily,
                                         color: Colors.black54,

@@ -1,6 +1,7 @@
 import 'package:Signs/Models/response/medication_model.dart';
 import 'package:Signs/Notifications/NotificationPlugin.dart';
 import 'package:Signs/Screens/medication_reminder_scree.dart';
+import 'package:Signs/Utils/strings.dart';
 import 'package:Signs/Utils/styles.dart';
 import 'package:Signs/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,7 @@ class _SnoozeScreenState extends State<SnoozeScreen> {
               Align(
                 alignment: Alignment.center,
                 child: Text(
-                  'Select Snooze',
+                  Strings().getSelectSnoozeLabel(),
                   style: titleStyle(
                       fontFamily: boldFontFamily,
                       fontSize: 20,
@@ -44,7 +45,7 @@ class _SnoozeScreenState extends State<SnoozeScreen> {
               Padding(
                 padding: EdgeInsets.only(right: 20, left: 20),
                 child: Text(
-                  'Snooze For',
+                  Strings().getSnoozeForLabel(),
                   style: titleStyle(
                       color: defaultBackgroundColor,
                       fontFamily: mediumFontFamily,
@@ -56,7 +57,7 @@ class _SnoozeScreenState extends State<SnoozeScreen> {
                 padding: EdgeInsets.only(right: 10, left: 10),
                 child: ListTile(
                   leading: Image.asset('assets/images/ic_clock.png', width: 25),
-                  title: Text('30 Mins',
+                  title: Text('30 ${Strings().getMinsLabel()}',
                       style: titleStyle(
                           fontFamily: mediumFontFamily,
                           color: greyColor,
@@ -76,7 +77,7 @@ class _SnoozeScreenState extends State<SnoozeScreen> {
                 padding: EdgeInsets.only(right: 10, left: 10),
                 child: ListTile(
                   leading: Image.asset('assets/images/ic_clock.png', width: 25),
-                  title: Text('1 Hours',
+                  title: Text('1 ${Strings().getHoursLabel()}',
                       style: titleStyle(
                           fontFamily: mediumFontFamily,
                           color: greyColor,
@@ -96,7 +97,7 @@ class _SnoozeScreenState extends State<SnoozeScreen> {
                 padding: EdgeInsets.only(right: 10, left: 10),
                 child: ListTile(
                   leading: Image.asset('assets/images/ic_clock.png', width: 25),
-                  title: Text('2 Hours',
+                  title: Text('2 ${Strings().getHoursLabel()}',
                       style: titleStyle(
                           fontFamily: mediumFontFamily,
                           color: greyColor,
@@ -116,7 +117,7 @@ class _SnoozeScreenState extends State<SnoozeScreen> {
                 padding: EdgeInsets.only(right: 10, left: 10),
                 child: ListTile(
                   leading: Image.asset('assets/images/ic_clock.png', width: 25),
-                  title: Text('3 Hours',
+                  title: Text('3 ${Strings().getHoursLabel()}',
                       style: titleStyle(
                           fontFamily: mediumFontFamily,
                           color: greyColor,
@@ -145,7 +146,7 @@ class _SnoozeScreenState extends State<SnoozeScreen> {
                       widget.data.mfName.toString()
                   );
                   widget.closeFunction();
-                }, 'Done'),
+                }, Strings().getDoneStrings()),
               )
             ],
           ),

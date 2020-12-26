@@ -223,7 +223,7 @@ class _AddMedicationState extends State<AddMedication> {
                                                   val ? _getRequests() : null);
                                         },
                                         child: Text(
-                                          "View more",
+                                          Strings().getViewAllLabel(),
                                           style: titleStyle(
                                               fontFamily: boldFontFamily,
                                               color: defaultBackgroundColor,

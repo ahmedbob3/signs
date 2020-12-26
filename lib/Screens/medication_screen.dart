@@ -51,9 +51,9 @@ class _MedicationScreenState extends State<MedicationScreen> {
     // });
     return completer.future.then<void>((_) {
       _scaffoldKeyTest.currentState?.showSnackBar(SnackBar(
-          content: const Text('Refresh complete'),
+          content: Text(Strings().getRefreshCompleteLabel()),
           action: SnackBarAction(
-              label: 'RETRY',
+              label: Strings().getRetryLabel(),
               onPressed: () {
                 _refreshIndicatorKey.currentState.show();
               })));
@@ -108,7 +108,7 @@ class _MedicationScreenState extends State<MedicationScreen> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 18),
                     child: Text(
-                      'Medication List',
+                      Strings().getMedicationListLabel(),
                       style: titleStyle(
                           color: defaultBackgroundColor,
                           fontSize: 24,
