@@ -80,451 +80,471 @@ class _SignupSubAccountScreenStep1State
       color: defaultBackgroundColor,
       child: SafeArea(
         bottom: false,
-        child: Scaffold(
-          key: _scaffoldKey,
-          body: new GestureDetector(
-            onTap: () {
-              FocusScope.of(context).requestFocus(new FocusNode());
-            },
-            child: BlocBuilder<subAccountBloc, subAccountState>(
-              bloc: _subAccountBloc,
-              builder: (context, state) {
-                if (state is subAccountLoadingState) {
-                  if (!isLoading) {
-                    showLoadingDialog(context);
-                    isLoading = true;
-                  }
-                } else if (state is subAccountLoadedState) {
-                  print('loaded');
-
-                  Future.delayed(Duration(milliseconds: 1), () {
-                    if (state.subAccountresponse.code != 200) {
-                      _scaffoldKey.currentState.showSnackBar(SnackBar(
-                          content: Text(state.subAccountresponse.status)));
-                      Navigator.of(context).pop();
-                    } else {
-                      Constants.subaccountsList.add(_subAccountData);
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => LandingScreen()));
+        child: Directionality(
+          textDirection: Constants.textDirection,
+          child: Scaffold(
+            key: _scaffoldKey,
+            body: new GestureDetector(
+              onTap: () {
+                FocusScope.of(context).requestFocus(new FocusNode());
+              },
+              child: BlocBuilder<subAccountBloc, subAccountState>(
+                bloc: _subAccountBloc,
+                builder: (context, state) {
+                  if (state is subAccountLoadingState) {
+                    if (!isLoading) {
+                      showLoadingDialog(context);
+                      isLoading = true;
                     }
-                    _subAccountBloc.add(resetsubAccountState());
-                    isLoading = false;
-                  });
-                }
+                  } else if (state is subAccountLoadedState) {
+                    print('loaded');
 
-                return Container(
-                  height: MediaQuery.of(context).size.height,
-                  child: Form(
-                    key: formKey,
-                    child: Stack(
-                      children: <Widget>[
-                        Container(
-                          width: double.infinity,
-                          child: Padding(
-                            padding: EdgeInsets.only(top: 0),
-                            child: Image.asset(
-                              Login_background,
-                              fit: BoxFit.contain,
-                            ),
-                          ),
-                        ),
-                        SingleChildScrollView(
-                          child: Container(
-                            height: MediaQuery.of(context).size.height * 0.95,
-                            margin: EdgeInsets.only(
-                                top: (Theme.of(context).platform ==
-                                        TargetPlatform.iOS
-                                    ? 120
-                                    : 130)),
-                            padding: EdgeInsets.all(30),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(28),
-                                topLeft: Radius.circular(28),
+                    Future.delayed(Duration(milliseconds: 1), () {
+                      if (state.subAccountresponse.code != 200) {
+                        _scaffoldKey.currentState.showSnackBar(SnackBar(
+                            content: Text(state.subAccountresponse.status)));
+                        Navigator.of(context).pop();
+                      } else {
+                        Constants.subaccountsList.add(_subAccountData);
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            builder: (context) => LandingScreen()));
+                      }
+                      _subAccountBloc.add(resetsubAccountState());
+                      isLoading = false;
+                    });
+                  }
+
+                  return Directionality(
+                    textDirection: Constants.textDirection,
+                    child: Container(
+                      height: MediaQuery.of(context).size.height,
+                      child: Form(
+                        key: formKey,
+                        child: Stack(
+                          children: <Widget>[
+                            Container(
+                              width: double.infinity,
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 0),
+                                child: Image.asset(
+                                  Login_background,
+                                  fit: BoxFit.contain,
+                                ),
                               ),
                             ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                SizedBox(height: 10),
-                                Text(Strings().getFirstNameStrings(),
-                                    style: titleStyle(
-                                        fontFamily: semiBoldFontFamily,
-                                        color: greyHeader,
-                                        fontSize: 14)),
-                                SizedBox(height: 15),
-                                Container(
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                      color: textFieldFill,
-                                      border: Border.all(
-                                        color: whichVerified == 1 ||
-                                                whichVerified == 12
-                                            ? Colors.red[700]
-                                            : textFieldBorder,
-                                      ),
-                                      borderRadius: BorderRadius.circular(18)),
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 15),
-                                    child: Row(
-                                      children: <Widget>[
-                                        Expanded(
-                                          child: Container(
-                                            child: TextFormField(
-                                                controller:
-                                                    _firstNameController,
-                                                textCapitalization:
-                                                    TextCapitalization
-                                                        .sentences,
-                                                decoration: InputDecoration(
-                                                  hintText: Strings()
-                                                      .getEnterFirstStrings(),
-                                                  hintStyle: titleStyle(
-                                                      fontFamily:
-                                                          mediumFontFamily,
-                                                      color: greyColor,
-                                                      fontSize: 16),
-                                                  labelStyle: titleStyle(
-                                                      color: greyColor),
-                                                  border: InputBorder.none,
-                                                  focusedBorder:
-                                                      InputBorder.none,
-                                                  enabledBorder:
-                                                      InputBorder.none,
-                                                  errorBorder: InputBorder.none,
-                                                  disabledBorder:
-                                                      InputBorder.none,
-                                                ),
-                                                validator: (value) {
-                                                  setState(() {
-                                                    // if (value.isEmpty) {
-                                                    //   _scaffoldKey.currentState
-                                                    //       .showSnackBar(SnackBar(
-                                                    //     content: Text(
-                                                    //         Strings().getEnterFirstStrings()),
-                                                    //     duration: Duration(seconds: 2),
-                                                    //   ));
-                                                    // }
-                                                    checkWhichVerified();
-
-                                                  });
-
-                                                  return null;
-                                                },
-                                                textInputAction:
-                                                    TextInputAction.next,
-                                                keyboardType:
-                                                    TextInputType.text,
-                                                onEditingComplete: () {
-                                                  FocusScope.of(context).nextFocus();
-                                                  checkWhichVerified();
-                                                },
-                                                onTap: () {
-                                                  formKey.currentState
-                                                      .validate();
-                                                }// Move focus to next
-                                                ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                            SingleChildScrollView(
+                              child: Container(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.95,
+                                margin: EdgeInsets.only(
+                                    top: (Theme.of(context).platform ==
+                                            TargetPlatform.iOS
+                                        ? 120
+                                        : 130)),
+                                padding: EdgeInsets.all(30),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(28),
+                                    topLeft: Radius.circular(28),
                                   ),
                                 ),
-                                SizedBox(height: 20),
-                                Text(Strings().getLastNameStrings(),
-                                    style: titleStyle(
-                                        fontFamily: semiBoldFontFamily,
-                                        color: greyHeader,
-                                        fontSize: 14)),
-                                SizedBox(height: 15),
-                                Container(
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                      color: textFieldFill,
-                                      border: Border.all(
-                                        color: whichVerified == 2 ||
-                                                whichVerified == 12
-                                            ? Colors.red[700]
-                                            : textFieldBorder,
-                                      ),
-                                      borderRadius: BorderRadius.circular(18)),
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 15),
-                                    child: Row(
-                                      children: <Widget>[
-                                        Expanded(
-                                          child: Container(
-                                            child: TextFormField(
-                                                controller: _lastNameController,
-                                                decoration: InputDecoration(
-                                                  hintText: Strings()
-                                                      .getEnterLastStrings(),
-                                                  hintStyle: titleStyle(
-                                                      fontFamily:
-                                                          mediumFontFamily,
-                                                      color: greyColor,
-                                                      fontSize: 16),
-                                                  labelStyle: titleStyle(
-                                                      color: greyColor),
-                                                  border: InputBorder.none,
-                                                  focusedBorder:
-                                                      InputBorder.none,
-                                                  enabledBorder:
-                                                      InputBorder.none,
-                                                  errorBorder: InputBorder.none,
-                                                  disabledBorder:
-                                                      InputBorder.none,
-                                                ),
-                                                validator: (value) {
-                                                  setState(() {
-                                                    // if (value.isEmpty) {
-                                                    //   _scaffoldKey.currentState
-                                                    //       .showSnackBar(SnackBar(
-                                                    //     content: Text(
-                                                    //         Strings().getEnterLastStrings()),
-                                                    //     duration: Duration(seconds: 2),
-                                                    //   ));
-                                                    // }
-                                                    checkWhichVerified();
-                                                  });
-
-                                                  return null;
-                                                },
-                                                textInputAction:
-                                                    TextInputAction.done,
-                                                keyboardType:
-                                                    TextInputType.text,
-                                                onEditingComplete: () {
-                                                  FocusScope.of(context).nextFocus();
-                                                  checkWhichVerified();
-                                                },
-                                                onTap: () {
-                                                  formKey.currentState
-                                                      .validate();
-                                                }
-                                                ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(height: 20),
-                                Text(Strings().getGenderStrings(),
-                                    style: titleStyle(
-                                        fontFamily: semiBoldFontFamily,
-                                        color: greyHeader,
-                                        fontSize: 14)),
-                                SizedBox(height: 15),
-                                Row(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
-                                    Expanded(
-                                      child: new GestureDetector(
-                                        onTap: () {
-                                          setState(() {
-                                            isActiveMale = !isActiveMale;
-                                            isActiveFemale = !isActiveMale;
-                                            if (isActiveMale == true)
-                                              gender =
-                                                  Strings().getMaleStrings();
+                                    SizedBox(height: 10),
+                                    Text(Strings().getFirstNameStrings(),
+                                        style: titleStyle(
+                                            fontFamily: semiBoldFontFamily,
+                                            color: greyHeader,
+                                            fontSize: 14)),
+                                    SizedBox(height: 15),
+                                    Container(
+                                      height: 50,
+                                      decoration: BoxDecoration(
+                                          color: textFieldFill,
+                                          border: Border.all(
+                                            color: whichVerified == 1 ||
+                                                    whichVerified == 12
+                                                ? Colors.red[700]
+                                                : textFieldBorder,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(18)),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 15),
+                                        child: Row(
+                                          children: <Widget>[
+                                            Expanded(
+                                              child: Container(
+                                                child: TextFormField(
+                                                    controller:
+                                                        _firstNameController,
+                                                    textCapitalization:
+                                                        TextCapitalization
+                                                            .sentences,
+                                                    decoration: InputDecoration(
+                                                      hintText: Strings()
+                                                          .getEnterFirstStrings(),
+                                                      hintStyle: titleStyle(
+                                                          fontFamily:
+                                                              mediumFontFamily,
+                                                          color: greyColor,
+                                                          fontSize: 16),
+                                                      labelStyle: titleStyle(
+                                                          color: greyColor),
+                                                      border: InputBorder.none,
+                                                      focusedBorder:
+                                                          InputBorder.none,
+                                                      enabledBorder:
+                                                          InputBorder.none,
+                                                      errorBorder:
+                                                          InputBorder.none,
+                                                      disabledBorder:
+                                                          InputBorder.none,
+                                                    ),
+                                                    validator: (value) {
+                                                      setState(() {
+                                                        // if (value.isEmpty) {
+                                                        //   _scaffoldKey.currentState
+                                                        //       .showSnackBar(SnackBar(
+                                                        //     content: Text(
+                                                        //         Strings().getEnterFirstStrings()),
+                                                        //     duration: Duration(seconds: 2),
+                                                        //   ));
+                                                        // }
+                                                        checkWhichVerified();
+                                                      });
 
-                                            checkWhichVerified();
-
-                                          });
-                                        },
-                                        child: buttonChangeState(Male_inactive,
-                                            Strings().getMaleStrings(),
-                                            isFActive: isActiveMale),
+                                                      return null;
+                                                    },
+                                                    textInputAction:
+                                                        TextInputAction.next,
+                                                    keyboardType:
+                                                        TextInputType.text,
+                                                    onEditingComplete: () {
+                                                      FocusScope.of(context)
+                                                          .nextFocus();
+                                                      checkWhichVerified();
+                                                    },
+                                                    onTap: () {
+                                                      formKey.currentState
+                                                          .validate();
+                                                    } // Move focus to next
+                                                    ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
-                                    SizedBox(width: 10),
-                                    Expanded(
-                                      child: new GestureDetector(
-                                        onTap: () {
-                                          setState(() {
-                                            isActiveFemale = !isActiveFemale;
-                                            isActiveMale = !isActiveFemale;
-                                            if (isActiveFemale == true)
-                                              gender =
-                                                  Strings().getFemaleStrings();
-                                            checkWhichVerified();
-                                          });
-                                        },
-                                        child: buttonChangeState(Female_active,
-                                            Strings().getFemaleStrings(),
-                                            isFActive: isActiveFemale),
+                                    SizedBox(height: 20),
+                                    Text(Strings().getLastNameStrings(),
+                                        style: titleStyle(
+                                            fontFamily: semiBoldFontFamily,
+                                            color: greyHeader,
+                                            fontSize: 14)),
+                                    SizedBox(height: 15),
+                                    Container(
+                                      height: 50,
+                                      decoration: BoxDecoration(
+                                          color: textFieldFill,
+                                          border: Border.all(
+                                            color: whichVerified == 2 ||
+                                                    whichVerified == 12
+                                                ? Colors.red[700]
+                                                : textFieldBorder,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(18)),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 15),
+                                        child: Row(
+                                          children: <Widget>[
+                                            Expanded(
+                                              child: Container(
+                                                child: TextFormField(
+                                                    controller:
+                                                        _lastNameController,
+                                                    decoration: InputDecoration(
+                                                      hintText: Strings()
+                                                          .getEnterLastStrings(),
+                                                      hintStyle: titleStyle(
+                                                          fontFamily:
+                                                              mediumFontFamily,
+                                                          color: greyColor,
+                                                          fontSize: 16),
+                                                      labelStyle: titleStyle(
+                                                          color: greyColor),
+                                                      border: InputBorder.none,
+                                                      focusedBorder:
+                                                          InputBorder.none,
+                                                      enabledBorder:
+                                                          InputBorder.none,
+                                                      errorBorder:
+                                                          InputBorder.none,
+                                                      disabledBorder:
+                                                          InputBorder.none,
+                                                    ),
+                                                    validator: (value) {
+                                                      setState(() {
+                                                        // if (value.isEmpty) {
+                                                        //   _scaffoldKey.currentState
+                                                        //       .showSnackBar(SnackBar(
+                                                        //     content: Text(
+                                                        //         Strings().getEnterLastStrings()),
+                                                        //     duration: Duration(seconds: 2),
+                                                        //   ));
+                                                        // }
+                                                        checkWhichVerified();
+                                                      });
+
+                                                      return null;
+                                                    },
+                                                    textInputAction:
+                                                        TextInputAction.done,
+                                                    keyboardType:
+                                                        TextInputType.text,
+                                                    onEditingComplete: () {
+                                                      FocusScope.of(context)
+                                                          .nextFocus();
+                                                      checkWhichVerified();
+                                                    },
+                                                    onTap: () {
+                                                      formKey.currentState
+                                                          .validate();
+                                                    }),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
+                                    SizedBox(height: 20),
+                                    Text(Strings().getGenderStrings(),
+                                        style: titleStyle(
+                                            fontFamily: semiBoldFontFamily,
+                                            color: greyHeader,
+                                            fontSize: 14)),
+                                    SizedBox(height: 15),
+                                    Row(
+                                      children: <Widget>[
+                                        Expanded(
+                                          child: new GestureDetector(
+                                            onTap: () {
+                                              setState(() {
+                                                isActiveMale = !isActiveMale;
+                                                isActiveFemale = !isActiveMale;
+                                                if (isActiveMale == true)
+                                                  gender = Strings()
+                                                      .getMaleStrings();
+
+                                                checkWhichVerified();
+                                              });
+                                            },
+                                            child: buttonChangeState(
+                                                Male_inactive,
+                                                Strings().getMaleStrings(),
+                                                isFActive: isActiveMale),
+                                          ),
+                                        ),
+                                        SizedBox(width: 10),
+                                        Expanded(
+                                          child: new GestureDetector(
+                                            onTap: () {
+                                              setState(() {
+                                                isActiveFemale =
+                                                    !isActiveFemale;
+                                                isActiveMale = !isActiveFemale;
+                                                if (isActiveFemale == true)
+                                                  gender = Strings()
+                                                      .getFemaleStrings();
+                                                checkWhichVerified();
+                                              });
+                                            },
+                                            child: buttonChangeState(
+                                                Female_active,
+                                                Strings().getFemaleStrings(),
+                                                isFActive: isActiveFemale),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(height: 20),
+                                    Text(Strings().getSingRelationStrings(),
+                                        style: titleStyle(
+                                            fontFamily: semiBoldFontFamily,
+                                            color: greyHeader,
+                                            fontSize: 14)),
+                                    SizedBox(height: 15),
+                                    Container(
+                                      height: 50,
+                                      decoration: BoxDecoration(
+                                          color: textFieldFill,
+                                          border: Border.all(
+                                            color: textFieldBorder,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(18)),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 15),
+                                        child: Row(
+                                          children: <Widget>[
+                                            Expanded(
+                                              child: DropdownButton(
+                                                  elevation: 5,
+                                                  dropdownColor: textFieldFill,
+                                                  style: titleStyle(
+                                                      color: greyColor),
+                                                  icon: Icon(
+                                                      Icons.arrow_drop_down),
+                                                  underline: SizedBox(),
+                                                  isExpanded: true,
+                                                  value: _selectedItem,
+                                                  items: _dropdownMenuItems,
+                                                  onChanged: (value) {
+                                                    setState(() {
+                                                      checkWhichVerified();
+                                                      _selectedItem = value;
+                                                    });
+                                                  }),
+                                              // child:Container(
+                                              //   child: TextField(
+                                              //     decoration: InputDecoration(
+                                              //       hintText:
+                                              //       Strings().getSingSonStrings(),
+                                              //       hintStyle: titleStyle(
+                                              //           fontFamily: mediumFontFamily,
+                                              //           color: greyColor,
+                                              //           fontSize: 16),
+                                              //       labelStyle:
+                                              //       titleStyle(color: greyColor),
+                                              //       border: InputBorder.none,
+                                              //       focusedBorder: InputBorder.none,
+                                              //       enabledBorder: InputBorder.none,
+                                              //       errorBorder: InputBorder.none,
+                                              //       disabledBorder: InputBorder.none,
+                                              //     ),
+                                              //     keyboardType: TextInputType.number,
+                                              //   ),
+                                              // ),
+                                            ),
+                                            // SizedBox(width: 5),
+                                            // Icon(Icons.arrow_drop_down),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    // SizedBox(height: 40),
+
+                                    // new GestureDetector(
+                                    //   onTap: () {
+                                    //     Navigator.of(context).push(MaterialPageRoute(
+                                    //         builder: (context) => SignupSubAccountScreenStep1()));
+                                    //   },
+                                    //   child: buttonWithIcon(Add_subaccount, Strings().getSingAddAnotherStrings(),isBackground: true),
+                                    // ),
+                                    SizedBox(height: 80),
+                                    button(() {
+                                      //gender
+
+                                      if (_firstNameController.text
+                                              .toString()
+                                              .isNotEmpty &&
+                                          _lastNameController.text
+                                              .toString()
+                                              .isNotEmpty) {
+                                        // _subAccountData.setSubAccountId((Constants.subAccountList.length+1).toString());
+                                        // _subAccountData.setSubAccountFirstName(_firstNameController.text.toString());
+                                        // _subAccountData.setSubAccountLastName(_lastNameController.text.toString());
+                                        // _subAccountData.setSubAccountGender(gender);
+                                        // _subAccountData.setSubAccountRelation(_selectedItem.name.toString());
+
+                                        _subAccountBloc.add(dosubAccountEvent(
+                                            (Constants.subaccountsList.length +
+                                                    1)
+                                                .toString(),
+                                            _firstNameController.text
+                                                .toString(),
+                                            _lastNameController.text.toString(),
+                                            gender,
+                                            _selectedItem.name.toString()));
+                                      } else {
+                                        _scaffoldKey.currentState
+                                            .showSnackBar(SnackBar(
+                                          content: Text(
+                                              Strings().getFillDataString()),
+                                          duration: Duration(seconds: 3),
+                                        ));
+                                        checkWhichVerified();
+                                      }
+                                    }, Strings().getSaveStrings(),
+                                        isFilledColor: true),
+                                    // SizedBox(height: 20),
+                                    // Row(
+                                    //   mainAxisAlignment: MainAxisAlignment.center,
+                                    //   crossAxisAlignment: CrossAxisAlignment.center,
+                                    //   children: <Widget>[
+                                    //     Text(
+                                    //       Strings().getHavingAccountStrings(),
+                                    //       style: titleStyle(
+                                    //           fontFamily: mediumFontFamily,
+                                    //           color: greyColor,
+                                    //           fontSize: 14),
+                                    //     ),
+                                    //     new GestureDetector(
+                                    //       onTap: () {
+                                    //         Navigator.of(context).push(MaterialPageRoute(
+                                    //             builder: (context) => CheckMobileScreen()));
+                                    //       },
+                                    //       child: new Text(
+                                    //         Strings().getSingInText(),
+                                    //         style: titleStyle(
+                                    //             fontFamily: mediumFontFamily,
+                                    //             color: defaultBackgroundColor,
+                                    //             fontSize: 14),
+                                    //       ),
+                                    //     ),
+                                    //   ],
+                                    // ),
+                                    Spacer()
                                   ],
                                 ),
-                                SizedBox(height: 20),
-                                Text(Strings().getSingRelationStrings(),
-                                    style: titleStyle(
-                                        fontFamily: semiBoldFontFamily,
-                                        color: greyHeader,
-                                        fontSize: 14)),
-                                SizedBox(height: 15),
-                                Container(
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                      color: textFieldFill,
-                                      border: Border.all(
-                                        color: textFieldBorder,
-                                      ),
-                                      borderRadius: BorderRadius.circular(18)),
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 15),
-                                    child: Row(
-                                      children: <Widget>[
-                                        Expanded(
-                                          child: DropdownButton(
-                                              elevation: 5,
-                                              dropdownColor: textFieldFill,
-                                              style:
-                                                  titleStyle(color: greyColor),
-                                              icon: Icon(Icons.arrow_drop_down),
-                                              underline: SizedBox(),
-                                              isExpanded: true,
-                                              value: _selectedItem,
-                                              items: _dropdownMenuItems,
-                                              onChanged: (value) {
-                                                setState(() {
-                                                  checkWhichVerified();
-                                                  _selectedItem = value;
-                                                });
-                                              }),
-                                          // child:Container(
-                                          //   child: TextField(
-                                          //     decoration: InputDecoration(
-                                          //       hintText:
-                                          //       Strings().getSingSonStrings(),
-                                          //       hintStyle: titleStyle(
-                                          //           fontFamily: mediumFontFamily,
-                                          //           color: greyColor,
-                                          //           fontSize: 16),
-                                          //       labelStyle:
-                                          //       titleStyle(color: greyColor),
-                                          //       border: InputBorder.none,
-                                          //       focusedBorder: InputBorder.none,
-                                          //       enabledBorder: InputBorder.none,
-                                          //       errorBorder: InputBorder.none,
-                                          //       disabledBorder: InputBorder.none,
-                                          //     ),
-                                          //     keyboardType: TextInputType.number,
-                                          //   ),
-                                          // ),
-                                        ),
-                                        // SizedBox(width: 5),
-                                        // Icon(Icons.arrow_drop_down),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                // SizedBox(height: 40),
-
-                                // new GestureDetector(
-                                //   onTap: () {
-                                //     Navigator.of(context).push(MaterialPageRoute(
-                                //         builder: (context) => SignupSubAccountScreenStep1()));
-                                //   },
-                                //   child: buttonWithIcon(Add_subaccount, Strings().getSingAddAnotherStrings(),isBackground: true),
-                                // ),
-                                SizedBox(height: 80),
-                                button(() {
-                                  //gender
-
-                                  if (_firstNameController.text
-                                          .toString()
-                                          .isNotEmpty &&
-                                      _lastNameController.text
-                                          .toString()
-                                          .isNotEmpty) {
-                                    // _subAccountData.setSubAccountId((Constants.subAccountList.length+1).toString());
-                                    // _subAccountData.setSubAccountFirstName(_firstNameController.text.toString());
-                                    // _subAccountData.setSubAccountLastName(_lastNameController.text.toString());
-                                    // _subAccountData.setSubAccountGender(gender);
-                                    // _subAccountData.setSubAccountRelation(_selectedItem.name.toString());
-
-                                    _subAccountBloc.add(dosubAccountEvent(
-                                        (Constants.subaccountsList.length + 1)
-                                            .toString(),
-                                        _firstNameController.text.toString(),
-                                        _lastNameController.text.toString(),
-                                        gender,
-                                        _selectedItem.name.toString()));
-                                  } else {
-                                    _scaffoldKey.currentState
-                                        .showSnackBar(SnackBar(
-                                      content:
-                                          Text(Strings().getFillDataString()),
-                                      duration: Duration(seconds: 3),
-                                    ));
-                                    checkWhichVerified();
-                                  }
-                                }, Strings().getSaveStrings(),
-                                    isFilledColor: true),
-                                // SizedBox(height: 20),
-                                // Row(
-                                //   mainAxisAlignment: MainAxisAlignment.center,
-                                //   crossAxisAlignment: CrossAxisAlignment.center,
-                                //   children: <Widget>[
-                                //     Text(
-                                //       Strings().getHavingAccountStrings(),
-                                //       style: titleStyle(
-                                //           fontFamily: mediumFontFamily,
-                                //           color: greyColor,
-                                //           fontSize: 14),
-                                //     ),
-                                //     new GestureDetector(
-                                //       onTap: () {
-                                //         Navigator.of(context).push(MaterialPageRoute(
-                                //             builder: (context) => CheckMobileScreen()));
-                                //       },
-                                //       child: new Text(
-                                //         Strings().getSingInText(),
-                                //         style: titleStyle(
-                                //             fontFamily: mediumFontFamily,
-                                //             color: defaultBackgroundColor,
-                                //             fontSize: 14),
-                                //       ),
-                                //     ),
-                                //   ],
-                                // ),
-                                Spacer()
-                              ],
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.of(context).pop();
-                              },
-                              child: Image.asset(
-                                CloseWhite,
                               ),
                             ),
-                            top: 20,
-                            left: 20),
-                        Positioned(
-                            child: Text(
-                              Strings().getSubAccountStrings(),
-                              style: titleStyle(
-                                  fontFamily: boldFontFamily,
-                                  color: Colors.white,
-                                  fontSize: 32),
-                            ),
-                            top: 60,
-                            left: 20),
-                      ],
+                            Positioned(
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Image.asset(
+                                    CloseWhite,
+                                  ),
+                                ),
+                                top: 20,
+                                left: Constants.languageId == languages.English ? 20 : null,
+                                right: Constants.languageId == languages.English ? 0 : 20),
+                            Positioned(
+                                child: Text(
+                                  Strings().getSubAccountStrings(),
+                                  style: titleStyle(
+                                      fontFamily: boldFontFamily,
+                                      color: Colors.white,
+                                      fontSize: 32),
+                                ),
+                                top: 60,
+                                left: Constants.languageId == languages.English ? 20 : null,
+                                right: Constants.languageId == languages.English ? 0 : 20),
+                          ],
+                        ),
+                      ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
         ),
@@ -535,26 +555,15 @@ class _SignupSubAccountScreenStep1State
   }
 
   void checkWhichVerified() {
-    if (_lastNameController.text
-        .toString()
-        .isEmpty &&
-    _firstNameController.text
-        .toString()
-        .isEmpty) {
-    whichVerified = 12;
-    }
-    else if (_firstNameController.text
-        .toString()
-        .isEmpty) {
+    if (_lastNameController.text.toString().isEmpty &&
+        _firstNameController.text.toString().isEmpty) {
+      whichVerified = 12;
+    } else if (_firstNameController.text.toString().isEmpty) {
       whichVerified = 1;
-    }
-    else if (_lastNameController.text
-        .toString()
-        .isEmpty) {
+    } else if (_lastNameController.text.toString().isEmpty) {
       whichVerified = 2;
-    }
-
-    else whichVerified=0;
+    } else
+      whichVerified = 0;
   }
 }
 

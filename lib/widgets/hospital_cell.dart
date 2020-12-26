@@ -1,3 +1,4 @@
+import 'package:Signs/Utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:Signs/Blocs/navigation%20bloc/navigation_bloc.dart';
@@ -13,6 +14,7 @@ class HospitalCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
@@ -20,7 +22,8 @@ class HospitalCell extends StatelessWidget {
       },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 10),
-        padding: EdgeInsets.symmetric(vertical: 10).copyWith(right: 10),
+        padding: EdgeInsets.symmetric(vertical: 10).copyWith(right: Constants.languageId ==  languages.Arabic ? 0 : 10 ,
+        left: Constants.languageId ==  languages.Arabic ? 10 : 0),
         width: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white,

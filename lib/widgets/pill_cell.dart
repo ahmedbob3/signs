@@ -24,6 +24,27 @@ class PillCell extends StatelessWidget {
           .toString();
     return InkWell(
       onTap: () {
+        if (data == null) {
+          !isNewPill
+              ? () {}
+              : Constants.medications = [
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false,
+                  false
+                ];
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => AddMedication()));
+          return;
+        }
+
         showModalBottomSheet(
           context: context,
           backgroundColor: Colors.transparent,
