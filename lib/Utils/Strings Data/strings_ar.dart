@@ -14,8 +14,10 @@ class Strings_AR {
   static const String SING_UP_STEP3 = 'Step 3/3';
   static const String SING_UP_PASSWORD = 'Empty Password';
   static const String SING_UP_PASSWORD_TEXT = 'Password';
-  static const String SING_UP_PASSWORD_LENGTH = 'Password Must be Greater Than 8 Characters';
-  static const String SING_UP_PASSWORD_CONFIRM = 'Password & Confirm Password Must be Identical';
+  static const String SING_UP_PASSWORD_LENGTH =
+      'Password Must be Greater Than 8 Characters';
+  static const String SING_UP_PASSWORD_CONFIRM =
+      'Password & Confirm Password Must be Identical';
   static const String SING_UP_CONFIRM = 'confirm';
   static const String SING_UP_ENTER_PASSWORD = 'Enter Password';
   static const String SING_UP_CONFIRM_PASSWORD = 'Confirm Password';
@@ -65,7 +67,8 @@ class Strings_AR {
   static const String MEDICATION_HOW = 'How many dose do you need to take ?';
   static const String MEDICATION_REMINDER = 'Remind me at';
   static const String MEDICATION_DURATION = 'Duration';
-  static const String MEDICATION_HOW_LONG = 'How long do you need to take this medicine';
+  static const String MEDICATION_HOW_LONG =
+      'How long do you need to take this medicine';
   static const String MEDICATION_NOTE = 'Reminder Note';
   static const String MEDICATION_HINT = 'ex: That’s my painkiller to my teeth';
   static const String SELECT = 'إختر';
@@ -85,36 +88,29 @@ class Strings_AR {
   static const String EMPTY = "There’s no Medication Yet !";
   static const String PHONE_VERIFICATION = "Phone Verification";
   static const String GET_OTP_DESCRIPTION = "Enter Your OTP Code Here";
-static const String NOT_GET_CODE = "Didn't you receive any code? ";
-static const String GET_RESEND_OTP = "Resend New Code";
-static const String VERIFY_OTP = 'Verify';
-static const String GUEST_USER = 'Guest User';
-static const String SHOULD_LOGIN = "For making a medication reminder you must be logged in or signed up first";
-static const String DONT_HAVE_ACCOUNT = 'Don\'t Have An Account ?';
-static const String ABOUT = 'About';
-static const String DIRECTIONS = 'Get Direction';
-static const String CALL = 'Call';
-static const String GALLERY = 'Gallery';
-static const String REFRESH_COMPLETE = 'Refresh complete';
-static const String RETRY = 'RETRY';
-static const String MEDICATION_LIST = 'Medication List';
-static const String VIEW_ALL = "View more";
-static const String SELECT_SNOOZE = 'Select Snooze';
-static const String SNOOZE_FOR = 'Snooze For';
-static const String HOURS = "Hours";
-static const String ADD_REMOVE_LIST = 'Add & Remove from ListView';
-static const String ENTER_TEXT_TO_ADD = 'enter text to add';
-static const String ADD_TO_LIST = 'Add to List';
+  static const String NOT_GET_CODE = "Didn't you receive any code? ";
+  static const String GET_RESEND_OTP = "Resend New Code";
+  static const String VERIFY_OTP = 'Verify';
+  static const String GUEST_USER = 'Guest User';
+  static const String SHOULD_LOGIN =
+      "For making a medication reminder you must be logged in or signed up first";
+  static const String DONT_HAVE_ACCOUNT = 'Don\'t Have An Account ?';
+  static const String ABOUT = 'About';
+  static const String DIRECTIONS = 'Get Direction';
+  static const String CALL = 'Call';
+  static const String GALLERY = 'Gallery';
+  static const String REFRESH_COMPLETE = 'Refresh complete';
+  static const String RETRY = 'RETRY';
+  static const String MEDICATION_LIST = 'Medication List';
+  static const String VIEW_ALL = "View more";
+  static const String SELECT_SNOOZE = 'Select Snooze';
+  static const String SNOOZE_FOR = 'Snooze For';
+  static const String HOURS = "Hours";
+  static const String ADD_REMOVE_LIST = 'Add & Remove from ListView';
+  static const String ENTER_TEXT_TO_ADD = 'enter text to add';
+  static const String ADD_TO_LIST = 'Add to List';
   static const String DELETE = 'Delete';
   static const String DEACTIVATED = 'Deactivated';
   static const String DAYS = 'days';
   static const String ADD_PILL_REMINDER = 'Add a reminder about a pill ';
-  
-
-  
-
-  
-
-  
-
 }
