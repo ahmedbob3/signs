@@ -115,5 +115,5 @@ class Strings_AR {
   static const String DEACTIVATED = 'تعطيل';
   static const String DAYS = 'أيام';
   static const String ADD_PILL_REMINDER = 'أضف تذكير بالدواء';
-  static const String NOTIFICATION_TEXT = 'لا تنسي ان تأخذ';
+  static const String NOTIFICATION_TEXT = 'لا تنسى تناول جرعتك من';
 }
