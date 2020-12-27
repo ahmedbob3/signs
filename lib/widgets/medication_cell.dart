@@ -221,8 +221,7 @@ class _MedicationCellState extends State<MedicationCell> {
                                   const EdgeInsets.symmetric(horizontal: 10),
                               child: Text(
                                   widget.data.rememberTime.length !=0 ?
-                                  DateFormat("hh:mm a").format(DateFormat('kk:mm').parse(widget.data.rememberTime.elementAt(0).toString()))
-
+                                  widget.data.lessTime
                                   : "",
                                 style: titleStyle(
                                   fontFamily: semiBoldFontFamily,
