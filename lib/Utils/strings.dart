@@ -1430,6 +1430,20 @@ class Strings {
     }
   }
 
+  String getNotificationText() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.NOTIFICATION_TEXT;
+        break;
+      case languages.Indian:
+        return Strings_INR.NOTIFICATION_TEXT;
+        break;
+      default:
+        return Strings_EN.NOTIFICATION_TEXT;
+    }
+  }
+
+
 
  
 }

@@ -50,6 +50,8 @@ class Data {
     this.uHeight,
     this.uBedTime,
     this.uWakeUp,
+    this.uRelation,
+
   });
 
    String uId;
@@ -63,6 +65,8 @@ class Data {
   final String uHeight;
   final String uBedTime;
   final String uWakeUp;
+  String uRelation;
+
 
   factory Data.fromMap(Map<String, dynamic> json) => Data(
             uId: json["u_id"],
@@ -77,6 +81,7 @@ class Data {
         uHeight: json["u_height"],
         uBedTime: json["u_bed_time"],
         uWakeUp: json["u_wake_up"],
+      uRelation :"",
       );
 
   Map<String, dynamic> toMap() => {
@@ -92,5 +97,6 @@ class Data {
         "u_height": uHeight,
         "u_bed_time": uBedTime,
         "u_wake_up": uWakeUp,
+    "uRelation":uRelation,
       };
 }

@@ -95,7 +95,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                           child: Image.asset(
                                               'assets/images/ic_Avatar.png'),
                                         )
-                                      : Text(
+                                      :
+
+                                  Text(
                                           Singleton()
                                                   .loginModel
                                                   .data
@@ -123,23 +125,57 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 builder: (context) =>
                                                     CheckMobileScreen()));
                                     },
-                                    child: Text(
-                                      Singleton().loginModel == null
-                                          ? Strings().getWelcomeText() +
-                                              " ${Strings.getGuestUserString()}"
-                                          : Singleton()
-                                                  .loginModel
-                                                  .data
-                                                  .uFirstName +
-                                              ' ' +
-                                              Singleton()
-                                                  .loginModel
-                                                  .data
-                                                  .uLastName,
-                                      style: titleStyle(
-                                          fontFamily: boldFontFamily,
-                                          fontSize: 20),
+                                    child:
+
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                            Singleton().loginModel == null
+                                                ? Strings().getWelcomeText() +
+                                                    " ${Strings.getGuestUserString()}"
+                                                : Singleton()
+                                                        .loginModel
+                                                        .data
+                                                        .uFirstName +
+                                                    ' ' +
+                                                    Singleton()
+                                                        .loginModel
+                                                        .data
+                                                        .uLastName,
+                                          style: titleStyle(
+                                              fontFamily: boldFontFamily,
+                                              fontSize: 20),
+                                        ),
+                                        Constants.userType==1?
+                                        Text(
+                                          Singleton()
+                                              .loginModel
+                                              .data.uRelation,
+                                          style: titleStyle(
+                                              fontFamily: boldFontFamily,
+                                              fontSize: 16),
+                                        ):Container(),
+                                      ],
                                     ),
+
+                                    // Text(
+                                    //   Singleton().loginModel == null
+                                    //       ? Strings().getWelcomeText() +
+                                    //           " ${Strings.getGuestUserString()}"
+                                    //       : Singleton()
+                                    //               .loginModel
+                                    //               .data
+                                    //               .uFirstName +
+                                    //           ' ' +
+                                    //           Singleton()
+                                    //               .loginModel
+                                    //               .data
+                                    //               .uLastName,
+                                    //   style: titleStyle(
+                                    //       fontFamily: boldFontFamily,
+                                    //       fontSize: 20),
+                                    // ),
                                   ),
                                 ),
                                 // Icon(Icons.search, color: Colors.white, size: 30),
@@ -244,6 +280,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                                           .subaccountsList[
                                                               index - 1]
                                                           .saId
+                                                          .toString();
+                                                  Singleton()
+                                                      .loginModel
+                                                      .data
+                                                      .uRelation =
+                                                      Constants
+                                                          .subaccountsList[
+                                                      index - 1]
+                                                          .saRelation
                                                           .toString();
                                                   Singleton()
                                                           .loginModel

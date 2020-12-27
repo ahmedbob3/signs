@@ -268,6 +268,9 @@ class _SignupSubAccountScreenStep1State
                                                 child: TextFormField(
                                                     controller:
                                                         _lastNameController,
+                                                    textCapitalization:
+                                                    TextCapitalization
+                                                        .sentences,
                                                     decoration: InputDecoration(
                                                       hintText: Strings()
                                                           .getEnterLastStrings(),

@@ -143,7 +143,7 @@ Widget buttonChangeState(String image, String labelText,
                 fontSize: 16,
                 fontFamily: isFActive ? semiBoldFontFamily : mediumFontFamily),
           ),
-          SizedBox(width: 30),
+          SizedBox(width: 20),
           Image.asset(
             image,
             color: isFActive ? Colors.white : greyHeader,

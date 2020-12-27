@@ -53,6 +53,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       if(Constants.medicationList.elementAt(i).rememberTime.toString().length > 2 && Constants.medicationList.elementAt(i).isActive=="1"){
         for (int j=0;j<Constants.medicationList.elementAt(i).rememberTime.length;j++){
           await notificationPlugin.showDailyAtTime(
+              int.parse(Constants.medicationList.elementAt(i).mId)+j,
               Constants.medicationList.elementAt(i).rememberTime.elementAt(j).toString().substring(0, Constants.medicationList.elementAt(i).rememberTime.elementAt(j).toString().length),
               Constants.medicationList.elementAt(i).mName.toString(),
               Constants.medicationList.elementAt(i).mDuration.toString(),
@@ -61,8 +62,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           );
         }
       }
-    // await notificationPlugin.showNotification();
-     // await notificationPlugin.scheduleNotification();
     }
   }
   @override

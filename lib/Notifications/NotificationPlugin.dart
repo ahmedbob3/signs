@@ -1,11 +1,14 @@
 import 'dart:ffi';
 
 import 'package:Signs/Utils/constants.dart';
+import 'package:Signs/Utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io' show File, Platform;
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
+
 
 import 'package:rxdart/subjects.dart';
 
@@ -94,9 +97,10 @@ class NotificationPlugin {
     );
   }
 
-  Future<void> showDailyAtTime(String rememberTime,String mName,String mDuration,String mDose,String mfName) async {
-     var time = Time(int.parse(rememberTime.split(":")[0]), int.parse(rememberTime.split(":")[1]), 0);
-     // var time = Time(18,36, 0);
+  Future<void> showDailyAtTime(int id,String rememberTime,String mName,String mDuration,String mDose,String mfName) async {
+     var time = Time(int.parse(rememberTime.split(":")[0]) == 24 ? 0 : int.parse(rememberTime.split(":")[0]), int.parse(rememberTime.split(":")[1]), 0);
+     DateTime temp = DateFormat('yyyy-MM-dd – hh:mm').parse(DateFormat('yyyy-MM-dd – $rememberTime').format(DateTime.now()));
+     var newTime = DateFormat("hh:mm a").format(temp).toString();
      var androidChannelSpecifics = AndroidNotificationDetails(
       'CHANNEL_ID 4',
       'CHANNEL_NAME 4',
@@ -107,13 +111,21 @@ class NotificationPlugin {
     var iosChannelSpecifics = IOSNotificationDetails();
     var platformChannelSpecifics = NotificationDetails(androidChannelSpecifics, iosChannelSpecifics);
     await flutterLocalNotificationsPlugin.showDailyAtTime(
-      0,
-      'Dose : $mDose $mfName ${time.hour}:${time.minute}',
-      mName, //null
+      id,
+    '$mName At $newTime',
+    Strings().getNotificationText()+ ' $mDose $mfName',
+      // #Number of doses# #Medication form# of #Medication Name#.
+      // 'Dose : $mDose $mfName ${time.hour}:${time.minute}',
+      // mName, //null
       time,
       platformChannelSpecifics,
       payload: 'Test Payload',
     );
+  }
+
+  String whichSooner(List<String> rememberTime) {
+    rememberTime.sort();
+    return rememberTime.elementAt(0).toString();
   }
 
   Future<void> showWeeklyAtDayTime() async {

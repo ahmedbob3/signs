@@ -139,6 +139,7 @@ class _SnoozeScreenState extends State<SnoozeScreen> {
                 child: button(() async {
                   // notification ..
                   await notificationPlugin.showDailyAtTime(
+                      int.parse(widget.data.mId)+selectedIndex,
                       getTime (selectedIndex),
                       widget.data.mName,
                       widget.data.mDuration.toString(),
