@@ -82,7 +82,7 @@ class Datum {
         mId: json["m_id"],
         mName: json["m_name"],
         mDose: json["m_dose"],
-        mDuration: json["m_duration"],
+        mDuration: (json["m_duration"]).toString(),
         mReminderNote: json["m_reminder_note"],
         mfName: mfNameValues.map[json["mf_id"]],
         mfImage: mfImageValues.map[json["mf_id"]],
