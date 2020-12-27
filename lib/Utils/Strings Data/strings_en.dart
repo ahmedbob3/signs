@@ -106,7 +106,7 @@ class Strings_EN {
   static const String SNOOZE_FOR = 'Snooze For';
   static const String MINS = 'Mins';
   static const String HOURS = "Hours";
-  static const String MINUTES = "دقائق";
+  static const String MINUTES = "Minutes";
   static const String ADD_REMOVE_LIST = 'Add & Remove from ListView';
   static const String ENTER_TEXT_TO_ADD = 'enter text to add';
   static const String ADD_TO_LIST = 'Add to List';
