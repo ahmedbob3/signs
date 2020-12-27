@@ -3,6 +3,7 @@ import 'package:Signs/Models/signUp_data.dart';
 import 'package:Signs/Models/subaccounts_model.dart';
 import 'package:flutter/material.dart';
 
+
 enum languages { English, Arabic, Indian }
 
 class Constants {
@@ -75,5 +76,4 @@ class Constants {
   TextStyle labelStyle({Color color, double fontSize}) {
     return TextStyle(color: color ?? Colors.black, fontSize: fontSize ?? 14);
   }
-
 }

@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:Signs/Screens/medicine_add.dart';
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/styles.dart';
-import 'package:intl/intl.dart';
 
 class PillCell extends StatelessWidget {
   bool isNewPill;
@@ -18,10 +17,6 @@ class PillCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (data != null && data.rememberTime.length != 0) {
-      DateTime temp = DateFormat('yyyy-MM-dd – hh:mm').parse(DateFormat('yyyy-MM-dd – ${whichSooner(data.rememberTime)}').format(DateTime.now()));
-      data.lessTime = DateFormat("hh:mm a").format(temp).toString();
-    }
     return InkWell(
       onTap: () {
         if (data == null) {
@@ -260,8 +255,5 @@ class PillCell extends StatelessWidget {
     );
   }
 
-  String whichSooner(List<String> rememberTime) {
-    rememberTime.sort();
-    return rememberTime.elementAt(0).toString();
-  }
+
 }
