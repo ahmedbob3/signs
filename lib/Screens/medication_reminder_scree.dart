@@ -23,13 +23,37 @@ class _MedicationReminderScreenState extends State<MedicationReminderScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.transparent,
         body: snoozeSelected
-            ? SnoozeScreen(closeFunction: widget.closePopup,data:widget.data)
+            ? SnoozeScreen(closeFunction: widget.closePopup, data: widget.data)
             : Container(
-                margin: EdgeInsets.symmetric(vertical: 35),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30),
+                    )),
+                // margin: EdgeInsets.symmetric(vertical: 35),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
+                    SizedBox(height: 15),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 22),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            'Skip',
+                            style: titleStyle(
+                                color: Color.fromRGBO(76, 99, 124, 1),
+                                fontFamily: boldFontFamily,
+                                fontSize: 18),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 50),
                     Center(
                       child: Text(
                         widget.data.mName,
@@ -39,6 +63,7 @@ class _MedicationReminderScreenState extends State<MedicationReminderScreen> {
                             fontSize: 24),
                       ),
                     ),
+                    SizedBox(height: 20),
                     Center(
                       child: Text(
                         widget.data.mDuration,
@@ -48,6 +73,7 @@ class _MedicationReminderScreenState extends State<MedicationReminderScreen> {
                             fontSize: 20),
                       ),
                     ),
+                    SizedBox(height: 20),
                     Center(
                       child: Text(
                         widget.data.lessTime,
@@ -57,6 +83,7 @@ class _MedicationReminderScreenState extends State<MedicationReminderScreen> {
                             fontSize: 24),
                       ),
                     ),
+                    SizedBox(height: 25),
                     Center(
                       child: Text(
                         widget.data.mReminderNote,
@@ -66,6 +93,7 @@ class _MedicationReminderScreenState extends State<MedicationReminderScreen> {
                             fontSize: 20),
                       ),
                     ),
+                    SizedBox(height: 25),
                     Center(
                       child: Text(
                         widget.data.mReminderNote,
@@ -75,12 +103,13 @@ class _MedicationReminderScreenState extends State<MedicationReminderScreen> {
                             fontSize: 17),
                       ),
                     ),
+                    SizedBox(height: 40),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Row(
                         children: [
                           Expanded(
-                              flex: 1,
+                              flex: 2,
                               child: button(() {
                                 setState(() {
                                   snoozeSelected = true;
@@ -89,7 +118,7 @@ class _MedicationReminderScreenState extends State<MedicationReminderScreen> {
                                   color: Color.fromRGBO(249, 201, 3, 1))),
                           SizedBox(width: 10),
                           Expanded(
-                            flex: 3,
+                            flex: 4,
                             child: button(() {
                               widget.closePopup();
                             }, 'Take'),

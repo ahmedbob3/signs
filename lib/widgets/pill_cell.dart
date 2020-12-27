@@ -19,7 +19,9 @@ class PillCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (data != null && data.rememberTime.length != 0) {
-      DateTime temp = DateFormat('yyyy-MM-dd – hh:mm').parse(DateFormat('yyyy-MM-dd – ${whichSooner(data.rememberTime)}').format(DateTime.now()));
+      DateTime temp = DateFormat('yyyy-MM-dd – hh:mm').parse(
+          DateFormat('yyyy-MM-dd – ${whichSooner(data.rememberTime)}')
+              .format(DateTime.now()));
       data.lessTime = DateFormat("hh:mm a").format(temp).toString();
     }
     return InkWell(
@@ -62,12 +64,13 @@ class PillCell extends StatelessWidget {
                 child: Stack(
                   children: [
                     Container(
+                      height: MediaQuery.of(context).size.height * 0.56,
                       margin: EdgeInsets.only(top: 40),
                       decoration: new BoxDecoration(
-                        color: Colors.white,
+                        color: Colors.transparent,
                         borderRadius: new BorderRadius.only(
-                          topLeft: const Radius.circular(20.0),
-                          topRight: const Radius.circular(20.0),
+                          topLeft: const Radius.circular(30.0),
+                          topRight: const Radius.circular(30.0),
                         ),
                       ),
                       child: MedicationReminderScreen(
@@ -148,7 +151,7 @@ class PillCell extends StatelessWidget {
                               data.mName,
                               style: titleStyle(
                                   fontFamily: semiBoldFontFamily,
-                                  fontSize: 19,
+                                  fontSize: 18,
                                   color: Colors.black),
                             ),
                             SizedBox(height: 2),
@@ -161,7 +164,9 @@ class PillCell extends StatelessWidget {
                                       fontSize: 16,
                                       color: Color.fromRGBO(96, 96, 96, 1),
                                     )),
-                                Text(data.mDuration + " ${Strings().getDaysLabel()}",
+                                Text(
+                                    data.mDuration +
+                                        " ${Strings().getDaysLabel()}",
                                     style: titleStyle(
                                       fontFamily: semiBoldFontFamily,
                                       fontSize: 14,

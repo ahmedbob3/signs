@@ -162,8 +162,8 @@ class _MedicationCellState extends State<MedicationCell> {
                     ? Colors.orange
                     : Color.fromRGBO(199, 199, 204, 1),
             borderRadius: BorderRadiusDirectional.only(
-              topStart: Radius.circular(10),
-              bottomStart: Radius.circular(10),
+              topStart: Radius.circular(30),
+              bottomStart: Radius.circular(30),
             ),
           ),
           child: Container(

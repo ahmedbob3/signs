@@ -25,132 +25,138 @@ class _SnoozeScreenState extends State<SnoozeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: SingleChildScrollView(
-        child: Container(
-          margin: EdgeInsets.only(top: 70),
-          width: double.infinity,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Align(
-                alignment: Alignment.center,
-                child: Text(
-                  Strings().getSelectSnoozeLabel(),
-                  style: titleStyle(
-                      fontFamily: boldFontFamily,
-                      fontSize: 20,
-                      color: Color.fromRGBO(76, 99, 124, 1)),
-                ),
+      body: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30),
+            topRight: Radius.circular(30),
+          )
+        ),
+        // margin: EdgeInsets.only(top: 70),
+        width: double.infinity,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 65),
+            Align(
+              alignment: Alignment.center,
+              child: Text(
+                Strings().getSelectSnoozeLabel(),
+                style: titleStyle(
+                    fontFamily: boldFontFamily,
+                    fontSize: 20,
+                    color: Color.fromRGBO(76, 99, 124, 1)),
               ),
-              Padding(
-                padding: EdgeInsets.only(right: 20, left: 20),
-                child: Text(
-                  Strings().getSnoozeForLabel(),
-                  style: titleStyle(
-                      color: defaultBackgroundColor,
-                      fontFamily: mediumFontFamily,
-                      fontSize: 18),
-                ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(right: 20, left: 20),
+              child: Text(
+                Strings().getSnoozeForLabel(),
+                style: titleStyle(
+                    color: defaultBackgroundColor,
+                    fontFamily: mediumFontFamily,
+                    fontSize: 18),
               ),
-              SizedBox(height: 20),
-              Padding(
-                padding: EdgeInsets.only(right: 10, left: 10),
-                child: ListTile(
-                  leading: Image.asset('assets/images/ic_clock.png', width: 25),
-                  title: Text('30 ${Strings().getMinsLabel()}',
-                      style: titleStyle(
-                          fontFamily: mediumFontFamily,
-                          color: greyColor,
-                          fontSize: 18)),
-                  selectedTileColor: selectedIndex == 0
-                      ? Colors.grey[200]
-                      : Colors.transparent,
-                  selected: selectedIndex == 0,
-                  onTap: () {
-                    setState(() {
-                      selectedIndex = 0;
-                    });
-                  },
-                ),
+            ),
+            SizedBox(height: 20),
+            Padding(
+              padding: EdgeInsets.only(right: 10, left: 10),
+              child: ListTile(
+                leading: Image.asset('assets/images/ic_clock.png', width: 25),
+                title: Text('30 ${Strings().getMinsLabel()}',
+                    style: titleStyle(
+                        fontFamily: mediumFontFamily,
+                        color: greyColor,
+                        fontSize: 18)),
+                selectedTileColor: selectedIndex == 0
+                    ? Colors.grey[200]
+                    : Colors.transparent,
+                selected: selectedIndex == 0,
+                onTap: () {
+                  setState(() {
+                    selectedIndex = 0;
+                  });
+                },
               ),
-              Padding(
-                padding: EdgeInsets.only(right: 10, left: 10),
-                child: ListTile(
-                  leading: Image.asset('assets/images/ic_clock.png', width: 25),
-                  title: Text('1 ${Strings().getHoursLabel()}',
-                      style: titleStyle(
-                          fontFamily: mediumFontFamily,
-                          color: greyColor,
-                          fontSize: 18)),
-                  selectedTileColor: selectedIndex == 1
-                      ? Colors.grey[200]
-                      : Colors.transparent,
-                  selected: selectedIndex == 1,
-                  onTap: () {
-                    setState(() {
-                      selectedIndex = 1;
-                    });
-                  },
-                ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(right: 10, left: 10),
+              child: ListTile(
+                leading: Image.asset('assets/images/ic_clock.png', width: 25),
+                title: Text('1 ${Strings().getHoursLabel()}',
+                    style: titleStyle(
+                        fontFamily: mediumFontFamily,
+                        color: greyColor,
+                        fontSize: 18)),
+                selectedTileColor: selectedIndex == 1
+                    ? Colors.grey[200]
+                    : Colors.transparent,
+                selected: selectedIndex == 1,
+                onTap: () {
+                  setState(() {
+                    selectedIndex = 1;
+                  });
+                },
               ),
-              Padding(
-                padding: EdgeInsets.only(right: 10, left: 10),
-                child: ListTile(
-                  leading: Image.asset('assets/images/ic_clock.png', width: 25),
-                  title: Text('2 ${Strings().getHoursLabel()}',
-                      style: titleStyle(
-                          fontFamily: mediumFontFamily,
-                          color: greyColor,
-                          fontSize: 18)),
-                  selectedTileColor: selectedIndex == 2
-                      ? Colors.grey[200]
-                      : Colors.transparent,
-                  selected: selectedIndex == 2,
-                  onTap: () {
-                    setState(() {
-                      selectedIndex = 2;
-                    });
-                  },
-                ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(right: 10, left: 10),
+              child: ListTile(
+                leading: Image.asset('assets/images/ic_clock.png', width: 25),
+                title: Text('2 ${Strings().getHoursLabel()}',
+                    style: titleStyle(
+                        fontFamily: mediumFontFamily,
+                        color: greyColor,
+                        fontSize: 18)),
+                selectedTileColor: selectedIndex == 2
+                    ? Colors.grey[200]
+                    : Colors.transparent,
+                selected: selectedIndex == 2,
+                onTap: () {
+                  setState(() {
+                    selectedIndex = 2;
+                  });
+                },
               ),
-              Padding(
-                padding: EdgeInsets.only(right: 10, left: 10),
-                child: ListTile(
-                  leading: Image.asset('assets/images/ic_clock.png', width: 25),
-                  title: Text('3 ${Strings().getHoursLabel()}',
-                      style: titleStyle(
-                          fontFamily: mediumFontFamily,
-                          color: greyColor,
-                          fontSize: 18)),
-                  selectedTileColor: selectedIndex == 3
-                      ? Colors.grey[200]
-                      : Colors.transparent,
-                  selected: selectedIndex == 3,
-                  onTap: () {
-                    setState(() {
-                      selectedIndex = 3;
-                    });
-                  },
-                ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(right: 10, left: 10),
+              child: ListTile(
+                leading: Image.asset('assets/images/ic_clock.png', width: 25),
+                title: Text('3 ${Strings().getHoursLabel()}',
+                    style: titleStyle(
+                        fontFamily: mediumFontFamily,
+                        color: greyColor,
+                        fontSize: 18)),
+                selectedTileColor: selectedIndex == 3
+                    ? Colors.grey[200]
+                    : Colors.transparent,
+                selected: selectedIndex == 3,
+                onTap: () {
+                  setState(() {
+                    selectedIndex = 3;
+                  });
+                },
               ),
-              SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: button(() async {
-                  // notification ..
-                  await notificationPlugin.showDailyAtTime(
-                      int.parse(widget.data.mId)+selectedIndex,
-                      getTime (selectedIndex),
-                      widget.data.mName,
-                      widget.data.mDuration.toString(),
-                      widget.data.mDose.toString(),
-                      widget.data.mfName.toString()
-                  );
-                  widget.closeFunction();
-                }, Strings().getDoneStrings()),
-              )
-            ],
-          ),
+            ),
+            SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: button(() async {
+                // notification ..
+                await notificationPlugin.showDailyAtTime(
+                    int.parse(widget.data.mId)+selectedIndex,
+                    getTime (selectedIndex),
+                    widget.data.mName,
+                    widget.data.mDuration.toString(),
+                    widget.data.mDose.toString(),
+                    widget.data.mfName.toString()
+                );
+                widget.closeFunction();
+              }, Strings().getDoneStrings()),
+            ),
+          ],
         ),
       ),
     );
