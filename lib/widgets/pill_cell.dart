@@ -57,12 +57,13 @@ class PillCell extends StatelessWidget {
                 child: Stack(
                   children: [
                     Container(
+                      height: MediaQuery.of(context).size.height * 0.56,
                       margin: EdgeInsets.only(top: 40),
                       decoration: new BoxDecoration(
-                        color: Colors.white,
+                        color: Colors.transparent,
                         borderRadius: new BorderRadius.only(
-                          topLeft: const Radius.circular(20.0),
-                          topRight: const Radius.circular(20.0),
+                          topLeft: const Radius.circular(30.0),
+                          topRight: const Radius.circular(30.0),
                         ),
                       ),
                       child: MedicationReminderScreen(
@@ -88,7 +89,7 @@ class PillCell extends StatelessWidget {
                                   blurRadius: 3,
                                   offset: Offset(0, 4))
                             ]),
-                        child: Image.asset(Inhalator_active),
+                        child: Image.asset(Inhalator_active,),
                       ),
                     ),
                   ],
@@ -143,7 +144,7 @@ class PillCell extends StatelessWidget {
                               data.mName,
                               style: titleStyle(
                                   fontFamily: semiBoldFontFamily,
-                                  fontSize: 19,
+                                  fontSize: 18,
                                   color: Colors.black),
                             ),
                             SizedBox(height: 2),
@@ -156,7 +157,9 @@ class PillCell extends StatelessWidget {
                                       fontSize: 16,
                                       color: Color.fromRGBO(96, 96, 96, 1),
                                     )),
-                                Text(data.mDuration + " ${Strings().getDaysLabel()}",
+                                Text(
+                                    data.mDuration +
+                                        " ${Strings().getDaysLabel()}",
                                     style: titleStyle(
                                       fontFamily: semiBoldFontFamily,
                                       fontSize: 14,
@@ -173,7 +176,7 @@ class PillCell extends StatelessWidget {
                                     style: titleStyle(
                                         fontFamily: semiBoldFontFamily,
                                         color: Colors.black54,
-                                        fontSize: 18))),
+                                        fontSize: 16))),
                             GestureDetector(
                               onTap: () {
                                 if (Singleton().loginModel == null) {

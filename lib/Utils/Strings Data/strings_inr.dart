@@ -1,13 +1,13 @@
 class Strings_INR {
   static const String APP_NAME = 'App Name';
-  static const String WELCOME = 'Welcome';
-  static const String LOGIN_TITLE1 = 'Offline and online appoitmnet';
-  static const String LOGIN_TITLE2 = 'To Your Health care app';
-  static const String SIGN_IN = 'Sign In';
-  static const String CREATE_ACCOUNT = 'Create New Account';
-  static const String DISCOVER_APP = 'Discover The App';
-  static const String SING_IN_SLOGAN = 'Hello there, signin to continue';
-  static const String SING_UP = 'Sign Up';
+  static const String WELCOME = 'स्वागत हे';
+  static const String LOGIN_TITLE1 = 'ऑफलाइन और ऑनलाइन नियुक्ति';
+  static const String LOGIN_TITLE2 = 'आपके स्वास्थ्य देखभाल ऐप के लिए';
+  static const String SIGN_IN = 'साइन इन करें';
+  static const String CREATE_ACCOUNT = 'नया खाता बनाएँ';
+  static const String DISCOVER_APP = 'ऐप की खोज करें';
+  static const String SING_IN_SLOGAN = 'नमस्ते, जारी रखने के लिए साइन इन करें';
+  static const String SING_UP = 'साइन अप करें';
   static const String SING_UP_SLOGAN = 'Hello there, signup to continue';
   static const String SING_UP_STEP1 = 'Step 1/3';
   static const String SING_UP_STEP2 = 'Step 2/3';
@@ -63,7 +63,7 @@ class Strings_INR {
   static const String PATCHES = 'Patches';
   static const String INJECTIONS = 'Injections';
   static const String SACHETS = 'Sachets';
-  static const String MEDICATION_NAME = 'Medication name';
+  static const String MEDICATION_NAME = 'दवा का नाम';
   static const String MEDICATION_HOW = 'How many dose do you need to take ?';
   static const String MEDICATION_REMINDER = 'Remind me at';
   static const String MEDICATION_DURATION = 'Duration';
@@ -77,8 +77,8 @@ class Strings_INR {
   static const String EMAIL_VERIFY = 'Enter Valid Email';
   static const String NAME_LENGTH = 'First & Last Name > 2 & < 20 characters';
   static const String FILL_DATA = 'Please Fill All Data Correctly';
-  static const String UPCOMING_REMINDERS = 'Upcoming Reminders';
-  static const String HOSPITALS = 'Hospitals';
+  static const String UPCOMING_REMINDERS = 'आगामी स्मरण';
+  static const String HOSPITALS = 'अस्पताल';
   static const String TIME_NOTIFICATION = "Medication Time Notifications";
   static const String MAOEED = "Time";
   static const String REMAINING = "Remaining";
@@ -95,12 +95,12 @@ class Strings_INR {
       "For making a medication reminder you must be logged in or signed up first";
   static const String DONT_HAVE_ACCOUNT = 'Don\'t Have An Account ?';
   static const String ABOUT = 'About';
-  static const String DIRECTIONS = 'Get Direction';
-  static const String CALL = 'Call';
+  static const String DIRECTIONS = 'दिशा प्राप्त करें';
+  static const String CALL = 'कॉल';
   static const String GALLERY = 'Gallery';
   static const String REFRESH_COMPLETE = 'Refresh complete';
   static const String RETRY = 'RETRY';
-  static const String MEDICATION_LIST = 'Medication List';
+  static const String MEDICATION_LIST = 'दवा सूची';
   static const String VIEW_ALL = "View more";
   static const String SELECT_SNOOZE = 'Select Snooze';
   static const String SNOOZE_FOR = 'Snooze For';
@@ -113,6 +113,9 @@ class Strings_INR {
   static const String DELETE = 'Delete';
   static const String DEACTIVATED = 'Deactivated';
   static const String DAYS = 'days';
-  static const String ADD_PILL_REMINDER = 'Add a reminder about a pill ';
+  static const String ADD_PILL_REMINDER = 'एक गोली के बारे में एक अनुस्मारक जोड़ें';
   static const String NOTIFICATION_TEXT = 'Don’t forget to take your';
 }
+
+  
+
