@@ -115,6 +115,14 @@ class Strings_INR {
   static const String DAYS = 'days';
   static const String ADD_PILL_REMINDER = 'एक गोली के बारे में एक अनुस्मारक जोड़ें';
   static const String NOTIFICATION_TEXT = 'Don’t forget to take your';
+
+    static const String My_Son = 'My Son';
+  static const String My_Daughter = 'My Daughter';
+  static const String My_Mother = 'My Mother';
+  static const String My_Father = 'My Father';
+  static const String My_Sister = 'My Sister';
+  static const String My_Brother = 'My Brother';
+  static const String My_Husband = 'My Husband';
 }
 
   

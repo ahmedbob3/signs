@@ -24,8 +24,13 @@ class SignupSubAccountScreenStep1 extends StatefulWidget {
 class _SignupSubAccountScreenStep1State
     extends State<SignupSubAccountScreenStep1> {
   List<ListItem> _dropdownItems = [
-    ListItem(1, "My Son"),
-    ListItem(2, "My Mother")
+    ListItem(1, Strings().getMySonText()),
+    ListItem(2, Strings().getMyMotherText()),
+    ListItem(3, Strings().getMyDaughterText()),
+    ListItem(4, Strings().getMyFatherText()),
+    ListItem(5, Strings().getMySisterText()),
+    ListItem(6, Strings().getMyBrotherText()),
+    ListItem(7, Strings().getMyHusbandText()),
   ];
 
   List<DropdownMenuItem<ListItem>> _dropdownMenuItems;
@@ -269,8 +274,8 @@ class _SignupSubAccountScreenStep1State
                                                     controller:
                                                         _lastNameController,
                                                     textCapitalization:
-                                                    TextCapitalization
-                                                        .sentences,
+                                                        TextCapitalization
+                                                            .sentences,
                                                     decoration: InputDecoration(
                                                       hintText: Strings()
                                                           .getEnterLastStrings(),
@@ -397,23 +402,34 @@ class _SignupSubAccountScreenStep1State
                                         child: Row(
                                           children: <Widget>[
                                             Expanded(
-                                              child: DropdownButton(
-                                                  elevation: 5,
-                                                  dropdownColor: textFieldFill,
-                                                  style: titleStyle(
-                                                      color: greyColor),
-                                                  icon: Icon(
-                                                      Icons.arrow_drop_down),
-                                                  underline: SizedBox(),
-                                                  isExpanded: true,
-                                                  value: _selectedItem,
-                                                  items: _dropdownMenuItems,
-                                                  onChanged: (value) {
-                                                    setState(() {
-                                                      checkWhichVerified();
-                                                      _selectedItem = value;
-                                                    });
-                                                  }),
+                                              child: Row(
+                                                children: [
+                                                  Directionality(
+                                                    textDirection:
+                                                        TextDirection.ltr,
+                                                    child: DropdownButton(
+                                                        elevation: 5,
+                                                        dropdownColor:
+                                                            textFieldFill,
+                                                        style: titleStyle(
+                                                            color: greyColor),
+                                                        icon: Icon(Icons
+                                                            .arrow_drop_down),
+                                                        underline: SizedBox(),
+                                                        isExpanded: false,
+                                                        value: _selectedItem,
+                                                        items:
+                                                            _dropdownMenuItems,
+                                                        onChanged: (value) {
+                                                          setState(() {
+                                                            checkWhichVerified();
+                                                            _selectedItem =
+                                                                value;
+                                                          });
+                                                        }),
+                                                  ),
+                                                ],
+                                              ),
                                               // child:Container(
                                               //   child: TextField(
                                               //     decoration: InputDecoration(
@@ -528,8 +544,12 @@ class _SignupSubAccountScreenStep1State
                                   ),
                                 ),
                                 top: 20,
-                                left: Constants.languageId == languages.English ? 20 : null,
-                                right: Constants.languageId == languages.English ? 0 : 20),
+                                left: Constants.languageId == languages.English
+                                    ? 20
+                                    : null,
+                                right: Constants.languageId == languages.English
+                                    ? 0
+                                    : 20),
                             Positioned(
                                 child: Text(
                                   Strings().getSubAccountStrings(),
@@ -539,8 +559,12 @@ class _SignupSubAccountScreenStep1State
                                       fontSize: 32),
                                 ),
                                 top: 60,
-                                left: Constants.languageId == languages.English ? 20 : null,
-                                right: Constants.languageId == languages.English ? 0 : 20),
+                                left: Constants.languageId == languages.English
+                                    ? 20
+                                    : null,
+                                right: Constants.languageId == languages.English
+                                    ? 0
+                                    : 20),
                           ],
                         ),
                       ),

@@ -116,4 +116,13 @@ class Strings_AR {
   static const String DAYS = 'أيام';
   static const String ADD_PILL_REMINDER = 'أضف تذكير بالدواء';
   static const String NOTIFICATION_TEXT = 'لا تنسى تناول جرعتك من';
+
+  static const String My_Son = 'إبني';
+  static const String My_Daughter = 'إبنتي';
+  static const String My_Mother = 'إمي';
+  static const String My_Father = 'أبي';
+  static const String My_Sister = 'أختي';
+  static const String My_Brother = 'أخي';
+  static const String My_Husband = 'زوجي';
+
 }

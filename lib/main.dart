@@ -50,7 +50,10 @@ class _MyAppState extends State<MyApp> {
         ),
         home: BlocProvider(
           create: (context) => LoginBloc(),
-          child: SplashScreen(),
+          child: Directionality(
+            textDirection: Constants.textDirection,
+            child: SplashScreen(),
+          ),
         ));
   }
 }

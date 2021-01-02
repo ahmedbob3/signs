@@ -1443,6 +1443,99 @@ class Strings {
     }
   }
 
+String getMySonText() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.My_Son;
+        break;
+      case languages.Indian:
+        return Strings_INR.My_Son;
+        break;
+      default:
+        return Strings_EN.My_Son;
+    }
+  }
+
+
+String getMyFatherText() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.My_Father;
+        break;
+      case languages.Indian:
+        return Strings_INR.My_Father;
+        break;
+      default:
+        return Strings_EN.NOTIFICATION_TEXT;
+    }
+  }
+
+
+String getMyMotherText() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.My_Mother;
+        break;
+      case languages.Indian:
+        return Strings_INR.My_Mother;
+        break;
+      default:
+        return Strings_EN.My_Mother;
+    }
+  }
+
+String getMyDaughterText() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.My_Daughter;
+        break;
+      case languages.Indian:
+        return Strings_INR.My_Daughter;
+        break;
+      default:
+        return Strings_EN.My_Daughter;
+    }
+  }
+
+String getMySisterText() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.My_Sister;
+        break;
+      case languages.Indian:
+        return Strings_INR.My_Sister;
+        break;
+      default:
+        return Strings_EN.My_Sister;
+    }
+  }
+
+String getMyBrotherText() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.My_Brother;
+        break;
+      case languages.Indian:
+        return Strings_INR.My_Brother;
+        break;
+      default:
+        return Strings_EN.My_Brother;
+    }
+  }
+
+String getMyHusbandText() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.My_Husband;
+        break;
+      case languages.Indian:
+        return Strings_INR.My_Husband;
+        break;
+      default:
+        return Strings_EN.My_Husband;
+    }
+  }
+
 
 
  
