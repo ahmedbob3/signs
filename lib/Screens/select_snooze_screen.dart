@@ -56,19 +56,19 @@ class _SnoozeScreenState extends State<SnoozeScreen> {
                 style: titleStyle(
                     color: defaultBackgroundColor,
                     fontFamily: mediumFontFamily,
-                    fontSize: 18),
+                    fontSize: 17),
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             Padding(
               padding: EdgeInsets.only(right: 10, left: 10),
               child: ListTile(
-                leading: Image.asset('assets/images/ic_clock.png', width: 25),
+                leading: Image.asset('assets/images/ic_clock.png', width: 23),
                 title: Text('30 ${Strings().getMinsLabel()}',
                     style: titleStyle(
                         fontFamily: mediumFontFamily,
                         color: greyColor,
-                        fontSize: 18)),
+                        fontSize: 17)),
                 selectedTileColor: selectedIndex == 0
                     ? Colors.grey[200]
                     : Colors.transparent,
@@ -83,12 +83,12 @@ class _SnoozeScreenState extends State<SnoozeScreen> {
             Padding(
               padding: EdgeInsets.only(right: 10, left: 10),
               child: ListTile(
-                leading: Image.asset('assets/images/ic_clock.png', width: 25),
+                leading: Image.asset('assets/images/ic_clock.png', width: 23),
                 title: Text('1 ${Strings().getHoursLabel()}',
                     style: titleStyle(
                         fontFamily: mediumFontFamily,
                         color: greyColor,
-                        fontSize: 18)),
+                        fontSize: 17)),
                 selectedTileColor: selectedIndex == 1
                     ? Colors.grey[200]
                     : Colors.transparent,
@@ -103,12 +103,12 @@ class _SnoozeScreenState extends State<SnoozeScreen> {
             Padding(
               padding: EdgeInsets.only(right: 10, left: 10),
               child: ListTile(
-                leading: Image.asset('assets/images/ic_clock.png', width: 25),
+                leading: Image.asset('assets/images/ic_clock.png', width: 23),
                 title: Text('2 ${Strings().getHoursLabel()}',
                     style: titleStyle(
                         fontFamily: mediumFontFamily,
                         color: greyColor,
-                        fontSize: 18)),
+                        fontSize: 17)),
                 selectedTileColor: selectedIndex == 2
                     ? Colors.grey[200]
                     : Colors.transparent,
@@ -123,12 +123,12 @@ class _SnoozeScreenState extends State<SnoozeScreen> {
             Padding(
               padding: EdgeInsets.only(right: 10, left: 10),
               child: ListTile(
-                leading: Image.asset('assets/images/ic_clock.png', width: 25),
+                leading: Image.asset('assets/images/ic_clock.png', width: 23),
                 title: Text('3 ${Strings().getHoursLabel()}',
                     style: titleStyle(
                         fontFamily: mediumFontFamily,
                         color: greyColor,
-                        fontSize: 18)),
+                        fontSize: 17)),
                 selectedTileColor: selectedIndex == 3
                     ? Colors.grey[200]
                     : Colors.transparent,
@@ -140,9 +140,9 @@ class _SnoozeScreenState extends State<SnoozeScreen> {
                 },
               ),
             ),
-            SizedBox(height: 20),
+            // SizedBox(height: 20),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.only(right: 20, left: 20,bottom: 10),
               child: button(() async {
                 // notification ..
                 await notificationPlugin.showDailyAtTime(
@@ -164,9 +164,11 @@ class _SnoozeScreenState extends State<SnoozeScreen> {
 
   String getTime(int selectedIndex) {
     String resultTime="";
-    var selectedTime = Time(selectedIndex==1 ? 1 : selectedIndex==2? 2 : 3, selectedIndex==0 ? 30 : 0 );
-    var newTime= Time(DateTime.now().hour+selectedTime.hour,DateTime.now().minute+selectedTime.minute);
-    resultTime = '"'+newTime.hour.toString()+':'+newTime.minute.toString()+'"';
+    var selectedTime = Time(selectedIndex , selectedIndex==0 ? 30 : 0 );
+    var min= DateTime.now().minute+selectedTime.minute > 60 ? DateTime.now().minute+selectedTime.minute - 60: DateTime.now().minute+selectedTime.minute;
+    var hours= DateTime.now().minute+selectedTime.minute > 60 ? DateTime.now().hour+selectedTime.hour + 1: DateTime.now().hour+selectedTime.hour;
+    var newTime= Time(hours,min);
+    resultTime = newTime.hour.toString()+':'+newTime.minute.toString();
     return resultTime;
   }
 }

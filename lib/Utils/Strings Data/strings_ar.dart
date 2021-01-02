@@ -116,4 +116,7 @@ class Strings_AR {
   static const String DAYS = 'أيام';
   static const String ADD_PILL_REMINDER = 'أضف تذكير بالدواء';
   static const String NOTIFICATION_TEXT = 'لا تنسى تناول جرعتك من';
+  static const String REMINDER = 'تذكير';
+  static const String DAY = 'اليوم ';
+  static const String Take = 'تناول';
 }

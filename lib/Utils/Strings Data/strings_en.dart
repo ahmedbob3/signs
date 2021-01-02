@@ -114,7 +114,13 @@ class Strings_EN {
   static const String DEACTIVATED = 'Deactivated';
   static const String DAYS = 'days';
   static const String ADD_PILL_REMINDER = 'Add a Medication Reminder';
-    static const String NOTIFICATION_TEXT = 'Don’t forget to take your';
+  static const String NOTIFICATION_TEXT = 'Don’t forget to take your';
+  static const String REMINDER = 'Reminder';
+  static const String DAY = 'Day';
+  static const String Take = 'Take';
+
+
+
 }
 
 

@@ -1,5 +1,6 @@
 import 'package:Signs/Models/response/medication_model.dart';
 import 'package:Signs/Screens/select_snooze_screen.dart';
+import 'package:Signs/Utils/strings.dart';
 import 'package:Signs/Utils/styles.dart';
 import 'package:Signs/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -66,7 +67,7 @@ class _MedicationReminderScreenState extends State<MedicationReminderScreen> {
                     SizedBox(height: 20),
                     Center(
                       child: Text(
-                        widget.data.mDuration,
+                        Strings().getDAYText() +' '+ widget.data.mDuration +' '+Strings().getReminderText(),
                         style: titleStyle(
                             fontFamily: mediumFontFamily,
                             color: defaultBackgroundColor,
@@ -86,7 +87,7 @@ class _MedicationReminderScreenState extends State<MedicationReminderScreen> {
                     SizedBox(height: 25),
                     Center(
                       child: Text(
-                        widget.data.mReminderNote,
+                        Strings().getTakeext() +' '+widget.data.mDose + " " + widget.data.mfName,
                         style: titleStyle(
                             fontFamily: semiBoldFontFamily,
                             color: Color.fromRGBO(96, 96, 96, 1),

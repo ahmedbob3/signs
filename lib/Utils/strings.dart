@@ -1443,7 +1443,44 @@ class Strings {
     }
   }
 
+  String getReminderText() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.REMINDER;
+        break;
+      case languages.Indian:
+        return Strings_INR.REMINDER;
+        break;
+      default:
+        return Strings_EN.REMINDER;
+    }
+  }
 
+  String getDAYText() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.DAY;
+        break;
+      case languages.Indian:
+        return Strings_INR.DAY;
+        break;
+      default:
+        return Strings_EN.DAY;
+    }
+  }
+
+  String getTakeext() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.Take;
+        break;
+      case languages.Indian:
+        return Strings_INR.Take;
+        break;
+      default:
+        return Strings_EN.Take;
+    }
+  }
 
  
 }

@@ -115,6 +115,9 @@ class Strings_INR {
   static const String DAYS = 'days';
   static const String ADD_PILL_REMINDER = 'एक गोली के बारे में एक अनुस्मारक जोड़ें';
   static const String NOTIFICATION_TEXT = 'Don’t forget to take your';
+  static const String REMINDER = 'Reminder';
+  static const String DAY = 'Day';
+  static const String Take = 'Take';
 }
 
   
