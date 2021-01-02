@@ -249,6 +249,7 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
                                           child: Form(
                                             key: _formKey,
                                             child: Container(
+                                              alignment: Alignment.center,
                                               child: TextFormField(
                                                 controller: _mobileController,
                                                 focusNode: focusNode,
@@ -258,6 +259,7 @@ class _CheckMobileScreenState extends State<CheckMobileScreen> {
                                                         : 8,
                                                 maxLines: 1,
                                                 decoration: InputDecoration(
+                                                  contentPadding: EdgeInsets.only(top:0),
                                                   counter: SizedBox.shrink(),
                                                   hintText: Strings()
                                                       .getEnterMobileNumberString(),

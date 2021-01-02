@@ -118,6 +118,13 @@ class Strings_INR {
   static const String REMINDER = 'Reminder';
   static const String DAY = 'Day';
   static const String Take = 'Take';
+  static const String My_Son = 'My Son';
+  static const String My_Daughter = 'My Daughter';
+  static const String My_Mother = 'My Mother';
+  static const String My_Father = 'My Father';
+  static const String My_Sister = 'My Sister';
+  static const String My_Brother = 'My Brother';
+  static const String My_Husband = 'My Husband';
 }
 
   

@@ -142,10 +142,7 @@ class _SignupScreenStep3State extends State<SignupScreenStep3> {
                                           color: headerColor,
                                           fontSize: 24),
                                     ),
-                                    SizedBox(
-                                        width:
-                                            MediaQuery.of(context).size.width -
-                                                205),
+                                    Spacer(),
                                     Text(
                                       Strings().getSignupStep3Strings(),
                                       style: titleStyle(
