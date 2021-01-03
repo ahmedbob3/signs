@@ -22,7 +22,8 @@ class SubAccountRepo extends BaseRepo {
     "last_name": subAccountLastName,
     "gender": subAccountGender,
     "u_id": Singleton().loginModel.data.uId,
-    "relation": subAccountRelation
+    "relation": subAccountRelation,
+    'lang' : Constants.languageId == languages.Arabic ? 'ar' : Constants.languageId == languages.English ? 'en' : 'ind'
     };
     var response = await http.post(
       Uri.encodeFull(APIS.serverURL + APIS.SUB_ACCOUNT_API),

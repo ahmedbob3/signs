@@ -25,9 +25,14 @@ class MedicationRepo extends BaseRepo {
       "m_duration": medicationDuration,
       "m_reminder_note": medicationNote,
       "remember_time": medicationTime,
-      "user_type": Constants.userType.toString()
-
+      "user_type": Constants.userType.toString(),
+      'lang': Constants.languageId == languages.Arabic
+          ? 'ar'
+          : Constants.languageId == languages.English
+              ? 'en'
+              : 'ind'
     };
+
     var response = await http.post(
       Uri.encodeFull(APIS.serverURL + APIS.MEDICATION_API),
       body: params,
@@ -37,6 +42,7 @@ class MedicationRepo extends BaseRepo {
     MedicationsModel modelResponse = MedicationsModel.fromMap(decodedResponse);
     return modelResponse;
   }
+
   Future<MedicationsModel> medicationEdit(
       String medicationNumber,
       String medicationName,
@@ -45,8 +51,7 @@ class MedicationRepo extends BaseRepo {
       String medicationDuration,
       String medicationNote,
       String medicationTime,
-      String medicationServerId
-      ) async {
+      String medicationServerId) async {
     Map<String, dynamic> params = {
       "u_id": medicationNumber,
       "m_name": medicationName,
@@ -68,13 +73,11 @@ class MedicationRepo extends BaseRepo {
   }
 
   Future<MedicationsModel> medicationDelete(
-    String medicationNumber,
-        String medicationStatus
-      ) async {
+      String medicationNumber, String medicationStatus) async {
     Map<String, dynamic> params = {
       "m_id": medicationNumber,
       "m_active": medicationStatus,
-      "user_type":Constants.userType.toString(),
+      "user_type": Constants.userType.toString(),
     };
 
     var response = await http.post(
@@ -91,7 +94,7 @@ class MedicationRepo extends BaseRepo {
   Future<MedicationsModel> getMedicicationsList() async {
     Map<String, dynamic> params = {
       "id": Singleton().loginModel.data.uId,
-      "user_type":Constants.userType.toString(),
+      "user_type": Constants.userType.toString(),
     };
 
     var response = await http.post(
