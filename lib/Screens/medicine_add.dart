@@ -1,5 +1,6 @@
 import 'package:Signs/Blocs/medication%20bloc/medication_bloc.dart';
 import 'package:Signs/Models/response/medication_model.dart';
+import 'package:Signs/Screens/signup_sub_screen_step1.dart';
 import 'package:Signs/Utils/constants.dart';
 import 'package:Signs/Utils/singleton.dart';
 import 'package:flutter/cupertino.dart';
@@ -34,11 +35,22 @@ class _AddMedicationState extends State<AddMedication> {
   bool isLoading = false;
   String timeForRemember = "";
   final formKey = GlobalKey<FormState>();
+  List<DropdownMenuItem<ListItem>> _dropdownMenuItems;
+  ListItem _selectedItem;
+  List<ListItem> _dropdownItems = [
+    ListItem(1, "Day"),
+    ListItem(2, "Week"),
+    ListItem(3, "Month"),
+    ListItem(4, "Year"),
+    ListItem(5, "Forever")
+
+  ];
   // bool backFromAll=false;
 
   @override
   void dispose() {
     super.dispose();
+    _dropdownMenuItems = buildDropDownMenuItems(_dropdownItems);
     _nameController.dispose();
     _timeController.dispose();
     _numberController.dispose();
@@ -46,9 +58,24 @@ class _AddMedicationState extends State<AddMedication> {
     _durationController.dispose();
   }
 
+  List<DropdownMenuItem<ListItem>> buildDropDownMenuItems(List listItems) {
+    List<DropdownMenuItem<ListItem>> items = List();
+    for (ListItem listItem in listItems) {
+      items.add(
+        DropdownMenuItem(
+          child: Text(listItem.name),
+          value: listItem,
+        ),
+      );
+    }
+    return items;
+  }
+
   @override
   void initState() {
     super.initState();
+    _dropdownMenuItems = buildDropDownMenuItems(_dropdownItems);
+    _selectedItem = _dropdownMenuItems[0].value;
     _medicationBloc = MedicationBloc();
     _medicationData = Datum();
   }
@@ -66,7 +93,7 @@ class _AddMedicationState extends State<AddMedication> {
         child: SafeArea(
           bottom: false,
           child: Scaffold(
-            appBar: AppBar(),
+            // appBar: AppBar(),
             key: _scaffoldKey,
             body: BlocBuilder<MedicationBloc, MedicationState>(
               bloc: _medicationBloc,
@@ -109,13 +136,21 @@ class _AddMedicationState extends State<AddMedication> {
                           ),
                           SingleChildScrollView(
                             child: Container(
-                              height: MediaQuery.of(context).size.height + 220,
+                              height: MediaQuery.of(context).size.height + 225,
                               padding: EdgeInsets.only(
                                   top: 20, right: 20, left: 20, bottom: 5),
                               child: new Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Image.asset(
+                                      Arrow_back_grey,
+                                    ),
+                                  ),
                                   SizedBox(height: 10),
                                   new Text(
                                     Strings().getMedicineAddStrings(),
@@ -547,6 +582,30 @@ class _AddMedicationState extends State<AddMedication> {
                                                   ),
                                             ),
                                           ),
+                                          Expanded(
+                                            child: DropdownButton(
+                                                elevation: 5,
+                                                dropdownColor: textFieldFill,
+                                                style: titleStyle(
+                                                    color: greyColor),
+                                                icon: Icon(
+                                                    Icons.arrow_drop_down),
+                                                underline: SizedBox(),
+                                                isExpanded: true,
+                                                value: _selectedItem,
+                                                items: _dropdownMenuItems,
+                                                onChanged: (value) {
+                                                  setState(() {
+                                                    if(_selectedItem.value==5)
+                                                  _durationController.text = "";
+                                                    else
+                                                    _selectedItem = value;
+                                                  });
+                                                }),
+                                          ),
+
+
+
                                         ],
                                       ),
                                     ),
@@ -639,7 +698,9 @@ class _AddMedicationState extends State<AddMedication> {
                                           getid(Constants.medications)
                                               .toString(),
                                           _numberController.text.toString(),
-                                          _durationController.text.toString(),
+                                          getDays(_durationController.text.toString(),_selectedItem.value),
+
+                                          // _durationController.text.toString(),
                                           _noteController.text.toString(),
                                           getReminderData(_listViewData)));
                                     } else {
@@ -921,6 +982,21 @@ class _AddMedicationState extends State<AddMedication> {
             ",";
     }
     return result;
+  }
+
+  String getDays(String string, int value) {
+    String result= "";
+    if(value==1)
+      result = string;
+    else if (value==2)
+      result = (int.parse(string)*7).toString();
+    else if (value==3)
+      result = (int.parse(string)*30).toString();
+    else if (value==4)
+      result = (int.parse(string)*365).toString();
+    else
+            result = "365";
+          return result ;
   }
 }
 

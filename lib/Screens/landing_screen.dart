@@ -162,7 +162,7 @@ class _LandingScreenState extends State<LandingScreen> {
 
   onNotificationClick(String payload) {
     print('Payload $payload');
-    selectedTabIndex=3;
+    selectedTabIndex=0;
     Navigator.push(_context, MaterialPageRoute(builder: (coontext) {
       return getCurrentScreen();
     }));
