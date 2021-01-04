@@ -341,7 +341,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(height: 30),
                     // Upcoming reminder ..
                     Expanded(
-                      flex: 1,
+                      flex: 2,
                       child: MediciationSection(
                         medicationList: Constants.medicationList,
                       ),

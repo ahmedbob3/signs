@@ -146,6 +146,8 @@ class PillCell extends StatelessWidget {
                                   fontFamily: semiBoldFontFamily,
                                   fontSize: 18,
                                   color: Colors.black),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
                             ),
                             SizedBox(height: 2),
                             Row(

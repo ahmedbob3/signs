@@ -99,7 +99,7 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
                               ),
                               SizedBox(width: 5),
                               Container(
-                                width: 300,
+                                width: 260,
                                 child: Text(
                                   widget.hospitalItem.hLocation,
                                   style: titleStyle(
@@ -118,168 +118,178 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
                     )
                   ],
                 ),
-                Container(
-                  padding: EdgeInsets.all(19),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        Strings().getAboutLabel(),
-                        style: titleStyle(
-                            color: defaultBackgroundColor,
-                            fontFamily: boldFontFamily,
-                            fontSize: 18),
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        widget.hospitalItem.hAbout,
-                        style: titleStyle(fontSize: 18, color: payneGray),
-                      ),
-                      SizedBox(height: 20),
-                      Row(
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.all(18.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          MaterialButton(
-                            padding: EdgeInsets.zero,
-                            onPressed: () async {
-                              var latitude =
-                                  widget.hospitalItem.hLatlang.split(',')[0];
-                              var longitude =
-                                  widget.hospitalItem.hLatlang.split(',')[1];
-                              String googleUrl =
-                                  'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude';
-                              if (await canLaunch(googleUrl)) {
-                                await launch(googleUrl);
-                              } else {
-                                throw 'Could not open the map.';
-                              }
-                            },
-                            child: Container(
-                              width: 150,
-                              padding: EdgeInsets.symmetric(vertical: 10),
-                              decoration: BoxDecoration(
-                                  color: Color.fromRGBO(33, 99, 206, 0.15),
-                                  borderRadius: BorderRadius.circular(7)),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image.asset(DirectionIcon),
-                                  SizedBox(width: 10),
-                                  Text(
-                                    Strings().getDirectionsLabel(),
-                                    style: titleStyle(
-                                        color: defaultBackgroundColor,
-                                        fontFamily: mediumFontFamily),
-                                  )
-                                ],
-                              ),
-                            ),
+                          Text(
+                            Strings().getAboutLabel(),
+                            style: titleStyle(
+                                color: defaultBackgroundColor,
+                                fontFamily: boldFontFamily,
+                                fontSize: 18),
                           ),
-                          SizedBox(width: 20),
-                          MaterialButton(
-                            padding: EdgeInsets.zero,
-                            onPressed: () async {
-                              await launch(
-                                  "tel://${widget.hospitalItem.hPhone}");
-                            },
-                            child: Container(
-                              width: 150,
-                              padding: EdgeInsets.symmetric(vertical: 10),
-                              decoration: BoxDecoration(
-                                  color: Color.fromRGBO(33, 99, 206, 0.15),
-                                  borderRadius: BorderRadius.circular(7)),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image.asset(CallIcon),
-                                  SizedBox(width: 10),
-                                  Text(
-                                    Strings().getCallLabel(),
-                                    style: titleStyle(
-                                        color: defaultBackgroundColor,
-                                        fontFamily: mediumFontFamily),
-                                  )
-                                ],
+                          SizedBox(height: 10),
+                          Text(
+                            widget.hospitalItem.hAbout,
+                            style: titleStyle(fontSize: 18, color: payneGray),
+                          ),
+                          SizedBox(height: 20),
+                          Row(
+                            children: [
+                              MaterialButton(
+                                padding: EdgeInsets.zero,
+                                onPressed: () async {
+                                  var latitude =
+                                      widget.hospitalItem.hLatlang.split(',')[0];
+                                  var longitude =
+                                      widget.hospitalItem.hLatlang.split(',')[1];
+                                  String googleUrl =
+                                      'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude';
+                                  if (await canLaunch(googleUrl)) {
+                                    await launch(googleUrl);
+                                  } else {
+                                    throw 'Could not open the map.';
+                                  }
+                                },
+                                child: Container(
+                                  width: 150,
+                                  padding: EdgeInsets.symmetric(vertical: 10),
+                                  decoration: BoxDecoration(
+                                      color: Color.fromRGBO(33, 99, 206, 0.15),
+                                      borderRadius: BorderRadius.circular(7)),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Image.asset(DirectionIcon),
+                                      SizedBox(width: 10),
+                                      Text(
+                                        Strings().getDirectionsLabel(),
+                                        style: titleStyle(
+                                            color: defaultBackgroundColor,
+                                            fontFamily: mediumFontFamily),
+                                      )
+                                    ],
+                                  ),
+                                ),
                               ),
+                              SizedBox(width: 20),
+                              MaterialButton(
+                                padding: EdgeInsets.zero,
+                                onPressed: () async {
+                                  await launch(
+                                      "tel://${widget.hospitalItem.hPhone}");
+                                },
+                                child: Container(
+                                  width: 150,
+                                  padding: EdgeInsets.symmetric(vertical: 10),
+                                  decoration: BoxDecoration(
+                                      color: Color.fromRGBO(33, 99, 206, 0.15),
+                                      borderRadius: BorderRadius.circular(7)),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Image.asset(CallIcon),
+                                      SizedBox(width: 10),
+                                      Text(
+                                        Strings().getCallLabel(),
+                                        style: titleStyle(
+                                            color: defaultBackgroundColor,
+                                            fontFamily: mediumFontFamily),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 20),
+                          Divider(
+                            color: Color.fromRGBO(163, 172, 194, 0.15),
+                            thickness: 5,
+                          ),
+                          Container(
+                            width: double.infinity,
+                            padding: EdgeInsets.all(19),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  Strings().getGalleryLabel(),
+                                  style: titleStyle(
+                                      color: defaultBackgroundColor,
+                                      fontFamily: boldFontFamily,
+                                      fontSize: 18),
+                                ),
+                                SizedBox(height: 10),
+                                Container(
+                                  height: 120,
+                                  width: double.infinity,
+                                  child: ListView.builder(
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: widget.hospitalItem.gallery.length,
+                                    itemBuilder: (context, index) {
+                                      return GestureDetector(
+                                        child: Container(
+                                          margin: EdgeInsets.all(5),
+                                          width: 120,
+                                          height: 120,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                              image: DecorationImage(
+                                                  image: NetworkImage(widget
+                                                      .hospitalItem
+                                                      .gallery[index]),
+                                                  fit: BoxFit.cover)),
+                                        ),
+                                        onTap: () {
+                                          showDialog(
+                                              context: (context),
+                                              barrierDismissible: true,
+                                              child: GestureDetector(
+                                                onTap: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: CarouselSlider(
+                                                  carouselController:
+                                                      buttonCarouselController,
+                                                  items: widget
+                                                      .hospitalItem.gallery
+                                                      .map((item) => Container(
+                                                            child: Center(
+                                                                child: Image.network(
+                                                                    item,
+                                                                    fit: BoxFit
+                                                                        .cover,
+                                                                    width: 1000)),
+                                                          ))
+                                                      .toList(),
+                                                  options: CarouselOptions(
+                                                    autoPlay: false,
+                                                    enlargeCenterPage: true,
+                                                    reverse: Constants.textDirection == TextDirection.rtl ,
+                                                    // viewportFraction: 0.8,
+                                                    // aspectRatio: 2.0,
+                                                    enableInfiniteScroll: false,
+                                                    initialPage: 0,
+                                                  ),
+                                                ),
+                                              ));
+                                        },
+                                      );
+                                    },
+                                  ),
+                                )
+                              ],
                             ),
                           ),
                         ],
                       ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 20),
-                Divider(
-                  color: Color.fromRGBO(163, 172, 194, 0.15),
-                  thickness: 5,
-                ),
-                Container(
-                  width: double.infinity,
-                  padding: EdgeInsets.all(19),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        Strings().getGalleryLabel(),
-                        style: titleStyle(
-                            color: defaultBackgroundColor,
-                            fontFamily: boldFontFamily,
-                            fontSize: 18),
-                      ),
-                      SizedBox(height: 10),
-                      Container(
-                        height: 120,
-                        width: double.infinity,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: widget.hospitalItem.gallery.length,
-                          itemBuilder: (context, index) {
-                            return GestureDetector(
-                              child: Container(
-                                margin: EdgeInsets.all(5),
-                                width: 120,
-                                height: 120,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    image: DecorationImage(
-                                        image: NetworkImage(
-                                            widget.hospitalItem.gallery[index]),
-                                        fit: BoxFit.cover)),
-                              ),
-                              onTap: () {
-                                showDialog(
-                                    context: (context),
-                                    barrierDismissible: true,
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: CarouselSlider(
-                                        carouselController:
-                                            buttonCarouselController,
-                                        items: widget.hospitalItem.gallery
-                                            .map((item) => Container(
-                                                  child: Center(
-                                                      child: Image.network(item,
-                                                          fit: BoxFit.cover,
-                                                          width: 1000)),
-                                                ))
-                                            .toList(),
-                                        options: CarouselOptions(
-                                          autoPlay: false,
-                                          enlargeCenterPage: true,
-                                          // viewportFraction: 0.8,
-                                          // aspectRatio: 2.0,
-                                          enableInfiniteScroll: false,
-                                          initialPage: 0,
-                                        ),
-                                      ),
-                                    ));
-                              },
-                            );
-                          },
-                        ),
-                      )
-                    ],
+                    ),
                   ),
                 ),
               ],

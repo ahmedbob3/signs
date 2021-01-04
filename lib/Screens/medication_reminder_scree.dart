@@ -67,7 +67,11 @@ class _MedicationReminderScreenState extends State<MedicationReminderScreen> {
                     SizedBox(height: 20),
                     Center(
                       child: Text(
-                        Strings().getDAYText() +' '+ widget.data.mDuration +' '+Strings().getReminderText(),
+                        Strings().getDAYText() +
+                            ' ' +
+                            widget.data.mDuration +
+                            ' ' +
+                            Strings().getReminderText(),
                         style: titleStyle(
                             fontFamily: mediumFontFamily,
                             color: defaultBackgroundColor,
@@ -87,7 +91,11 @@ class _MedicationReminderScreenState extends State<MedicationReminderScreen> {
                     SizedBox(height: 25),
                     Center(
                       child: Text(
-                        Strings().getTakeext() +' '+widget.data.mDose + " " + widget.data.mfName,
+                        Strings().getTakeext() +
+                            ' ' +
+                            widget.data.mDose +
+                            " " +
+                            widget.data.mfName,
                         style: titleStyle(
                             fontFamily: semiBoldFontFamily,
                             color: Color.fromRGBO(96, 96, 96, 1),

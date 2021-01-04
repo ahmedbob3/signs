@@ -12,17 +12,16 @@ import 'package:http/http.dart' as http;
 
 class HospitalsRepo extends BaseRepo {
   Future<HospitalsModel> getHospitalsList() async {
-    Map<String, dynamic> params = {
-      'lang': Constants.languageId == languages.Arabic
+    String lang = 
+      Constants.languageId == languages.Arabic
           ? 'ar'
           : Constants.languageId == languages.English
               ? 'en'
               : 'ind'
-    };
+    ;
 
     var response = await http.get(
-      Uri.encodeFull(APIS.serverURL + APIS.HOSPITALS_API),
-      headers: params
+      Uri.encodeFull(APIS.serverURL + APIS.HOSPITALS_API + '&lang=$lang'),
     );
     var decodedResponse = json.decode(response.body);
     print('response .. ${response.body}');
