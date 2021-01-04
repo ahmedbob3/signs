@@ -236,35 +236,35 @@ class _AddMedicationState extends State<AddMedication> {
                                               fontFamily: semiBoldFontFamily,
                                               color: greyColor,
                                               fontSize: 17)),
-                                      SizedBox(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width -
-                                              240),
-                                      new GestureDetector(
-                                        onTap: () {
-                                          // backFromAll=true;
-                                          // Navigator.of(context).push(
-                                          //     MaterialPageRoute(
-                                          //         builder: (context) =>
-                                          //             MedicineForm()));
-                                          Navigator.of(context)
-                                              .push(
-                                                new MaterialPageRoute(
-                                                    builder: (_) =>
-                                                        MedicineForm()),
-                                              )
-                                              .then((val) =>
-                                                  val ? _getRequests() : null);
-                                        },
-                                        child: Text(
-                                          Strings().getViewAllLabel(),
-                                          style: titleStyle(
-                                              fontFamily: boldFontFamily,
-                                              color: defaultBackgroundColor,
-                                              fontSize: 14),
-                                        ),
-                                      ),
+                                      // SizedBox(
+                                      //     width: MediaQuery.of(context)
+                                      //             .size
+                                      //             .width -
+                                      //         240),
+                                      // new GestureDetector(
+                                      //   onTap: () {
+                                      //     // backFromAll=true;
+                                      //     // Navigator.of(context).push(
+                                      //     //     MaterialPageRoute(
+                                      //     //         builder: (context) =>
+                                      //     //             MedicineForm()));
+                                      //     Navigator.of(context)
+                                      //         .push(
+                                      //           new MaterialPageRoute(
+                                      //               builder: (_) =>
+                                      //                   MedicineForm()),
+                                      //         )
+                                      //         .then((val) =>
+                                      //             val ? _getRequests() : null);
+                                      //   },
+                                      //   child: Text(
+                                      //     Strings().getViewAllLabel(),
+                                      //     style: titleStyle(
+                                      //         fontFamily: boldFontFamily,
+                                      //         color: defaultBackgroundColor,
+                                      //         fontSize: 14),
+                                      //   ),
+                                      // ),
                                     ],
                                   ),
                                   SizedBox(height: 10),
@@ -273,17 +273,14 @@ class _AddMedicationState extends State<AddMedication> {
                                     height: 120,
                                     child: ListView.builder(
                                         scrollDirection: Axis.horizontal,
-                                        itemCount: 5,
+                                        itemCount: 11,
                                         itemBuilder: (context, index) {
                                           return medicationForm(index);
                                         }),
                                   ),
                                   SizedBox(height: 20),
                                   Text(
-                                      getid(Constants.medications) != -1
-                                          ? mfNameValues.mapString[
-                                              getid(Constants.medications)
-                                                  .toString()]
+                                      getid(Constants.medications) != -1 ? mfNameValues.mapString[getid(Constants.medications).toString()]
                                           : Strings().getDropsStrings(),
                                       style: titleStyle(
                                           fontFamily: semiBoldFontFamily,
@@ -828,6 +825,107 @@ class _AddMedicationState extends State<AddMedication> {
                             false
                           ];
                           break;
+                        case 5:
+                          isActive = !Constants.medications[5];
+                          Constants.medications = [
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            isActive,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false
+                          ];
+                          break;
+
+                        case 6:
+                          isActive = !Constants.medications[6];
+                          Constants.medications = [
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            isActive,
+                            false,
+                            false,
+                            false,
+                            false
+                          ];
+                          break;
+
+                        case 7:
+                          isActive = !Constants.medications[7];
+                          Constants.medications = [
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            isActive,
+                            false,
+                            false,
+                            false
+                          ];
+                          break;
+
+                        case 8:
+                          isActive = !Constants.medications[8];
+                          Constants.medications = [
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            isActive,
+                            false,
+                            false
+                          ];
+                          break;
+
+                        case 9:
+                          isActive = !Constants.medications[9];
+                          Constants.medications = [
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            isActive,
+                            false
+                          ];
+                          break;
+
+                        case 10:
+                          isActive = !Constants.medications[10];
+                          Constants.medications = [
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            isActive
+                          ];
+                          break;
                       }
                     });
                   },
@@ -857,7 +955,38 @@ class _AddMedicationState extends State<AddMedication> {
                                           Suppository_inactive,
                                           Strings().getSuppositoryStrings(),
                                           isFActive: Constants.medications[4])
-                                      : Container(),
+                      : index == 5
+                      ? cardChangeState(
+                      true,
+                      Topical_active,Topical_inactive, Strings().getTopicalStrings(),
+                      isFActive: Constants.medications[5])
+                      : index == 6
+                      ? cardChangeState(
+                      true,
+                      Sachets_active,Sachets_inactive, Strings().getSachetsStrings(),
+                      isFActive: Constants.medications[6])
+                      : index == 7
+                      ? cardChangeState(
+                      true,
+                      Inhalator_active,Inhalator_inactive, Strings().getInhalersStrings(),
+                      isFActive: Constants.medications[7])
+                      : index == 8
+                      ? cardChangeState(
+                      true,
+                      Implant_active,Implant_inactive, Strings().getImplantsStrings(),
+                      isFActive: Constants.medications[8])
+                      : index == 9
+                      ? cardChangeState(
+                      true,
+                      Patches_active,Patches_inactive, Strings().getPatchesStrings(),
+                      isFActive: Constants.medications[9])
+                      : index == 10
+                      ? cardChangeState(
+                      true,
+                      Injection_active,Injection_inactive, Strings().getInjectionsStrings(),
+                      isFActive: Constants.medications[10])
+
+                      : Container(),
                 ),
               ),
             ],
@@ -869,7 +998,7 @@ class _AddMedicationState extends State<AddMedication> {
 
   int getid(List<bool> medications) {
     int result = -1;
-    for (int i = 0; i < medications.length - 1; i++) {
+    for (int i = 0; i < medications.length ; i++) {
       if (medications[i] == true) result = i + 1;
     }
     return result;
@@ -960,7 +1089,7 @@ class _AddMedicationState extends State<AddMedication> {
     "8": Strings().getInhalersStrings(),
     "9": Strings().getImplantsStrings(),
     "10": Strings().getPatchesStrings(),
-    "11": Strings().getInjectionsStrings()
+    "11": Strings().getInjectionsStrings(),
   });
 
   String getReminderData(List<String> listViewData) {
