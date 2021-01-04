@@ -93,7 +93,7 @@ class _AddMedicationState extends State<AddMedication> {
         child: SafeArea(
           bottom: false,
           child: Scaffold(
-            // appBar: AppBar(),
+            appBar: AppBar(),
             key: _scaffoldKey,
             body: BlocBuilder<MedicationBloc, MedicationState>(
               bloc: _medicationBloc,
@@ -143,14 +143,6 @@ class _AddMedicationState extends State<AddMedication> {
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  GestureDetector(
-                                    onTap: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                    child: Image.asset(
-                                      Arrow_back_grey,
-                                    ),
-                                  ),
                                   SizedBox(height: 10),
                                   new Text(
                                     Strings().getMedicineAddStrings(),
