@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:Signs/Blocs/medication%20bloc/medication_bloc.dart';
 import 'package:Signs/Models/response/medication_model.dart';
 import 'package:Signs/Screens/signup_sub_screen_step1.dart';
@@ -93,7 +95,7 @@ class _AddMedicationState extends State<AddMedication> {
         child: SafeArea(
           bottom: false,
           child: Scaffold(
-            appBar: AppBar(),
+            // appBar: AppBar(),
             key: _scaffoldKey,
             body: BlocBuilder<MedicationBloc, MedicationState>(
               bloc: _medicationBloc,
@@ -143,6 +145,20 @@ class _AddMedicationState extends State<AddMedication> {
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
+
+
+                                  Transform.rotate(
+                                    angle: Constants.languageId == languages.Arabic ? 360 * pi : 1 * pi / 180,
+                                    child: IconButton(
+                                      icon: Icon(
+                                        Icons.arrow_back_ios,
+                                        color: backIconColor,
+                                      ),
+                                      onPressed: (){
+                                        Navigator.of(context).pop();
+                                      },
+                                    ),
+                                  ),
                                   SizedBox(height: 10),
                                   new Text(
                                     Strings().getMedicineAddStrings(),
@@ -664,34 +680,21 @@ class _AddMedicationState extends State<AddMedication> {
                                   SizedBox(height: 20),
                                   button(() {
                                     if (_timeController.text.toString().isNotEmpty &&
-                                        _nameController.text
-                                            .toString()
-                                            .isNotEmpty &&
-                                        _durationController.text
-                                            .toString()
-                                            .isNotEmpty &&
-                                        _noteController.text
-                                            .toString()
-                                            .isNotEmpty &&
-                                        _numberController.text
-                                            .toString()
-                                            .isNotEmpty) {
+                                        _nameController.text.toString().isNotEmpty &&
+                                        _durationController.text.toString().isNotEmpty &&
+                                        _noteController.text.toString().isNotEmpty &&
+                                        _numberController.text.toString().isNotEmpty) {
                                       _medicationData.isActive = "1";
                                       _medicationBloc.add(doMedicationEvent(
-                                          Singleton()
-                                              .loginModel
-                                              .data
-                                              .uId
-                                              .toString(),
+                                          Singleton().loginModel.data.uId.toString(),
                                           _nameController.text.toString(),
-                                          getid(Constants.medications)
-                                              .toString(),
+                                          getid(Constants.medications).toString(),
                                           _numberController.text.toString(),
                                           getDays(_durationController.text.toString(),_selectedItem.value),
-
-                                          // _durationController.text.toString(),
                                           _noteController.text.toString(),
-                                          getReminderData(_listViewData)));
+                                          getReminderData(_listViewData),
+                                          DateFormat('yyyy-MM-dd hh:mm:ss').format(new DateTime.now()).toString()
+                                      ));
                                     } else {
                                       _scaffoldKey.currentState
                                           .showSnackBar(SnackBar(

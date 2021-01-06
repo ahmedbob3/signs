@@ -8,6 +8,8 @@ class MedicationData {
   String medicationDuration;
   String medicationNote;
   String medicationTime;
+  String medicationCreateDate;
+
 
 
   void setMedicationNumber(String mNumber) {
@@ -31,6 +33,9 @@ class MedicationData {
   void setMedicationTime(String bir) {
     medicationTime=bir;
   }
+  void setMedicationCreateDate(String bir) {
+    medicationCreateDate=bir;
+  }
 
   String getMedicationNumber(){
     return medicationNumber;
@@ -52,6 +57,9 @@ class MedicationData {
   }
   String getMedicationTime(){
     return medicationTime;
+  }
+  String getMedicationCreateDate(){
+    return medicationCreateDate;
   }
 
 

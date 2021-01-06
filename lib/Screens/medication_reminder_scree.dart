@@ -5,6 +5,7 @@ import 'package:Signs/Utils/styles.dart';
 import 'package:Signs/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
+
 class MedicationReminderScreen extends StatefulWidget {
   final Function openSnoozeScreen;
   final Function closePopup;
@@ -69,7 +70,7 @@ class _MedicationReminderScreenState extends State<MedicationReminderScreen> {
                       child: Text(
                         Strings().getDAYText() +
                             ' ' +
-                            widget.data.mDuration +
+                            getRemaningDays(widget.data.createdDatetime) +
                             ' ' +
                             Strings().getReminderText(),
                         style: titleStyle(
@@ -138,5 +139,12 @@ class _MedicationReminderScreenState extends State<MedicationReminderScreen> {
                   ],
                 ),
               ));
+  }
+
+  String getRemaningDays(String createdDatetime) {
+    final createDate = DateTime.parse(createdDatetime);
+    final currentDate = DateTime.now();
+    return (currentDate.difference(createDate).inDays+1).toString();
+
   }
 }

@@ -109,26 +109,26 @@ class _MedicationCellState extends State<MedicationCell> {
         ],
         secondaryActions: <Widget>[
           IconSlideAction(
-            color: Constants.medicationList.elementAt(widget.index).isActive  == "1"
+            color: Constants.medicationListOnly.elementAt(widget.index).isActive  == "1"
                 ? Colors.orange
                 : Color.fromRGBO(199, 199, 204, 1),
             iconWidget: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                    Constants.medicationList.elementAt(widget.index).isActive  == "1" ? Medicine_Aactive : Medicine_Deactive),
+                    Constants.medicationListOnly.elementAt(widget.index).isActive  == "1" ? Medicine_Aactive : Medicine_Deactive),
                 SizedBox(height: 10),
-                Text(Constants.medicationList.elementAt(widget.index).isActive  == "1" ? 'Activate' : 'Deactivate',
+                Text(Constants.medicationListOnly.elementAt(widget.index).isActive  == "1" ? 'Activate' : 'Deactivate',
                     style: titleStyle(
                         color: Colors.white, fontFamily: semiBoldFontFamily,fontSize: 14))
               ],
             ),
             onTap: () {
               setState(() {
-                Constants.medicationList.elementAt(widget.index).isActive = Constants.medicationList.elementAt(widget.index).isActive  == "1" ? "0":"1";
+                Constants.medicationListOnly.elementAt(widget.index).isActive = Constants.medicationListOnly.elementAt(widget.index).isActive  == "1" ? "0":"1";
                 widget.bloc.add(doMedicationListEvent(
-                    Constants.medicationList.elementAt(widget.index).mId.toString(),
-                    Constants.medicationList.elementAt(widget.index).isActive
+                    Constants.medicationListOnly.elementAt(widget.index).mId.toString(),
+                    Constants.medicationListOnly.elementAt(widget.index).isActive
                 ));
               });
             },
@@ -148,7 +148,7 @@ class _MedicationCellState extends State<MedicationCell> {
             onTap: () {
               Constants.isActive =2;
               widget.bloc.add(doMedicationListEvent(
-                  Constants.medicationList.elementAt(widget.index).mId.toString(),
+                  Constants.medicationListOnly.elementAt(widget.index).mId.toString(),
                   "2"
               ));
             },
@@ -158,7 +158,7 @@ class _MedicationCellState extends State<MedicationCell> {
           decoration: BoxDecoration(
             color: !isOpened
                 ? Colors.transparent
-                : Constants.medicationList.elementAt(widget.index).isActive == "1"
+                : Constants.medicationListOnly.elementAt(widget.index).isActive == "1"
                     ? Colors.orange
                     : Color.fromRGBO(199, 199, 204, 1),
             borderRadius: BorderRadiusDirectional.only(

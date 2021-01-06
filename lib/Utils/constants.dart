@@ -11,6 +11,7 @@ class Constants {
   static SignUpData signUpData = SignUpData();
   static List<bool> medications = [false, false, false,false, false, false,false, false, false,false, false];
   static List<Datum> medicationList = [];
+  static List<Datum> medicationListOnly = [];
   static List<Data> subaccountsList = [];
   static int isActive=0;
   static int userType=0;

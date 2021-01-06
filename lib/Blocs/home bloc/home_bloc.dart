@@ -28,6 +28,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       yield HomeLoadingState();
       var response = await MedicationRepo().getMedicicationsList();
       print('reesss ${response.data}');
+      Constants.medicationListOnly = response.data;
       Constants.medicationList = ConstantMethods.sortTime(response.data);
       setNotification();
       yield HomeLoadedState(medicationModel: response);

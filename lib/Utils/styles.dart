@@ -25,6 +25,7 @@ const headerColor = Color.fromRGBO(0, 34, 81, 1);
 const buttonBorderColor = Color.fromRGBO(163, 172, 194, 0.3);
 const linkColor = Color.fromRGBO(238, 161, 26, 1);
 const medicineColor = Color.fromRGBO(152, 188, 229, 1);
+const backIconColor = Color.fromRGBO(130, 130, 130, 1);
 
 
 

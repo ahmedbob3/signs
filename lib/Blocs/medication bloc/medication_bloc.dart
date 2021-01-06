@@ -25,7 +25,8 @@ class MedicationBloc extends Bloc<MedicationEvent, MedicationState> {
               event.medicationDose,
               event.medicationDuration,
               event.medicationNote,
-              event.medicationTime
+              event.medicationTime,
+              event.medicationCreateDate,
           );
       yield MedicationLoadedState(response);
     }

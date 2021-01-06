@@ -86,7 +86,7 @@ class _MedicationScreenState extends State<MedicationScreen> {
                 Navigator.of(context).pop();
               } else {
                 if( Constants.isActive == 2){
-                  Constants.medicationList.removeAt(currentIndex);
+                  Constants.medicationListOnly.removeAt(currentIndex);
                   Constants.isActive =0;
                   print('remove');
                 }
@@ -141,15 +141,15 @@ class _MedicationScreenState extends State<MedicationScreen> {
             // height: 50,
             child:
               Expanded(
-                child: Constants.medicationList.length > 0
+                child: Constants.medicationListOnly.length > 0
                     ? ListView.builder(
                   // controller: _scrollController,
-                  itemCount: Constants.medicationList.length,
+                  itemCount: Constants.medicationListOnly.length,
                   itemBuilder: (context, index) {
                     currentIndex = index;
                     return MedicationCell(
                         shouldOpenAllItems: shouldOpenAllItems ? 1 : 2,
-                        data: Constants.medicationList[index],index:index,bloc :_medicationBloc);
+                        data: Constants.medicationListOnly[index],index:index,bloc :_medicationBloc);
                   },
                 )
                     : Column(

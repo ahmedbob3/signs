@@ -12,6 +12,7 @@ class doMedicationEvent extends MedicationEvent {
   String medicationDuration;
   String medicationNote;
   String medicationTime;
+  String medicationCreateDate;
 
   doMedicationEvent(
       this.medicationNumber,
@@ -20,7 +21,9 @@ class doMedicationEvent extends MedicationEvent {
       this.medicationDose,
       this.medicationDuration,
       this.medicationNote,
-      this.medicationTime);
+      this.medicationTime,
+      this.medicationCreateDate,
+  );
 }
 
 class resetMedicationState extends MedicationEvent {}

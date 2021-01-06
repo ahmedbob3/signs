@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:Signs/Blocs/medication%20bloc/medication_bloc.dart';
 import 'package:Signs/Models/response/medication_model.dart';
 import 'package:Signs/Utils/apis.dart';
 import 'package:Signs/Utils/constants.dart';
@@ -16,7 +15,7 @@ class MedicationRepo extends BaseRepo {
       String medicationDose,
       String medicationDuration,
       String medicationNote,
-      String medicationTime) async {
+      String medicationTime, String medicationCreateDate) async {
     Map<String, dynamic> params = {
       "u_id": medicationNumber,
       "m_name": medicationName,
@@ -26,6 +25,7 @@ class MedicationRepo extends BaseRepo {
       "m_reminder_note": medicationNote,
       "remember_time": medicationTime,
       "user_type": Constants.userType.toString(),
+      "created_datetime":medicationCreateDate,
       'lang': Constants.languageId == languages.Arabic
           ? 'ar'
           : Constants.languageId == languages.English

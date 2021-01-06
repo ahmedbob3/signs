@@ -58,20 +58,61 @@ class Datum {
     this.mfImage,
     this.rememberTime,
     this.isActive,
+    this.createdDatetime,
     this.lessTime,
 
   });
 
-  final String mId;
-  final String mName;
-  final String mDose;
-  final String mDuration;
-  final String mReminderNote;
-  final String mfName;
-  final String mfImage;
-  final List<String> rememberTime;
+  String mId;
+  String mName;
+  String mDose;
+  String mDuration;
+  String mReminderNote;
+  String mfName;
+  String mfImage;
+  List<String> rememberTime;
   String isActive;
-   String lessTime;
+  String lessTime;
+  String createdDatetime;
+
+  void setmId(String mNumber) {
+    mId=mNumber;
+  }
+  void setmName(String fName) {
+    mName=fName;
+  }
+  void setmDose(String lName) {
+    mDose=lName;
+  }
+  void setmDuration(String em) {
+    mDuration=em;
+  }
+  void setmReminderNote(String pass) {
+    mReminderNote=pass;
+  }
+  void setmfName(String gen) {
+    mfName=gen;
+  }
+  void setmfImage(String bir) {
+    mfImage=bir;
+  }
+
+  void setrememberTime(List<String> bir) {
+    rememberTime=bir;
+  }
+
+  void setisActive(String bir) {
+    isActive=bir;
+  }
+
+  void setlessTime(String bir) {
+    lessTime=bir;
+  }
+
+  void setcreatedDatetime(String bir) {
+    createdDatetime=bir;
+  }
+
 
 
   factory Datum.fromJson(String str) => Datum.fromMap(json.decode(str));
@@ -88,6 +129,7 @@ class Datum {
         mfImage: mfImageValues.map[json["mf_id"]],
         rememberTime: List<String>.from(json["remember_time"].map((x) => x)),
         isActive: json["m_active"].toString(),
+        createdDatetime : json["m_created_datetime"].toString(),
         lessTime: ""
 
 
@@ -102,7 +144,8 @@ class Datum {
         "mf_name": mfName,
         "mf_image": mfImage,
         "remember_time": List<dynamic>.from(rememberTime.map((x) => x)),
-          "m_active": isActive,
+        "m_active": isActive,
+        "m_created_datetime":createdDatetime,
           "lessTime": lessTime
 
 
