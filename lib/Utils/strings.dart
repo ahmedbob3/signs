@@ -1575,5 +1575,32 @@ String getMyHusbandText() {
     }
   }
 
+
+  String getServiceText() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.Services;
+        break;
+      case languages.Indian:
+        return Strings_INR.Services;
+        break;
+      default:
+        return Strings_EN.Services;
+    }
+  }
+
+  String getOverviewText() {
+    switch (Constants.languageId) {
+      case languages.Arabic:
+        return Strings_AR.Overview;
+        break;
+      case languages.Indian:
+        return Strings_INR.Overview;
+        break;
+      default:
+        return Strings_EN.Overview;
+    }
+  }
+
  
 }

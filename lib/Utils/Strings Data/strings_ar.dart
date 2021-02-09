@@ -126,4 +126,6 @@ class Strings_AR {
   static const String My_Sister = 'أختي';
   static const String My_Brother = 'أخي';
   static const String My_Husband = 'زوجي';
+  static const String Overview = 'نظرة عامة';
+  static const String Services = 'خدمات';
 }

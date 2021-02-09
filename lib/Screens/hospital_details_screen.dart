@@ -1,12 +1,13 @@
 import 'package:Signs/Utils/constants.dart';
 import 'package:Signs/Utils/strings.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Signs/Models/hospitals_model.dart';
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/styles.dart';
+import 'package:flutter_toggle_tab/flutter_toggle_tab.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_share/flutter_share.dart';
 
 class HospitalDetailsScreen extends StatefulWidget {
@@ -19,6 +20,8 @@ class HospitalDetailsScreen extends StatefulWidget {
 
 class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
   CarouselController buttonCarouselController = CarouselController();
+  int currentIndex=0;
+
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +121,35 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
                     )
                   ],
                 ),
-                Expanded(
+                SizedBox(height: 20,),
+                Container(
+                 child:  FlutterToggleTab(
+                    // width in percent, to set full width just set to 100
+                    width: 65,
+                    borderRadius: 10,
+                    height: 50,
+                    initialIndex: 0,
+                    selectedBackgroundColors: [defaultBackgroundColor],
+                    unSelectedBackgroundColors: [backTabColor],
+                    selectedTextStyle: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontFamily: mediumFontFamily),
+                    unSelectedTextStyle: TextStyle(
+                        color: greyColor,
+                        fontSize: 15,
+                        fontFamily: mediumFontFamily),
+                    labels: [Strings().getOverviewText(),Strings().getServiceText()],
+                    selectedLabelIndex: (index) {
+                      setState(() {
+                        currentIndex=index;
+                        // print("Selected Index $index");
+                      });
+                    },
+                  ),
+                ),
+            currentIndex==0 ?
+        Expanded(
                   child: SingleChildScrollView(
                     child: Padding(
                       padding: const EdgeInsets.all(18.0),
@@ -278,7 +309,8 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
                                                     initialPage: 0,
                                                   ),
                                                 ),
-                                              ));
+                                              )
+                                          );
                                         },
                                       );
                                     },
@@ -291,7 +323,40 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
                       ),
                     ),
                   ),
-                ),
+                ):Container(
+
+
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: CarouselSlider(
+                    carouselController:
+                    buttonCarouselController, items: widget.hospitalItem.gallery
+                        .map((item) => Container(
+                      child: Center(
+                          child: Image.network(
+                              item,
+                              fit: BoxFit
+                                  .cover,
+                              width: 1000)),
+                    ))
+                        .toList(),
+                    options: CarouselOptions(
+                      height: 200,
+
+                      autoPlayCurve: Curves.fastOutSlowIn,
+                      autoPlay: false,
+                      enlargeCenterPage: true,
+                      reverse: Constants.textDirection == TextDirection.rtl ,
+                      viewportFraction: 0.9,
+                      enableInfiniteScroll: true,
+                      initialPage: 0,
+
+                    ),
+                  ),
+                )
+            )
               ],
             ),
           ),

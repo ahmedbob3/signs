@@ -125,6 +125,8 @@ class Strings_INR {
   static const String My_Sister = 'My Sister';
   static const String My_Brother = 'My Brother';
   static const String My_Husband = 'My Husband';
+  static const String Overview = 'आढावा';
+  static const String Services = 'सेवा';
 }
 
   
