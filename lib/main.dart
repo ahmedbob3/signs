@@ -2,17 +2,11 @@ import 'package:country_codes/country_codes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:Signs/Screens/check_mobile_screen.dart';
-import 'package:Signs/Screens/landing_screen.dart';
-import 'package:Signs/Screens/langauage_screen.dart';
-import 'package:Signs/Screens/login_screen.dart';
 import 'package:Signs/Screens/splash_screen.dart';
-import 'package:Signs/Screens/welcome_screen.dart';
 import 'package:Signs/Utils/styles.dart';
-
 import 'Blocs/login mobile bloc/login_mobile_bloc.dart';
 import 'Utils/constants.dart';
+import 'package:Signs/utils/navigation/navigation_helper.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -54,6 +48,8 @@ class _MyAppState extends State<MyApp> {
             textDirection: Constants.textDirection,
             child: SplashScreen(),
           ),
-        ));
+        ),
+      onGenerateRoute: getApplicationRoute,
+    );
   }
 }

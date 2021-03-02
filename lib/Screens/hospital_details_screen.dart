@@ -1,5 +1,6 @@
 import 'package:Signs/Utils/constants.dart';
 import 'package:Signs/Utils/strings.dart';
+import 'package:Signs/ui/appointment/speciality/specialty_screen.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -325,10 +326,9 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
                   ),
                 ):Container(
 
-
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.pop(context);
+                    Navigator.of(context).pushNamed(SpecialityScreen.tag);
                   },
                   child: CarouselSlider(
                     carouselController:
