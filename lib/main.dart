@@ -1,4 +1,5 @@
 import 'package:Signs/Utils/navigation/navigation_helper.dart';
+import 'package:Signs/Utils/style/theme.dart';
 import 'package:country_codes/country_codes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -34,15 +35,7 @@ class _MyAppState extends State<MyApp> {
     return GetMaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          fontFamily: 'Font-Regular',
-          // backgroundColor: defaultBackgroundColor,
-          // canvasColor: defaultBackgroundColor,
-          //  theme: ThemeData(canvasColor: Colors.transparent)
-          primaryColor: defaultBackgroundColor,
-          // scaffoldBackgroundColor: defaultBackgroundColor,
-        ),
+        theme: appTheme,
         home: BlocProvider(
           create: (context) => LoginBloc(),
           child: Directionality(

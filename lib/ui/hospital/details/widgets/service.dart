@@ -15,8 +15,8 @@ class Service extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(serviceName),
-              Text(serviceDescription),
+              Text(serviceName, style:Theme.of(context).textTheme.subtitle1),
+              Text(serviceDescription, style:Theme.of(context).textTheme.bodyText1),
             ],
           ),
         )

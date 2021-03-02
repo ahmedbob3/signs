@@ -47,10 +47,7 @@ class HospitalServices extends StatelessWidget {
             SizedBox(height: 26,),
             Text(
               "What are you looking for ?",
-              style: titleStyle(
-                  color: defaultBackgroundColor,
-                  fontFamily: boldFontFamily,
-                  fontSize: 18),
+              style: Theme.of(context).textTheme.headline6,
             ),
             SizedBox(height: 26,),
             Service(
@@ -76,6 +73,12 @@ class HospitalServices extends StatelessWidget {
               serviceName: "Emergency call",
               serviceDescription: "You can make a Emergency call",
             ),
+            SizedBox(height: 26,),
+            Text(
+              "You recently visit",
+              style: Theme.of(context).textTheme.headline6,
+            ),
+            SizedBox(height: 26,),
           ],
         ),
       ),
