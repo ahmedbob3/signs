@@ -1,12 +1,13 @@
+import 'package:Signs/Utils/navigation/navigation_helper.dart';
 import 'package:country_codes/country_codes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:Signs/Screens/splash_screen.dart';
 import 'package:Signs/Utils/styles.dart';
+import 'package:get/get.dart';
 import 'Blocs/login mobile bloc/login_mobile_bloc.dart';
 import 'Utils/constants.dart';
-import 'package:Signs/utils/navigation/navigation_helper.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,7 +31,7 @@ class _MyAppState extends State<MyApp> {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-    return MaterialApp(
+    return GetMaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
@@ -49,7 +50,7 @@ class _MyAppState extends State<MyApp> {
             child: SplashScreen(),
           ),
         ),
-      onGenerateRoute: getApplicationRoute,
+      getPages: applicationPages,
     );
   }
 }

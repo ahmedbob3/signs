@@ -1,11 +1,12 @@
 import 'package:Signs/Utils/constants.dart';
+import 'package:Signs/ui/hospital/details/hospital_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:Signs/Blocs/navigation%20bloc/navigation_bloc.dart';
 import 'package:Signs/Models/hospitals_model.dart';
-import 'package:Signs/Screens/hospital_details_screen.dart';
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/styles.dart';
+import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HospitalCell extends StatelessWidget {
@@ -17,9 +18,8 @@ class HospitalCell extends StatelessWidget {
     
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => HospitalDetailsScreen(hospitalItem)));
-      },
+        Get.toNamed(HospitalDetailsScreen.tag, arguments: hospitalItem);
+        },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 10),
         padding: EdgeInsets.symmetric(vertical: 10).copyWith(right: Constants.languageId ==  languages.Arabic ? 0 : 10 ,

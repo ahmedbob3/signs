@@ -79,4 +79,8 @@ const String Medicine_Deactive = 'assets/images/ic_Deactivate.png';
 const String Medicine_Aactive = 'assets/images/ic_activate.png';
 const String Medicine_Delete = 'assets/images/ic_Delete.png';
 const String Medicine_empty = 'assets/images/ic_empty_box.png';
+const String PHYSICAL_APPOINTMENT = "assets/images/ic_Physical_Appointement.png";
+const String ONLINE_APPOINTMENT = "assets/images/ic_emergency_Call.png";
+const String MEDICAL_HISTORY = "assets/images/ic_medical-history.png";
+const String EMERGENCY_CALL = "assets/images/ic_emergency_Call.png";
 

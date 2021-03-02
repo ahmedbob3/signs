@@ -43,6 +43,10 @@ class Datum {
         this.hImage,
         this.hIcon,
         this.gallery,
+        this.hasOnlineAppointment,
+        this.hasPhysicalAppointment,
+        this.hasMedicalHistory,
+        this.hasEmergencyCall
     });
 
     final String hId;
@@ -54,6 +58,10 @@ class Datum {
     final String hImage;
     final String hIcon;
     final List<String> gallery;
+    final int hasOnlineAppointment;
+    final int hasPhysicalAppointment;
+    final int hasMedicalHistory;
+    final int hasEmergencyCall;
 
     factory Datum.fromMap(Map<String, dynamic> json) => Datum(
         hId: json["h_id"],
@@ -64,6 +72,10 @@ class Datum {
         hLatlang: json["h_latlang"],
         hImage: json["h_image"],
         hIcon: json["h_icon"],
+        hasOnlineAppointment: int.parse(json["h_online_appointment"]),
+        hasPhysicalAppointment: int.parse(json["h_physical_appointment"]),
+        hasMedicalHistory: int.parse(json["h_medical_history"]),
+        hasEmergencyCall: int.parse(json["h_emergency_call"]),
         gallery: List<String>.from(json["gallery"].map((x) => x)),
     );
 

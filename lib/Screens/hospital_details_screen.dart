@@ -124,7 +124,7 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
                 ),
                 SizedBox(height: 20,),
                 Container(
-                 child:  FlutterToggleTab(
+                 child: FlutterToggleTab(
                     // width in percent, to set full width just set to 100
                     width: 65,
                     borderRadius: 10,
