@@ -1,4 +1,4 @@
-import 'package:Inventory/utils/network/error.dart';
+import 'package:Signs/utils/network/error.dart';
 
 class Result{
   dynamic data;

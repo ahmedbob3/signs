@@ -1,7 +1,7 @@
-import 'package:Inventory/utils/network/result.dart';
+import 'package:Signs/Utils/apis.dart';
+import 'package:Signs/Utils/network/error.dart';
+import 'package:Signs/Utils/network/result.dart';
 import 'package:dio/dio.dart';
-import 'package:Inventory/utils/network/consts.dart';
-import 'package:Inventory/utils/network/error.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class NetworkUtil{
@@ -16,7 +16,7 @@ class NetworkUtil{
 
   void initDio() {
     // Set default configs
-    dio.options.baseUrl = baseUrl;
+    dio.options.baseUrl = APIS.serverURL;
     dio.options.connectTimeout = 50000; //50s
     dio.options.receiveTimeout = 30000;
     dio.interceptors.add(PrettyDioLogger(
@@ -60,7 +60,7 @@ class NetworkUtil{
   }
 
   // not used as dio through exception if status code not valid
-  ApplicationError getApplicationError(Response response) {
+   getApplicationError(Response response) {
     ErrorType errorType;
     String errorMsg = "un expected error";
     if(response.data != null && response?.data is Map){
@@ -80,7 +80,7 @@ class NetworkUtil{
   }
 
   // convert Dio error to application error
-  ApplicationError getApplicationErrorFromDioError(DioError dioError) {
+  getApplicationErrorFromDioError(DioError dioError) {
     ErrorType errorType;
     String errorMsg = "Network error";
     dynamic extra;
