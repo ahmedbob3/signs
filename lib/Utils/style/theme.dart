@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 const Color DEFAULT_BACKGROUND_COLOR = Color.fromRGBO(0, 81, 173, 1);
 const Color DAVY_GREY_COLOR = Color.fromRGBO(75, 76, 93, 1);
 const Color ASH_GREY_COLOR = Color.fromRGBO(183, 183, 187, 1);
+const Color TAUPE_GREY_COLOR = Color.fromRGBO(143, 145, 146, 1);
+const Color Battleship_GREY_COLOR = Color.fromRGBO(130, 130, 130, 1);
 const Color COBALT_COLOR = Color.fromRGBO(0, 67, 157, 1);
+const Color LIGHT_WHITE_COLOR = Color.fromRGBO(252, 254, 255, 1);
+const Color MANATE = Color.fromRGBO(151, 151, 151, 0.24);
 
 class Fonts{
   static String regularFontFamily   = 'Font-Regular';
@@ -34,4 +38,9 @@ final appTheme = ThemeData(
       color: COBALT_COLOR
     ),
   )
+);
+TextStyle hintTextStyle = TextStyle(
+  fontFamily: Fonts.regularFontFamily,
+  fontSize: 14,
+  color: TAUPE_GREY_COLOR
 );

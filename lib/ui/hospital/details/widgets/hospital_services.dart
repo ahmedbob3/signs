@@ -3,10 +3,12 @@ import 'package:Signs/Utils/constants.dart';
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/strings.dart';
 import 'package:Signs/Utils/styles.dart';
+import 'package:Signs/ui/appointment/doctors/doctors_screen.dart';
 import 'package:Signs/ui/hospital/details/widgets/service.dart';
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HospitalServices extends StatelessWidget {
   final Datum hospital;
@@ -54,6 +56,9 @@ class HospitalServices extends StatelessWidget {
               assetPath: PHYSICAL_APPOINTMENT,
               serviceName: "Physical Appointement",
               serviceDescription: "Book an appointement with a doctor in required specialty",
+              onClick: (){
+                Get.toNamed(DoctorsScreen.tag);
+              },
             ),
             SizedBox(height: 16,),
             Service(

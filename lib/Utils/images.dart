@@ -83,4 +83,8 @@ const String PHYSICAL_APPOINTMENT = "assets/images/ic_Physical_Appointement.png"
 const String ONLINE_APPOINTMENT = "assets/images/ic_emergency_Call.png";
 const String MEDICAL_HISTORY = "assets/images/ic_medical-history.png";
 const String EMERGENCY_CALL = "assets/images/ic_emergency_Call.png";
+const String Doctors_BG = 'assets/images/doctors_bg.png';
+const String IC_SPECIALITY = 'assets/images/ic_Specilaity_Circle.png';
+const String IC_NO_DOCTORS = 'assets/images/ic_no_Doctors.png';
+
 
