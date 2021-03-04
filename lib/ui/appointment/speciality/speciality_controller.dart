@@ -20,6 +20,7 @@ class SpecialityController extends BaseController{
                 onSuccess: (){
                   isLoading = false;
                   availableSpecialities = specialitiesResult.data.data;
+                  update();
                 }
               );
             }

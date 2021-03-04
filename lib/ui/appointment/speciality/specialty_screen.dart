@@ -1,9 +1,11 @@
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/style/theme.dart';
 import 'package:Signs/ui/appointment/doctors/doctors_screen.dart';
+import 'package:Signs/ui/appointment/speciality/widgets/speciality_card.dart';
 import 'package:Signs/widgets/appbar.dart';
 import 'package:Signs/widgets/custom_edit_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:Signs/ui/appointment/speciality/speciality_controller.dart';
 
@@ -35,7 +37,20 @@ class SpecialityScreen extends StatelessWidget {
                       hintText: "Search Speciality",
                     ),
                     SizedBox(height: 30,),
-                    Expanded(child: Container(color: Colors.red,))
+                    Expanded(
+                      child: controller.isLoading? Center(child: CircularProgressIndicator()):
+                         Container(
+                           width: double.infinity,
+                           child: Wrap(
+                             alignment: WrapAlignment.start,
+                             crossAxisAlignment: WrapCrossAlignment.start,
+                             children: controller.availableSpecialities.map(
+                                     (speciality) => SpecialityCard(specialitiesData: speciality,)
+                             ).toList()
+                           ),
+                         )
+
+                    )
                   ],
                 ),
               )

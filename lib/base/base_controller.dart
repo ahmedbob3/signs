@@ -10,6 +10,7 @@ class BaseController extends GetxController{
       /*if(result.error.type is Unauthorized){
         logOut();
       }*/
+      print("network error: ${result.error.errorMsg}");
       onFailed?.call();
     }
   }
