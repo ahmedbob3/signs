@@ -1,7 +1,9 @@
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/style/theme.dart';
 import 'package:Signs/ui/appointment/doctors/doctors_screen.dart';
+import 'package:Signs/ui/appointment/speciality/widgets/empty_specialities.dart';
 import 'package:Signs/ui/appointment/speciality/widgets/speciality_card.dart';
+import 'package:Signs/widgets/animated_button.dart';
 import 'package:Signs/widgets/appbar.dart';
 import 'package:Signs/widgets/custom_edit_text.dart';
 import 'package:flutter/material.dart';
@@ -39,18 +41,20 @@ class SpecialityScreen extends StatelessWidget {
                     SizedBox(height: 30,),
                     Expanded(
                       child: controller.isLoading? Center(child: CircularProgressIndicator()):
-                         Container(
-                           width: double.infinity,
-                           child: Wrap(
-                             alignment: WrapAlignment.start,
-                             crossAxisAlignment: WrapCrossAlignment.start,
-                             children: controller.availableSpecialities.map(
-                                     (speciality) => SpecialityCard(specialitiesData: speciality,)
-                             ).toList()
-                           ),
-                         )
-
-                    )
+                         controller.availableSpecialities.isNotEmpty ? Wrap(
+                           alignment: WrapAlignment.start,
+                           crossAxisAlignment: WrapCrossAlignment.start,
+                           children: controller.availableSpecialities.map(
+                                   (speciality) => SpecialityCard(specialitiesData: speciality,)
+                           ).toList()
+                         ):EmptySpecialities()
+                    ),
+                    AnimatedButton(
+                      btnName: "Next",
+                      onPressed: (){},
+                      controller: AnimatedButtonController(),
+                    ),
+                    SizedBox(height: 30,)
                   ],
                 ),
               )

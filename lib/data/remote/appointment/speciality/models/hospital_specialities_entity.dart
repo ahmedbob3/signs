@@ -16,4 +16,5 @@ class HospitalSpecialitiesData with JsonConvert<HospitalSpecialitiesData> {
 	String sActiveIcon;
 	@JSONField(name: "s_selected_icon")
 	String sSelectedIcon;
+	bool isSelected = false;
 }

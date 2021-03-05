@@ -6,6 +6,8 @@ class SpecialityController extends BaseController{
   List<HospitalSpecialitiesData> availableSpecialities = [];
   bool isLoading = false;
   SpecialityRepository _specialityRepository = SpecialityRepository();
+  bool showNextButton = false;
+
   SpecialityController(){
     getSpecialities();
   }
@@ -25,5 +27,11 @@ class SpecialityController extends BaseController{
               );
             }
     );
+  }
+
+  void selectSpeciality(HospitalSpecialitiesData specialitiesData) {
+    specialitiesData.isSelected = !specialitiesData.isSelected;
+    showNextButton = availableSpecialities.any((element) => element.isSelected);
+    update();
   }
 }
