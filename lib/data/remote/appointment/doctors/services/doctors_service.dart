@@ -6,9 +6,9 @@ class DoctorsService{
       return [
         Doctor(
           id: 1,
-          name: "Ahmed",
-          bio: "alcemi doctor",
-          speciality: "Heart",
+          name: "Dr. Albert Alexander",
+          bio: "Consultant & Clinical Director of orthopedic surgery",
+          speciality: "Orthopedic Specialist",
           imageUrl: "https://i.picsum.photos/id/113/200/300.jpg?hmac=DvsBBpPushDywwuMaEX4gQacembMMccz2r-xKWuO82k"
         ),
         Doctor(

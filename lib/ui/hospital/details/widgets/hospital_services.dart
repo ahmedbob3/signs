@@ -3,7 +3,7 @@ import 'package:Signs/Utils/constants.dart';
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/strings.dart';
 import 'package:Signs/Utils/styles.dart';
-import 'package:Signs/ui/appointment/doctors/doctors_screen.dart';
+import 'file:///E:/android/projects/signs/lib/ui/appointment/doctors/list/doctors_screen.dart';
 import 'package:Signs/ui/hospital/details/widgets/service.dart';
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';

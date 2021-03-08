@@ -87,5 +87,6 @@ const String Doctors_BG = 'assets/images/doctors_bg.png';
 const String IC_SPECIALITY = 'assets/images/ic_Specilaity_Circle.png';
 const String IC_NO_DOCTORS = 'assets/images/ic_no_Doctors.png';
 const String IC_NO_SPECIALITIES = 'assets/images/ic_no_Speciality.png';
+const String IC_EXPERIENCE = 'assets/images/ic_experience_Rectange.png';
 
 

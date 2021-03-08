@@ -344,7 +344,6 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
                         .toList(),
                     options: CarouselOptions(
                       height: 200,
-
                       autoPlayCurve: Curves.fastOutSlowIn,
                       autoPlay: false,
                       enlargeCenterPage: true,

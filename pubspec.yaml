@@ -47,6 +47,8 @@ dependencies:
   flutter_toggle_tab: ^0.0.3+2
   get: ^3.25.6
   pretty_dio_logger: ^1.1.1
+  simple_url_preview: ^2.0.0
+  auto_size_text: ^2.1.0
 
 
 
