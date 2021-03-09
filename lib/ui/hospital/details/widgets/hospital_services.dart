@@ -3,7 +3,7 @@ import 'package:Signs/Utils/constants.dart';
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/strings.dart';
 import 'package:Signs/Utils/styles.dart';
-import 'file:///E:/android/projects/signs/lib/ui/appointment/doctors/list/doctors_screen.dart';
+import 'package:Signs/ui/appointment/doctors/list/doctors_screen.dart';
 import 'package:Signs/ui/hospital/details/widgets/service.dart';
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -57,7 +57,7 @@ class HospitalServices extends StatelessWidget {
               serviceName: "Physical Appointement",
               serviceDescription: "Book an appointement with a doctor in required specialty",
               onClick: (){
-                Get.toNamed(DoctorsScreen.tag);
+                Get.toNamed(DoctorsScreen.tag, arguments: ModalRoute.of(context).settings.arguments);
               },
             ),
             SizedBox(height: 16,),

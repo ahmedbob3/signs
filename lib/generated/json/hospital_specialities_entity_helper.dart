@@ -9,12 +9,7 @@ hospitalSpecialitiesEntityFromJson(HospitalSpecialitiesEntity data, Map<String, 
 	if (json['status'] != null) {
 		data.status = json['status'].toString();
 	}
-	if (json['data'] != null) {
-		data.data = new List<HospitalSpecialitiesData>();
-		(json['data'] as List).forEach((v) {
-			data.data.add(new HospitalSpecialitiesData().fromJson(v));
-		});
-	}
+	data.data = (json['data'] as List)?.map((v) => HospitalSpecialitiesData().fromJson(v))?.toList();
 	return data;
 }
 
@@ -22,9 +17,7 @@ Map<String, dynamic> hospitalSpecialitiesEntityToJson(HospitalSpecialitiesEntity
 	final Map<String, dynamic> data = new Map<String, dynamic>();
 	data['code'] = entity.code;
 	data['status'] = entity.status;
-	if (entity.data != null) {
-		data['data'] =  entity.data.map((v) => v.toJson()).toList();
-	}
+	data['data'] =  entity.data?.map((v) => v.toJson())?.toList();
 	return data;
 }
 
@@ -41,6 +34,9 @@ hospitalSpecialitiesDataFromJson(HospitalSpecialitiesData data, Map<String, dyna
 	if (json['s_selected_icon'] != null) {
 		data.sSelectedIcon = json['s_selected_icon'].toString();
 	}
+	if (json['isSelected'] != null) {
+		data.isSelected = json['isSelected'];
+	}
 	return data;
 }
 
@@ -50,5 +46,6 @@ Map<String, dynamic> hospitalSpecialitiesDataToJson(HospitalSpecialitiesData ent
 	data['s_name'] = entity.sName;
 	data['s_active_icon'] = entity.sActiveIcon;
 	data['s_selected_icon'] = entity.sSelectedIcon;
+	data['isSelected'] = entity.isSelected;
 	return data;
 }

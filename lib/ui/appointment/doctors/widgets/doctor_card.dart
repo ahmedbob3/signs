@@ -1,5 +1,5 @@
 import 'package:Signs/Utils/style/theme.dart';
-import 'package:Signs/data/remote/appointment/doctors/models/doctor.dart';
+import 'package:Signs/data/remote/appointment/doctors/models/doctors_entity.dart';
 import 'package:Signs/ui/appointment/doctors/details/doctor_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,6 +18,7 @@ class DoctorCard extends StatelessWidget {
       child: Hero(
         tag: doctor.id,
         child: Card(
+          margin: EdgeInsets.zero,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8)
           ),
@@ -27,7 +28,7 @@ class DoctorCard extends StatelessWidget {
               children: [
                 Container(
                     width: 110.0,
-                    height: 150.0,
+                    height: 120.0,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                           fit: BoxFit.cover, image: NetworkImage(doctor.imageUrl)),
@@ -41,9 +42,9 @@ class DoctorCard extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      AutoSizeText(doctor.name, style: boldBlackTextStyle, maxLines: 2, textAlign: TextAlign.center,),
+                      AutoSizeText(doctor.name, style: boldBlackTextStyle, maxLines: 1, textAlign: TextAlign.center,),
                       SizedBox(height: 14,),
-                      AutoSizeText(doctor.bio, style: Theme.of(context).textTheme.bodyText2, maxLines: 3, textAlign: TextAlign.center,),
+                      AutoSizeText(doctor.bio, style: Theme.of(context).textTheme.bodyText2, maxLines: 2, textAlign: TextAlign.center,),
                       SizedBox(height: 14,),
                       Container(
                         decoration: BoxDecoration(

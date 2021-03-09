@@ -1,6 +1,6 @@
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/style/theme.dart';
-import 'package:Signs/data/remote/appointment/doctors/models/doctor.dart';
+import 'package:Signs/data/remote/appointment/doctors/models/doctors_entity.dart';
 import 'package:Signs/ui/appointment/doctors/details/doctor_details_controller.dart';
 import 'package:Signs/ui/appointment/doctors/widgets/doctor_card.dart';
 import 'package:Signs/widgets/animated_button.dart';
@@ -34,13 +34,13 @@ class DoctorsDetailsScreen extends StatelessWidget {
                   Expanded(
                     child: controller.isLoading? Center(child: CircularProgressIndicator()):
                     ListView(
-                      padding: EdgeInsets.only(top:HEADER_HEIGHT/2 + 16, right: 16, left: 16),
+                      padding: EdgeInsets.only(top:HEADER_HEIGHT/2, right: 16, left: 16),
                       children: [
                         Row(
                           children: [
                             Image.asset(IC_EXPERIENCE, width: 40, height: 40,),
                             SizedBox(width: 12,),
-                            Text(controller.doctorDetails.yearsOfExperience.toString(), style: boldDeniumTextStyle,),
+                            Text(controller.doctorDetails.dExperienceYear.toString(), style: boldDeniumTextStyle,),
                             SizedBox(width: 12,),
                             Text('Years of experience', style: dimGreySemiBoldTextStyle,)
                           ],
@@ -72,54 +72,59 @@ class DoctorsDetailsScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 12,),
-                        Text('Videos', style: Theme.of(context).textTheme.subtitle1,),
-                        SizedBox(height: 20,),
-                        Container(
-                          height: 140,
-                          width: double.infinity,
-                          child: CarouselSlider(
-                            options: CarouselOptions(
-                              height: 200,
-                              autoPlayCurve: Curves.fastOutSlowIn,
-                              autoPlay: false,
-                              enlargeCenterPage: true,
-                              // reverse: Constants.textDirection == TextDirection.rtl ,
-                              viewportFraction: 0.8,
-                              pageSnapping: true,
-                              enableInfiniteScroll: false,
-                              initialPage: 0,
+                        if(controller.doctorDetails.videos.isNotEmpty) ...[
+                          Text('Videos', style: Theme.of(context).textTheme.subtitle1,),
+                          SizedBox(height: 20,),
+                          Container(
+                            height: 140,
+                            width: double.infinity,
+                            child: CarouselSlider(
+                              options: CarouselOptions(
+                                height: 200,
+                                autoPlayCurve: Curves.fastOutSlowIn,
+                                autoPlay: false,
+                                enlargeCenterPage: true,
+                                // reverse: Constants.textDirection == TextDirection.rtl ,
+                                viewportFraction: 0.8,
+                                pageSnapping: true,
+                                enableInfiniteScroll: false,
+                                initialPage: 0,
+                              ),
+                              items: controller.doctorDetails.videos.map(
+                                      (videoUrl) => Padding(
+                                    padding: const EdgeInsets.all(4.0),
+                                    child: SimpleUrlPreview(
+                                      previewHeight: 130,
+                                      url: videoUrl.replaceAll("http://thesignsco.com/", ''),
+                                      bgColor: Colors.white,
+                                      imageLoaderColor: Colors.blueGrey,
+                                      titleLines: 1,
+                                      descriptionLines: 2,
+                                      titleStyle: boldBlack14TextStyle,
+                                      descriptionStyle: Theme.of(context).textTheme.bodyText2,
+                                    ),
+                                  )).toList(),
                             ),
-                            items: controller.doctorDetails.videos.map(
-                                    (videoUrl) => Padding(
-                                      padding: const EdgeInsets.all(4.0),
-                                      child: SimpleUrlPreview(
-                                        previewHeight: 130,
-                                        url: videoUrl,
-                                        bgColor: Colors.white,
-                                        imageLoaderColor: Colors.blueGrey,
-                                        titleLines: 1,
-                                        descriptionLines: 2,
-                                        titleStyle: boldBlack14TextStyle,
-                                        descriptionStyle: Theme.of(context).textTheme.bodyText2,
-                                      ),
-                                    )).toList(),
                           ),
-                        ),
-                        SizedBox(height: 20,),
-                        Text('Articles', style: Theme.of(context).textTheme.subtitle1,),
-                        SizedBox(height: 20,),
-                        ...controller.doctorDetails.articles.map(
-                                (articleUrl) => SimpleUrlPreview(
-                                  url: articleUrl,
-                                    bgColor: Colors.white,
-                                    imageLoaderColor: Colors.blueGrey,
-                                    titleLines: 1,
-                                    descriptionLines: 2,
-                                    titleStyle: boldBlack14TextStyle,
-                                    descriptionStyle: Theme.of(context).textTheme.bodyText2
-                                )
-                        ),
-                        SizedBox(height: 80,)
+                          SizedBox(height: 20,),
+                        ],
+
+                        if(controller.doctorDetails.articles.isNotEmpty) ...[
+                          Text('Articles', style: Theme.of(context).textTheme.subtitle1,),
+                          SizedBox(height: 20,),
+                          ...controller.doctorDetails.articles.map(
+                                  (articleUrl) => SimpleUrlPreview(
+                                  url: articleUrl.replaceAll("http://thesignsco.com/", ''),
+                                  bgColor: Colors.white,
+                                  imageLoaderColor: Colors.blueGrey,
+                                  titleLines: 1,
+                                  descriptionLines: 2,
+                                  titleStyle: boldBlack14TextStyle,
+                                  descriptionStyle: Theme.of(context).textTheme.bodyText2
+                              )
+                          ),
+                          SizedBox(height: 80,)
+                        ]
                       ],
                     ),
                   )

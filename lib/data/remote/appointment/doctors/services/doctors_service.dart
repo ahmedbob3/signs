@@ -1,52 +1,14 @@
-import 'package:Signs/data/remote/appointment/doctors/models/doctor.dart';
+import 'package:Signs/Utils/network/network_util.dart';
+import 'package:Signs/Utils/network/result.dart';
+import 'package:Signs/base/base_service.dart';
+import 'package:Signs/data/remote/appointment/doctors/models/doctors_entity.dart';
 
-class DoctorsService{
-  Future<List<Doctor>> getAvailableDoctors(){
-    return Future.delayed(Duration(seconds: 1),(){
-      return [
-        Doctor(
-          id: 1,
-          name: "Dr. Albert Alexander",
-          bio: "Consultant & Clinical Director of orthopedic surgery",
-          speciality: "Orthopedic Specialist",
-          imageUrl: "https://i.picsum.photos/id/113/200/300.jpg?hmac=DvsBBpPushDywwuMaEX4gQacembMMccz2r-xKWuO82k"
-        ),
-        Doctor(
-            id: 1,
-            name: "Ahmed",
-            bio: "alcemi doctor",
-            speciality: "Heart",
-            imageUrl: "https://i.picsum.photos/id/113/200/300.jpg?hmac=DvsBBpPushDywwuMaEX4gQacembMMccz2r-xKWuO82k"
-        ),
-        Doctor(
-            id: 1,
-            name: "Ahmed",
-            bio: "alcemi doctor",
-            speciality: "Heart",
-            imageUrl: "https://i.picsum.photos/id/113/200/300.jpg?hmac=DvsBBpPushDywwuMaEX4gQacembMMccz2r-xKWuO82k"
-        ),
-        Doctor(
-            id: 1,
-            name: "Ahmed",
-            bio: "alcemi doctor",
-            speciality: "Heart",
-            imageUrl: "https://i.picsum.photos/id/113/200/300.jpg?hmac=DvsBBpPushDywwuMaEX4gQacembMMccz2r-xKWuO82k"
-        ),
-        Doctor(
-            id: 1,
-            name: "Ahmed",
-            bio: "alcemi doctor",
-            speciality: "Heart",
-            imageUrl: "https://i.picsum.photos/id/113/200/300.jpg?hmac=DvsBBpPushDywwuMaEX4gQacembMMccz2r-xKWuO82k"
-        ),
-        Doctor(
-            id: 1,
-            name: "Ahmed",
-            bio: "alcemi doctor",
-            speciality: "Heart",
-            imageUrl: "https://i.picsum.photos/id/113/200/300.jpg?hmac=DvsBBpPushDywwuMaEX4gQacembMMccz2r-xKWuO82k"
-        )
-      ];
-    });
+class DoctorsService extends BaseService{
+  Future<Result> getAvailableDoctors(String hospitalId) async{
+    var result = await NetworkUtil().get("get_doctors_by_hospital&lang=$lang&h_id=$hospitalId",);
+    if (result.status == Status.OK) {
+      result.data = DoctorsEntity().fromJson(result.data);
+    }
+    return result;
   }
 }

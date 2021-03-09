@@ -1,7 +1,7 @@
 import 'package:Signs/base/base_controller.dart';
 import 'package:Signs/data/remote/appointment/doctors/doctors_repository.dart';
-import 'package:Signs/data/remote/appointment/doctors/models/doctor.dart';
-import 'package:Signs/data/remote/appointment/doctors/models/doctor_details.dart';
+import 'package:Signs/data/remote/appointment/doctors/models/doctors_entity.dart';
+import 'package:Signs/data/remote/appointment/doctors/models/doctor_details_entity.dart';
 
 class DoctorDetailsController extends BaseController{
   final Doctor doctor;
@@ -17,9 +17,14 @@ class DoctorDetailsController extends BaseController{
     isLoading = true;
     update();
     _doctorsRepository.getDoctorDetails(doctor.id).then(
-            (details){
+            (detailsResult){
+              handleResponse(
+                result: detailsResult,
+                onSuccess: (){
+                  doctorDetails = detailsResult.data.data[0];
+                }
+              );
               isLoading = false;
-              doctorDetails = details;
               update();
             }
     );
