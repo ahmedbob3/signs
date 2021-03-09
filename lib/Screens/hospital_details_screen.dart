@@ -282,35 +282,37 @@ class _HospitalDetailsScreenState extends State<HospitalDetailsScreen> {
                                           showDialog(
                                               context: (context),
                                               barrierDismissible: true,
-                                              child: GestureDetector(
-                                                onTap: () {
-                                                  Navigator.pop(context);
-                                                },
-                                                child: CarouselSlider(
-                                                  carouselController:
-                                                      buttonCarouselController,
-                                                  items: widget
-                                                      .hospitalItem.gallery
-                                                      .map((item) => Container(
-                                                            child: Center(
-                                                                child: Image.network(
-                                                                    item,
-                                                                    fit: BoxFit
-                                                                        .cover,
-                                                                    width: 1000)),
-                                                          ))
-                                                      .toList(),
-                                                  options: CarouselOptions(
-                                                    autoPlay: false,
-                                                    enlargeCenterPage: true,
-                                                    reverse: Constants.textDirection == TextDirection.rtl ,
-                                                    // viewportFraction: 0.8,
-                                                    // aspectRatio: 2.0,
-                                                    enableInfiniteScroll: false,
-                                                    initialPage: 0,
+                                              builder: (ctx){
+                                                return GestureDetector(
+                                                  onTap: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: CarouselSlider(
+                                                    carouselController:
+                                                    buttonCarouselController,
+                                                    items: widget
+                                                        .hospitalItem.gallery
+                                                        .map((item) => Container(
+                                                      child: Center(
+                                                          child: Image.network(
+                                                              item,
+                                                              fit: BoxFit
+                                                                  .cover,
+                                                              width: 1000)),
+                                                    ))
+                                                        .toList(),
+                                                    options: CarouselOptions(
+                                                      autoPlay: false,
+                                                      enlargeCenterPage: true,
+                                                      reverse: Constants.textDirection == TextDirection.rtl ,
+                                                      // viewportFraction: 0.8,
+                                                      // aspectRatio: 2.0,
+                                                      enableInfiniteScroll: false,
+                                                      initialPage: 0,
+                                                    ),
                                                   ),
-                                                ),
-                                              )
+                                                );
+                                              }
                                           );
                                         },
                                       );
