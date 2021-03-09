@@ -48,7 +48,7 @@ class DoctorsScreen extends StatelessWidget {
                     SizedBox(height: 30,),
                     GestureDetector(
                       onTap: ()async{
-                        final result = await Get.toNamed(SpecialityScreen.tag, arguments: hospital);
+                        final result = await Get.toNamed(SpecialityScreen.tag, arguments: [hospital, controller.filteredSpecialities]);
                         if(result != null){
                           controller.filterBySpecialities(result);
                         }

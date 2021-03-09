@@ -10,10 +10,11 @@ class DoctorsController extends BaseController{
   DoctorsRepository _doctorsRepository = DoctorsRepository();
   List<Doctor> availableDoctors = [];
   bool isDoctorsLoading = false;
-  String selectedSpecialities = "All Specialities";
+  String selectedSpecialities = ALL_SPECIALITIES_MSG;
   Datum hospital;
   var lastSearchQuery = "".obs;
   var specialityFilter = "";
+  List<HospitalSpeciality> filteredSpecialities = [];
   TextEditingController searchController = TextEditingController();
 
   DoctorsController({this.hospital}){
@@ -50,8 +51,12 @@ class DoctorsController extends BaseController{
   }
 
   void filterBySpecialities(List<HospitalSpeciality> filteredSpecialities) {
+    this.filteredSpecialities = filteredSpecialities;
     specialityFilter = filteredSpecialities.map((e) => e.keywords).join(",");
     selectedSpecialities = filteredSpecialities.map((e) => e.name).join(", ");
+    if(filteredSpecialities.isEmpty){
+      selectedSpecialities = ALL_SPECIALITIES_MSG;
+    }
     getAvailableDoctors();
   }
 
@@ -63,3 +68,5 @@ class DoctorsController extends BaseController{
   }
 
 }
+
+const String ALL_SPECIALITIES_MSG = "All Specialities";

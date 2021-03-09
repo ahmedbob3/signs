@@ -7,8 +7,9 @@ import 'package:get/get.dart';
 
 class SpecialityCard extends StatelessWidget {
   final HospitalSpeciality specialitiesData;
+  final Function onTap;
 
-  const SpecialityCard({Key key, this.specialitiesData}) : super(key: key);
+  const SpecialityCard({Key key, this.specialitiesData, this.onTap}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
