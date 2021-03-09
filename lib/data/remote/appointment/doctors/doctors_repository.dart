@@ -6,8 +6,8 @@ class DoctorsRepository{
   DoctorsService _doctorsService = DoctorsService();
   DoctorDetailsService _doctorDetailsService = DoctorDetailsService();
 
-  Future<Result> getAvailableDoctors(String hospitalId){
-    return _doctorsService.getAvailableDoctors(hospitalId);
+  Future<Result> getAvailableDoctors({String hospitalId, String doctorName, String searchKey}){
+    return _doctorsService.getAvailableDoctors(hospitalId: hospitalId, doctorName: doctorName, searchKey: searchKey);
   }
 
   Future<Result> getDoctorDetails(String doctorId){

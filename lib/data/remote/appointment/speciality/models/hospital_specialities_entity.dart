@@ -4,7 +4,7 @@ import 'package:Signs/generated/json/base/json_field.dart';
 class HospitalSpecialitiesEntity with JsonConvert<HospitalSpecialitiesEntity> {
 	int code;
 	String status;
-	List<HospitalSpeciality> data;
+	List<HospitalSpeciality> data = [];
 }
 
 class HospitalSpeciality with JsonConvert<HospitalSpeciality> {

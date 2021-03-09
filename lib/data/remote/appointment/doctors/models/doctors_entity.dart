@@ -4,7 +4,7 @@ import 'package:Signs/generated/json/base/json_field.dart';
 class DoctorsEntity with JsonConvert<DoctorsEntity> {
 	int code;
 	String status;
-	List<Doctor> data;
+	List<Doctor> data = [];
 }
 
 class Doctor with JsonConvert<Doctor> {

@@ -37,6 +37,7 @@ class DoctorsScreen extends StatelessWidget {
                     CustomEditText(
                       prefixIcon: Icon(Icons.search, color: TAUPE_GREY_COLOR, size: 18,),
                       hintText: "Search by Doctor Name",
+                      controller: controller.searchController,
                     ),
                     SizedBox(height: 30,),
                     GestureDetector(

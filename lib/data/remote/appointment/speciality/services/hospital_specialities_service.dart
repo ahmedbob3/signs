@@ -8,7 +8,11 @@ class HospitalSpecialitiesService extends BaseService{
       {String hospitalId, String searchQuery}) async{
     var result = await NetworkUtil().get("get_specialities_by_hospital&lang=$lang&h_id=$hospitalId&search_key=$searchQuery",);
     if (result.status == Status.OK) {
-    result.data = HospitalSpecialitiesEntity().fromJson(result.data);
+      try{
+        result.data = HospitalSpecialitiesEntity().fromJson(result.data);
+      } catch(e){
+        result.data = HospitalSpecialitiesEntity();
+      }
     }
     return result;
   }
