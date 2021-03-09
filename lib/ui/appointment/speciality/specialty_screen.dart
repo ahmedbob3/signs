@@ -1,6 +1,6 @@
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/style/theme.dart';
-import 'package:Signs/ui/appointment/doctors/doctors_screen.dart';
+import 'file:///E:/android/projects/signs/lib/ui/appointment/doctors/list/doctors_screen.dart';
 import 'package:Signs/ui/appointment/speciality/widgets/empty_specialities.dart';
 import 'package:Signs/ui/appointment/speciality/widgets/speciality_card.dart';
 import 'package:Signs/widgets/animated_button.dart';

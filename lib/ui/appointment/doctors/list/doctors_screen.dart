@@ -1,6 +1,6 @@
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/style/theme.dart';
-import 'package:Signs/ui/appointment/doctors/doctors_controller.dart';
+import 'file:///E:/android/projects/signs/lib/ui/appointment/doctors/list/doctors_controller.dart';
 import 'package:Signs/ui/appointment/doctors/widgets/doctor_card.dart';
 import 'package:Signs/ui/appointment/doctors/widgets/empty_doctors_screen.dart';
 import 'package:Signs/ui/appointment/speciality/specialty_screen.dart';
@@ -20,8 +20,8 @@ class DoctorsScreen extends StatelessWidget {
           appBar: getAppBar(
             title: "Book Appointment"
           ),
-          backgroundColor: LIGHT_WHITE_COLOR,
           extendBodyBehindAppBar: true,
+          backgroundColor: LIGHT_WHITE_COLOR,
           body: Stack(
             children: [
               Image.asset(Doctors_BG, height: BANNER_HEIGHT, width: double.infinity, fit: BoxFit.cover ,),
@@ -65,9 +65,12 @@ class DoctorsScreen extends StatelessWidget {
                         ),
                       ),
                     ),
+                    SizedBox(height: 16,),
                     Expanded(
                       child: controller.isDoctorsLoading?Center(child: CircularProgressIndicator()):
-                      controller.availableDoctors.isNotEmpty?ListView.builder(
+                      controller.availableDoctors.isNotEmpty?
+                      ListView.builder(
+                        padding: EdgeInsets.zero,
                         itemCount: controller.availableDoctors.length,
                         itemBuilder: (buildContext, index){
                           final doctor = controller.availableDoctors[index];
