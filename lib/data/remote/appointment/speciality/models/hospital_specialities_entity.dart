@@ -4,17 +4,19 @@ import 'package:Signs/generated/json/base/json_field.dart';
 class HospitalSpecialitiesEntity with JsonConvert<HospitalSpecialitiesEntity> {
 	int code;
 	String status;
-	List<HospitalSpecialitiesData> data;
+	List<HospitalSpeciality> data;
 }
 
-class HospitalSpecialitiesData with JsonConvert<HospitalSpecialitiesData> {
+class HospitalSpeciality with JsonConvert<HospitalSpeciality> {
 	@JSONField(name: "s_id")
-	String sId;
+	String id;
 	@JSONField(name: "s_name")
-	String sName;
-	@JSONField(name: "s_active_icon")
-	String sActiveIcon;
+	String name;
+	@JSONField(name: "s_unselected_icon")
+	String unselectedIcon;
 	@JSONField(name: "s_selected_icon")
-	String sSelectedIcon;
+	String selectedIcon;
+	@JSONField(name: "s_keywords")
+	String keywords;
 	bool isSelected = false;
 }

@@ -1,11 +1,12 @@
 import 'package:Signs/data/remote/appointment/speciality/models/hospital_specialities_entity.dart';
 import 'package:Signs/ui/appointment/speciality/speciality_controller.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:Signs/Utils/style/theme.dart';
 import 'package:get/get.dart';
 
 class SpecialityCard extends StatelessWidget {
-  final HospitalSpecialitiesData specialitiesData;
+  final HospitalSpeciality specialitiesData;
 
   const SpecialityCard({Key key, this.specialitiesData}) : super(key: key);
   @override
@@ -35,10 +36,10 @@ class SpecialityCard extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Image.network(specialitiesData.isSelected? specialitiesData.sSelectedIcon:specialitiesData.sActiveIcon, width: 55, height: 55,),
+                  child: Image.network(specialitiesData.isSelected? specialitiesData.selectedIcon:specialitiesData.unselectedIcon, width: 55, height: 55,),
                 ),
                 SizedBox(height: 4,),
-                Text(specialitiesData.sName,
+                AutoSizeText(specialitiesData.name,
                   style: specialitiesData.isSelected?selectedItemTextStyle:unselectedItemTextStyle,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,

@@ -23,8 +23,8 @@ class JsonConvert<T> {
     switch (type) {
 			case HospitalSpecialitiesEntity:
 				return hospitalSpecialitiesEntityFromJson(data as HospitalSpecialitiesEntity, json) as T;
-			case HospitalSpecialitiesData:
-				return hospitalSpecialitiesDataFromJson(data as HospitalSpecialitiesData, json) as T;
+			case HospitalSpeciality:
+				return hospitalSpecialitiesDataFromJson(data as HospitalSpeciality, json) as T;
 			case DoctorDetailsEntity:
 				return doctorDetailsEntityFromJson(data as DoctorDetailsEntity, json) as T;
 			case DoctorDetails:
@@ -40,8 +40,8 @@ class JsonConvert<T> {
 		switch (type) {
 			case HospitalSpecialitiesEntity:
 				return hospitalSpecialitiesEntityToJson(data as HospitalSpecialitiesEntity);
-			case HospitalSpecialitiesData:
-				return hospitalSpecialitiesDataToJson(data as HospitalSpecialitiesData);
+			case HospitalSpeciality:
+				return hospitalSpecialitiesDataToJson(data as HospitalSpeciality);
 			case DoctorDetailsEntity:
 				return doctorDetailsEntityToJson(data as DoctorDetailsEntity);
 			case DoctorDetails:
@@ -58,8 +58,8 @@ class JsonConvert<T> {
 		String type = M.toString();
 		if(type == (HospitalSpecialitiesEntity).toString()){
 			return HospitalSpecialitiesEntity().fromJson(json);
-		}	else if(type == (HospitalSpecialitiesData).toString()){
-			return HospitalSpecialitiesData().fromJson(json);
+		}	else if(type == (HospitalSpeciality).toString()){
+			return HospitalSpeciality().fromJson(json);
 		}	else if(type == (DoctorDetailsEntity).toString()){
 			return DoctorDetailsEntity().fromJson(json);
 		}	else if(type == (DoctorDetails).toString()){
@@ -76,8 +76,8 @@ class JsonConvert<T> {
 	static M _getListChildType<M>(List data) {
 		if(<HospitalSpecialitiesEntity>[] is M){
 			return data.map<HospitalSpecialitiesEntity>((e) => HospitalSpecialitiesEntity().fromJson(e)).toList() as M;
-		}	else if(<HospitalSpecialitiesData>[] is M){
-			return data.map<HospitalSpecialitiesData>((e) => HospitalSpecialitiesData().fromJson(e)).toList() as M;
+		}	else if(<HospitalSpeciality>[] is M){
+			return data.map<HospitalSpeciality>((e) => HospitalSpeciality().fromJson(e)).toList() as M;
 		}	else if(<DoctorDetailsEntity>[] is M){
 			return data.map<DoctorDetailsEntity>((e) => DoctorDetailsEntity().fromJson(e)).toList() as M;
 		}	else if(<DoctorDetails>[] is M){

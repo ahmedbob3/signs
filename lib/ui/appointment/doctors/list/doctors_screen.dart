@@ -40,8 +40,11 @@ class DoctorsScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 30,),
                     GestureDetector(
-                      onTap: (){
-                        Get.toNamed(SpecialityScreen.tag);
+                      onTap: ()async{
+                        final result = await Get.toNamed(SpecialityScreen.tag, arguments: hospital);
+                        if(result != null){
+                          controller.filterBySpecialities(result);
+                        }
                       },
                       child: Container(
                         height: 50,

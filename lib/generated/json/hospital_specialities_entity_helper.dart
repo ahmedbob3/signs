@@ -9,7 +9,7 @@ hospitalSpecialitiesEntityFromJson(HospitalSpecialitiesEntity data, Map<String, 
 	if (json['status'] != null) {
 		data.status = json['status'].toString();
 	}
-	data.data = (json['data'] as List)?.map((v) => HospitalSpecialitiesData().fromJson(v))?.toList();
+	data.data = (json['data'] as List)?.map((v) => HospitalSpeciality().fromJson(v))?.toList();
 	return data;
 }
 
@@ -21,18 +21,21 @@ Map<String, dynamic> hospitalSpecialitiesEntityToJson(HospitalSpecialitiesEntity
 	return data;
 }
 
-hospitalSpecialitiesDataFromJson(HospitalSpecialitiesData data, Map<String, dynamic> json) {
+hospitalSpecialitiesDataFromJson(HospitalSpeciality data, Map<String, dynamic> json) {
 	if (json['s_id'] != null) {
-		data.sId = json['s_id'].toString();
+		data.id = json['s_id'].toString();
 	}
 	if (json['s_name'] != null) {
-		data.sName = json['s_name'].toString();
+		data.name = json['s_name'].toString();
 	}
-	if (json['s_active_icon'] != null) {
-		data.sActiveIcon = json['s_active_icon'].toString();
+	if (json['s_unselected_icon'] != null) {
+		data.unselectedIcon = json['s_unselected_icon'].toString();
 	}
 	if (json['s_selected_icon'] != null) {
-		data.sSelectedIcon = json['s_selected_icon'].toString();
+		data.selectedIcon = json['s_selected_icon'].toString();
+	}
+	if (json['s_keywords'] != null) {
+		data.keywords = json['s_keywords'].toString();
 	}
 	if (json['isSelected'] != null) {
 		data.isSelected = json['isSelected'];
@@ -40,12 +43,13 @@ hospitalSpecialitiesDataFromJson(HospitalSpecialitiesData data, Map<String, dyna
 	return data;
 }
 
-Map<String, dynamic> hospitalSpecialitiesDataToJson(HospitalSpecialitiesData entity) {
+Map<String, dynamic> hospitalSpecialitiesDataToJson(HospitalSpeciality entity) {
 	final Map<String, dynamic> data = new Map<String, dynamic>();
-	data['s_id'] = entity.sId;
-	data['s_name'] = entity.sName;
-	data['s_active_icon'] = entity.sActiveIcon;
-	data['s_selected_icon'] = entity.sSelectedIcon;
+	data['s_id'] = entity.id;
+	data['s_name'] = entity.name;
+	data['s_unselected_icon'] = entity.unselectedIcon;
+	data['s_selected_icon'] = entity.selectedIcon;
+	data['s_keywords'] = entity.keywords;
 	data['isSelected'] = entity.isSelected;
 	return data;
 }

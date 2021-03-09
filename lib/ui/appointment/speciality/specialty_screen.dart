@@ -1,3 +1,4 @@
+import 'package:Signs/Models/hospitals_model.dart';
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/style/theme.dart';
 import 'package:Signs/ui/appointment/doctors/list/doctors_screen.dart';
@@ -15,8 +16,9 @@ class SpecialityScreen extends StatelessWidget {
   static const tag = "SpecialityScreen";
   @override
   Widget build(BuildContext context) {
+    Datum hospital = ModalRoute.of(context).settings.arguments;
     return GetBuilder<SpecialityController>(
-      init: SpecialityController(),
+      init: SpecialityController(hospital: hospital),
       builder: (controller) {
         return Scaffold(
           appBar: getAppBar(
@@ -35,6 +37,7 @@ class SpecialityScreen extends StatelessWidget {
                   children: [
                     SizedBox(height: BANNER_HEIGHT - 25,),
                     CustomEditText(
+                      controller: controller.searchController,
                       prefixIcon: Icon(Icons.search, color: TAUPE_GREY_COLOR, size: 18,),
                       hintText: "Search Speciality",
                     ),
@@ -49,9 +52,12 @@ class SpecialityScreen extends StatelessWidget {
                            ).toList()
                          ):EmptySpecialities()
                     ),
+                    if(controller.showNextButton)
                     AnimatedButton(
                       btnName: "Next",
-                      onPressed: (){},
+                      onPressed: (){
+                        controller.filterBySpecialities();
+                      },
                       controller: AnimatedButtonController(),
                     ),
                     SizedBox(height: 30,)

@@ -4,8 +4,8 @@ import 'package:Signs/data/remote/appointment/speciality/services/hospital_speci
 class SpecialityRepository{
   HospitalSpecialitiesService _hospitalSpecialitiesService = HospitalSpecialitiesService();
 
-  Future<Result> getHospitalSpecialities(int hospitalId){
-    return _hospitalSpecialitiesService.getHospitalSpecialities(hospitalId);
+  Future<Result> getHospitalSpecialities({String hospitalId, String searchQuery}){
+    return _hospitalSpecialitiesService.getHospitalSpecialities(hospitalId:hospitalId, searchQuery: searchQuery);
   }
 
 }
