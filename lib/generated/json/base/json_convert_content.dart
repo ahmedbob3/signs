@@ -9,6 +9,8 @@ import 'package:Signs/data/remote/appointment/doctors/models/doctor_details_enti
 import 'package:Signs/generated/json/doctor_details_entity_helper.dart';
 import 'package:Signs/data/remote/appointment/doctors/models/doctors_entity.dart';
 import 'package:Signs/generated/json/doctors_entity_helper.dart';
+import 'package:Signs/data/remote/appointment/hospital/models/banners_response_entity.dart';
+import 'package:Signs/generated/json/banners_response_entity_helper.dart';
 
 class JsonConvert<T> {
 	T fromJson(Map<String, dynamic> json) {
@@ -24,7 +26,7 @@ class JsonConvert<T> {
 			case HospitalSpecialitiesEntity:
 				return hospitalSpecialitiesEntityFromJson(data as HospitalSpecialitiesEntity, json) as T;
 			case HospitalSpeciality:
-				return hospitalSpecialitiesDataFromJson(data as HospitalSpeciality, json) as T;
+				return hospitalSpecialityFromJson(data as HospitalSpeciality, json) as T;
 			case DoctorDetailsEntity:
 				return doctorDetailsEntityFromJson(data as DoctorDetailsEntity, json) as T;
 			case DoctorDetails:
@@ -32,7 +34,11 @@ class JsonConvert<T> {
 			case DoctorsEntity:
 				return doctorsEntityFromJson(data as DoctorsEntity, json) as T;
 			case Doctor:
-				return doctorFromJson(data as Doctor, json) as T;    }
+				return doctorFromJson(data as Doctor, json) as T;
+			case BannersResponseEntity:
+				return bannersResponseEntityFromJson(data as BannersResponseEntity, json) as T;
+			case Banners:
+				return bannersResponseDataFromJson(data as Banners, json) as T;    }
     return data as T;
   }
 
@@ -41,7 +47,7 @@ class JsonConvert<T> {
 			case HospitalSpecialitiesEntity:
 				return hospitalSpecialitiesEntityToJson(data as HospitalSpecialitiesEntity);
 			case HospitalSpeciality:
-				return hospitalSpecialitiesDataToJson(data as HospitalSpeciality);
+				return hospitalSpecialityToJson(data as HospitalSpeciality);
 			case DoctorDetailsEntity:
 				return doctorDetailsEntityToJson(data as DoctorDetailsEntity);
 			case DoctorDetails:
@@ -50,6 +56,10 @@ class JsonConvert<T> {
 				return doctorsEntityToJson(data as DoctorsEntity);
 			case Doctor:
 				return doctorToJson(data as Doctor);
+			case BannersResponseEntity:
+				return bannersResponseEntityToJson(data as BannersResponseEntity);
+			case Banners:
+				return bannersResponseDataToJson(data as Banners);
 			}
 			return data as T;
 		}
@@ -68,6 +78,10 @@ class JsonConvert<T> {
 			return DoctorsEntity().fromJson(json);
 		}	else if(type == (Doctor).toString()){
 			return Doctor().fromJson(json);
+		}	else if(type == (BannersResponseEntity).toString()){
+			return BannersResponseEntity().fromJson(json);
+		}	else if(type == (Banners).toString()){
+			return Banners().fromJson(json);
 		}	
 		return null;
 	}
@@ -86,6 +100,10 @@ class JsonConvert<T> {
 			return data.map<DoctorsEntity>((e) => DoctorsEntity().fromJson(e)).toList() as M;
 		}	else if(<Doctor>[] is M){
 			return data.map<Doctor>((e) => Doctor().fromJson(e)).toList() as M;
+		}	else if(<BannersResponseEntity>[] is M){
+			return data.map<BannersResponseEntity>((e) => BannersResponseEntity().fromJson(e)).toList() as M;
+		}	else if(<Banners>[] is M){
+			return data.map<Banners>((e) => Banners().fromJson(e)).toList() as M;
 		}
 		throw Exception("not fond");
 	}

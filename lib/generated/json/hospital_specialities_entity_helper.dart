@@ -21,7 +21,7 @@ Map<String, dynamic> hospitalSpecialitiesEntityToJson(HospitalSpecialitiesEntity
 	return data;
 }
 
-hospitalSpecialitiesDataFromJson(HospitalSpeciality data, Map<String, dynamic> json) {
+hospitalSpecialityFromJson(HospitalSpeciality data, Map<String, dynamic> json) {
 	if (json['s_id'] != null) {
 		data.id = json['s_id'].toString();
 	}
@@ -43,7 +43,7 @@ hospitalSpecialitiesDataFromJson(HospitalSpeciality data, Map<String, dynamic> j
 	return data;
 }
 
-Map<String, dynamic> hospitalSpecialitiesDataToJson(HospitalSpeciality entity) {
+Map<String, dynamic> hospitalSpecialityToJson(HospitalSpeciality entity) {
 	final Map<String, dynamic> data = new Map<String, dynamic>();
 	data['s_id'] = entity.id;
 	data['s_name'] = entity.name;

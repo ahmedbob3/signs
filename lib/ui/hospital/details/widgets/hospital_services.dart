@@ -1,9 +1,8 @@
 import 'package:Signs/Models/hospitals_model.dart';
 import 'package:Signs/Utils/constants.dart';
 import 'package:Signs/Utils/images.dart';
-import 'package:Signs/Utils/strings.dart';
-import 'package:Signs/Utils/styles.dart';
 import 'package:Signs/ui/appointment/doctors/list/doctors_screen.dart';
+import 'package:Signs/ui/hospital/details/hospital_details_controller.dart';
 import 'package:Signs/ui/hospital/details/widgets/service.dart';
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -16,19 +15,21 @@ class HospitalServices extends StatelessWidget {
   HospitalServices({Key key, this.hospital}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    HospitalDetailsController controller = Get.find();
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(18.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CarouselSlider(
+            controller.isBannerLoading? Container(height:160,child: Center(child: CircularProgressIndicator())):
+            controller.hospitalBanners.isNotEmpty? CarouselSlider(
               carouselController:
-              buttonCarouselController, items: hospital.gallery
+              buttonCarouselController, items: controller.hospitalBanners
                 .map((item) => Container(
               child: Center(
                   child: Image.network(
-                      item,
+                      item.bImage,
                       fit: BoxFit
                           .cover,
                       width: 1000)),
@@ -45,7 +46,7 @@ class HospitalServices extends StatelessWidget {
                 initialPage: 0,
 
               ),
-            ),
+            ):Container(),
             SizedBox(height: 26,),
             Text(
               "What are you looking for ?",
