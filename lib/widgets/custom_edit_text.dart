@@ -12,6 +12,7 @@ class CustomEditText extends StatelessWidget {
   final FocusNode focusNode;
   final TextInputAction textInputAction;
   final Widget prefixIcon;
+  final Widget suffixIcon;
   final bool autoFocus;
   final Color fillColor;
   final TextDirection textDirection;
@@ -28,6 +29,7 @@ class CustomEditText extends StatelessWidget {
     this.focusNode,
     this.textInputAction,
     this.prefixIcon,
+    this.suffixIcon,
     this.autoFocus = false,
     this.fillColor = Colors.white,
     this.textDirection = TextDirection.ltr
@@ -52,6 +54,7 @@ class CustomEditText extends StatelessWidget {
         decoration: InputDecoration(
           fillColor: fillColor,
           prefixIcon: prefixIcon,
+          suffixIcon: suffixIcon,
           filled: true,
           hintText: hintText,
           hintStyle: hintTextStyle,

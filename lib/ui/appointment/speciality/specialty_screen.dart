@@ -40,6 +40,12 @@ class SpecialityScreen extends StatelessWidget {
                       controller: controller.searchController,
                       prefixIcon: Icon(Icons.search, color: TAUPE_GREY_COLOR, size: 18,),
                       hintText: "Search Speciality",
+                      suffixIcon: controller.searchController.text.length > 0 ?IconButton(
+                        icon: Icon(Icons.close,),
+                        onPressed: (){
+                          controller.searchController.clear();
+                        },
+                      ):null,
                     ),
                     SizedBox(height: 30,),
                     Expanded(

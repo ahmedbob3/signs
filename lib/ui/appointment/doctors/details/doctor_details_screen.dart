@@ -40,7 +40,7 @@ class DoctorsDetailsScreen extends StatelessWidget {
                           children: [
                             Image.asset(IC_EXPERIENCE, width: 40, height: 40,),
                             SizedBox(width: 12,),
-                            Text(controller.doctorDetails.dExperienceYear.toString(), style: boldDeniumTextStyle,),
+                            Text((DateTime.now().year - int.parse(controller.doctorDetails.dExperienceYear)).toString(), style: boldDeniumTextStyle,),
                             SizedBox(width: 12,),
                             Text('Years of experience', style: dimGreySemiBoldTextStyle,)
                           ],
