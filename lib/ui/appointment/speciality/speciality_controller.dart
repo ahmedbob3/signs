@@ -20,6 +20,20 @@ class SpecialityController extends BaseController{
       name: ALL_SPECIALITIES_MSG
   );
 
+  bool checkIfAvailableSpecialitiesUpdated(){
+    bool hasUpdated = false;
+    List<HospitalSpeciality> selectedSpecialities = availableSpecialities.where((element) => element.isSelected).toList();
+    if(selectedSpecialities.length == filteredSpecialities.length){
+      for(int i = 0; i<selectedSpecialities.length; i++){
+        if(selectedSpecialities[i].id != filteredSpecialities[i].id){
+          hasUpdated = true;
+        }
+      }
+    } else{
+      hasUpdated = true;
+    }
+    return hasUpdated;
+  }
   SpecialityController({this.hospital, this.filteredSpecialities}){
     getSpecialities();
     handleSearchSpecialities();

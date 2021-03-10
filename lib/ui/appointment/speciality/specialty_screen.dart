@@ -24,7 +24,38 @@ class SpecialityScreen extends StatelessWidget {
       builder: (controller) {
         return Scaffold(
           appBar: getAppBar(
-              title: "Choose Speciality"
+            title: "Choose Speciality",
+            onBackPressed: (){
+              if(controller.checkIfAvailableSpecialitiesUpdated()){
+                showDialog(
+                    context: context,
+                    builder: (ctx){
+                      return new AlertDialog(
+                        title: new Text("Warning"),
+                        content: new Text("Are you sure you want to clear your selection from the speciality filter?"),
+                        actions: [
+                          TextButton(
+                              onPressed: (){
+                                Get.back();
+                                Get.back();
+                              },
+                              child: Text('Yes')
+                          ),
+                          TextButton(
+                              onPressed: (){
+                                Get.back();
+                              },
+                              child: Text('No')
+                          ),
+                        ],
+                      );
+                    }
+                );
+              } else{
+                Get.back();
+              }
+
+            }
           ),
           backgroundColor: LIGHT_WHITE_COLOR,
           extendBodyBehindAppBar: true,
