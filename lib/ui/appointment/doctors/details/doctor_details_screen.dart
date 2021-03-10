@@ -95,7 +95,7 @@ class DoctorsDetailsScreen extends StatelessWidget {
                                     padding: const EdgeInsets.all(4.0),
                                     child: SimpleUrlPreview(
                                       previewHeight: 130,
-                                      url: videoUrl.replaceAll("http://thesignsco.com/", ''),
+                                      url: videoUrl,
                                       bgColor: Colors.white,
                                       imageLoaderColor: Colors.blueGrey,
                                       titleLines: 1,
