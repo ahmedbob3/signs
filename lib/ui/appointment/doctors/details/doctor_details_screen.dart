@@ -2,6 +2,8 @@ import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/style/theme.dart';
 import 'package:Signs/data/remote/appointment/doctors/models/doctors_entity.dart';
 import 'package:Signs/ui/appointment/doctors/details/doctor_details_controller.dart';
+import 'package:Signs/ui/appointment/doctors/details/reservation/choose_date_time/choose_date_time_widget.dart';
+import 'package:Signs/ui/appointment/doctors/details/reservation/reservation_bottomsheet.dart';
 import 'package:Signs/ui/appointment/doctors/widgets/doctor_card.dart';
 import 'package:Signs/widgets/animated_button.dart';
 import 'package:Signs/widgets/appbar.dart';
@@ -146,7 +148,20 @@ class DoctorsDetailsScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(16.0),
                   child: AnimatedButton(
                     btnName: "Make appointment",
-                    onPressed: (){},
+                    onPressed: (){
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (ctx){
+                          return ReservationBottomSheet(doctor: doctor,);
+                        },
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(25.0),
+                          ),
+                        ),
+                        isScrollControlled: true,
+                      );
+                    },
                     controller: AnimatedButtonController(),
                   ),
                 ),

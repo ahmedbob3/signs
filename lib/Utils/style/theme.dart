@@ -15,6 +15,8 @@ const Color gamboge                    = const Color.fromRGBO(223, 166, 12, 1);
 const Color manate                     = const Color.fromRGBO(158, 158, 158, 1);
 const Color heavyGrey                  = const Color.fromRGBO(101, 113, 127, 1);
 const Color denium                     = const Color.fromRGBO(33, 99, 206, 1);
+const Color smalt                      = const Color.fromRGBO(0, 55, 143, 1);
+const Color gansboro                      = const Color.fromRGBO(218, 221, 229, 1);
 
 LinearGradient blueGradient = LinearGradient(
     colors: [MEDIUM_TEAL_BLUE, MEDIUM_TEAL_BLUE],
@@ -109,6 +111,11 @@ TextStyle boldDeniumTextStyle = TextStyle(
     fontSize: 20,
     color: denium
 );
+TextStyle boldSmaltTextStyle = TextStyle(
+    fontFamily: Fonts.boldFontFamily,
+    fontSize: 18,
+    color: smalt
+);
 
 TextStyle gambogeRegularTextStyle = TextStyle(
     fontFamily: Fonts.regularFontFamily,
@@ -126,4 +133,16 @@ TextStyle dimGreySemiBoldTextStyle = TextStyle(
     fontFamily: Fonts.semiBoldFontFamily,
     fontSize: 12,
     color: dimGrey
+);
+
+TextStyle unSelectedChipTextStyle = TextStyle(
+    fontFamily: Fonts.semiBoldFontFamily,
+    fontSize: 14,
+    color: DAVY_GREY_COLOR
+);
+
+TextStyle selectedChipTextStyle = TextStyle(
+    fontFamily: Fonts.semiBoldFontFamily,
+    fontSize: 14,
+    color: Colors.white
 );
