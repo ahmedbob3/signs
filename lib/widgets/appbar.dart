@@ -6,6 +6,7 @@ AppBar getAppBar({List<Widget> actions, String title = "", Function onBackPresse
     elevation: 0,
     backgroundColor: Colors.transparent,
     title: Text(title),
+    actions: actions,
     iconTheme: IconThemeData(color: Colors.white),
     actionsIconTheme: IconThemeData(color: Colors.white),
     leading: IconButton(

@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
 import 'package:flutter_toggle_tab/flutter_toggle_tab.dart';
 import 'package:get/get.dart';
+import 'package:Signs/widgets/appbar.dart';
 
 class HospitalDetailsScreen extends StatelessWidget {
   static const tag = "HospitalDetailsScreen";
@@ -19,10 +20,8 @@ class HospitalDetailsScreen extends StatelessWidget {
       init: HospitalDetailsController(hospital: hospital),
       builder: (controller){
         return Scaffold(
-          appBar: AppBar(
-            elevation: 0,
-            backgroundColor: Colors.transparent,
-            iconTheme: IconThemeData(color: Colors.white),
+          appBar: getAppBar(
+            title: '',
             actions: [
               // Image.asset(SearchIcon),
               IconButton(
@@ -38,7 +37,6 @@ class HospitalDetailsScreen extends StatelessWidget {
                 },
               ),
             ],
-            actionsIconTheme: IconThemeData(color: Colors.white),
           ),
           backgroundColor: Colors.white,
           extendBodyBehindAppBar: true,
