@@ -10,13 +10,18 @@ const Color LIGHT_WHITE_COLOR          = Color.fromRGBO(252, 254, 255, 1);
 const Color MANATE                     = Color.fromRGBO(151, 151, 151, 0.24);
 const Color MEDIUM_TEAL_BLUE           = Color.fromRGBO(0, 81, 173, 1);
 const Color whiteSmoke                 = const Color(0xFFf5f5f5);
+const Color greySmoke                  = const Color(0xFFA3ACC2);
 const Color dimGrey                    = const Color.fromRGBO(97, 97, 98, 1);
 const Color gamboge                    = const Color.fromRGBO(223, 166, 12, 1);
 const Color manate                     = const Color.fromRGBO(158, 158, 158, 1);
 const Color heavyGrey                  = const Color.fromRGBO(101, 113, 127, 1);
 const Color denium                     = const Color.fromRGBO(33, 99, 206, 1);
 const Color smalt                      = const Color.fromRGBO(0, 55, 143, 1);
-const Color gansboro                      = const Color.fromRGBO(218, 221, 229, 1);
+const Color gansboro                   = const Color.fromRGBO(218, 221, 229, 1);
+const Color heavyBlue                  = const Color.fromRGBO(0, 47, 135, 1);
+const Color platinum                   = const Color.fromRGBO(232, 232, 232, 1);
+const Color coralRed                   = const Color.fromRGBO(255, 59, 48, 1);
+const Color outerSpace                 = const Color.fromRGBO(70, 70, 70, 1);
 
 LinearGradient blueGradient = LinearGradient(
     colors: [MEDIUM_TEAL_BLUE, MEDIUM_TEAL_BLUE],
@@ -111,9 +116,16 @@ TextStyle boldDeniumTextStyle = TextStyle(
     fontSize: 20,
     color: denium
 );
+
 TextStyle boldSmaltTextStyle = TextStyle(
     fontFamily: Fonts.boldFontFamily,
     fontSize: 18,
+    color: smalt
+);
+
+TextStyle boldHeavyBlueTextStyle = TextStyle(
+    fontFamily: Fonts.boldFontFamily,
+    fontSize: 22,
     color: smalt
 );
 
@@ -126,6 +138,12 @@ TextStyle gambogeRegularTextStyle = TextStyle(
 TextStyle heavyGreyRegularTextStyle = TextStyle(
     fontFamily: Fonts.regularFontFamily,
     fontSize: 14,
+    color: heavyGrey
+);
+
+TextStyle heavyGreySemiBoldTextStyle = TextStyle(
+    fontFamily: Fonts.semiBoldFontFamily,
+    fontSize: 16,
     color: heavyGrey
 );
 
@@ -145,4 +163,15 @@ TextStyle selectedChipTextStyle = TextStyle(
     fontFamily: Fonts.semiBoldFontFamily,
     fontSize: 14,
     color: Colors.white
+);
+
+TextStyle errorTextStyle = TextStyle(
+  fontFamily: Fonts.mediumFontFamily,
+  fontSize: 14,
+  color: coralRed
+);
+TextStyle outerSpaceStyle = TextStyle(
+  fontFamily: Fonts.semiBoldFontFamily,
+  fontSize: 16,
+  color: outerSpace
 );

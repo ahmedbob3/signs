@@ -12,6 +12,10 @@
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Signs need photo library permission to upload your cards</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Signs need camera permission to upload your cards</string>
 	<key>CFBundleName</key>
 	<string>Signs</string>
 	<key>CFBundlePackageType</key>

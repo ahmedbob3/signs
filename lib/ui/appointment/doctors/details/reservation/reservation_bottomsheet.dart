@@ -1,5 +1,6 @@
 import 'package:Signs/data/remote/appointment/doctors/models/doctors_entity.dart';
 import 'package:Signs/ui/appointment/doctors/details/reservation/choose_date_time/choose_date_time_widget.dart';
+import 'package:Signs/ui/appointment/doctors/details/reservation/patient_info/patient_info_widget.dart';
 import 'package:Signs/ui/appointment/doctors/details/reservation/reservation_bottomsheet_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,12 +20,10 @@ class ReservationBottomSheet extends StatelessWidget {
               controller: controller.pageController,
               children: [
                 ChooseDateTimeWidget(doctor: doctor,),
-                Container(
-                  color: Colors.amber,
-                )
+                PatientInfoWidget()
               ],
               allowImplicitScrolling: false,
-              physics:new NeverScrollableScrollPhysics()
+              // physics:new NeverScrollableScrollPhysics()
             )
         );
       },
