@@ -6,8 +6,8 @@ import 'package:image_picker/image_picker.dart';
 
 class UploadCard extends StatefulWidget {
   final Function(File cardImage, String cardId) onCardAdded;
-
-  const UploadCard({Key key, this.onCardAdded}) : super(key: key);
+  final String hint;
+  const UploadCard({Key key, this.onCardAdded, this.hint}) : super(key: key);
   @override
   _UploadCardState createState() => _UploadCardState();
 }
@@ -53,7 +53,7 @@ class _UploadCardState extends State<UploadCard> {
                 child: TextField(
                   controller: textEditingController,
                   decoration: InputDecoration(
-                    hintText: 'Enter ID',
+                    hintText: widget.hint,
                     hintStyle: hintTextStyle
                   ),
                 )

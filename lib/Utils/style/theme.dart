@@ -116,7 +116,11 @@ TextStyle boldDeniumTextStyle = TextStyle(
     fontSize: 20,
     color: denium
 );
-
+TextStyle regularDeniumTextStyle = TextStyle(
+    fontFamily: Fonts.mediumFontFamily,
+    fontSize: 16,
+    color: denium
+);
 TextStyle boldSmaltTextStyle = TextStyle(
     fontFamily: Fonts.boldFontFamily,
     fontSize: 18,
@@ -126,6 +130,11 @@ TextStyle boldSmaltTextStyle = TextStyle(
 TextStyle boldHeavyBlueTextStyle = TextStyle(
     fontFamily: Fonts.boldFontFamily,
     fontSize: 22,
+    color: smalt
+);
+TextStyle mediumHeavyBlueTextStyle = TextStyle(
+    fontFamily: Fonts.boldFontFamily,
+    fontSize: 16,
     color: smalt
 );
 
