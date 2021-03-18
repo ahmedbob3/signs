@@ -4,6 +4,8 @@ import 'package:Signs/ui/appointment/doctors/details/reservation/patient_info/pa
 import 'package:Signs/ui/appointment/doctors/details/reservation/patient_info/widgets/upload_card.dart';
 import 'package:Signs/ui/appointment/doctors/details/reservation/patient_info/widgets/card_info.dart';
 import 'package:Signs/ui/appointment/doctors/details/reservation/patient_info/widgets/have_insurance_card.dart';
+import 'package:Signs/ui/appointment/doctors/details/reservation/reservation_bottomsheet_controller.dart';
+import 'package:Signs/widgets/animated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -50,7 +52,7 @@ class PatientInfoWidget extends StatelessWidget {
                 isSelected: controller.haveInsurance,
                 onChanged: controller.updateHaveInsurance,
               ),
-              if(controller.haveInsurance && !controller.showAddNewInsuranceCard)
+              if(controller.haveInsurance && (!controller.showAddNewInsuranceCard || controller.insuranceCards.isEmpty))
                 Padding(
                   padding: const EdgeInsets.only(top:8.0),
                   child: UploadCard(
@@ -60,15 +62,24 @@ class PatientInfoWidget extends StatelessWidget {
                     },
                   ),
                 ),
+              SizedBox(height: 8,),
               ...controller.insuranceCards.map(
                       (insuranceCard) => CardInfo(
                         cardId: insuranceCard.insuranceCardName,
                         selectedCardImage: insuranceCard.insuranceImage,
                         isSelected: insuranceCard.isSelected,
-                        onSelected: (){},
-                        onDeleted: (){},
+                        onSelected: (){
+                          controller.selectInsuranceCard(insuranceCard);
+                        },
+                        onDeleted: (){
+                          controller.deleteInsuranceCard(insuranceCard);
+                        },
                       )
               ).toList(),
+              if(controller.insuranceCards.isNotEmpty) Divider(
+                color: silverDivider,
+                height: 2,
+              ),
               if(controller.showAddNewInsuranceCard && controller.insuranceCards.isNotEmpty) ListTile(
                 leading: Container(
                   width: 30,
@@ -84,6 +95,15 @@ class PatientInfoWidget extends StatelessWidget {
                   controller.handleAddNewCard();
                 },
               ),
+              SizedBox(height: 24,),
+              AnimatedButton(
+                btnName: "Next",
+                onPressed: (){
+                  ReservationBottomSheetController bottomSheetController = Get.find();
+                  bottomSheetController.goToNextPage();
+                },
+                controller: AnimatedButtonController(),
+              )
             ],
           ),
         );

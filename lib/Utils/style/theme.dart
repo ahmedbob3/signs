@@ -22,6 +22,7 @@ const Color heavyBlue                  = const Color.fromRGBO(0, 47, 135, 1);
 const Color platinum                   = const Color.fromRGBO(232, 232, 232, 1);
 const Color coralRed                   = const Color.fromRGBO(255, 59, 48, 1);
 const Color outerSpace                 = const Color.fromRGBO(70, 70, 70, 1);
+const Color silverDivider              = const Color.fromRGBO(190, 192, 196, 0.6);
 
 LinearGradient blueGradient = LinearGradient(
     colors: [MEDIUM_TEAL_BLUE, MEDIUM_TEAL_BLUE],

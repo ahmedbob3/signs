@@ -85,7 +85,7 @@ class _UploadCardState extends State<UploadCard> {
         SizedBox(height: 4,),
         if(_image != null) Row(
           children: [
-            Image.file(_image, width: 80, height: 60,),
+            Image.file(_image, width: 60, height: 40, fit: BoxFit.fitWidth,),
             SizedBox(width: 24,),
             IconButton(
                 icon: Icon(Icons.delete),

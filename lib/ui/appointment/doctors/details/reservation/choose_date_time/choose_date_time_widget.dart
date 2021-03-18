@@ -96,10 +96,12 @@ class ChooseDateTimeWidget extends StatelessWidget {
                 btnName: "Next",
                 onPressed: (){
                   ReservationBottomSheetController bottomSheetController = Get.find();
+                  bottomSheetController.setSelectedDateAndTime(controller.selectedDate, controller.selectedTimeSlot);
                   bottomSheetController.goToNextPage();
                 },
                 controller: AnimatedButtonController(),
-              )
+              ),
+              SizedBox(height: 16,)
             ],
           ),
         );
