@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:Signs/utils/style/theme.dart';
 
-
 class AnimatedButton extends StatelessWidget {
   final Function onPressed;
   final String btnName;

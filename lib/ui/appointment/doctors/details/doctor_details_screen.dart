@@ -1,8 +1,8 @@
+import 'package:Signs/Models/hospitals_model.dart';
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/style/theme.dart';
 import 'package:Signs/data/remote/appointment/doctors/models/doctors_entity.dart';
 import 'package:Signs/ui/appointment/doctors/details/doctor_details_controller.dart';
-import 'package:Signs/ui/appointment/doctors/details/reservation/choose_date_time/choose_date_time_widget.dart';
 import 'package:Signs/ui/appointment/doctors/details/reservation/reservation_bottomsheet.dart';
 import 'package:Signs/ui/appointment/doctors/widgets/doctor_card.dart';
 import 'package:Signs/widgets/animated_button.dart';
@@ -16,7 +16,8 @@ class DoctorsDetailsScreen extends StatelessWidget {
   static const tag = "DoctorsDetailsScreen";
   @override
   Widget build(BuildContext context) {
-    final Doctor doctor = Get.arguments;
+    final Doctor doctor = Get.arguments[0];
+    final Datum hospital = Get.arguments[1];
     return GetBuilder<DoctorDetailsController>(
       init: DoctorDetailsController(doctor),
       builder: (controller){
@@ -152,7 +153,7 @@ class DoctorsDetailsScreen extends StatelessWidget {
                       showModalBottomSheet(
                         context: context,
                         builder: (ctx){
-                          return ReservationBottomSheet(doctor: doctor,);
+                          return ReservationBottomSheet(doctor: doctor, hospital: hospital,);
                         },
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.vertical(

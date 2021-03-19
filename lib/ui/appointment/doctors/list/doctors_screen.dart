@@ -88,7 +88,7 @@ class DoctorsScreen extends StatelessWidget {
                           final doctor = controller.availableDoctors[index];
                           return Padding(
                             padding: const EdgeInsets.only(top:4.0, bottom: 4),
-                            child: DoctorCard(doctor: doctor,),
+                            child: DoctorCard(doctor: doctor, hospital: hospital,),
                           );
                         }
                       ):EmptyDoctorsScreen(),

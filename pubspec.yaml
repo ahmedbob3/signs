@@ -50,7 +50,7 @@ dependencies:
   simple_url_preview: ^2.0.0
   auto_size_text: ^2.1.0
   image_picker: 0.6.7+22
-#  intl: ^0.17.0
+  intl: ^0.17.0
 
 
 

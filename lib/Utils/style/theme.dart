@@ -23,6 +23,9 @@ const Color platinum                   = const Color.fromRGBO(232, 232, 232, 1);
 const Color coralRed                   = const Color.fromRGBO(255, 59, 48, 1);
 const Color outerSpace                 = const Color.fromRGBO(70, 70, 70, 1);
 const Color silverDivider              = const Color.fromRGBO(190, 192, 196, 0.6);
+const Color payneGrey                  = const Color.fromRGBO(62, 86, 119, 1);
+const Color lightGrey                  = const Color.fromRGBO(241, 245, 250, 1);
+const Color semiGrey                  = const Color.fromRGBO(163, 172, 194, 1);
 
 LinearGradient blueGradient = LinearGradient(
     colors: [MEDIUM_TEAL_BLUE, MEDIUM_TEAL_BLUE],
@@ -133,7 +136,7 @@ TextStyle boldHeavyBlueTextStyle = TextStyle(
     fontSize: 22,
     color: smalt
 );
-TextStyle mediumHeavyBlueTextStyle = TextStyle(
+TextStyle boldSmaltTextStyle2 = TextStyle(
     fontFamily: Fonts.boldFontFamily,
     fontSize: 16,
     color: smalt
@@ -163,6 +166,12 @@ TextStyle dimGreySemiBoldTextStyle = TextStyle(
     color: dimGrey
 );
 
+TextStyle dimGreySemiBold16TextStyle = TextStyle(
+    fontFamily: Fonts.semiBoldFontFamily,
+    fontSize: 16,
+    color: dimGrey
+);
+
 TextStyle unSelectedChipTextStyle = TextStyle(
     fontFamily: Fonts.semiBoldFontFamily,
     fontSize: 14,
@@ -180,8 +189,26 @@ TextStyle errorTextStyle = TextStyle(
   fontSize: 14,
   color: coralRed
 );
+
 TextStyle outerSpaceStyle = TextStyle(
   fontFamily: Fonts.semiBoldFontFamily,
   fontSize: 16,
   color: outerSpace
+);
+TextStyle semiGreyStyle = TextStyle(
+  fontFamily: Fonts.semiBoldFontFamily,
+  fontSize: 18,
+  color: semiGrey
+);
+
+TextStyle payneGreyStyle = TextStyle(
+  fontFamily: Fonts.mediumFontFamily,
+  fontSize: 14,
+  color: payneGrey
+);
+
+TextStyle tealBlueSemiBoldStyle = TextStyle(
+  fontFamily: Fonts.boldFontFamily,
+  fontSize: 16,
+  color: DEFAULT_BACKGROUND_COLOR
 );

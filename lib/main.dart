@@ -7,11 +7,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:Signs/Screens/splash_screen.dart';
 import 'package:Signs/Utils/styles.dart';
 import 'package:get/get.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'Blocs/login mobile bloc/login_mobile_bloc.dart';
 import 'Utils/constants.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  initializeDateFormatting();
   await CountryCodes.init();
   runApp(MyApp());
 }
