@@ -25,7 +25,8 @@ const Color outerSpace                 = const Color.fromRGBO(70, 70, 70, 1);
 const Color silverDivider              = const Color.fromRGBO(190, 192, 196, 0.6);
 const Color payneGrey                  = const Color.fromRGBO(62, 86, 119, 1);
 const Color lightGrey                  = const Color.fromRGBO(241, 245, 250, 1);
-const Color semiGrey                  = const Color.fromRGBO(163, 172, 194, 1);
+const Color semiGrey                   = const Color.fromRGBO(163, 172, 194, 1);
+const Color riffleGreen                = const Color.fromRGBO(55, 59, 60, 1);
 
 LinearGradient blueGradient = LinearGradient(
     colors: [MEDIUM_TEAL_BLUE, MEDIUM_TEAL_BLUE],
@@ -195,6 +196,7 @@ TextStyle outerSpaceStyle = TextStyle(
   fontSize: 16,
   color: outerSpace
 );
+
 TextStyle semiGreyStyle = TextStyle(
   fontFamily: Fonts.semiBoldFontFamily,
   fontSize: 18,
@@ -211,4 +213,10 @@ TextStyle tealBlueSemiBoldStyle = TextStyle(
   fontFamily: Fonts.boldFontFamily,
   fontSize: 16,
   color: DEFAULT_BACKGROUND_COLOR
+);
+
+TextStyle riffleGreenBoldStyle = TextStyle(
+  fontFamily: Fonts.boldFontFamily,
+  fontSize: 22,
+  color: riffleGreen
 );
