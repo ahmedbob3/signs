@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:Signs/Utils/singleton.dart';
 import 'package:Signs/Utils/style/theme.dart';
 import 'package:Signs/ui/appointment/doctors/details/reservation/patient_info/patient_info_controller.dart';
 import 'package:Signs/ui/appointment/doctors/details/reservation/patient_info/widgets/upload_card.dart';
@@ -15,6 +16,8 @@ class PatientInfoWidget extends StatelessWidget {
     return GetBuilder<PatientInfoController>(
       init: PatientInfoController(),
       builder: (controller){
+        String subAccountName = Singleton().loginModel.data.uFirstName;
+        String subAccountRelation = Singleton().loginModel.data.uRelation;
         return Padding(
           padding: const EdgeInsets.only(left:16.0, right: 16),
           child: ListView(
@@ -22,9 +25,9 @@ class PatientInfoWidget extends StatelessWidget {
               SizedBox(height: 73,),
               Text('Patient info', style: boldSmaltTextStyle,),
               SizedBox(height: 20,),
-              Text('You Have appointment for your Daughter', style: unSelectedChipTextStyle,),
+              Text('You Have appointment for $subAccountRelation', style: unSelectedChipTextStyle,),
               SizedBox(height: 16,),
-              Text('Henrietta', style: boldHeavyBlueTextStyle,),
+              Text(subAccountName, style: boldHeavyBlueTextStyle,),
               SizedBox(height: 20,),
               Text('Patient ID', style: heavyGreySemiBoldTextStyle,),
               SizedBox(height: 10,),
