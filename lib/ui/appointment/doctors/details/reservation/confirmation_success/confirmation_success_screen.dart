@@ -41,7 +41,8 @@ class ConfirmationSuccessScreen extends StatelessWidget {
                 ),
               ),
             ],
-          )
+          ),
+          SizedBox(height: 20,)
         ],
       ),
     );

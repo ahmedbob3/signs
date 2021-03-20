@@ -7,6 +7,7 @@ import 'package:Signs/widgets/animated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:Signs/ui/appointment/doctors/details/reservation/choose_date_time/choose_date_time_controller.dart';
+import 'package:Signs/Utils/utils.dart';
 
 class ChooseDateTimeWidget extends StatelessWidget {
   final Doctor doctor;
@@ -29,15 +30,22 @@ class ChooseDateTimeWidget extends StatelessWidget {
               Row(
                 children: [
                   Expanded(
-                    child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25),
-                          color: Colors.white,
-                          border: Border.all(color: gansboro)
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Text('Online Appointment', style: unSelectedChipTextStyle,),
+                    child: GestureDetector(
+                      onTap: (){
+                        showComingSoonMessage();
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(25),
+                            color: Colors.white,
+                            border: Border.all(color: gansboro)
+                        ),
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Text('Online Appointment', style: unSelectedChipTextStyle,),
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -48,9 +56,11 @@ class ChooseDateTimeWidget extends StatelessWidget {
                             borderRadius: BorderRadius.circular(25),
                             color: denium
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Text('Physical Appointment', style: selectedChipTextStyle,),
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Text('Physical Appointment', style: selectedChipTextStyle,),
+                          ),
                         ),
                       )
                   ),
@@ -100,6 +110,7 @@ class ChooseDateTimeWidget extends StatelessWidget {
                   bottomSheetController.goToNextPage();
                 },
                 controller: AnimatedButtonController(),
+                isDisabled: controller.checkIfNextButtonDisabled(),
               ),
               SizedBox(height: 16,)
             ],

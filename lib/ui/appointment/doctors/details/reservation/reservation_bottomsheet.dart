@@ -27,7 +27,7 @@ class ReservationBottomSheet extends StatelessWidget {
                 AppointmentConfirmation(doctor: doctor, hospital: hospital,)
               ],
               allowImplicitScrolling: false,
-              // physics:new NeverScrollableScrollPhysics()
+              physics:new NeverScrollableScrollPhysics()
             )
         );
       },

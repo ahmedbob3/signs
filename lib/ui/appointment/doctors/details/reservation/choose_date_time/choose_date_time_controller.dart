@@ -31,4 +31,8 @@ class ChooseDateTimeController extends BaseController{
             }
     );
   }
+
+  bool checkIfNextButtonDisabled() {
+    return !(selectedDate != null && selectedTimeSlot != null);
+  }
 }
