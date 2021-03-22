@@ -2,7 +2,7 @@ import 'package:Signs/ui/appointment/doctors/details/doctor_details_screen.dart'
 import 'package:Signs/ui/appointment/doctors/details/reservation/confirmation_success/confirmation_success_screen.dart';
 import 'package:Signs/ui/appointment/doctors/list/doctors_screen.dart';
 import 'package:Signs/ui/appointment/speciality/specialty_screen.dart';
-import 'package:Signs/ui/hospital/details/hospital_details_screen.dart';
+import 'package:Signs/ui/appointment/hospital/details/hospital_details_screen.dart';
 import 'package:get/get.dart';
 
 List<GetPage> applicationPages = [

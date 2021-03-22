@@ -132,6 +132,9 @@ class _LandingScreenState extends State<LandingScreen> {
       case 0:
         return HomeScreen();
         break;
+      case 1:
+        return HomeScreen();
+        break;
       case 3:
         return MedicationScreen();
         break;
