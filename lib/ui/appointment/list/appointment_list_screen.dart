@@ -8,7 +8,7 @@ class AppointmentListScreen extends StatelessWidget {
     return GetBuilder<AppointmentListController>(
       init: AppointmentListController(),
       builder: (controller){
-        return Container(color: Colors.amber,)
+        return Container(color: Colors.amber,);
       },
     );
   }

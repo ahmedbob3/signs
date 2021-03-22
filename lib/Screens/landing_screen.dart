@@ -4,6 +4,7 @@ import 'package:Signs/Utils/constants.dart';
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/singleton.dart';
 import 'package:Signs/Utils/styles.dart';
+import 'package:Signs/ui/appointment/list/appointment_list_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'home_screen.dart';
@@ -95,9 +96,14 @@ class _LandingScreenState extends State<LandingScreen> {
                     Expanded(
                         child: IconButton(
                       icon: Image.asset(
-                        Appointement_inactive,
+                        selectedTabIndex == 1 ? Appointement_active:Appointement_inactive,
                       ),
                       iconSize: 140,
+                          onPressed: (){
+                            setState(() {
+                              selectedTabIndex = 1;
+                            });
+                          },
                     )),
                     Expanded(child: new Text('')),
                     Expanded(
@@ -133,7 +139,7 @@ class _LandingScreenState extends State<LandingScreen> {
         return HomeScreen();
         break;
       case 1:
-        return HomeScreen();
+        return AppointmentListScreen();
         break;
       case 3:
         return MedicationScreen();
