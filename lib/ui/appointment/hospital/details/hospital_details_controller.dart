@@ -46,5 +46,5 @@ class HospitalDetailsController extends BaseController{
   }
 }
 
-const int OVERVIEW_TAP = 0;
-const int SERVICES_TAP = 1;
+const int SERVICES_TAP = 0;
+const int OVERVIEW_TAP = 1;
