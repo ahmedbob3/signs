@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:Signs/Screens/splash_screen.dart';
 import 'package:Signs/Utils/styles.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'Blocs/login mobile bloc/login_mobile_bloc.dart';
@@ -34,18 +35,22 @@ class _MyAppState extends State<MyApp> {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-    return GetMaterialApp(
-        title: 'Flutter Demo',
-        debugShowCheckedModeBanner: false,
-        theme: appTheme,
-        home: BlocProvider(
-          create: (context) => LoginBloc(),
-          child: Directionality(
-            textDirection: Constants.textDirection,
-            child: SplashScreen(),
+    return ScreenUtilInit(
+      designSize: Size(411, 877),
+      allowFontScaling: true,
+      builder:()=> GetMaterialApp(
+          title: 'Flutter Demo',
+          debugShowCheckedModeBanner: false,
+          theme: appTheme,
+          home: BlocProvider(
+            create: (context) => LoginBloc(),
+            child: Directionality(
+              textDirection: Constants.textDirection,
+              child: SplashScreen(),
+            ),
           ),
-        ),
-      getPages: applicationPages,
+        getPages: applicationPages,
+      ),
     );
   }
 }

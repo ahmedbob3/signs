@@ -84,11 +84,16 @@ const String ONLINE_APPOINTMENT = "assets/images/ic_emergency_Call.png";
 const String MEDICAL_HISTORY = "assets/images/ic_medical-history.png";
 const String EMERGENCY_CALL = "assets/images/ic_emergency_Call.png";
 const String Doctors_BG = 'assets/images/doctors_bg.png';
+const String Appointment_BG = 'assets/images/BG.png';
 const String IC_SPECIALITY = 'assets/images/ic_Specilaity_Circle.png';
 const String IC_NO_DOCTORS = 'assets/images/ic_no_Doctors.png';
 const String IC_NO_SPECIALITIES = 'assets/images/ic_no_Speciality.png';
 const String IC_EXPERIENCE = 'assets/images/ic_experience_Rectange.png';
 const String IC_HEALTH_INSURANCE = 'assets/images/ic_health-insurance.png';
 const String IC_SUCCESS_BOOKING = 'assets/images/ic_sucessbooking.png';
+const String RATE_ORDER = 'assets/images/ic_rate_order.png';
+const String DURATION = 'assets/images/ic_Duration.png';
+const String FEES = 'assets/images/ic_Fees.png';
+const String STAR_ACTIVE = 'assets/images/ic_Star-active.png';
 
 
