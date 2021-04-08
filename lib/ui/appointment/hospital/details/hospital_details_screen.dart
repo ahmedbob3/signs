@@ -124,7 +124,7 @@ class HospitalDetailsScreen extends StatelessWidget {
                         color: greyColor,
                         fontSize: 15,
                         fontFamily: mediumFontFamily),
-                    labels: [Strings().getOverviewText(),Strings().getServiceText()],
+                    labels: [Strings().getServiceText(), Strings().getOverviewText(),],
                     selectedLabelIndex: (index) {
                       controller.selectNewIndex(index);
                     },

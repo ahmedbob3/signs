@@ -1,6 +1,7 @@
 import 'package:Signs/Models/hospitals_model.dart';
 import 'package:Signs/Utils/constants.dart';
 import 'package:Signs/Utils/images.dart';
+import 'package:Signs/Utils/utils.dart';
 import 'package:Signs/ui/appointment/doctors/list/doctors_screen.dart';
 import 'package:Signs/ui/appointment/hospital/details/hospital_details_controller.dart';
 import 'package:Signs/ui/appointment/hospital/details/widgets/service.dart';
@@ -53,37 +54,54 @@ class HospitalServices extends StatelessWidget {
               style: Theme.of(context).textTheme.headline6,
             ),
             SizedBox(height: 26,),
-            Service(
-              assetPath: PHYSICAL_APPOINTMENT,
-              serviceName: "Physical Appointement",
-              serviceDescription: "Book an appointement with a doctor in required specialty",
-              onClick: (){
-                Get.toNamed(DoctorsScreen.tag, arguments: ModalRoute.of(context).settings.arguments);
-              },
-            ),
-            SizedBox(height: 16,),
-            Service(
-              assetPath: ONLINE_APPOINTMENT,
-              serviceName: "Online Appointement",
-              serviceDescription: "Book online an appointement with a doctor in required specialty",
-            ),
-            SizedBox(height: 16,),
-            Service(
-              assetPath: MEDICAL_HISTORY,
-              serviceName: "Medical History",
-              serviceDescription: "You can Request your medical history from the hospital in required specialty",
-            ),
-            SizedBox(height: 16,),
-            Service(
-              assetPath: EMERGENCY_CALL,
-              serviceName: "Emergency call",
-              serviceDescription: "You can make a Emergency call",
-            ),
-            SizedBox(height: 26,),
+            if(hospital.hasPhysicalAppointment == 1)
+              ...[
+                Service(
+                  assetPath: PHYSICAL_APPOINTMENT,
+                  serviceName: "Physical Appointement",
+                  serviceDescription: "Book an appointement with a doctor in required specialty",
+                  onClick: (){
+                    Get.toNamed(DoctorsScreen.tag, arguments: ModalRoute.of(context).settings.arguments);
+                  },
+                ),
+                SizedBox(height: 16,),
+              ],
+            if(hospital.hasOnlineAppointment == 1)
+              ...[
+                Service(
+                  assetPath: ONLINE_APPOINTMENT,
+                  serviceName: "Online Appointement",
+                  serviceDescription: "Book online an appointement with a doctor in required specialty",
+                  onClick: (){
+                    showComingSoonMessage();
+                  },
+                ),
+                SizedBox(height: 16,),
+              ],
+            if(hospital.hasMedicalHistory == 1)
+              ...[
+                Service(
+                  assetPath: MEDICAL_HISTORY,
+                  serviceName: "Medical History",
+                  serviceDescription: "You can Request your medical history from the hospital in required specialty",
+                ),
+                SizedBox(height: 16,)
+              ],
+            if(hospital.hasEmergencyCall == 1)
+              ...[
+                Service(
+                  assetPath: EMERGENCY_CALL,
+                  serviceName: "Emergency call",
+                  serviceDescription: "You can make a Emergency call",
+                ),
+                SizedBox(height: 26,)
+              ],
+            /*
+            todo show this section after completing the appointment cycle
             Text(
               "You recently visit",
               style: Theme.of(context).textTheme.headline6,
-            ),
+            ),*/
             SizedBox(height: 26,),
           ],
         ),
