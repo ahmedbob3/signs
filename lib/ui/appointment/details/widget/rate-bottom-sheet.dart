@@ -24,7 +24,7 @@ rateBottomSheet(){
               child: Text('Rate Appointment',style:boldCobaltTextStyle ,),
             ),
             rateContainer('Dr.Albert Alexander','https://image.freepik.com/free-vector/doctor-character-background_1270-84.jpg'),
-            rateContainer('New Mowasat Hospital',''),
+            rateContainer('New Mowasate Hospital',''),
             GestureDetector(
               onTap: (){
               },
