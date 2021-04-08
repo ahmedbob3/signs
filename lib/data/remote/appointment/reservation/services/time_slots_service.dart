@@ -1,56 +1,19 @@
+import 'package:Signs/Utils/network/network_util.dart';
+import 'package:Signs/Utils/network/result.dart';
 import 'package:Signs/base/base_service.dart';
-import 'package:Signs/data/remote/appointment/reservation/models/time_slot.dart';
+import 'package:Signs/data/remote/appointment/reservation/models/doctor_time_slots_entity.dart';
+import 'package:Signs/Utils/apis.dart';
 
 class TimeSlotsService extends BaseService{
-  Future<List<TimeSlot>> getTimeSlots(){
-    return Future.delayed(Duration(seconds: 1), (){
-      return [
-        TimeSlot(
-          id: 1,
-          name: '08:00 am',
-          isAvailable: true
-        ),
-        TimeSlot(
-            id: 2,
-            name: '08:30 am',
-            isAvailable: true
-        ),
-        TimeSlot(
-            id: 3,
-            name: '10:30 am',
-            isAvailable: true
-        ),
-        TimeSlot(
-            id: 4,
-            name: '11:00 am',
-            isAvailable: true
-        ),
-        TimeSlot(
-            id: 5,
-            name: '02:30 pm',
-            isAvailable: false
-        ),
-        TimeSlot(
-            id: 6,
-            name: '04:30 am',
-            isAvailable: true
-        ),
-        TimeSlot(
-            id: 7,
-            name: '05:00 am',
-            isAvailable: false
-        ),
-        TimeSlot(
-            id: 8,
-            name: '06:00 am',
-            isAvailable: true
-        ),
-        TimeSlot(
-            id: 9,
-            name: '07:30 am',
-            isAvailable: true
-        ),
-      ];
-    });
+  Future<Result> getTimeSlots(String doctorId) async{
+    var result = await NetworkUtil().get('${APIS.DOCTOR_SCHEDULE}&lang=$lang&d_id=$doctorId&type=physical_appointment');
+    if(result.status == Status.OK){
+      try{
+        result.data = DoctorTimeSlotsEntity().fromJson(result.data);
+      } catch(e){
+        result.data = DoctorTimeSlotsEntity();
+      }
+    }
+    return result;
   }
 }

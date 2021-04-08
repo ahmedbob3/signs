@@ -21,7 +21,7 @@ Map<String, dynamic> bannersResponseEntityToJson(BannersResponseEntity entity) {
 	return data;
 }
 
-bannersResponseDataFromJson(Banners data, Map<String, dynamic> json) {
+bannersFromJson(Banners data, Map<String, dynamic> json) {
 	if (json['b_id'] != null) {
 		data.bId = json['b_id'].toString();
 	}
@@ -46,7 +46,7 @@ bannersResponseDataFromJson(Banners data, Map<String, dynamic> json) {
 	return data;
 }
 
-Map<String, dynamic> bannersResponseDataToJson(Banners entity) {
+Map<String, dynamic> bannersToJson(Banners entity) {
 	final Map<String, dynamic> data = new Map<String, dynamic>();
 	data['b_id'] = entity.bId;
 	data['b_from_date'] = entity.bFromDate;

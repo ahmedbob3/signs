@@ -16,7 +16,7 @@ class ChooseDateTimeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ChooseDateTimeController>(
-      init: ChooseDateTimeController(),
+      init: ChooseDateTimeController(doctor),
       builder: (controller){
         return Padding(
           padding: const EdgeInsets.only(left:16.0, right: 16),

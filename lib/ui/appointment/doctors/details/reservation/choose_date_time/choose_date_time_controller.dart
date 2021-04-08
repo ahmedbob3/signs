@@ -1,21 +1,30 @@
 import 'package:Signs/base/base_controller.dart';
-import 'package:Signs/data/remote/appointment/reservation/models/time_slot.dart';
+import 'package:Signs/data/remote/appointment/doctors/models/doctors_entity.dart';
+import 'package:Signs/data/remote/appointment/reservation/models/doctor_time_slots_entity.dart';
 import 'package:Signs/data/remote/appointment/reservation/reservation_repository.dart';
+import 'package:intl/intl.dart';
 
 class ChooseDateTimeController extends BaseController{
   DateTime selectedDate = DateTime.now();
-  List<TimeSlot> availableTimeSlots = [];
+  List<DoctorTimeSlot> availableTimeSlots = [];
+  List<DoctorTimeSlot> allTimeSlots = [];
   bool isTimeSlotsLoading = false;
   ReservationRepository _reservationRepository = ReservationRepository();
-  TimeSlot selectedTimeSlot;
+  DoctorTimeSlot selectedTimeSlot;
+  final Doctor doctor;
+  final serverDateFormat = DateFormat('yyyy-MM-dd', 'en');
+
+  ChooseDateTimeController(this.doctor){
+   getTimeSlots();
+  }
 
   selectNewDate(DateTime selectedDate){
     this.selectedDate = selectedDate;
-    getTimeSlots();
+    updateAvailableDates(selectedDate);
     update();
   }
 
-  selectNewTimeSlot(TimeSlot selectedTimeSlot){
+  selectNewTimeSlot(DoctorTimeSlot selectedTimeSlot){
     this.selectedTimeSlot = selectedTimeSlot;
     update();
   }
@@ -23,10 +32,17 @@ class ChooseDateTimeController extends BaseController{
   getTimeSlots(){
     isTimeSlotsLoading = true;
     update();
-    _reservationRepository.getTimeSlots().then(
-            (availableTimeSlots){
+    _reservationRepository.getTimeSlots(doctor.id).then(
+            (availableTimeSlotsResult){
+              handleResponse(
+                result: availableTimeSlotsResult,
+                onSuccess: (){
+                  this.allTimeSlots = availableTimeSlotsResult.data.data;
+                  // get to day time slots
+                  updateAvailableDates(DateTime.now());
+                }
+              );
               isTimeSlotsLoading = false;
-              this.availableTimeSlots = availableTimeSlots;
               update();
             }
     );
@@ -34,5 +50,10 @@ class ChooseDateTimeController extends BaseController{
 
   bool checkIfNextButtonDisabled() {
     return !(selectedDate != null && selectedTimeSlot != null);
+  }
+
+  updateAvailableDates(DateTime date){
+    availableTimeSlots = allTimeSlots.where((element) => element.dsDate == serverDateFormat.format(date)).toList();
+    update();
   }
 }

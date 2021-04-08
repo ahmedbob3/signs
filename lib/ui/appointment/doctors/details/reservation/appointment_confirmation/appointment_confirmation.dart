@@ -18,7 +18,7 @@ class AppointmentConfirmation extends StatelessWidget {
   Widget build(BuildContext context) {
     ReservationBottomSheetController bottomSheetController = Get.find();
     String appointmentDate = AppDateFormats().dayMonthYearSpaced.format(bottomSheetController.selectedDate);
-    String appointmentTime = bottomSheetController.selectedTimeSlot.name;
+    String appointmentTime = bottomSheetController.selectedTimeSlot.dsTime;
     return Padding(
       padding: const EdgeInsets.only(left:16.0, right: 16),
       child: ListView(
