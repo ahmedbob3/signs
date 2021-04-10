@@ -7,7 +7,7 @@ import 'package:image_picker/image_picker.dart';
 class UploadCard extends StatefulWidget {
   final Function(File cardImage, String cardId) onCardAdded;
   final String hint;
-  const UploadCard({Key key, this.onCardAdded, this.hint}) : super(key: key);
+  const UploadCard({Key key, this.onCardAdded, this.hint,}) : super(key: key);
   @override
   _UploadCardState createState() => _UploadCardState();
 }

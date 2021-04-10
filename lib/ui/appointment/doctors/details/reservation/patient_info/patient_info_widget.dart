@@ -14,7 +14,6 @@ class PatientInfoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<PatientInfoController>(
-      init: PatientInfoController(),
       builder: (controller){
         String subAccountName = Singleton().loginModel.data.uFirstName;
         String subAccountRelation = Singleton().loginModel.data.uRelation;
@@ -31,23 +30,24 @@ class PatientInfoWidget extends StatelessWidget {
               SizedBox(height: 20,),
               Text('Patient ID', style: heavyGreySemiBoldTextStyle,),
               SizedBox(height: 10,),
-              if(controller.patientUploadedCard == null && controller.userIdCards.isEmpty)
+              if(controller.isPatientIdLoading)
+                Center(child: CircularProgressIndicator(),),
+              if(!controller.isPatientIdLoading && controller.patientUploadedCard == null && controller.userIdCards.isEmpty)
                 UploadCard(
                   hint: 'Enter ID',
                   onCardAdded: (File uploadedCardImage, String cardId){
                     controller.updatePatientId(patientId: cardId, patientUploadedCard: uploadedCardImage);
-                  },
+                  }
                 ),
-              if(controller.patientUploadedCard != null ||  controller.userIdCards.isNotEmpty)
+              if(!controller.isPatientIdLoading && controller.patientUploadedCard != null ||  controller.userIdCards.isNotEmpty)
                 CardInfo(
                   cardId: controller.patientId,
-                  selectedCardImage: controller.patientUploadedCard,
                   cardData: controller.userIdCards.isNotEmpty?controller.userIdCards.last:null,
                   onSelected: (){
 
                   },
                   onDeleted: (){
-
+                    controller.deleteCurrentId();
                   },
                   isSelected: true,
                 ),
@@ -56,7 +56,7 @@ class PatientInfoWidget extends StatelessWidget {
                 isSelected: controller.haveInsurance,
                 onChanged: controller.updateHaveInsurance,
               ),
-              if(controller.haveInsurance && (!controller.showAddNewInsuranceCard || controller.insuranceCards.isEmpty))
+              if(controller.haveInsurance && (!controller.showAddNewInsuranceCard || controller.userMedicalCards.isEmpty))
                 Padding(
                   padding: const EdgeInsets.only(top:8.0),
                   child: UploadCard(
@@ -67,10 +67,11 @@ class PatientInfoWidget extends StatelessWidget {
                   ),
                 ),
               SizedBox(height: 8,),
-              ...controller.insuranceCards.map(
+              ...controller.userMedicalCards.map(
                       (insuranceCard) => CardInfo(
-                        cardId: insuranceCard.insuranceCardName,
-                        selectedCardImage: insuranceCard.insuranceImage,
+                        cardId: insuranceCard.pmcId,
+
+                        selectedCardImage: insuranceCard.pmcCardImage,
                         isSelected: insuranceCard.isSelected,
                         onSelected: (){
                           controller.selectInsuranceCard(insuranceCard);
@@ -80,11 +81,11 @@ class PatientInfoWidget extends StatelessWidget {
                         },
                       )
               ).toList(),
-              if(controller.insuranceCards.isNotEmpty) Divider(
+              if(controller.userMedicalCards.isNotEmpty) Divider(
                 color: silverDivider,
                 height: 2,
               ),
-              if(controller.showAddNewInsuranceCard && controller.insuranceCards.isNotEmpty) ListTile(
+              if(controller.showAddNewInsuranceCard && controller.userMedicalCards.isNotEmpty) ListTile(
                 leading: Container(
                   width: 30,
                   height: 30,

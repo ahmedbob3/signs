@@ -4,7 +4,7 @@ import 'package:Signs/data/remote/appointment/reservation/models/patient_cards_e
 import 'package:flutter/material.dart';
 
 class CardInfo extends StatelessWidget {
-  final File selectedCardImage;
+  final String selectedCardImage;
   final String cardUrl;
   final String cardId;
   final Function onSelected;
@@ -39,7 +39,7 @@ class CardInfo extends StatelessWidget {
               if(cardData != null)
                 Image.network(cardData.piCardImage, width: 60, height: 40, fit: BoxFit.fitWidth)
               else
-              Image.file(selectedCardImage, width: 60, height: 40, fit: BoxFit.fitWidth,),
+              Image.network(selectedCardImage, width: 60, height: 40, fit: BoxFit.fitWidth,),
               SizedBox(width: 24,),
               Expanded(child: Text((cardData != null) ?cardData.piIdCard:cardId, style: outerSpaceStyle,)),
               IconButton(

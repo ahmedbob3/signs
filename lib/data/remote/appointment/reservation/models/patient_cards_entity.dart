@@ -14,4 +14,5 @@ class PatientCardsData with JsonConvert<PatientCardsData> {
 	String piIdCard;
 	@JSONField(name: "pi_card_image")
 	String piCardImage;
+	bool isSelected = false;
 }

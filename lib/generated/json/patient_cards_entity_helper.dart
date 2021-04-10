@@ -31,6 +31,9 @@ patientCardsDataFromJson(PatientCardsData data, Map<String, dynamic> json) {
 	if (json['pi_card_image'] != null) {
 		data.piCardImage = json['pi_card_image'].toString();
 	}
+	if (json['isSelected'] != null) {
+		data.isSelected = json['isSelected'];
+	}
 	return data;
 }
 
@@ -39,5 +42,6 @@ Map<String, dynamic> patientCardsDataToJson(PatientCardsData entity) {
 	data['pi_id'] = entity.piId;
 	data['pi_id_card'] = entity.piIdCard;
 	data['pi_card_image'] = entity.piCardImage;
+	data['isSelected'] = entity.isSelected;
 	return data;
 }

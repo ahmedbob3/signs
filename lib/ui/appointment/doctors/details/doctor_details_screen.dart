@@ -3,6 +3,7 @@ import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/style/theme.dart';
 import 'package:Signs/data/remote/appointment/doctors/models/doctors_entity.dart';
 import 'package:Signs/ui/appointment/doctors/details/doctor_details_controller.dart';
+import 'package:Signs/ui/appointment/doctors/details/reservation/patient_info/patient_info_controller.dart';
 import 'package:Signs/ui/appointment/doctors/details/reservation/reservation_bottomsheet.dart';
 import 'package:Signs/ui/appointment/doctors/widgets/doctor_card.dart';
 import 'package:Signs/widgets/animated_button.dart';
@@ -150,6 +151,7 @@ class DoctorsDetailsScreen extends StatelessWidget {
                   child: AnimatedButton(
                     btnName: "Make appointment",
                     onPressed: (){
+                      Get.put(PatientInfoController());
                       showModalBottomSheet(
                         context: context,
                         builder: (ctx){
