@@ -54,6 +54,7 @@ class Data {
   final String saLastName;
   final String saGender;
   final String saRelation;
+  bool isSelected = false;
 
   factory Data.fromJson(dynamic str) => Data.fromMap(json.decode(str));
 

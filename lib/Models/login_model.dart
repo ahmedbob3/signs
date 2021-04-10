@@ -68,6 +68,7 @@ class Data {
   String uRelation;
 
 
+
   factory Data.fromMap(Map<String, dynamic> json) => Data(
             uId: json["u_id"],
 

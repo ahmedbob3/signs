@@ -74,24 +74,34 @@ class AppointmentListScreen extends StatelessWidget {
                             ),
                           ),
                           child: Text(
-                            'NA',
+                            '${controller.displayedFirstName[0].capitalize}${controller.displayedLastName[0].capitalize}',
                             style: appTheme.textTheme.button,
                           ),
                         ),
-                        Text(
-                          'Nina\'s Appointments',
-                          style: whiteSmokeStyle,
+                        SizedBox(width: 4,),
+                        Expanded(
+                          child: Text(
+                            '${controller.displayedFirstName}\'s Appointments',
+                            style: whiteSmokeStyle,
+                          ),
                         ),
                         SizedBox(
                           width: 15.w,
                         ),
-                        GestureDetector(
-                          onTap: (){
-                            bottomSheet();
+                        TextButton(
+                          onPressed: (){
+                            bottomSheet(
+                                (account){
+                                  controller.updateDisplayedAccount(account);
+                                }
+                            );
                           },
-                          child: Text(
-                            'Change',
-                            style: changeTextStyle,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Change',
+                              style: changeTextStyle,
+                            ),
                           ),
                         ),
                       ],
@@ -106,7 +116,7 @@ class AppointmentListScreen extends StatelessWidget {
                   margin: EdgeInsets.symmetric(
                     horizontal: 0.05.sw,
                   ),
-                  height: 0.77.sh,
+                  height: 0.75.sh,
                   width: 0.9.sw,
                   child: controller.isLoading? Center(child: CircularProgressIndicator())
                   :ListView.builder(

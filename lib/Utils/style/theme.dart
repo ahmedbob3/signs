@@ -34,6 +34,7 @@ const Color amber                      = const Color.fromRGBO(255, 178, 0, 1);
 const Color cancelGrey                 = const Color.fromRGBO(182, 182, 182, 1);
 const Color shadowColor                = const Color.fromRGBO(167, 167, 167, 0.23);
 const Color borderColor                = const Color.fromRGBO(198, 202, 217, 1);
+const Color darkMidNight               = const Color.fromRGBO(0, 54, 115, 1);
 
 LinearGradient blueGradient = LinearGradient(
     colors: [MEDIUM_TEAL_BLUE, MEDIUM_TEAL_BLUE],
@@ -276,7 +277,7 @@ TextStyle semiGreyStyle = TextStyle(
 
 TextStyle whiteSmokeStyle = TextStyle(
     fontFamily: Fonts.semiBoldFontFamily,
-    fontSize: 18,
+    fontSize: 16,
     color: whiteSmoke
 );
 
