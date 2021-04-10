@@ -1,6 +1,9 @@
 import 'dart:io';
+import 'package:Signs/Utils/singleton.dart';
 import 'package:Signs/base/base_controller.dart';
 import 'package:Signs/data/remote/appointment/reservation/models/insurance_card.dart';
+import 'package:Signs/data/remote/appointment/reservation/models/patient_cards_entity.dart';
+import 'package:Signs/data/remote/appointment/reservation/reservation_repository.dart';
 
 class PatientInfoController extends BaseController{
   File patientUploadedCard;
@@ -8,13 +11,24 @@ class PatientInfoController extends BaseController{
   bool haveInsurance = false;
   List<InsuranceCard> insuranceCards = [];
   bool showAddNewInsuranceCard = false;
+  List<PatientCardsData> userMedicalCards = [];
+  List<PatientCardsData> userIdCards = [];
+  ReservationRepository _reservationRepository = ReservationRepository();
+  final user = Singleton().loginModel.data;
 
   PatientInfoController(){
-    print('inside PatientInfoController constructor');
+    getPatientId();
+    getPatientCards();
   }
   void updatePatientId({File patientUploadedCard, String patientId}){
     this.patientId = patientId;
     this.patientUploadedCard = patientUploadedCard;
+    _reservationRepository.updateUserCardInfo(
+      uploadedFile: patientUploadedCard,
+      patientId: patientId,
+      userId: user.uId,
+      userType: user.uRelation.isEmpty? '0':'1'
+    );
     update();
   }
 
@@ -32,6 +46,12 @@ class PatientInfoController extends BaseController{
       }
     });
     showAddNewInsuranceCard = true;
+    _reservationRepository.addNewMedicalCard(
+      uploadedFile: patientUploadedCard,
+      userId: user.uId,
+      userType: user.uRelation.isEmpty? '0':'1',
+      medicalCardId: patientId
+    );
     update();
   }
 
@@ -42,6 +62,7 @@ class PatientInfoController extends BaseController{
 
   void handleAddNewCard() {
     showAddNewInsuranceCard = false;
+
     update();
   }
 
@@ -63,6 +84,36 @@ class PatientInfoController extends BaseController{
       }
     });
     update();
+  }
+
+  void getPatientId() {
+    _reservationRepository.getPatientId(int.parse(user.uId), user.uRelation.isEmpty? 0:1)
+        .then((userIdResult){
+          handleResponse(
+            result: userIdResult,
+            onSuccess: (){
+              if(userIdResult.data.data != null && userIdResult.data.data is List){
+                userIdCards = userIdResult.data.data;
+                update();
+              }
+            }
+          );
+    });
+  }
+
+  void getPatientCards() {
+    _reservationRepository.getPatientCards(int.parse(user.uId), user.uRelation.isEmpty? 0:1)
+        .then((userPatientsCardsResult){
+      handleResponse(
+          result: userPatientsCardsResult,
+          onSuccess: (){
+            if(userPatientsCardsResult.data.data != null && userPatientsCardsResult.data.data is List){
+              userMedicalCards = userPatientsCardsResult.data.data;
+              update();
+            }
+          }
+      );
+    });
   }
 
 }

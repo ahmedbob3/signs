@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:Signs/Utils/style/theme.dart';
+import 'package:Signs/data/remote/appointment/reservation/models/patient_cards_entity.dart';
 import 'package:flutter/material.dart';
 
 class CardInfo extends StatelessWidget {
@@ -9,7 +10,9 @@ class CardInfo extends StatelessWidget {
   final Function onSelected;
   final Function onDeleted;
   final bool isSelected;
-  const CardInfo({Key key, this.selectedCardImage, this.cardUrl, this.cardId, this.onSelected, this.isSelected, this.onDeleted}) : super(key: key);
+  final PatientCardsData cardData;
+
+  const CardInfo({Key key, this.selectedCardImage, this.cardUrl, this.cardId, this.onSelected, this.isSelected, this.onDeleted, this.cardData}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -33,9 +36,12 @@ class CardInfo extends StatelessWidget {
                 }
               ),
               SizedBox(width: 24,),
+              if(cardData != null)
+                Image.network(cardData.piCardImage, width: 60, height: 40, fit: BoxFit.fitWidth)
+              else
               Image.file(selectedCardImage, width: 60, height: 40, fit: BoxFit.fitWidth,),
               SizedBox(width: 24,),
-              Expanded(child: Text(cardId, style: outerSpaceStyle,)),
+              Expanded(child: Text((cardData != null) ?cardData.piIdCard:cardId, style: outerSpaceStyle,)),
               IconButton(
                 icon: Icon(Icons.delete),
                 onPressed: (){

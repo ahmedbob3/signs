@@ -31,17 +31,18 @@ class PatientInfoWidget extends StatelessWidget {
               SizedBox(height: 20,),
               Text('Patient ID', style: heavyGreySemiBoldTextStyle,),
               SizedBox(height: 10,),
-              if(controller.patientUploadedCard == null)
+              if(controller.patientUploadedCard == null && controller.userIdCards.isEmpty)
                 UploadCard(
                   hint: 'Enter ID',
                   onCardAdded: (File uploadedCardImage, String cardId){
                     controller.updatePatientId(patientId: cardId, patientUploadedCard: uploadedCardImage);
                   },
                 ),
-              if(controller.patientUploadedCard != null)
+              if(controller.patientUploadedCard != null ||  controller.userIdCards.isNotEmpty)
                 CardInfo(
                   cardId: controller.patientId,
                   selectedCardImage: controller.patientUploadedCard,
+                  cardData: controller.userIdCards.isNotEmpty?controller.userIdCards.last:null,
                   onSelected: (){
 
                   },

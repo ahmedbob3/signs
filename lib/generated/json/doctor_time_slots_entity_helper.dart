@@ -21,7 +21,7 @@ Map<String, dynamic> doctorTimeSlotsEntityToJson(DoctorTimeSlotsEntity entity) {
 	return data;
 }
 
-doctorTimeSlotsDataFromJson(DoctorTimeSlot data, Map<String, dynamic> json) {
+doctorTimeSlotFromJson(DoctorTimeSlot data, Map<String, dynamic> json) {
 	if (json['ds_id'] != null) {
 		data.dsId = json['ds_id'].toString();
 	}
@@ -43,7 +43,7 @@ doctorTimeSlotsDataFromJson(DoctorTimeSlot data, Map<String, dynamic> json) {
 	return data;
 }
 
-Map<String, dynamic> doctorTimeSlotsDataToJson(DoctorTimeSlot entity) {
+Map<String, dynamic> doctorTimeSlotToJson(DoctorTimeSlot entity) {
 	final Map<String, dynamic> data = new Map<String, dynamic>();
 	data['ds_id'] = entity.dsId;
 	data['ds_d_id'] = entity.dsDId;

@@ -17,8 +17,8 @@ class NetworkUtil{
   void initDio() {
     // Set default configs
     dio.options.baseUrl = APIS.serverURL;
-    dio.options.connectTimeout = 50000; //50s
-    dio.options.receiveTimeout = 30000;
+    dio.options.connectTimeout = 100000; //100s
+    dio.options.receiveTimeout = 100000;
     dio.interceptors.add(PrettyDioLogger(
       requestHeader: true,
       requestBody: true,
@@ -43,10 +43,10 @@ class NetworkUtil{
     }
   }
 
-  Future<Result> post(String endPoint, {Map<String, dynamic> headers, dynamic body}) async{
+  Future<Result> post(String endPoint, {Map<String, dynamic> headers, dynamic body, bool isUpload = false}) async{
     // use try/catch block because dio through exception in case of wrong status code
     try{
-      Response response = await dio.post(endPoint, data: body, options: Options(headers: headers));
+      Response response = await dio.post(endPoint, data: body, options: Options(headers: headers, contentType: isUpload ? 'multipart/form-data; boundary=<calculated when request is sent>': Headers.jsonContentType));
       if(response.statusCode < 200 || response.statusCode >= 400 || response.data == null){
         print("status code error : ${response.statusCode}");
         return Result.failed(getApplicationError(response));

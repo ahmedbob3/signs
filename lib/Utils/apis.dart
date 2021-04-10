@@ -11,4 +11,8 @@ class APIS {
   static const String Edit_MEDICATION = 'medication_update';
   static const String Edit_MEDICATION_STATUS = 'medication_status_update';
   static const String DOCTOR_SCHEDULE = 'get_doctor_schedule';
+  static const String PATIENT_CARD = 'get_patient_card';
+  static const String SAVE_PATIENT_CARD = 'save_patient_ID';
+  static const String ADD_NEW_MEDICAL_CARD = 'save_patient_medical_cards';
+  static const String PATIENT_MEDICAL_CARDS = 'get_patient_medical_cards';
 }
