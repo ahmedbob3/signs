@@ -124,6 +124,11 @@ class PatientInfoController extends BaseController{
           onSuccess: (){
             if(userPatientsCardsResult.data.data != null && userPatientsCardsResult.data.data is List){
               userMedicalCards = userPatientsCardsResult.data.data;
+              haveInsurance = userMedicalCards.isNotEmpty;
+              showAddNewInsuranceCard = userMedicalCards.isNotEmpty;
+              if(userMedicalCards.isNotEmpty){
+                userMedicalCards.last.isSelected = true;
+              }
             }
           }
       );

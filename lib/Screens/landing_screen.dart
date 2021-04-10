@@ -12,7 +12,8 @@ import 'medication_screen.dart';
 
 
 class LandingScreen extends StatefulWidget {
-  LandingScreen({Key key}) : super(key: key);
+  final int startIndex;
+  LandingScreen({Key key, this.startIndex}) : super(key: key);
 
   @override
   _LandingScreenState createState() => _LandingScreenState();
@@ -22,6 +23,7 @@ class LandingScreen extends StatefulWidget {
 class _LandingScreenState extends State<LandingScreen> {
   int selectedTabIndex = 0;
   BuildContext _context;
+
 
   @override
   Widget build(BuildContext context) {
@@ -153,6 +155,9 @@ class _LandingScreenState extends State<LandingScreen> {
   @override
   void initState() {
     super.initState();
+    if(widget.startIndex != null){
+      selectedTabIndex = widget.startIndex;
+    }
     notificationPlugin.setListenerForLowerVersions(onNotificationInLowerVersions);
     notificationPlugin.setOnNotificationClick(onNotificationClick);
    // test();

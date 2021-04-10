@@ -41,8 +41,9 @@ class PatientInfoWidget extends StatelessWidget {
                 ),
               if(!controller.isPatientIdLoading && controller.patientUploadedCard != null ||  controller.userIdCards.isNotEmpty)
                 CardInfo(
-                  cardId: controller.patientId,
-                  cardData: controller.userIdCards.isNotEmpty?controller.userIdCards.last:null,
+                  cardId: controller.userIdCards.last.piId,
+                  cardName: controller.userIdCards.last.piIdCard,
+                  selectedCardImage: controller.userIdCards.last.piCardImage,
                   onSelected: (){
 
                   },
@@ -56,7 +57,7 @@ class PatientInfoWidget extends StatelessWidget {
                 isSelected: controller.haveInsurance,
                 onChanged: controller.updateHaveInsurance,
               ),
-              if(controller.haveInsurance && (!controller.showAddNewInsuranceCard || controller.userMedicalCards.isEmpty))
+              if(!controller.isAddNewMedicalCard && controller.haveInsurance && (!controller.showAddNewInsuranceCard || controller.userMedicalCards.isEmpty))
                 Padding(
                   padding: const EdgeInsets.only(top:8.0),
                   child: UploadCard(
@@ -70,7 +71,7 @@ class PatientInfoWidget extends StatelessWidget {
               ...controller.userMedicalCards.map(
                       (insuranceCard) => CardInfo(
                         cardId: insuranceCard.pmcId,
-
+                        cardName: insuranceCard.pmcMedicalCard,
                         selectedCardImage: insuranceCard.pmcCardImage,
                         isSelected: insuranceCard.isSelected,
                         onSelected: (){
@@ -81,6 +82,8 @@ class PatientInfoWidget extends StatelessWidget {
                         },
                       )
               ).toList(),
+              if(controller.isAddNewMedicalCard)
+                Center(child: CircularProgressIndicator(),),
               if(controller.userMedicalCards.isNotEmpty) Divider(
                 color: silverDivider,
                 height: 2,
@@ -104,11 +107,25 @@ class PatientInfoWidget extends StatelessWidget {
               AnimatedButton(
                 btnName: "Next",
                 onPressed: (){
-                  ReservationBottomSheetController bottomSheetController = Get.find();
-                  bottomSheetController.goToNextPage();
+                  if(controller.userIdCards.isEmpty){
+                    Get.snackbar(
+                      "Warning",
+                      "please add patient id first",
+                      snackPosition: SnackPosition.BOTTOM,
+                      colorText: Colors.redAccent
+                    );
+                  } else{
+                    ReservationBottomSheetController bottomSheetController = Get.find();
+                    bottomSheetController.savePatientCards(
+                        patientId: controller.userIdCards.last,
+                        selectedMedicalCard: controller.userMedicalCards.firstWhere((element) => element.isSelected, orElse: ()=> null)
+                    );
+                    bottomSheetController.goToNextPage();
+                  }
                 },
                 controller: AnimatedButtonController(),
-              )
+              ),
+              SizedBox(height: 16,)
             ],
           ),
         );

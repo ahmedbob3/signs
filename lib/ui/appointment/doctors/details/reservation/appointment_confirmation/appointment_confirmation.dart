@@ -2,12 +2,12 @@ import 'package:Signs/Models/hospitals_model.dart';
 import 'package:Signs/Utils/date_formats.dart';
 import 'package:Signs/Utils/style/theme.dart';
 import 'package:Signs/data/remote/appointment/doctors/models/doctors_entity.dart';
-import 'package:Signs/ui/appointment/doctors/details/reservation/confirmation_success/confirmation_success_screen.dart';
 import 'package:Signs/ui/appointment/doctors/details/reservation/reservation_bottomsheet_controller.dart';
 import 'package:Signs/ui/appointment/doctors/widgets/doctor_card.dart';
 import 'package:Signs/widgets/animated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class AppointmentConfirmation extends StatelessWidget {
   final Doctor doctor;
@@ -26,17 +26,21 @@ class AppointmentConfirmation extends StatelessWidget {
           SizedBox(height: 24,),
           Center(child: Text('Appointment Confirmation', style: boldSmaltTextStyle,)),
           SizedBox(height: 24,),
-          DoctorCard(doctor:doctor, showHospitalInfo: true, hospital: hospital, appointmentDate: appointmentDate, appointmentTime: appointmentTime,),
+          DoctorCard(doctor:doctor, showHospitalInfo: true, hospital: hospital, appointmentDate: appointmentDate, appointmentTime: DateFormat('hh:mm a').format(DateFormat('hh:mm:ss').parse(appointmentTime)),),
           SizedBox(height: 24,),
           Row(
             children: [
               Expanded(
-                child: AnimatedButton(
-                  btnName: "Confirm",
-                  onPressed: (){
-                    Get.offAndToNamed(ConfirmationSuccessScreen.tag, arguments: [doctor, hospital, appointmentDate, appointmentTime]);
-                  },
-                  controller: AnimatedButtonController(),
+                child: Column(
+                  children: [
+                    AnimatedButton(
+                      btnName: "Confirm",
+                      onPressed: (){
+                        bottomSheetController.confirmReservation(doctor, hospital, appointmentDate, appointmentTime);
+                      },
+                      controller: bottomSheetController.confirmAnimatedButtonController,
+                    ),
+                  ],
                 ),
               ),
               SizedBox(width: 16,),
@@ -46,7 +50,7 @@ class AppointmentConfirmation extends StatelessWidget {
                   child: TextButton(
                     child: Text('Cancel'),
                     onPressed: (){
-
+                      Get.back();
                     },
                     style: TextButton.styleFrom(
                       backgroundColor: lightGrey,

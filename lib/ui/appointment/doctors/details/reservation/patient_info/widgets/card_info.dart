@@ -5,14 +5,13 @@ import 'package:flutter/material.dart';
 
 class CardInfo extends StatelessWidget {
   final String selectedCardImage;
-  final String cardUrl;
   final String cardId;
+  final String cardName;
   final Function onSelected;
   final Function onDeleted;
   final bool isSelected;
-  final PatientCardsData cardData;
 
-  const CardInfo({Key key, this.selectedCardImage, this.cardUrl, this.cardId, this.onSelected, this.isSelected, this.onDeleted, this.cardData}) : super(key: key);
+  const CardInfo({Key key, this.selectedCardImage, this.cardId, this.onSelected, this.isSelected, this.onDeleted, this.cardName}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -36,12 +35,9 @@ class CardInfo extends StatelessWidget {
                 }
               ),
               SizedBox(width: 24,),
-              if(cardData != null)
-                Image.network(cardData.piCardImage, width: 60, height: 40, fit: BoxFit.fitWidth)
-              else
               Image.network(selectedCardImage, width: 60, height: 40, fit: BoxFit.fitWidth,),
               SizedBox(width: 24,),
-              Expanded(child: Text((cardData != null) ?cardData.piIdCard:cardId, style: outerSpaceStyle,)),
+              Expanded(child: Text(cardName, style: outerSpaceStyle,)),
               IconButton(
                 icon: Icon(Icons.delete),
                 onPressed: (){
