@@ -1,10 +1,13 @@
+import 'package:Signs/Utils/singleton.dart';
 import 'package:Signs/base/base_controller.dart';
 import 'package:Signs/data/remote/appointment/appointment_repository.dart';
-import 'package:Signs/data/remote/appointment/models/Appointment.dart';
+import 'package:Signs/data/remote/appointment/models/appointment_response_entity.dart';
 
 class AppointmentListController extends BaseController{
-  List<Appointment> appointments = [];
+  List<AppointmentResponseData> appointments = [];
   bool isLoading = false;
+  final user = Singleton().loginModel.data;
+
   AppointmentRepository _appointmentRepository = AppointmentRepository();
 
   AppointmentListController(){
@@ -14,10 +17,16 @@ class AppointmentListController extends BaseController{
   void getAppointments() {
     isLoading = true;
     update();
-    _appointmentRepository.getAppointments().then(
-            (newAppointments){
+    _appointmentRepository.getAppointments(user.uId, user.uRelation.isEmpty? '0':'1').then(
+            (newAppointmentsResult){
+              handleResponse(
+                result: newAppointmentsResult,
+                onSuccess: (){
+                  this.appointments = newAppointmentsResult.data.data;
+                  update();
+                }
+              );
               isLoading = false;
-              this.appointments = newAppointments;
               update();
             }
     );

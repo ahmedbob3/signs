@@ -31,6 +31,9 @@ insuranceCardDataFromJson(InsuranceCardData data, Map<String, dynamic> json) {
 	if (json['pmc_card_image'] != null) {
 		data.pmcCardImage = json['pmc_card_image'].toString();
 	}
+	if (json['isSelected'] != null) {
+		data.isSelected = json['isSelected'];
+	}
 	return data;
 }
 
@@ -39,5 +42,6 @@ Map<String, dynamic> insuranceCardDataToJson(InsuranceCardData entity) {
 	data['pmc_id'] = entity.pmcId;
 	data['pmc_medical_card'] = entity.pmcMedicalCard;
 	data['pmc_card_image'] = entity.pmcCardImage;
+	data['isSelected'] = entity.isSelected;
 	return data;
 }

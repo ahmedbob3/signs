@@ -108,9 +108,10 @@ class AppointmentListScreen extends StatelessWidget {
                   ),
                   height: 0.77.sh,
                   width: 0.9.sw,
-                  child: ListView.builder(
-                    itemCount: 5,
-                    itemBuilder: (context, index) => appointmentContainer(),
+                  child: controller.isLoading? Center(child: CircularProgressIndicator())
+                  :ListView.builder(
+                    itemCount: controller.appointments.length,
+                    itemBuilder: (context, index) => appointmentContainer(controller.appointments[index]),
                   ),
                 ),
               )

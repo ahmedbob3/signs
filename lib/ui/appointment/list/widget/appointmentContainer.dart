@@ -4,8 +4,9 @@ import 'package:Signs/ui/appointment/list/widget/Icon&textRow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
-appointmentContainer(){
+import 'package:Signs/data/remote/appointment/models/appointment_response_entity.dart';
+import 'package:Signs/Utils/extensions/strings_extensions.dart';
+Widget appointmentContainer(AppointmentResponseData appointment){
   return GestureDetector(
     onTap: (){
       Get.to(AppointmentDetailsScreen());
@@ -34,7 +35,7 @@ appointmentContainer(){
                   ),
                   image: DecorationImage(
                     image: NetworkImage(
-                      'https://image.freepik.com/free-vector/doctor-character-background_1270-84.jpg',
+                      appointment.dImage,
                     ),
                     fit: BoxFit.fill,
                   ),
@@ -49,7 +50,7 @@ appointmentContainer(){
                     padding:
                     EdgeInsets.symmetric(vertical: 10.h,),
                     child: Text(
-                      'Dr.Albert Alexander',
+                      appointment.dName,
                       style: boldCobaltTextStyle,
                     ),
                   ),
@@ -70,7 +71,7 @@ appointmentContainer(){
                       ),
                     ),
                     child: Text(
-                      'Orthopedic Specialist',
+                      appointment.sName,
                       style: specialistTextStyle,
                     ),
                   ),
@@ -85,7 +86,7 @@ appointmentContainer(){
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               myCustomRow(
-                'New Mowaset Hospital',
+                appointment.hName,
                 'ic_mapMarker.png',
               ),
               myCustomRow(
@@ -102,7 +103,7 @@ appointmentContainer(){
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                '30 July , 09:00 am',
+                '${appointment.dsDate.formatDate(sourceDateFormat: 'yyyy-mm-dd', destinationFormat: 'dd MMM')} , ${appointment.dsTime.formatDate(sourceDateFormat: 'hh:mm:ss', destinationFormat: 'hh:mm a')}',
                 style: appTheme.textTheme.headline6,
               ),
               Container(
