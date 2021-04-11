@@ -6,10 +6,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:Signs/data/remote/appointment/models/appointment_response_entity.dart';
 import 'package:Signs/Utils/extensions/strings_extensions.dart';
+import 'package:intl/intl.dart';
 Widget appointmentContainer(AppointmentResponseData appointment){
   return GestureDetector(
     onTap: (){
-      Get.to(AppointmentDetailsScreen());
+      Get.toNamed(AppointmentDetailsScreen.tag, arguments: appointment);
     },
     child: Container(
       height: 0.27.sh,
@@ -112,15 +113,10 @@ Widget appointmentContainer(AppointmentResponseData appointment){
                   horizontal: 15.w,
                   vertical: 10.h,
                 ),
-                decoration: BoxDecoration(
-                  color: Color.fromRGBO(221, 231, 247, 1),
-                  borderRadius: BorderRadius.circular(
-                    5.r,
-                  ),
-                ),
+                decoration: checkIfPastAppointment(appointment.dsDate, appointment.dsTime)?pastBoxDecoration:upcomingBoxDecoration,
                 child: Text(
-                  'Upcoming',
-                  style: regularDeniumTextStyle,
+                  checkIfPastAppointment(appointment.dsDate, appointment.dsTime)?'Past':'Upcoming',
+                  style: checkIfPastAppointment(appointment.dsDate, appointment.dsTime)?battleShipTextStyle:regularDeniumTextStyle,
                 ),
               ),
             ],
@@ -130,3 +126,24 @@ Widget appointmentContainer(AppointmentResponseData appointment){
     ),
   );
 }
+
+bool checkIfPastAppointment(String appointmentDateString, String appointmentTime){
+  final dateString = '$appointmentDateString $appointmentTime';
+  final appointmentDate = DateFormat('yyyy-mm-dd hh:mm:ss').parse(dateString);
+  return DateTime.now().isBefore(appointmentDate);
+}
+
+BoxDecoration upcomingBoxDecoration = BoxDecoration(
+  color: Color.fromRGBO(221, 231, 247, 1),
+  borderRadius: BorderRadius.circular(
+    5.r,
+  ),
+);
+
+BoxDecoration pastBoxDecoration = BoxDecoration(
+  color: Color.fromRGBO(
+      130, 130, 130, 0.14),
+  borderRadius: BorderRadius.circular(
+    5.r,
+  ),
+);

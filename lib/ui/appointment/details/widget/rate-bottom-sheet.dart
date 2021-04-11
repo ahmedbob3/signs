@@ -1,12 +1,38 @@
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/style/theme.dart';
+import 'package:Signs/data/remote/appointment/appointment_repository.dart';
+import 'package:Signs/data/remote/appointment/models/appointment_response_entity.dart';
+import 'package:Signs/widgets/animated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-rateBottomSheet(){
+rateBottomSheet(AppointmentResponseData appointment){
   return Get.bottomSheet(
-    SingleChildScrollView(
+    RateAppointment(appointment: appointment,),
+    barrierColor: Colors.black54,
+    isScrollControlled: true,
+    enterBottomSheetDuration: Duration(milliseconds: 500,),
+  );
+}
+class RateAppointment extends StatefulWidget {
+  final AppointmentResponseData appointment;
+
+  const RateAppointment({Key key, this.appointment}) : super(key: key);
+  @override
+  _RateAppointmentState createState() => _RateAppointmentState();
+}
+
+class _RateAppointmentState extends State<RateAppointment> {
+  TextEditingController doctorFeedBack   = TextEditingController();
+  TextEditingController hospitalFeedBack = TextEditingController();
+  double doctorRate = 5;
+  double hospitalRate = 5;
+  AnimatedButtonController _animatedButtonController = AnimatedButtonController();
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
       child: Container(
         height: 0.7.sh,
         decoration: BoxDecoration(
@@ -21,35 +47,33 @@ rateBottomSheet(){
           children: [
             Padding(
               padding:  EdgeInsets.symmetric(vertical:15.h,),
-              child: Text('Rate Appointment',style:boldCobaltTextStyle ,),
+              child: Text('Rate Appointment', style:boldCobaltTextStyle ,),
             ),
-            rateContainer('Dr.Albert Alexander','https://image.freepik.com/free-vector/doctor-character-background_1270-84.jpg'),
-            rateContainer('New Mowasate Hospital',''),
-            GestureDetector(
-              onTap: (){
-              },
-              child: Container(
-                height: 0.07.sh,
-                alignment: Alignment.center,
-                margin: EdgeInsets.symmetric(horizontal:20.w,vertical: 15.h),
-                decoration: BoxDecoration(
-                  color:MEDIUM_TEAL_BLUE,
-                  borderRadius: BorderRadius.circular(10.r,),
-                ),
-                child: Text('Rate ',style:appTheme.textTheme.button ,),
+            rateContainer(widget.appointment.dName, widget.appointment.dImage, (newRating){doctorRate = newRating;}, doctorFeedBack),
+            rateContainer(widget.appointment.hName, '', (newRating){hospitalRate = newRating;}, hospitalFeedBack),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: AnimatedButton(
+                btnName: 'Rate',
+                controller: _animatedButtonController,
+                onPressed: (){
+                  _animatedButtonController.startAnimation();
+                  AppointmentRepository().rateAppointment(appointmentId: widget.appointment.aId, doctorRate: doctorRate.toString(), doctorFeedBack: doctorFeedBack.text, hospitalRate: hospitalRate.toString(), hospitalFeedBack: hospitalFeedBack.text)
+                  .then((value){
+                    _animatedButtonController.reverseAnimation();
+                    Get.back();
+                  });
+                },
               ),
-            ),
+            )
           ],
         ),
       ),
-    ),
-    barrierColor: Colors.black54,
-    isScrollControlled: true,
-    enterBottomSheetDuration: Duration(milliseconds: 500,),
-  );
+    );
+  }
 }
 
-rateContainer(String name,String doctorImage){
+rateContainer(String name, String doctorImage, Function(double) onRateChange, TextEditingController controller){
   return Container(
     height: 0.24.sh,
     margin:EdgeInsets.symmetric(horizontal:20.w,vertical: 5.h,),
@@ -73,7 +97,7 @@ rateContainer(String name,String doctorImage){
             doctorImage==''?
             SizedBox():
             Container(
-              height: 0.12.sh,
+              height: 0.08.sh,
               width: 0.1.sh,
               margin: EdgeInsets.symmetric(
                 horizontal: 20.w,
@@ -98,20 +122,15 @@ rateContainer(String name,String doctorImage){
                     name,
                     style: boldBlack16TextStyle,
                   ),
-                  Container(
-                    alignment: Alignment.bottomCenter,
-                    height: 0.06.sh,
-                    width: 0.5.sw,
-                    padding: EdgeInsets.symmetric(horizontal: 5.w),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Image(image:AssetImage(STAR_ACTIVE,),fit: BoxFit.fill,),
-                        Image(image:AssetImage(STAR_ACTIVE,),),
-                        Image(image:AssetImage(STAR_ACTIVE,),),
-                        Image(image:AssetImage(STAR_ACTIVE,),),
-                        Image(image:AssetImage(STAR_ACTIVE,),),
-                      ],
+                  SizedBox(height: 8,),
+                  RatingBar(
+                    itemCount: 5,
+                    allowHalfRating: false,
+                    initialRating: 5,
+                    onRatingUpdate: onRateChange,
+                    ratingWidget: RatingWidget(
+                      empty: Image.asset(STAR_IN_ACTIVE),
+                      full: Image.asset(STAR_ACTIVE)
                     ),
                   ),
                 ],
@@ -119,9 +138,11 @@ rateContainer(String name,String doctorImage){
             ),
           ],
         ),
+        SizedBox(height: 8,),
         Container(
           margin: EdgeInsets.symmetric(horizontal: 20.w,vertical: 10.h,),
           child: TextField(
+            controller: controller,
             decoration: InputDecoration(
               border:OutlineInputBorder(
                 borderRadius: BorderRadius.circular(5.r,),

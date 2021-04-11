@@ -173,7 +173,7 @@ TextStyle regularDeniumTextStyle = TextStyle(
 
 TextStyle regularTealTextStyle = TextStyle(
     fontFamily: Fonts.semiBoldFontFamily,
-    fontSize: 16,
+    fontSize: 14,
     color: MEDIUM_TEAL_BLUE
 );
 
@@ -241,7 +241,7 @@ TextStyle dimGreySemiBoldTextStyle = TextStyle(
 
 TextStyle dimGreySemiBold16TextStyle = TextStyle(
     fontFamily: Fonts.semiBoldFontFamily,
-    fontSize: 16,
+    fontSize: 14,
     color: dimGrey
 );
 

@@ -55,6 +55,7 @@ bottomSheet(Function(Data) onSelect){
           );
         },
       ),
+      
     ),
     barrierColor: Colors.black54,
     enterBottomSheetDuration: Duration(milliseconds: 500,),

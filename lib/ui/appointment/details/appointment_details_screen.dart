@@ -1,15 +1,23 @@
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/style/theme.dart';
+import 'package:Signs/data/remote/appointment/models/appointment_response_entity.dart';
 import 'package:Signs/ui/appointment/details/appointment_details_controller.dart';
 import 'package:Signs/ui/appointment/details/widget/rate-bottom-sheet.dart';
+import 'package:Signs/ui/appointment/list/widget/appointmentContainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:Signs/ui/appointment/details/widget/customContainer.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:Signs/Utils/extensions/strings_extensions.dart';
+
+
 class AppointmentDetailsScreen extends StatelessWidget {
+  static const tag = "AppointmentDetailsScreen";
   @override
   Widget build(BuildContext context) {
+    AppointmentResponseData appointment = Get.arguments;
     return GetBuilder<AppointmentDetailsController>(
         init: AppointmentDetailsController(),
         builder: (controller) {
@@ -29,11 +37,16 @@ class AppointmentDetailsScreen extends StatelessWidget {
                       SizedBox(
                         height: 10.h,
                       ),
-                      Image(
-                        image: AssetImage(
-                          Arrow_back_grey,
+                      IconButton(
+                        onPressed: (){
+                          Get.back();
+                        },
+                        icon: Image(
+                          image: AssetImage(
+                            Arrow_back_grey,
+                          ),
+                          fit: BoxFit.fill,
                         ),
-                        fit: BoxFit.fill,
                       ),
                       SizedBox(
                         height: 5.h,
@@ -64,7 +77,7 @@ class AppointmentDetailsScreen extends StatelessWidget {
                                 ),
                                 image: DecorationImage(
                                   image: NetworkImage(
-                                    'https://image.freepik.com/free-vector/doctor-character-background_1270-84.jpg',
+                                    appointment.dImage,
                                   ),
                                   fit: BoxFit.fill,
                                 ),
@@ -77,34 +90,37 @@ class AppointmentDetailsScreen extends StatelessWidget {
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Text(
-                                    'Dr.Albert Alexander',
+                                    appointment.dName,
                                     style: boldCobaltTextStyle,
                                   ),
                                   Text(
-                                    'Consultant & Clinical Director of Orthopedic Surgery',
+                                    '',
                                     style: dimGreySemiBold16TextStyle,
                                   ),
-                                  Container(
-                                    alignment: Alignment.center,
-                                    height: 0.04.sh,
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 5.w),
-                                    margin: EdgeInsets.symmetric(
-                                      vertical: 10.h,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: Color.fromRGBO(255, 237, 190, 1),
-                                      borderRadius: BorderRadius.circular(
-                                        5.r,
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      height: 0.04.sh,
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 5.w),
+                                      margin: EdgeInsets.symmetric(
+                                        vertical: 10.h,
                                       ),
-                                      border: Border.all(
-                                        color: amber,
-                                        width: 1,
+                                      decoration: BoxDecoration(
+                                        color: Color.fromRGBO(255, 237, 190, 1),
+                                        borderRadius: BorderRadius.circular(
+                                          5.r,
+                                        ),
+                                        border: Border.all(
+                                          color: amber,
+                                          width: 1,
+                                        ),
                                       ),
-                                    ),
-                                    child: Text(
-                                      'Orthopedic Specialist',
-                                      style: specialistTextStyle,
+                                      child: Text(
+                                        appointment.sName,
+                                        style: specialistTextStyle,
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -138,7 +154,7 @@ class AppointmentDetailsScreen extends StatelessWidget {
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
                                       Text(
-                                        'New Moasat Hospital',
+                                        appointment.hName,
                                         style: appTheme.textTheme.headline6,
                                       ),
                                       SizedBox(
@@ -148,15 +164,30 @@ class AppointmentDetailsScreen extends StatelessWidget {
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
                                         children: [
-                                          Image(
-                                            image: AssetImage(MapMarker),
-                                            fit: BoxFit.fill,
+                                          IconButton(
+                                            icon: Image(
+                                              image: AssetImage(MapMarker),
+                                              fit: BoxFit.fill,
+                                            ),
+                                            onPressed: () async{
+                                              var latitude =
+                                              appointment.hLatlang.split(',')[0];
+                                              var longitude =
+                                              appointment.hLatlang.split(',')[1];
+                                              String googleUrl =
+                                                  'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude';
+                                              if (await canLaunch(googleUrl)) {
+                                              await launch(googleUrl);
+                                              } else {
+                                              throw 'Could not open the map.';
+                                              }
+                                            },
                                           ),
                                           SizedBox(
                                             width: 5.w,
                                           ),
                                           Text(
-                                            'Salem Al Mubarak St , Salmiya',
+                                            '',
                                             style: payneGreyStyle,
                                           ),
                                         ],
@@ -169,7 +200,7 @@ class AppointmentDetailsScreen extends StatelessWidget {
                                             MainAxisAlignment.start,
                                         children: [
                                           Text(
-                                            '30 July 2021',
+                                            appointment.dsDate.formatDate(sourceDateFormat: 'yyyy-mm-dd', destinationFormat: 'dd MMM yyyy'),
                                             style: regularTealTextStyle,
                                           ),
                                           Text(
@@ -177,7 +208,7 @@ class AppointmentDetailsScreen extends StatelessWidget {
                                             style: dimGreySemiBold16TextStyle,
                                           ),
                                           Text(
-                                            '09:00 am',
+                                            appointment.dsTime.formatDate(sourceDateFormat: 'hh:mm:ss', destinationFormat: 'hh:mm a'),
                                             style: regularTealTextStyle,
                                           ),
                                         ],
@@ -188,7 +219,7 @@ class AppointmentDetailsScreen extends StatelessWidget {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
                                         alignment: Alignment.center,
@@ -213,16 +244,10 @@ class AppointmentDetailsScreen extends StatelessWidget {
                                         margin: EdgeInsets.symmetric(
                                           vertical: 10.h,
                                         ),
-                                        decoration: BoxDecoration(
-                                          color: Color.fromRGBO(
-                                              130, 130, 130, 0.14),
-                                          borderRadius: BorderRadius.circular(
-                                            5.r,
-                                          ),
-                                        ),
+                                        decoration: checkIfPastAppointment(appointment.dsDate, appointment.dsTime)?pastBoxDecoration:upcomingBoxDecoration,
                                         child: Text(
-                                          'Past',
-                                          style: battleShipTextStyle,
+                                          checkIfPastAppointment(appointment.dsDate, appointment.dsTime)?'Past':'Upcoming',
+                                          style: checkIfPastAppointment(appointment.dsDate, appointment.dsTime)?battleShipTextStyle:regularDeniumTextStyle,
                                         )),
                                   ],
                                 ),
@@ -266,9 +291,9 @@ class AppointmentDetailsScreen extends StatelessWidget {
 //                              ],
 //                            ),
                               //if appointment done
-                            GestureDetector(
+                            if(checkIfPastAppointment(appointment.dsDate, appointment.dsTime)) GestureDetector(
                               onTap: (){
-                                rateBottomSheet();
+                                rateBottomSheet(appointment);
                               },
                               child: Container(
                                 height: 0.05.sh,

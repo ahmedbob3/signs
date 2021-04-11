@@ -95,5 +95,6 @@ const String RATE_ORDER = 'assets/images/ic_rate_order.png';
 const String DURATION = 'assets/images/ic_Duration.png';
 const String FEES = 'assets/images/ic_Fees.png';
 const String STAR_ACTIVE = 'assets/images/ic_Star-active.png';
+const String STAR_IN_ACTIVE = 'assets/images/ic_Star-inactive.png';
 
 
