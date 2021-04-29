@@ -31,7 +31,7 @@ class AppointmentDetailsScreen extends StatelessWidget {
                     horizontal: 30.w,
                   ),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
@@ -55,6 +55,7 @@ class AppointmentDetailsScreen extends StatelessWidget {
                         'Appointment Details',
                         style: heavyCobaltTextStyle,
                       ),
+                      SizedBox(height: 12,),
                       Container(
                         height: 0.22.sh,
                         decoration: BoxDecoration(
@@ -98,7 +99,7 @@ class AppointmentDetailsScreen extends StatelessWidget {
                                     style: dimGreySemiBold16TextStyle,
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.all(8.0),
+                                    padding: const EdgeInsets.only(right:8.0),
                                     child: Container(
                                       alignment: Alignment.center,
                                       height: 0.04.sh,
@@ -129,6 +130,7 @@ class AppointmentDetailsScreen extends StatelessWidget {
                           ],
                         ),
                       ),
+                      SizedBox(height: 12,),
                       Container(
                         height: 0.25.sh,
                         padding: EdgeInsets.symmetric(
@@ -316,10 +318,12 @@ class AppointmentDetailsScreen extends StatelessWidget {
                           ],
                         ),
                       ),
+                      SizedBox(height: 12,),
                       customContainer('Offline Appointment ', 'Type', DURATION),
-                      customContainer(
+                  //todo will be added later
+                  /*customContainer(
                           '1 Hour ', '09:00 am - 10:00 am', DURATION),
-                      customContainer('20 KD', 'For a Visit', FEES),
+                      customContainer('20 KD', 'For a Visit', FEES),*/
                     ],
                   ),
                 ),
