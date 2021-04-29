@@ -94,7 +94,7 @@ class AppointmentDetailsScreen extends StatelessWidget {
                                     style: boldCobaltTextStyle,
                                   ),
                                   Text(
-                                    '',
+                                    appointment.dTitle,
                                     style: dimGreySemiBold16TextStyle,
                                   ),
                                   Padding(
@@ -186,9 +186,11 @@ class AppointmentDetailsScreen extends StatelessWidget {
                                           SizedBox(
                                             width: 5.w,
                                           ),
-                                          Text(
-                                            '',
-                                            style: payneGreyStyle,
+                                          Expanded(
+                                            child: Text(
+                                              appointment.hLocation,
+                                              style: payneGreyStyle,
+                                            ),
                                           ),
                                         ],
                                       ),
