@@ -104,7 +104,7 @@ Widget appointmentContainer(AppointmentResponseData appointment){
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                '${appointment.dsDate.formatDate(sourceDateFormat: 'yyyy-mm-dd', destinationFormat: 'dd MMM')} , ${appointment.dsTime.formatDate(sourceDateFormat: 'hh:mm:ss', destinationFormat: 'hh:mm a')}',
+                '${appointment.dsDate.formatDate(sourceDateFormat: 'yyyy-MM-dd', destinationFormat: 'dd MMM')} , ${appointment.dsTime.formatDate(sourceDateFormat: 'hh:mm:ss', destinationFormat: 'hh:mm a')}',
                 style: appTheme.textTheme.headline6,
               ),
               Container(
@@ -129,8 +129,8 @@ Widget appointmentContainer(AppointmentResponseData appointment){
 
 bool checkIfPastAppointment(String appointmentDateString, String appointmentTime){
   final dateString = '$appointmentDateString $appointmentTime';
-  final appointmentDate = DateFormat('yyyy-mm-dd hh:mm:ss').parse(dateString);
-  return DateTime.now().isBefore(appointmentDate);
+  final appointmentDate = DateFormat('yyyy-MM-dd hh:mm:ss').parse(dateString);
+  return DateTime.now().isAfter(appointmentDate);
 }
 
 BoxDecoration upcomingBoxDecoration = BoxDecoration(

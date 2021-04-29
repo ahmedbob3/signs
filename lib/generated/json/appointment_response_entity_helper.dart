@@ -40,8 +40,14 @@ appointmentResponseDataFromJson(AppointmentResponseData data, Map<String, dynami
 	if (json['d_name'] != null) {
 		data.dName = json['d_name'].toString();
 	}
+	if (json['d_title'] != null) {
+		data.dTitle = json['d_title'].toString();
+	}
 	if (json['s_name'] != null) {
 		data.sName = json['s_name'].toString();
+	}
+	if (json['h_location'] != null) {
+		data.hLocation = json['h_location'].toString();
 	}
 	if (json['h_name'] != null) {
 		data.hName = json['h_name'].toString();
@@ -63,7 +69,9 @@ Map<String, dynamic> appointmentResponseDataToJson(AppointmentResponseData entit
 	data['ds_date'] = entity.dsDate;
 	data['ds_time'] = entity.dsTime;
 	data['d_name'] = entity.dName;
+	data['d_title'] = entity.dTitle;
 	data['s_name'] = entity.sName;
+	data['h_location'] = entity.hLocation;
 	data['h_name'] = entity.hName;
 	data['h_latlang'] = entity.hLatlang;
 	data['d_image'] = entity.dImage;

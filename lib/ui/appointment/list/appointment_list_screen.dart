@@ -3,6 +3,7 @@ import 'package:Signs/Utils/style/theme.dart';
 import 'package:Signs/Utils/styles.dart';
 import 'package:Signs/ui/appointment/list/appointment_list_controller.dart';
 import 'package:Signs/ui/appointment/list/widget/bottomSheet.dart';
+import 'package:Signs/ui/appointment/list/widget/no_appointment.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -118,8 +119,9 @@ class AppointmentListScreen extends StatelessWidget {
                   ),
                   height: 0.75.sh,
                   width: 0.9.sw,
-                  child: controller.isLoading? Center(child: CircularProgressIndicator())
-                  :ListView.builder(
+                  child: controller.isLoading?
+                  Center(child: CircularProgressIndicator()):
+                  controller.appointments.isEmpty? NoAppointmentWidget():ListView.builder(
                     itemCount: controller.appointments.length,
                     itemBuilder: (context, index) => appointmentContainer(controller.appointments[index]),
                   ),

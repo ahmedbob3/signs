@@ -20,8 +20,12 @@ class AppointmentResponseData with JsonConvert<AppointmentResponseData> {
 	String dsTime;
 	@JSONField(name: "d_name")
 	String dName;
+	@JSONField(name: "d_title")
+	String dTitle;
 	@JSONField(name: "s_name")
 	String sName;
+	@JSONField(name: "h_location")
+	String hLocation;
 	@JSONField(name: "h_name")
 	String hName;
 	@JSONField(name: "h_latlang")

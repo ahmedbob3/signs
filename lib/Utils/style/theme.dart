@@ -304,3 +304,9 @@ TextStyle riffleGreenBoldStyle = TextStyle(
   fontSize: 22,
   color: riffleGreen
 );
+
+TextStyle darkMidNightBoldStyle = TextStyle(
+    fontFamily: Fonts.boldFontFamily,
+    fontSize: 18,
+    color: darkMidNight
+);

@@ -96,5 +96,6 @@ const String DURATION = 'assets/images/ic_Duration.png';
 const String FEES = 'assets/images/ic_Fees.png';
 const String STAR_ACTIVE = 'assets/images/ic_Star-active.png';
 const String STAR_IN_ACTIVE = 'assets/images/ic_Star-inactive.png';
+const String NO_APPOINTMENT = 'assets/images/ic_NoAppointments_empty_View.png';
 
 

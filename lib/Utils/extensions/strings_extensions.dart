@@ -2,6 +2,8 @@ import 'package:intl/intl.dart';
 
 extension DateFormating on String {
   String formatDate({String sourceDateFormat, String destinationFormat}) {
-    return DateFormat(destinationFormat).format(DateFormat(sourceDateFormat).parse(this));
+    DateTime sourceDateTime = DateFormat(sourceDateFormat).parse(this);
+    String destinationDateString =  DateFormat(destinationFormat).format(sourceDateTime);
+    return destinationDateString;
   }
 }
