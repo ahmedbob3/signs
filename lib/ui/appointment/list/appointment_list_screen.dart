@@ -92,8 +92,8 @@ class AppointmentListScreen extends StatelessWidget {
                         TextButton(
                           onPressed: (){
                             bottomSheet(
-                                (account){
-                                  controller.updateDisplayedAccount(account);
+                                (account, isMainAccount){
+                                  controller.updateDisplayedAccount(account, isMainAccount);
                                 }
                             );
                           },

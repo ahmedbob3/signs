@@ -41,9 +41,9 @@ class AppointmentListController extends BaseController{
     );
   }
 
-  void updateDisplayedAccount(Data account) {
-    displayedFirstName = account.saFirstName;
-    displayedLastName = account.saLastName;
-    getAppointments(account.saId, '0');
+  void updateDisplayedAccount(Data account, bool isMainAccount) {
+    displayedFirstName = isMainAccount? user.uFirstName:account.saFirstName;
+    displayedLastName = isMainAccount?user.uLastName:account.saLastName;
+    getAppointments(isMainAccount? user.uId:account.saId, isMainAccount?'0':'0');
   }
 }

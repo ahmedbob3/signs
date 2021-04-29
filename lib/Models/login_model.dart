@@ -66,7 +66,7 @@ class Data {
   final String uBedTime;
   final String uWakeUp;
   String uRelation;
-
+  bool isSelected = false;
 
 
   factory Data.fromMap(Map<String, dynamic> json) => Data(

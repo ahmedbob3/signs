@@ -6,8 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-bottomSheet(Function(Data) onSelect){
+bottomSheet(Function(Data, bool isMainAccount) onSelect){
   List<Data> subAccountsList = Constants.subaccountsList;
+  final mainAccount = Singleton().loginModel.data;
 
   return Get.bottomSheet(
     Container(
@@ -20,38 +21,38 @@ bottomSheet(Function(Data) onSelect){
         ),
       ),
       child: ListView.builder(
-        itemCount: subAccountsList.length,
+        itemCount: subAccountsList.length + 1,
         itemBuilder: (context,index){
-          final Data account = subAccountsList[index];
-          return Padding(
-            padding: const EdgeInsets.only(top:8.0, bottom: 8),
-            child: ListTile(
-              leading: Container(
-                height: 0.08.sh,
-                width: 0.08.sh,
-                margin:EdgeInsets.symmetric(horizontal: 0.05.sw,),
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: darkMidNight
-                ),
-                child: Center(
-                  child: Text(
-                    '${account.saFirstName[0].capitalize}${account.saLastName[0].capitalize}',
-                    style: appTheme.textTheme.button,
-                  ),
-                ),
-              ),
-              title: Text(account.saFirstName + ' ' + account.saLastName,style: heavyGreySemiBoldTextStyle,),
-              trailing: account.isSelected?Icon(Icons.check_circle,color: Color.fromRGBO(6, 197, 222, 1),):SizedBox(),
+          // display main account in index 0
+          if(index == 0){
+            return displayUserRow(
+                firstName: mainAccount.uFirstName,
+                lastName: mainAccount.uLastName,
+                isSelected: mainAccount.isSelected,
+                onTap: (){
+                  subAccountsList.forEach((element) {
+                    element.isSelected = false;
+                  });
+                  mainAccount.isSelected = true;
+                  onSelect(null, true);
+                  Get.back();
+                }
+            );
+          }
+          final Data account = subAccountsList[index - 1];
+          return displayUserRow(
+              firstName: account.saFirstName,
+              lastName: account.saLastName,
+              isSelected: account.isSelected,
               onTap: (){
                 subAccountsList.forEach((element) {
                   element.isSelected = false;
                 });
+                mainAccount.isSelected = false;
                 account.isSelected = true;
-                onSelect(account);
+                onSelect(account, false);
                 Get.back();
-              },
-            ),
+              }
           );
         },
       ),
@@ -59,5 +60,31 @@ bottomSheet(Function(Data) onSelect){
     ),
     barrierColor: Colors.black54,
     enterBottomSheetDuration: Duration(milliseconds: 500,),
+  );
+}
+
+Widget displayUserRow({@required String firstName, @required String lastName, @required bool isSelected, @required Function onTap}){
+  return Padding(
+    padding: const EdgeInsets.only(top:8.0, bottom: 8),
+    child: ListTile(
+      leading: Container(
+        height: 0.08.sh,
+        width: 0.08.sh,
+        margin:EdgeInsets.symmetric(horizontal: 0.05.sw,),
+        decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: darkMidNight
+        ),
+        child: Center(
+          child: Text(
+            '${firstName[0].capitalize}${lastName[0].capitalize}',
+            style: appTheme.textTheme.button,
+          ),
+        ),
+      ),
+      title: Text(firstName + ' ' + lastName,style: heavyGreySemiBoldTextStyle,),
+      trailing: isSelected?Icon(Icons.check_circle,color: Color.fromRGBO(6, 197, 222, 1),):SizedBox(),
+      onTap: onTap,
+    ),
   );
 }
