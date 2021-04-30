@@ -5,6 +5,7 @@ import 'package:Signs/data/remote/appointment/doctors/models/doctors_entity.dart
 import 'package:Signs/ui/appointment/doctors/details/doctor_details_controller.dart';
 import 'package:Signs/ui/appointment/doctors/details/reservation/patient_info/patient_info_controller.dart';
 import 'package:Signs/ui/appointment/doctors/details/reservation/reservation_bottomsheet.dart';
+import 'package:Signs/ui/appointment/doctors/details/widgets/image_details.dart';
 import 'package:Signs/ui/appointment/doctors/widgets/doctor_card.dart';
 import 'package:Signs/widgets/animated_button.dart';
 import 'package:Signs/widgets/appbar.dart';
@@ -59,16 +60,21 @@ class DoctorsDetailsScreen extends StatelessWidget {
                             itemCount: controller.doctorDetails.achievements.length,
                             itemBuilder: (buildContext, index){
                               String imageUrl = controller.doctorDetails.achievements[index];
-                              return Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  width: 72,
-                                  height: 74,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        fit: BoxFit.cover, image: NetworkImage(imageUrl)),
-                                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                                    color: Colors.white,
+                              return GestureDetector(
+                                onTap: (){
+                                  Get.toNamed(ImageDetails.tag, arguments: imageUrl);
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    width: 72,
+                                    height: 74,
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          fit: BoxFit.cover, image: NetworkImage(imageUrl)),
+                                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                      color: Colors.white,
+                                    ),
                                   ),
                                 ),
                               );

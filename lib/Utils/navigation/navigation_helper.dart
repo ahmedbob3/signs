@@ -1,6 +1,7 @@
 import 'package:Signs/ui/appointment/details/appointment_details_screen.dart';
 import 'package:Signs/ui/appointment/doctors/details/doctor_details_screen.dart';
 import 'package:Signs/ui/appointment/doctors/details/reservation/confirmation_success/confirmation_success_screen.dart';
+import 'package:Signs/ui/appointment/doctors/details/widgets/image_details.dart';
 import 'package:Signs/ui/appointment/doctors/list/doctors_screen.dart';
 import 'package:Signs/ui/appointment/speciality/specialty_screen.dart';
 import 'package:Signs/ui/appointment/hospital/details/hospital_details_screen.dart';
@@ -35,6 +36,11 @@ List<GetPage> applicationPages = [
   GetPage(
     name: AppointmentDetailsScreen.tag,
     page: () => AppointmentDetailsScreen(),
+    transitionDuration: Duration(milliseconds: 0)
+  ),
+  GetPage(
+    name: ImageDetails.tag,
+    page: () => ImageDetails(),
     transitionDuration: Duration(milliseconds: 0)
   ),
 ];
