@@ -37,7 +37,11 @@ class ChooseDateTimeController extends BaseController{
               handleResponse(
                 result: availableTimeSlotsResult,
                 onSuccess: (){
-                  this.allTimeSlots = availableTimeSlotsResult.data.data;
+                  if(availableTimeSlotsResult.data.data != null && availableTimeSlotsResult.data.data is List){
+                    this.allTimeSlots = availableTimeSlotsResult.data.data;
+                  } else{
+                    this.allTimeSlots = [];
+                  }
                   // get to day time slots
                   updateAvailableDates(DateTime.now());
                 }

@@ -68,6 +68,7 @@ class PatientInfoWidget extends StatelessWidget {
                   ),
                 ),
               SizedBox(height: 8,),
+              if(controller.haveInsurance)
               ...controller.userMedicalCards.map(
                       (insuranceCard) => CardInfo(
                         cardId: insuranceCard.pmcId,
