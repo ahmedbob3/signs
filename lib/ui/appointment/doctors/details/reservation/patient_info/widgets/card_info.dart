@@ -1,6 +1,4 @@
-import 'dart:io';
 import 'package:Signs/Utils/style/theme.dart';
-import 'package:Signs/data/remote/appointment/reservation/models/patient_cards_entity.dart';
 import 'package:flutter/material.dart';
 
 class CardInfo extends StatelessWidget {

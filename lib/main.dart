@@ -6,11 +6,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:Signs/Screens/splash_screen.dart';
 import 'package:Signs/Utils/styles.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'Blocs/login mobile bloc/login_mobile_bloc.dart';
 import 'Utils/constants.dart';
+import 'generated/l10n.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -50,6 +52,15 @@ class _MyAppState extends State<MyApp> {
             ),
           ),
         getPages: applicationPages,
+        localizationsDelegates: [
+          // 1
+          S.delegate,
+          // 2
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: S.delegate.supportedLocales
       ),
     );
   }

@@ -10,7 +10,7 @@ class EmptySpecialities extends StatelessWidget {
       children: [
         Image.asset(IC_NO_SPECIALITIES, width: 250, height: 250,),
         SizedBox(height: 25,),
-        Text("This Speciality not avaliable right now")
+        Text("This Speciality not available right now")
       ],
     );
   }

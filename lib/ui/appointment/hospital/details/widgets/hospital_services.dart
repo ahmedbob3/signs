@@ -58,8 +58,8 @@ class HospitalServices extends StatelessWidget {
               ...[
                 Service(
                   assetPath: PHYSICAL_APPOINTMENT,
-                  serviceName: "Physical Appointement",
-                  serviceDescription: "Book an appointement with a doctor in required specialty",
+                  serviceName: "Physical Appointment",
+                  serviceDescription: "Book an appointment with a doctor in required specialty",
                   onClick: (){
                     Get.toNamed(DoctorsScreen.tag, arguments: ModalRoute.of(context).settings.arguments);
                   },
@@ -70,8 +70,8 @@ class HospitalServices extends StatelessWidget {
               ...[
                 Service(
                   assetPath: ONLINE_APPOINTMENT,
-                  serviceName: "Online Appointement",
-                  serviceDescription: "Book online an appointement with a doctor in required specialty",
+                  serviceName: "Online Appointment",
+                  serviceDescription: "Book online an appointment with a doctor in required specialty",
                   onClick: (){
                     showComingSoonMessage();
                   },

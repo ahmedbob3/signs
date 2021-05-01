@@ -51,6 +51,8 @@ dependencies:
   auto_size_text: ^2.1.0
   image_picker: 0.6.7+22
   intl: ^0.17.0
+  flutter_localizations:
+    sdk: flutter
   flutter_screenutil: ^4.0.3+1
   path: ^1.8.0
   flutter_uploader: ^1.2.1
@@ -133,3 +135,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_intl:
+  enabled: true
