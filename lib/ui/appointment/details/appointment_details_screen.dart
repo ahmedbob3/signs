@@ -11,7 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:Signs/ui/appointment/details/widget/customContainer.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:Signs/Utils/extensions/strings_extensions.dart';
-
+import 'package:Signs/generated/l10n.dart';
 
 class AppointmentDetailsScreen extends StatelessWidget {
   static const tag = "AppointmentDetailsScreen";
@@ -52,7 +52,7 @@ class AppointmentDetailsScreen extends StatelessWidget {
                         height: 5.h,
                       ),
                       Text(
-                        'Appointment Details',
+                        S.of(context).appointmentDetails,
                         style: heavyCobaltTextStyle,
                       ),
                       SizedBox(height: 12,),
@@ -208,7 +208,7 @@ class AppointmentDetailsScreen extends StatelessWidget {
                                             style: regularTealTextStyle,
                                           ),
                                           Text(
-                                            ' at ',
+                                            ' ${S.of(context).at} ',
                                             style: dimGreySemiBold16TextStyle,
                                           ),
                                           Text(
@@ -250,7 +250,7 @@ class AppointmentDetailsScreen extends StatelessWidget {
                                         ),
                                         decoration: checkIfPastAppointment(appointment.dsDate, appointment.dsTime)?pastBoxDecoration:upcomingBoxDecoration,
                                         child: Text(
-                                          checkIfPastAppointment(appointment.dsDate, appointment.dsTime)?'Past':'Upcoming',
+                                          checkIfPastAppointment(appointment.dsDate, appointment.dsTime)?S.of(context).past:S.of(context).upcoming,
                                           style: checkIfPastAppointment(appointment.dsDate, appointment.dsTime)?battleShipTextStyle:regularDeniumTextStyle,
                                         )),
                                   ],
@@ -310,7 +310,7 @@ class AppointmentDetailsScreen extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Image(image: AssetImage(RATE_ORDER,),fit: BoxFit.fill,),
-                                    Text('Rate Appointment',style:appTheme.textTheme.button ,),
+                                    Text(S.of(context).rateAppointment,style:appTheme.textTheme.button ,),
                                   ],
                                 ),
                               ),
@@ -319,7 +319,7 @@ class AppointmentDetailsScreen extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 12,),
-                      customContainer('Offline Appointment ', 'Type', DURATION),
+                      customContainer(S.of(context).offlineAppointments, S.of(context).type, DURATION),
                   //todo will be added later
                   /*customContainer(
                           '1 Hour ', '09:00 am - 10:00 am', DURATION),

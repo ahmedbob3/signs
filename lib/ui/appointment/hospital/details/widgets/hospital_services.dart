@@ -2,6 +2,7 @@ import 'package:Signs/Models/hospitals_model.dart';
 import 'package:Signs/Utils/constants.dart';
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/utils.dart';
+import 'package:Signs/generated/l10n.dart';
 import 'package:Signs/ui/appointment/doctors/list/doctors_screen.dart';
 import 'package:Signs/ui/appointment/hospital/details/hospital_details_controller.dart';
 import 'package:Signs/ui/appointment/hospital/details/widgets/service.dart';
@@ -50,7 +51,7 @@ class HospitalServices extends StatelessWidget {
             ):Container(),
             SizedBox(height: 26,),
             Text(
-              "What are you looking for ?",
+              S.of(context).lookingForMsg,
               style: Theme.of(context).textTheme.headline6,
             ),
             SizedBox(height: 26,),
@@ -58,8 +59,8 @@ class HospitalServices extends StatelessWidget {
               ...[
                 Service(
                   assetPath: PHYSICAL_APPOINTMENT,
-                  serviceName: "Physical Appointment",
-                  serviceDescription: "Book an appointment with a doctor in required specialty",
+                  serviceName: S.of(context).physicalAppointment,
+                  serviceDescription: S.of(context).physicalAppointmentMsg,
                   onClick: (){
                     Get.toNamed(DoctorsScreen.tag, arguments: ModalRoute.of(context).settings.arguments);
                   },
@@ -70,8 +71,8 @@ class HospitalServices extends StatelessWidget {
               ...[
                 Service(
                   assetPath: ONLINE_APPOINTMENT,
-                  serviceName: "Online Appointment",
-                  serviceDescription: "Book online an appointment with a doctor in required specialty",
+                  serviceName: S.of(context).onlineAppointment,
+                  serviceDescription: S.of(context).onlineAppointmentMsg,
                   onClick: (){
                     showComingSoonMessage();
                   },
@@ -82,8 +83,8 @@ class HospitalServices extends StatelessWidget {
               ...[
                 Service(
                   assetPath: MEDICAL_HISTORY,
-                  serviceName: "Medical History",
-                  serviceDescription: "You can Request your medical history from the hospital in required specialty",
+                  serviceName: S.of(context).medicalHistory,
+                  serviceDescription: S.of(context).medicalHistoryMsg,
                 ),
                 SizedBox(height: 16,)
               ],
@@ -91,8 +92,8 @@ class HospitalServices extends StatelessWidget {
               ...[
                 Service(
                   assetPath: EMERGENCY_CALL,
-                  serviceName: "Emergency call",
-                  serviceDescription: "You can make a Emergency call",
+                  serviceName: S.of(context).emergencyCall,
+                  serviceDescription: S.of(context).emergencyCallMsg,
                 ),
                 SizedBox(height: 26,)
               ],

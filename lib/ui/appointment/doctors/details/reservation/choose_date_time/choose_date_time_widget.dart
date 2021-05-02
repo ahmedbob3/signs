@@ -1,6 +1,7 @@
 import 'package:Signs/Utils/calender/lib/calendar_strip.dart';
 import 'package:Signs/Utils/style/theme.dart';
 import 'package:Signs/data/remote/appointment/doctors/models/doctors_entity.dart';
+import 'package:Signs/generated/l10n.dart';
 import 'package:Signs/ui/appointment/doctors/details/reservation/choose_date_time/widgets/time_slot.dart';
 import 'package:Signs/ui/appointment/doctors/details/reservation/reservation_bottomsheet_controller.dart';
 import 'package:Signs/widgets/animated_button.dart';
@@ -23,9 +24,9 @@ class ChooseDateTimeWidget extends StatelessWidget {
           child: ListView(
             children: [
               SizedBox(height: 20,),
-              Center(child: Text('Book an appointment', style: boldSmaltTextStyle,)),
+              Center(child: Text(S.of(context).bookAnAppointment, style: boldSmaltTextStyle,)),
               SizedBox(height: 33,),
-              Text('Appointment Type', style: Theme.of(context).textTheme.subtitle1,),
+              Text(S.of(context).appointmentType, style: Theme.of(context).textTheme.subtitle1,),
               SizedBox(height: 16,),
               Row(
                 children: [
@@ -43,7 +44,7 @@ class ChooseDateTimeWidget extends StatelessWidget {
                         child: Center(
                           child: Padding(
                             padding: const EdgeInsets.all(12.0),
-                            child: Text('Online Appointment', style: unSelectedChipTextStyle,),
+                            child: Text(S.of(context).onlineAppointment, style: unSelectedChipTextStyle,),
                           ),
                         ),
                       ),
@@ -59,7 +60,7 @@ class ChooseDateTimeWidget extends StatelessWidget {
                         child: Center(
                           child: Padding(
                             padding: const EdgeInsets.all(12.0),
-                            child: Text('Physical Appointment', style: selectedChipTextStyle,),
+                            child: Text(S.of(context).physicalAppointment, style: selectedChipTextStyle,),
                           ),
                         ),
                       )
@@ -67,9 +68,9 @@ class ChooseDateTimeWidget extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 24,),
-              Text('Appointment Date & Time', style: Theme.of(context).textTheme.subtitle1,),
+              Text(S.of(context).appointmentDateTime, style: Theme.of(context).textTheme.subtitle1,),
               SizedBox(height: 24,),
-              Text('Select Date', style: unSelectedChipTextStyle,),
+              Text(S.of(context).selectDate, style: unSelectedChipTextStyle,),
               Container(
                 height: 100,
                 child: CalendarStrip(
@@ -89,7 +90,7 @@ class ChooseDateTimeWidget extends StatelessWidget {
               ),
               Divider(height: 1, color: manate,),
               SizedBox(height: 24,),
-              Text('Select Time Slot', style: unSelectedChipTextStyle,),
+              Text(S.of(context).selectTimeSlot, style: unSelectedChipTextStyle,),
               SizedBox(height: 16,),
               controller.isTimeSlotsLoading?Container(
                 height: 30,
@@ -103,7 +104,7 @@ class ChooseDateTimeWidget extends StatelessWidget {
               ),
               SizedBox(height: 16,),
               AnimatedButton(
-                btnName: "Next",
+                btnName: S.of(context).next,
                 onPressed: (){
                   ReservationBottomSheetController bottomSheetController = Get.find();
                   bottomSheetController.setSelectedDateAndTime(controller.selectedDate, controller.selectedTimeSlot);

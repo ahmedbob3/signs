@@ -2,6 +2,7 @@ import 'package:Signs/Models/hospitals_model.dart';
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/style/theme.dart';
 import 'package:Signs/data/remote/appointment/speciality/models/hospital_specialities_entity.dart';
+import 'package:Signs/generated/l10n.dart';
 import 'package:Signs/ui/appointment/doctors/list/doctors_screen.dart';
 import 'package:Signs/ui/appointment/speciality/widgets/empty_specialities.dart';
 import 'package:Signs/ui/appointment/speciality/widgets/speciality_card.dart';
@@ -24,28 +25,28 @@ class SpecialityScreen extends StatelessWidget {
       builder: (controller) {
         return Scaffold(
           appBar: getAppBar(
-            title: "Choose Speciality",
+            title: S.of(context).chooseSpeciality,
             onBackPressed: (){
               if(controller.checkIfAvailableSpecialitiesUpdated()){
                 showDialog(
                     context: context,
                     builder: (ctx){
                       return new AlertDialog(
-                        title: new Text("Warning"),
-                        content: new Text("Are you sure you want to clear your selection from the speciality filter?"),
+                        title: new Text(S.of(context).warning),
+                        content: new Text(S.of(context).clearSpecialityWarning),
                         actions: [
                           TextButton(
                               onPressed: (){
                                 Get.back();
                                 Get.back();
                               },
-                              child: Text('Yes')
+                              child: Text(S.of(context).yes)
                           ),
                           TextButton(
                               onPressed: (){
                                 Get.back();
                               },
-                              child: Text('No')
+                              child: Text(S.of(context).no)
                           ),
                         ],
                       );
@@ -72,7 +73,7 @@ class SpecialityScreen extends StatelessWidget {
                     CustomEditText(
                       controller: controller.searchController,
                       prefixIcon: Icon(Icons.search, color: TAUPE_GREY_COLOR, size: 18,),
-                      hintText: "Search Speciality",
+                      hintText: S.of(context).searchSpeciality,
                       suffixIcon: controller.searchController.text.length > 0 ?IconButton(
                         icon: Icon(Icons.close,),
                         onPressed: (){
@@ -98,7 +99,7 @@ class SpecialityScreen extends StatelessWidget {
                     ),
                     if(controller.showNextButton)
                     AnimatedButton(
-                      btnName: "Next",
+                      btnName: S.of(context).next,
                       onPressed: (){
                         controller.filterBySpecialities();
                       },

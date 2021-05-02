@@ -1,6 +1,7 @@
 import 'package:Signs/Models/hospitals_model.dart';
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/style/theme.dart';
+import 'package:Signs/generated/l10n.dart';
 import 'package:Signs/ui/appointment/doctors/list/doctors_controller.dart';
 import 'package:Signs/ui/appointment/doctors/widgets/doctor_card.dart';
 import 'package:Signs/ui/appointment/doctors/widgets/empty_doctors_screen.dart';
@@ -36,7 +37,7 @@ class DoctorsScreen extends StatelessWidget {
                     SizedBox(height: BANNER_HEIGHT - 25,),
                     CustomEditText(
                       prefixIcon: Icon(Icons.search, color: TAUPE_GREY_COLOR, size: 18,),
-                      hintText: "Search by Doctor Name",
+                      hintText: S.of(context).searchByDoctorName,
                       controller: controller.searchController,
                       suffixIcon: controller.searchController.text.length > 0 ?IconButton(
                         icon: Icon(Icons.close,),

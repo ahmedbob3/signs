@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:Signs/Utils/style/theme.dart';
+import 'package:Signs/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -36,13 +37,13 @@ class _UploadCardState extends State<UploadCard> {
                 onPressed: (){
                   if(_image == null){
                     setState(() {
-                      errorMsg = 'please select image first';
+                      errorMsg = S.of(context).selectImageFirst;
                     });
                     return;
                   }
                   if(textEditingController.text.isEmpty){
                     setState(() {
-                      errorMsg = 'please enter patient id';
+                      errorMsg = S.of(context).enterPatientId;
                     });
                     return;
                   }
@@ -111,20 +112,20 @@ class _UploadCardState extends State<UploadCard> {
       context: context,
       builder: (context){
         return CupertinoActionSheet(
-          title: Text('select Image'),
-          message: Text('Select image from Gallery or camera'),
+          title: Text(S.of(context).selectImage),
+          message: Text(S.of(context).selectImageFromGalleryOrCamera),
           actions: [
             CupertinoActionSheetAction(
               onPressed: (){
                 getImageFromCamera();
               },
-              child: Text('Camera')
+              child: Text(S.of(context).camera)
             ),
             CupertinoActionSheetAction(
               onPressed: (){
                 getImageFromGallery();
               },
-              child: Text('Gallery')
+              child: Text(S.of(context).gallery)
             ),
           ],
         );

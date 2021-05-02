@@ -1,5 +1,6 @@
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/style/theme.dart';
+import 'package:Signs/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class HaveInsuranceCard extends StatelessWidget {
@@ -20,7 +21,7 @@ class HaveInsuranceCard extends StatelessWidget {
           children: [
             Image.asset(IC_HEALTH_INSURANCE, width: 30, height: 30,),
             SizedBox(width: 20,),
-            Expanded(child: Text('Have insurance', style: boldSmaltTextStyle2,)),
+            Expanded(child: Text(S.of(context).haveInsurance,style: boldSmaltTextStyle2,)),
             Checkbox(
               value: isSelected, onChanged: onChanged
             )

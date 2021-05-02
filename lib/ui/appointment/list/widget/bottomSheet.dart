@@ -5,6 +5,7 @@ import 'package:Signs/Utils/style/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:Signs/generated/l10n.dart';
 
 bottomSheet(Function(Data, bool isMainAccount) onSelect){
   List<Data> subAccountsList = Constants.subaccountsList;

@@ -3,6 +3,7 @@ import 'package:Signs/Screens/landing_screen.dart';
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/style/theme.dart';
 import 'package:Signs/data/remote/appointment/doctors/models/doctors_entity.dart';
+import 'package:Signs/generated/l10n.dart';
 import 'package:Signs/ui/appointment/doctors/widgets/doctor_card.dart';
 import 'package:Signs/widgets/animated_button.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,7 @@ class ConfirmationSuccessScreen extends StatelessWidget {
           SizedBox(height: 50,),
           Image.asset(IC_SUCCESS_BOOKING, height: Get.height / 3,),
           SizedBox(height: 16,),
-          Center(child: Text('Thank you for booking !', style: riffleGreenBoldStyle,)),
+          Center(child: Text(S.of(context).thankBooking, style: riffleGreenBoldStyle,)),
           SizedBox(height: 16,),
           Padding(
             padding: const EdgeInsets.only(left:16.0, right: 16),
@@ -35,7 +36,7 @@ class ConfirmationSuccessScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left:16.0, right: 16),
                 child: AnimatedButton(
-                  btnName: "Appointments",
+                  btnName: S.of(context).appointments,
                   onPressed: (){
                     Get.offAll(LandingScreen(startIndex: 1,),);
                   },

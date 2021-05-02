@@ -1,4 +1,5 @@
 {
+  "@@locale": "en_US",
   "appointments": "Appointments",
   "change": "Change",
   "past": "Past",
@@ -57,5 +58,7 @@
   "yes": "Yes",
   "no": "No",
   "searchSpeciality": "Search Speciality",
-  "emptySpecialityMsg": "This Speciality not available right now"
+  "emptySpecialityMsg": "This Speciality not available right now",
+  "hour": "hour",
+  "noDoctorsMsg": "There’s No Doctors Found"
 }

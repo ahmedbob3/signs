@@ -1,6 +1,7 @@
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/style/theme.dart';
 import 'package:Signs/Utils/styles.dart';
+import 'package:Signs/generated/l10n.dart';
 import 'package:Signs/ui/appointment/list/appointment_list_controller.dart';
 import 'package:Signs/ui/appointment/list/widget/bottomSheet.dart';
 import 'package:Signs/ui/appointment/list/widget/no_appointment.dart';
@@ -40,7 +41,7 @@ class AppointmentListScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Appointments',
+                          S.of(context).appointments,
                           style: heavyWhiteTextStyle,
                         ),
                         SizedBox(
@@ -82,7 +83,7 @@ class AppointmentListScreen extends StatelessWidget {
                         SizedBox(width: 4,),
                         Expanded(
                           child: Text(
-                            '${controller.displayedFirstName}\'s Appointments',
+                            '${controller.displayedFirstName} ${S.of(context).appointments}',
                             style: whiteSmokeStyle,
                           ),
                         ),
@@ -100,7 +101,7 @@ class AppointmentListScreen extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              'Change',
+                              S.of(context).change,
                               style: changeTextStyle,
                             ),
                           ),
@@ -123,7 +124,7 @@ class AppointmentListScreen extends StatelessWidget {
                   Center(child: CircularProgressIndicator()):
                   controller.appointments.isEmpty? NoAppointmentWidget():ListView.builder(
                     itemCount: controller.appointments.length,
-                    itemBuilder: (context, index) => appointmentContainer(controller.appointments[index]),
+                    itemBuilder: (context, index) => appointmentContainer(controller.appointments[index], context: context),
                   ),
                 ),
               )

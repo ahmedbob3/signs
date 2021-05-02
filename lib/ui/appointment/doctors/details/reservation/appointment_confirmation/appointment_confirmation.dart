@@ -2,6 +2,7 @@ import 'package:Signs/Models/hospitals_model.dart';
 import 'package:Signs/Utils/date_formats.dart';
 import 'package:Signs/Utils/style/theme.dart';
 import 'package:Signs/data/remote/appointment/doctors/models/doctors_entity.dart';
+import 'package:Signs/generated/l10n.dart';
 import 'package:Signs/ui/appointment/doctors/details/reservation/reservation_bottomsheet_controller.dart';
 import 'package:Signs/ui/appointment/doctors/widgets/doctor_card.dart';
 import 'package:Signs/widgets/animated_button.dart';
@@ -24,7 +25,7 @@ class AppointmentConfirmation extends StatelessWidget {
       child: ListView(
         children: [
           SizedBox(height: 24,),
-          Center(child: Text('Appointment Confirmation', style: boldSmaltTextStyle,)),
+          Center(child: Text(S.of(context).appointmentConfirmation, style: boldSmaltTextStyle,)),
           SizedBox(height: 24,),
           DoctorCard(doctor:doctor, showHospitalInfo: true, hospital: hospital, appointmentDate: appointmentDate, appointmentTime: DateFormat('hh:mm a').format(DateFormat('hh:mm:ss').parse(appointmentTime)),),
           SizedBox(height: 24,),
@@ -34,7 +35,7 @@ class AppointmentConfirmation extends StatelessWidget {
                 child: Column(
                   children: [
                     AnimatedButton(
-                      btnName: "Confirm",
+                      btnName: S.of(context).confirm,
                       onPressed: (){
                         bottomSheetController.confirmReservation(doctor, hospital, appointmentDate, appointmentTime);
                       },
@@ -48,7 +49,7 @@ class AppointmentConfirmation extends StatelessWidget {
                 child: Container(
                   height: 50,
                   child: TextButton(
-                    child: Text('Cancel'),
+                    child: Text(S.of(context).cancel),
                     onPressed: (){
                       Get.back();
                     },

@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:Signs/Utils/singleton.dart';
 import 'package:Signs/Utils/style/theme.dart';
+import 'package:Signs/generated/l10n.dart';
 import 'package:Signs/ui/appointment/doctors/details/reservation/patient_info/patient_info_controller.dart';
 import 'package:Signs/ui/appointment/doctors/details/reservation/patient_info/widgets/upload_card.dart';
 import 'package:Signs/ui/appointment/doctors/details/reservation/patient_info/widgets/card_info.dart';
@@ -22,19 +23,19 @@ class PatientInfoWidget extends StatelessWidget {
           child: ListView(
             children: [
               SizedBox(height: 73,),
-              Text('Patient info', style: boldSmaltTextStyle,),
+              Text(S.of(context).patientInfo, style: boldSmaltTextStyle,),
               SizedBox(height: 20,),
-              Text('You Have appointment for $subAccountRelation', style: unSelectedChipTextStyle,),
+              Text('${S.of(context).youHaveAppointmentFor} $subAccountRelation', style: unSelectedChipTextStyle,),
               SizedBox(height: 16,),
               Text(subAccountName, style: boldHeavyBlueTextStyle,),
               SizedBox(height: 20,),
-              Text('Patient ID', style: heavyGreySemiBoldTextStyle,),
+              Text(S.of(context).patientId, style: heavyGreySemiBoldTextStyle,),
               SizedBox(height: 10,),
               if(controller.isPatientIdLoading)
                 Center(child: CircularProgressIndicator(),),
               if(!controller.isPatientIdLoading && controller.patientUploadedCard == null && controller.userIdCards.isEmpty)
                 UploadCard(
-                  hint: 'Enter ID',
+                  hint: S.of(context).enterId,
                   onCardAdded: (File uploadedCardImage, String cardId){
                     controller.updatePatientId(patientId: cardId, patientUploadedCard: uploadedCardImage);
                   }
@@ -61,7 +62,7 @@ class PatientInfoWidget extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top:8.0),
                   child: UploadCard(
-                    hint: 'Enter Medical card',
+                    hint: S.of(context).enterMedicalCard,
                     onCardAdded: (File uploadedCardImage, String cardId){
                       controller.updatePatientInsuranceCards(patientId: cardId, patientUploadedCard: uploadedCardImage);
                     },
@@ -99,19 +100,19 @@ class PatientInfoWidget extends StatelessWidget {
                   ),
                   child: Icon(Icons.add, color: Colors.white,),
                 ),
-                title: Text('Add New Card', style: regularDeniumTextStyle,),
+                title: Text(S.of(context).addNewCard, style: regularDeniumTextStyle,),
                 onTap: (){
                   controller.handleAddNewCard();
                 },
               ),
               SizedBox(height: 24,),
               AnimatedButton(
-                btnName: "Next",
+                btnName: S.of(context).next,
                 onPressed: (){
                   if(controller.userIdCards.isEmpty){
                     Get.snackbar(
-                      "Warning",
-                      "please add patient id first",
+                      S.of(context).warning,
+                      S.of(context).pleaseAddPatientIdFirst,
                       snackPosition: SnackPosition.BOTTOM,
                       colorText: Colors.redAccent
                     );

@@ -7,13 +7,14 @@ import 'package:get/get.dart';
 import 'package:Signs/data/remote/appointment/models/appointment_response_entity.dart';
 import 'package:Signs/Utils/extensions/strings_extensions.dart';
 import 'package:intl/intl.dart';
-Widget appointmentContainer(AppointmentResponseData appointment){
+import 'package:Signs/generated/l10n.dart';
+
+Widget appointmentContainer(AppointmentResponseData appointment, {BuildContext context}){
   return GestureDetector(
     onTap: (){
       Get.toNamed(AppointmentDetailsScreen.tag, arguments: appointment);
     },
     child: Container(
-      height: 0.27.sh,
       margin: EdgeInsets.symmetric(vertical: 7.h),
       padding: EdgeInsets.symmetric(
           horizontal: 20.w, vertical: 15.h),
@@ -91,7 +92,7 @@ Widget appointmentContainer(AppointmentResponseData appointment){
                 'ic_mapMarker.png',
               ),
               myCustomRow(
-                '1 hour',
+                '1 ${S.of(context).hour}',
                 'ic_clock_2.png',
               ),
             ],
@@ -115,7 +116,7 @@ Widget appointmentContainer(AppointmentResponseData appointment){
                 ),
                 decoration: checkIfPastAppointment(appointment.dsDate, appointment.dsTime)?pastBoxDecoration:upcomingBoxDecoration,
                 child: Text(
-                  checkIfPastAppointment(appointment.dsDate, appointment.dsTime)?'Past':'Upcoming',
+                  checkIfPastAppointment(appointment.dsDate, appointment.dsTime)?S.of(context).past:S.of(context).upcoming,
                   style: checkIfPastAppointment(appointment.dsDate, appointment.dsTime)?battleShipTextStyle:regularDeniumTextStyle,
                 ),
               ),
@@ -129,7 +130,7 @@ Widget appointmentContainer(AppointmentResponseData appointment){
 
 bool checkIfPastAppointment(String appointmentDateString, String appointmentTime){
   final dateString = '$appointmentDateString $appointmentTime';
-  final appointmentDate = DateFormat('yyyy-MM-dd hh:mm:ss').parse(dateString);
+  final appointmentDate = DateFormat('yyyy-MM-dd hh:mm:ss', 'en').parse(dateString);
   return DateTime.now().isAfter(appointmentDate);
 }
 

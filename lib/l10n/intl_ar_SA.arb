@@ -1,4 +1,5 @@
 {
+  "@@locale": "ar_SA",
   "appointments": "حجوزات",
   "change": "تغيير",
   "past": "سابق",
@@ -57,5 +58,7 @@
   "yes": "نعم",
   "no": "لاء",
   "searchSpeciality": "بحث التخصص",
-  "emptySpecialityMsg": "هذا التخصص غير متاح في الوقت الحالي"
+  "emptySpecialityMsg": "هذا التخصص غير متاح في الوقت الحالي",
+  "hour": "ساعة",
+  "noDoctorsMsg": "لا يوجد أطباء"
 }

@@ -13,7 +13,7 @@ class TimeSlotChip extends StatelessWidget {
   Widget build(BuildContext context) {
     ChooseDateTimeController controller = Get.find();
     return ChoiceChip(
-      label: Text(DateFormat('hh:mm a').format(DateFormat('hh:mm:ss').parse(timeSlot.dsTime))),
+      label: Text(DateFormat('hh:mm a').format(DateFormat('hh:mm:ss', 'en').parse(timeSlot.dsTime))),
       selected: (controller.selectedTimeSlot?.dsId?? -1) == timeSlot.dsId,
       onSelected: (newValue){
         if(newValue && timeSlot.dsAvaliable == '1'){

@@ -2,6 +2,7 @@ import 'package:Signs/Models/hospitals_model.dart';
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/style/theme.dart';
 import 'package:Signs/data/remote/appointment/doctors/models/doctors_entity.dart';
+import 'package:Signs/generated/l10n.dart';
 import 'package:Signs/ui/appointment/doctors/details/doctor_details_controller.dart';
 import 'package:Signs/ui/appointment/doctors/details/reservation/patient_info/patient_info_controller.dart';
 import 'package:Signs/ui/appointment/doctors/details/reservation/reservation_bottomsheet.dart';
@@ -47,7 +48,7 @@ class DoctorsDetailsScreen extends StatelessWidget {
                             SizedBox(width: 12,),
                             Text((DateTime.now().year - int.parse(controller.doctorDetails.dExperienceYear)).toString(), style: boldDeniumTextStyle,),
                             SizedBox(width: 12,),
-                            Text('Years of experience', style: dimGreySemiBoldTextStyle,)
+                            Text(S.of(context).yearsOfExperience, style: dimGreySemiBoldTextStyle,)
                           ],
                         ),
                         SizedBox(height: 15,),
@@ -83,7 +84,7 @@ class DoctorsDetailsScreen extends StatelessWidget {
                         ),
                         SizedBox(height: 12,),
                         if(controller.doctorDetails.videos.isNotEmpty) ...[
-                          Text('Videos', style: Theme.of(context).textTheme.subtitle1,),
+                          Text(S.of(context).videos, style: Theme.of(context).textTheme.subtitle1,),
                           SizedBox(height: 20,),
                           Container(
                             height: 140,
@@ -120,7 +121,7 @@ class DoctorsDetailsScreen extends StatelessWidget {
                         ],
 
                         if(controller.doctorDetails.articles.isNotEmpty) ...[
-                          Text('Articles', style: Theme.of(context).textTheme.subtitle1,),
+                          Text(S.of(context).articles, style: Theme.of(context).textTheme.subtitle1,),
                           SizedBox(height: 20,),
                           ...controller.doctorDetails.articles.map(
                                   (articleUrl) => SimpleUrlPreview(
@@ -155,7 +156,7 @@ class DoctorsDetailsScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: AnimatedButton(
-                    btnName: "Make appointment",
+                    btnName: S.of(context).makeAppointment,
                     onPressed: (){
                       Get.put(PatientInfoController());
                       showModalBottomSheet(

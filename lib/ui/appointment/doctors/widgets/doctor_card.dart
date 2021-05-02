@@ -2,6 +2,7 @@ import 'package:Signs/Models/hospitals_model.dart';
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/style/theme.dart';
 import 'package:Signs/data/remote/appointment/doctors/models/doctors_entity.dart';
+import 'package:Signs/generated/l10n.dart';
 import 'package:Signs/ui/appointment/doctors/details/doctor_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -98,7 +99,7 @@ class DoctorCard extends StatelessWidget {
                         children: [
                           Text(appointmentDate, style: tealBlueSemiBoldStyle,),
                           SizedBox(width: 4,),
-                          Text('at', style: dimGreySemiBold16TextStyle,),
+                          Text(S.of(context).at, style: dimGreySemiBold16TextStyle,),
                           SizedBox(width: 4,),
                           Text(appointmentTime, style: tealBlueSemiBoldStyle,)
                         ],
