@@ -1,6 +1,8 @@
 import 'dart:io';
 
+import 'package:Signs/Utils/services/localization_service.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:Signs/Screens/welcome_screen.dart';
 import 'package:Signs/Utils/constants.dart';
@@ -33,14 +35,23 @@ class _LangauageScreenState extends State<LangauageScreen> {
         selectedLanguage = 1;
         Constants.languageId = languages.Arabic;
         Constants.textDirection = TextDirection.rtl;
+        Future.delayed(Duration(seconds: 0), (){
+          Get.find<LocalizationService>().updateLocale(AppLocale.arabic);
+        });
       } else if (language.toLowerCase().contains('en')) {
         selectedLanguage = 2;
         Constants.languageId = languages.English;
         Constants.textDirection = TextDirection.ltr;
+        Future.delayed(Duration(seconds: 0), (){
+          Get.find<LocalizationService>().updateLocale(AppLocale.english);
+        });
       } else  {
         selectedLanguage = 3;
         Constants.languageId = languages.Indian;
         Constants.textDirection = TextDirection.ltr;
+        Future.delayed(Duration(seconds: 0), (){
+          Get.find<LocalizationService>().updateLocale(AppLocale.indian);
+        });
       }
     });
   }

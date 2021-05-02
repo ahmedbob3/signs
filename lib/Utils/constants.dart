@@ -5,7 +5,17 @@ import 'package:flutter/material.dart';
 
 
 enum languages { English, Arabic, Indian }
+@immutable
+abstract class Enum<T> {
+  const Enum(this.value);
+  final T value;
 
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  bool operator ==(Object other) => other is Enum<T> && other.value == value;
+}
 class Constants {
   static String appName = "Signs";
   static SignUpData signUpData = SignUpData();

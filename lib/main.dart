@@ -1,4 +1,6 @@
 import 'package:Signs/Utils/navigation/navigation_helper.dart';
+import 'package:Signs/Utils/services/localization_service.dart';
+import 'package:Signs/Utils/services/shared_preferences_service.dart';
 import 'package:Signs/Utils/style/theme.dart';
 import 'package:country_codes/country_codes.dart';
 import 'package:flutter/material.dart';
@@ -16,8 +18,10 @@ import 'generated/l10n.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  initializeDateFormatting();
+  // initializeDateFormatting();
   await CountryCodes.init();
+  await Get.putAsync(() => SharedPreferencesService.init(), permanent: true);
+  Get.put(LocalizationService.init(), permanent: true);
   runApp(MyApp());
 }
 
@@ -60,7 +64,8 @@ class _MyAppState extends State<MyApp> {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        supportedLocales: S.delegate.supportedLocales
+        supportedLocales: S.delegate.supportedLocales,
+        locale: Get.find<LocalizationService>().currentLocale.locale,
       ),
     );
   }
