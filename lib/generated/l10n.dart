@@ -644,6 +644,46 @@ class S {
       args: [],
     );
   }
+
+  /// `All Specialities`
+  String get allSpecialities {
+    return Intl.message(
+      'All Specialities',
+      name: 'allSpecialities',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Available Time slots`
+  String get noAvailableTimeSlot {
+    return Intl.message(
+      'No Available Time slots',
+      name: 'noAvailableTimeSlot',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Coming soon`
+  String get comingSoon {
+    return Intl.message(
+      'Coming soon',
+      name: 'comingSoon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This feature will be added soon`
+  String get willBeAdded {
+    return Intl.message(
+      'This feature will be added soon',
+      name: 'willBeAdded',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "addNewCard" : MessageLookupByLibrary.simpleMessage("أضف بطاقة جديدة"),
+    "allSpecialities" : MessageLookupByLibrary.simpleMessage("كل التخصصات"),
     "appointmentConfirmation" : MessageLookupByLibrary.simpleMessage("تأكيد الحجز"),
     "appointmentDateTime" : MessageLookupByLibrary.simpleMessage("تاريخ و وقت المقابلة"),
     "appointmentDetails" : MessageLookupByLibrary.simpleMessage("تفاصيل الحجز"),
@@ -36,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "change" : MessageLookupByLibrary.simpleMessage("تغيير"),
     "chooseSpeciality" : MessageLookupByLibrary.simpleMessage("أختر التخصص"),
     "clearSpecialityWarning" : MessageLookupByLibrary.simpleMessage("هل متأكد تريد الغاء تصفية التخصصات"),
+    "comingSoon" : MessageLookupByLibrary.simpleMessage("قريبا"),
     "confirm" : MessageLookupByLibrary.simpleMessage("تأكيد"),
     "emergencyCall" : MessageLookupByLibrary.simpleMessage("مكالمة طوارئ"),
     "emergencyCallMsg" : MessageLookupByLibrary.simpleMessage("يمكنك اجراء مكالمة طوارئ"),
@@ -55,6 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "next" : MessageLookupByLibrary.simpleMessage("التالي"),
     "no" : MessageLookupByLibrary.simpleMessage("لاء"),
     "noAppointmentsMsg" : MessageLookupByLibrary.simpleMessage("لا يوجد حجوزات سابقة"),
+    "noAvailableTimeSlot" : MessageLookupByLibrary.simpleMessage("لا يوجد مواعيد متاحة"),
     "noDoctorsMsg" : MessageLookupByLibrary.simpleMessage("لا يوجد أطباء"),
     "offlineAppointments" : MessageLookupByLibrary.simpleMessage("موعد فعلي"),
     "onlineAppointment" : MessageLookupByLibrary.simpleMessage("مقابلة اون لاين"),
@@ -62,7 +65,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "past" : MessageLookupByLibrary.simpleMessage("سابق"),
     "patientId" : MessageLookupByLibrary.simpleMessage("رقم تعريف المريض"),
     "patientInfo" : MessageLookupByLibrary.simpleMessage("بيانات المريض"),
-    "physicalAppointment" : MessageLookupByLibrary.simpleMessage("مقبالة فعلية"),
+    "physicalAppointment" : MessageLookupByLibrary.simpleMessage("مقابلة فعلية"),
     "physicalAppointmentMsg" : MessageLookupByLibrary.simpleMessage("قم بحجز مقابلة فعلة مع طبيب في التخصص المطلوب"),
     "pleaseAddPatientIdFirst" : MessageLookupByLibrary.simpleMessage("من فضلك اضف الرقم التعريفي أولا"),
     "rate" : MessageLookupByLibrary.simpleMessage("قيّم"),
@@ -79,6 +82,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "upcoming" : MessageLookupByLibrary.simpleMessage("مستقبل"),
     "videos" : MessageLookupByLibrary.simpleMessage("فيديوهات"),
     "warning" : MessageLookupByLibrary.simpleMessage("تحذير"),
+    "willBeAdded" : MessageLookupByLibrary.simpleMessage("سيتم اضافة هذه الخاصية قريبا"),
     "yearsOfExperience" : MessageLookupByLibrary.simpleMessage("عدد سنين الخبرة"),
     "yes" : MessageLookupByLibrary.simpleMessage("نعم"),
     "youHaveAppointmentFor" : MessageLookupByLibrary.simpleMessage("لديك مقابلة ل")

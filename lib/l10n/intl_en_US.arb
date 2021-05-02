@@ -60,5 +60,9 @@
   "searchSpeciality": "Search Speciality",
   "emptySpecialityMsg": "This Speciality not available right now",
   "hour": "hour",
-  "noDoctorsMsg": "There’s No Doctors Found"
+  "noDoctorsMsg": "There’s No Doctors Found",
+  "allSpecialities": "All Specialities",
+  "noAvailableTimeSlot": "No Available Time slots",
+  "comingSoon": "Coming soon",
+  "willBeAdded": "This feature will be added soon"
 }

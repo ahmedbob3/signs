@@ -96,7 +96,7 @@ class ChooseDateTimeWidget extends StatelessWidget {
                 height: 30,
                 child: Center(child: CircularProgressIndicator())
               )
-              :controller.availableTimeSlots.isEmpty?Container(height: 50,child: Center(child: Text('No Available Time slots')))
+              :controller.availableTimeSlots.isEmpty?Container(height: 50,child: Center(child: Text(S.of(context).noAvailableTimeSlot)))
                   :Wrap(
                 alignment: WrapAlignment.spaceBetween,
                 spacing: 4,

@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "addNewCard" : MessageLookupByLibrary.simpleMessage("Add New Card"),
+    "allSpecialities" : MessageLookupByLibrary.simpleMessage("All Specialities"),
     "appointmentConfirmation" : MessageLookupByLibrary.simpleMessage("Appointment Confirmation"),
     "appointmentDateTime" : MessageLookupByLibrary.simpleMessage("Appointment Date & Time"),
     "appointmentDetails" : MessageLookupByLibrary.simpleMessage("Appointment Details"),
@@ -36,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "change" : MessageLookupByLibrary.simpleMessage("Change"),
     "chooseSpeciality" : MessageLookupByLibrary.simpleMessage("Choose Speciality"),
     "clearSpecialityWarning" : MessageLookupByLibrary.simpleMessage("Are you sure you want to clear your selection from the speciality filter?"),
+    "comingSoon" : MessageLookupByLibrary.simpleMessage("Coming soon"),
     "confirm" : MessageLookupByLibrary.simpleMessage("Confirm"),
     "emergencyCall" : MessageLookupByLibrary.simpleMessage("Emergency call"),
     "emergencyCallMsg" : MessageLookupByLibrary.simpleMessage("You can make a Emergency call"),
@@ -55,6 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "next" : MessageLookupByLibrary.simpleMessage("Next"),
     "no" : MessageLookupByLibrary.simpleMessage("No"),
     "noAppointmentsMsg" : MessageLookupByLibrary.simpleMessage("There’s no appointments Yet !"),
+    "noAvailableTimeSlot" : MessageLookupByLibrary.simpleMessage("No Available Time slots"),
     "noDoctorsMsg" : MessageLookupByLibrary.simpleMessage("There’s No Doctors Found"),
     "offlineAppointments" : MessageLookupByLibrary.simpleMessage("Offline Appointment"),
     "onlineAppointment" : MessageLookupByLibrary.simpleMessage("Online Appointment"),
@@ -79,6 +82,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "upcoming" : MessageLookupByLibrary.simpleMessage("Upcoming"),
     "videos" : MessageLookupByLibrary.simpleMessage("Videos"),
     "warning" : MessageLookupByLibrary.simpleMessage("Warning"),
+    "willBeAdded" : MessageLookupByLibrary.simpleMessage("This feature will be added soon"),
     "yearsOfExperience" : MessageLookupByLibrary.simpleMessage("Years of experience"),
     "yes" : MessageLookupByLibrary.simpleMessage("Yes"),
     "youHaveAppointmentFor" : MessageLookupByLibrary.simpleMessage("You Have appointment for")

@@ -28,7 +28,7 @@ class ConfirmationSuccessScreen extends StatelessWidget {
           SizedBox(height: 16,),
           Padding(
             padding: const EdgeInsets.only(left:16.0, right: 16),
-            child: DoctorCard(doctor:doctor, showHospitalInfo: true, hospital: hospital, appointmentDate: appointmentDate, appointmentTime: DateFormat('hh:mm a').format(DateFormat('hh:mm:ss').parse(appointmentTime)),),
+            child: DoctorCard(doctor:doctor, showHospitalInfo: true, hospital: hospital, appointmentDate: appointmentDate, appointmentTime: DateFormat('hh:mm a').format(DateFormat('hh:mm:ss', 'en').parse(appointmentTime)),),
           ),
           SizedBox(height: 36,),
           Column(

@@ -17,7 +17,7 @@ class SpecialityController extends BaseController{
   var lastSearchQuery = "".obs;
   HospitalSpeciality allSpecialitiesData = HospitalSpeciality(
       id: ALL_SPECIALITIES,
-      name: ALL_SPECIALITIES_MSG
+      name: allSpecialitiesMsg
   );
 
   bool checkIfAvailableSpecialitiesUpdated(){

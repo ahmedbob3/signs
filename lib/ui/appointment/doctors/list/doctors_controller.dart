@@ -3,6 +3,7 @@ import 'package:Signs/base/base_controller.dart';
 import 'package:Signs/data/remote/appointment/doctors/doctors_repository.dart';
 import 'package:Signs/data/remote/appointment/doctors/models/doctors_entity.dart';
 import 'package:Signs/data/remote/appointment/speciality/models/hospital_specialities_entity.dart';
+import 'package:Signs/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,7 +11,7 @@ class DoctorsController extends BaseController{
   DoctorsRepository _doctorsRepository = DoctorsRepository();
   List<Doctor> availableDoctors = [];
   bool isDoctorsLoading = false;
-  String selectedSpecialities = ALL_SPECIALITIES_MSG;
+  String selectedSpecialities = allSpecialitiesMsg;
   Datum hospital;
   var lastSearchQuery = "".obs;
   var specialityFilter = "";
@@ -55,7 +56,7 @@ class DoctorsController extends BaseController{
     specialityFilter = filteredSpecialities.map((e) => e.keywords).join(",");
     selectedSpecialities = filteredSpecialities.map((e) => e.name).join(", ");
     if(filteredSpecialities.isEmpty){
-      selectedSpecialities = ALL_SPECIALITIES_MSG;
+      selectedSpecialities = allSpecialitiesMsg;
     }
     getAvailableDoctors();
   }
@@ -69,4 +70,4 @@ class DoctorsController extends BaseController{
 
 }
 
-const String ALL_SPECIALITIES_MSG = "All Specialities";
+String allSpecialitiesMsg = S.of(Get.context).allSpecialities;

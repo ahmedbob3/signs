@@ -14,7 +14,7 @@
   "feedBackHint": "التقييم",
   "hospital": "المستشفي",
   "lookingForMsg": "عن ماذا تبحث",
-  "physicalAppointment": "مقبالة فعلية",
+  "physicalAppointment": "مقابلة فعلية",
   "physicalAppointmentMsg": "قم بحجز مقابلة فعلة مع طبيب في التخصص المطلوب",
   "onlineAppointment": "مقابلة اون لاين",
   "onlineAppointmentMsg": "قم بحجز مقابلة أون لاين مع الطبيبي في التخصص المطلوب",
@@ -60,5 +60,9 @@
   "searchSpeciality": "بحث التخصص",
   "emptySpecialityMsg": "هذا التخصص غير متاح في الوقت الحالي",
   "hour": "ساعة",
-  "noDoctorsMsg": "لا يوجد أطباء"
+  "noDoctorsMsg": "لا يوجد أطباء",
+  "allSpecialities": "كل التخصصات",
+  "noAvailableTimeSlot": "لا يوجد مواعيد متاحة",
+  "comingSoon": "قريبا",
+  "willBeAdded": "سيتم اضافة هذه الخاصية قريبا"
 }

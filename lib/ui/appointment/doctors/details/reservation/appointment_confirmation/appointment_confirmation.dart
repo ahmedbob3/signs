@@ -27,7 +27,7 @@ class AppointmentConfirmation extends StatelessWidget {
           SizedBox(height: 24,),
           Center(child: Text(S.of(context).appointmentConfirmation, style: boldSmaltTextStyle,)),
           SizedBox(height: 24,),
-          DoctorCard(doctor:doctor, showHospitalInfo: true, hospital: hospital, appointmentDate: appointmentDate, appointmentTime: DateFormat('hh:mm a').format(DateFormat('hh:mm:ss').parse(appointmentTime)),),
+          DoctorCard(doctor:doctor, showHospitalInfo: true, hospital: hospital, appointmentDate: appointmentDate, appointmentTime: DateFormat('hh:mm a').format(DateFormat('hh:mm:ss', 'en').parse(appointmentTime)),),
           SizedBox(height: 24,),
           Row(
             children: [
