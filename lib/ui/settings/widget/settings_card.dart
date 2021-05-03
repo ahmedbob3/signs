@@ -13,14 +13,16 @@ class SettingsCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8)
       ),
+      elevation: 2,
       child: Padding(
-        padding: const EdgeInsets.only(left:8.0, right: 8, top: 4, bottom: 4),
+        padding: const EdgeInsets.only(left:8.0, right: 8, top: 16, bottom: 16),
         child: Row(
           children: [
             Image.asset(cardIconPath, width: 20, height: 20,),
             SizedBox(width: 20,),
             Text(cardName, style: dimGreyBoldStyle,),
-            Expanded(child: Icon(Icons.arrow_forward_ios, color: lightSlateGrey,))
+            Expanded(child: Container()),
+            Icon(Icons.arrow_forward_ios, color: lightSlateGrey,)
           ],
         ),
       ),
