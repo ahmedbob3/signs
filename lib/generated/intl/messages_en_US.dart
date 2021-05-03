@@ -77,6 +77,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectImageFirst" : MessageLookupByLibrary.simpleMessage("please select image first"),
     "selectImageFromGalleryOrCamera" : MessageLookupByLibrary.simpleMessage("Select image from Gallery or camera"),
     "selectTimeSlot" : MessageLookupByLibrary.simpleMessage("Select Time Slot"),
+    "settings" : MessageLookupByLibrary.simpleMessage("Settings"),
     "thankBooking" : MessageLookupByLibrary.simpleMessage("Thank you for booking !"),
     "type" : MessageLookupByLibrary.simpleMessage("Type"),
     "upcoming" : MessageLookupByLibrary.simpleMessage("Upcoming"),

@@ -77,6 +77,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectImageFirst" : MessageLookupByLibrary.simpleMessage("برجاء اختيار الصورة أولا"),
     "selectImageFromGalleryOrCamera" : MessageLookupByLibrary.simpleMessage("أختر صورة من المعرض أو الكاميرا"),
     "selectTimeSlot" : MessageLookupByLibrary.simpleMessage("أختر موعد الحجز"),
+    "settings" : MessageLookupByLibrary.simpleMessage("اعدادات"),
     "thankBooking" : MessageLookupByLibrary.simpleMessage("شكرا علي الحجز"),
     "type" : MessageLookupByLibrary.simpleMessage("النوع"),
     "upcoming" : MessageLookupByLibrary.simpleMessage("مستقبل"),

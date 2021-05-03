@@ -64,5 +64,6 @@
   "allSpecialities": "All Specialities",
   "noAvailableTimeSlot": "No Available Time slots",
   "comingSoon": "Coming soon",
-  "willBeAdded": "This feature will be added soon"
+  "willBeAdded": "This feature will be added soon",
+  "settings": "Settings"
 }

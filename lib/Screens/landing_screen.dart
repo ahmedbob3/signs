@@ -5,6 +5,7 @@ import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/singleton.dart';
 import 'package:Signs/Utils/styles.dart';
 import 'package:Signs/ui/appointment/list/appointment_list_screen.dart';
+import 'package:Signs/ui/settings/settingsScreen.dart';
 import 'package:flutter/material.dart';
 
 import 'home_screen.dart';
@@ -58,13 +59,13 @@ class _LandingScreenState extends State<LandingScreen> {
             height: 70,
             width: 70,
             margin: EdgeInsets.only(top: 30),
-            child: FloatingActionButton(
+            /*child: FloatingActionButton(
               onPressed: () {},
               tooltip: 'Increment',
               child: Icon(Icons.add),
               elevation: 4.0,
               backgroundColor: defaultBackgroundColor,
-            ),
+            ),*/
           ),
           bottomNavigationBar: Container(
             child: Container(
@@ -107,19 +108,32 @@ class _LandingScreenState extends State<LandingScreen> {
                             });
                           },
                     )),
-                    Expanded(child: new Text('')),
+                    // Expanded(child: new Text('')),
                     Expanded(
                         child: IconButton(
                             icon: Image.asset(History_inactive), iconSize: 140)),
                     Expanded(
-                        child: IconButton(
-                            onPressed: () {
-                              setState(() {
-                                selectedTabIndex = 3;
-                              });
-                            },
-                            icon: Image.asset(selectedTabIndex == 3 ? Medicine_active : Medicine_inctive ),
-                            iconSize: 140)),
+                      child: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            selectedTabIndex = 3;
+                          });
+                        },
+                        icon: Image.asset(selectedTabIndex == 3 ? Medicine_active : Medicine_inctive ),
+                        iconSize: 140
+                      )
+                    ),
+                    Expanded(
+                      child: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            selectedTabIndex = 4;
+                          });
+                        },
+                        icon: Image.asset(selectedTabIndex == 4 ? SETTINGS_ACTIVE : SETTINGS_IN_ACTIVE ),
+                        iconSize: 140
+                      )
+                    ),
                   ],
                   // unselectedItemColor: Colors.grey,
                   // selectedItemColor: Colors.black,
@@ -145,6 +159,9 @@ class _LandingScreenState extends State<LandingScreen> {
         break;
       case 3:
         return MedicationScreen();
+        break;
+      case 4:
+        return SettingsScreen();
         break;
       default:
       return HomeScreen();
