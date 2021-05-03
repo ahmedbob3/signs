@@ -13,6 +13,7 @@ const Color MEDIUM_TEAL_BLUE           = Color.fromRGBO(0, 81, 173, 1);
 const Color whiteSmoke                 = const Color(0xFFf5f5f5);
 const Color greySmoke                  = const Color(0xFFA3ACC2);
 const Color dimGrey                    = const Color.fromRGBO(97, 97, 98, 1);
+const Color lightSlateGrey                    = const Color.fromRGBO(124, 134, 141, 1);
 const Color semiDimGrey                = const Color.fromRGBO(97, 97, 98, 0.23);
 const Color gamboge                    = const Color.fromRGBO(223, 166, 12, 1);
 const Color manate                     = const Color.fromRGBO(158, 158, 158, 1);
@@ -299,6 +300,17 @@ TextStyle tealBlueSemiBoldStyle = TextStyle(
   color: DEFAULT_BACKGROUND_COLOR
 );
 
+TextStyle tealBlueBold18Style = TextStyle(
+  fontFamily: Fonts.boldFontFamily,
+  fontSize: 18,
+  color: DEFAULT_BACKGROUND_COLOR
+);
+
+TextStyle dimGreyBoldStyle = TextStyle(
+    fontFamily: Fonts.boldFontFamily,
+    fontSize: 16,
+    color: dimGrey
+);
 TextStyle riffleGreenBoldStyle = TextStyle(
   fontFamily: Fonts.boldFontFamily,
   fontSize: 22,
