@@ -99,5 +99,13 @@ const String STAR_IN_ACTIVE = 'assets/images/ic_Star-inactive.png';
 const String NO_APPOINTMENT = 'assets/images/ic_NoAppointments_empty_View.png';
 const String SETTINGS_ACTIVE = 'assets/images/ic_Settings_Active.png';
 const String SETTINGS_IN_ACTIVE = 'assets/images/ic_Settings_Inactive.png';
+const String IC_SETTINGS_ABOUT_US = 'assets/images/ic_About.png';
+const String IC_SETTINGS_NOTIFICATION = 'assets/images/notification.png';
+const String IC_SETTINGS_CHANGE_PASSWORD = 'assets/images/ic_lock.png';
+const String IC_SETTINGS_CONTACT_US = 'assets/images/ic_Social.png';
+const String IC_SETTINGS_PRIVACY_POLICY = 'assets/images/policy.png';
+const String IC_SETTINGS_TERMS = 'assets/images/ic_terms.png';
+const String IC_SETTINGS_LANGUAGE = 'assets/images/ic_language.png';
+const String IC_SETTINGS_LOG_OUT = 'assets/images/logout.png';
 
 

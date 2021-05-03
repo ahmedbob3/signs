@@ -65,5 +65,13 @@
   "noAvailableTimeSlot": "No Available Time slots",
   "comingSoon": "Coming soon",
   "willBeAdded": "This feature will be added soon",
-  "settings": "Settings"
+  "settings": "Settings",
+  "aboutUS": "About Us",
+  "notification": "Notification",
+  "changePassword": "Change Password",
+  "contactUs": "Contact Us",
+  "privacyPolicy": "Privacy Policy",
+  "termsConditions": "Terms & conditions",
+  "language": "Language",
+  "logout": "Logout"
 }
