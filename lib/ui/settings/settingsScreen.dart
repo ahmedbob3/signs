@@ -8,6 +8,7 @@ import 'package:Signs/ui/settings/widget/language_bottomsheet.dart';
 import 'package:Signs/ui/settings/widget/settings_card.dart';
 import 'package:Signs/widgets/animated_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:get/get.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -21,7 +22,18 @@ class SettingsScreen extends StatelessWidget {
         SettingsCard(
           cardName: S.of(context).aboutUS,
           cardIconPath: IC_SETTINGS_ABOUT_US,
-          onSelect: (){},
+          onSelect: (){
+            Navigator.of(context).push(
+                MaterialPageRoute(
+                    builder: (context) => WebviewScaffold(
+                      url: 'https://en.wikipedia.org/wiki/About_us',
+                      appBar: AppBar(
+                        title: Text(S.of(context).aboutUS),
+                      ),
+                    )
+                )
+            );
+          },
         ),
         SizedBox(height: 8,),
         SettingsCard(
@@ -49,13 +61,35 @@ class SettingsScreen extends StatelessWidget {
         SettingsCard(
           cardName: S.of(context).privacyPolicy,
           cardIconPath: IC_SETTINGS_PRIVACY_POLICY,
-          onSelect: (){},
+          onSelect: (){
+            Navigator.of(context).push(
+                MaterialPageRoute(
+                    builder: (context) => WebviewScaffold(
+                      url: 'https://en.wikipedia.org/wiki/Special:Search?search=privacyPolicy&ns0=1',
+                      appBar: AppBar(
+                        title: Text(S.of(context).privacyPolicy),
+                      ),
+                    )
+                )
+            );
+          },
         ),
         SizedBox(height: 8,),
         SettingsCard(
           cardName: S.of(context).termsConditions,
           cardIconPath: IC_SETTINGS_TERMS,
-          onSelect: (){},
+          onSelect: (){
+            Navigator.of(context).push(
+                MaterialPageRoute(
+                    builder: (context) => WebviewScaffold(
+                      url: 'https://en.wikipedia.org/wiki/Contractual_term',
+                      appBar: AppBar(
+                        title: Text(S.of(context).termsConditions),
+                      ),
+                    )
+                )
+            );
+          },
         ),
         SizedBox(height: 8,),
         SettingsCard(

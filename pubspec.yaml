@@ -57,6 +57,7 @@ dependencies:
   path: ^1.8.0
   flutter_uploader: ^1.2.1
   flutter_rating_bar: ^4.0.0
+  flutter_webview_plugin: ^0.3.11
 
 
 
