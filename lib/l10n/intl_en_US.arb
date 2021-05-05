@@ -73,5 +73,6 @@
   "privacyPolicy": "Privacy Policy",
   "termsConditions": "Terms & conditions",
   "language": "Language",
-  "logout": "Logout"
+  "logout": "Logout",
+  "changeLanguage": "Change Language"
 }

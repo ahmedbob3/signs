@@ -73,5 +73,6 @@
   "privacyPolicy": "سياسة الخصوصية",
   "termsConditions": "الشروط والأحكام",
   "language": "اللغة",
-  "logout": "الخروج"
+  "logout": "الخروج",
+  "changeLanguage": "تغيير اللغة"
 }

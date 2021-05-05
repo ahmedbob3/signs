@@ -36,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "camera" : MessageLookupByLibrary.simpleMessage("الكاميرا"),
     "cancel" : MessageLookupByLibrary.simpleMessage("الغاء"),
     "change" : MessageLookupByLibrary.simpleMessage("تغيير"),
+    "changeLanguage" : MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
     "changePassword" : MessageLookupByLibrary.simpleMessage("تغيير كلمة السر"),
     "chooseSpeciality" : MessageLookupByLibrary.simpleMessage("أختر التخصص"),
     "clearSpecialityWarning" : MessageLookupByLibrary.simpleMessage("هل متأكد تريد الغاء تصفية التخصصات"),

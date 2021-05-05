@@ -36,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "camera" : MessageLookupByLibrary.simpleMessage("Camera"),
     "cancel" : MessageLookupByLibrary.simpleMessage("Cancel"),
     "change" : MessageLookupByLibrary.simpleMessage("Change"),
+    "changeLanguage" : MessageLookupByLibrary.simpleMessage("Change Language"),
     "changePassword" : MessageLookupByLibrary.simpleMessage("Change Password"),
     "chooseSpeciality" : MessageLookupByLibrary.simpleMessage("Choose Speciality"),
     "clearSpecialityWarning" : MessageLookupByLibrary.simpleMessage("Are you sure you want to clear your selection from the speciality filter?"),

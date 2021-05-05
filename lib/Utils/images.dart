@@ -107,5 +107,7 @@ const String IC_SETTINGS_PRIVACY_POLICY = 'assets/images/policy.png';
 const String IC_SETTINGS_TERMS = 'assets/images/ic_terms.png';
 const String IC_SETTINGS_LANGUAGE = 'assets/images/ic_language.png';
 const String IC_SETTINGS_LOG_OUT = 'assets/images/logout.png';
+const String IC_LANGUAGE_ARABIC = 'assets/images/ic_Language_Arabic.png';
+const String IC_LANGUAGE_ENGLISH = 'assets/images/ic_Language_English_1.png';
 
 
