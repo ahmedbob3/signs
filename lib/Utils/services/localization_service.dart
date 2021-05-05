@@ -2,6 +2,7 @@ import 'package:Signs/Utils/constants.dart';
 import 'package:Signs/Utils/services/shared_preferences_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalizationService extends GetxService {
   LocalizationService._(this.currentLocale);
@@ -14,12 +15,16 @@ class LocalizationService extends GetxService {
     return LocalizationService._(currentLocale);
   }
 
-  void updateLocale(AppLocale newLocale) {
+  void updateLocale(AppLocale newLocale) async{
     currentLocale = newLocale;
     final SharedPreferencesService _spService =
         Get.find<SharedPreferencesService>();
     _spService.currentLocale = newLocale.value;
     Get.updateLocale(newLocale.locale);
+    SharedPreferences _sharedPrefs =
+        await SharedPreferences.getInstance();
+    _sharedPrefs.setInt(
+        'selectedLanguage', Constants.languageId.index);
   }
 
 }
