@@ -42,7 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
           languages.values[prefs.getInt('selectedLanguage') ?? 0];
       Constants.updateTextDirection();
       await new Future.delayed(const Duration(seconds: 2), () {
-        if (prefs.getString('mobileNumber') == null) {
+        if (prefs.getString('mobileNumber') == null || prefs.getString('mobileNumber').isEmpty) {
           Navigator.of(context).pushReplacement(MaterialPageRoute(
               builder: (context) => prefs.getInt('selectedLanguage') == null
                   ? LangauageScreen()

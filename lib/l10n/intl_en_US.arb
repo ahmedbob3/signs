@@ -76,5 +76,7 @@
   "logout": "Logout",
   "changeLanguage": "Change Language",
   "emailUs": "Email us",
-  "callUs": "Call us"
+  "callUs": "Call us",
+  "logoutMsg": "Are you Sure do you want to logout?",
+  "later": "Later"
 }

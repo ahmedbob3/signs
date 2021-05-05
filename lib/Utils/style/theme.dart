@@ -36,6 +36,7 @@ const Color cancelGrey                 = const Color.fromRGBO(182, 182, 182, 1);
 const Color shadowColor                = const Color.fromRGBO(167, 167, 167, 0.23);
 const Color borderColor                = const Color.fromRGBO(198, 202, 217, 1);
 const Color darkMidNight               = const Color.fromRGBO(0, 54, 115, 1);
+const Color rifleGreen               = const Color.fromRGBO(63, 63, 63, 1);
 
 LinearGradient blueGradient = LinearGradient(
     colors: [MEDIUM_TEAL_BLUE, MEDIUM_TEAL_BLUE],
@@ -130,6 +131,11 @@ TextStyle boldBlackTextStyle = TextStyle(
     fontFamily: Fonts.boldFontFamily,
     fontSize: 18,
     color: Colors.black
+);
+TextStyle boldRifleTextStyle = TextStyle(
+    fontFamily: Fonts.boldFontFamily,
+    fontSize: 18,
+    color: rifleGreen
 );
 
 TextStyle heavyWhiteTextStyle = TextStyle(

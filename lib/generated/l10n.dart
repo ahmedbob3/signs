@@ -804,6 +804,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Are you Sure do you want to logout?`
+  String get logoutMsg {
+    return Intl.message(
+      'Are you Sure do you want to logout?',
+      name: 'logoutMsg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Later`
+  String get later {
+    return Intl.message(
+      'Later',
+      name: 'later',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

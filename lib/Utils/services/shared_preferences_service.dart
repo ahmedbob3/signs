@@ -5,6 +5,7 @@ abstract class SharedPreferencesKeys {
   SharedPreferencesKeys._();
   static const String currentLocale = 'currentLocale';
   static const String selectedLanguage = 'selectedLanguage';
+  static const String mobileNumber = 'mobileNumber';
 }
 
 class SharedPreferencesService extends GetxService {
@@ -23,6 +24,14 @@ class SharedPreferencesService extends GetxService {
 
   set currentLocale(String currentLocale) {
     _prefs.setString(SharedPreferencesKeys.currentLocale, currentLocale);
+  }
+
+  String get mobileNumber {
+    return _prefs.getString(SharedPreferencesKeys.mobileNumber);
+  }
+
+  set mobileNumber(String mobileNumber) {
+    _prefs.setString(SharedPreferencesKeys.mobileNumber, mobileNumber);
   }
 
   set selectedLanguage(int selectedLanguage){
