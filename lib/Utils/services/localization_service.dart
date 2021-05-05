@@ -15,16 +15,13 @@ class LocalizationService extends GetxService {
     return LocalizationService._(currentLocale);
   }
 
-  void updateLocale(AppLocale newLocale) async{
+  void updateLocale(AppLocale newLocale){
     currentLocale = newLocale;
     final SharedPreferencesService _spService =
         Get.find<SharedPreferencesService>();
     _spService.currentLocale = newLocale.value;
+    Get.find<SharedPreferencesService>().selectedLanguage = Constants.languageId.index;
     Get.updateLocale(newLocale.locale);
-    SharedPreferences _sharedPrefs =
-        await SharedPreferences.getInstance();
-    _sharedPrefs.setInt(
-        'selectedLanguage', Constants.languageId.index);
   }
 
 }

@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 abstract class SharedPreferencesKeys {
   SharedPreferencesKeys._();
   static const String currentLocale = 'currentLocale';
+  static const String selectedLanguage = 'selectedLanguage';
 }
 
 class SharedPreferencesService extends GetxService {
@@ -22,5 +23,9 @@ class SharedPreferencesService extends GetxService {
 
   set currentLocale(String currentLocale) {
     _prefs.setString(SharedPreferencesKeys.currentLocale, currentLocale);
+  }
+
+  set selectedLanguage(int selectedLanguage){
+    _prefs.setInt(SharedPreferencesKeys.selectedLanguage, selectedLanguage);
   }
 }
