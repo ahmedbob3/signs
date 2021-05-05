@@ -1,6 +1,4 @@
-import 'package:Signs/Utils/constants.dart';
 import 'package:Signs/Utils/images.dart';
-import 'package:Signs/Utils/services/localization_service.dart';
 import 'package:Signs/Utils/style/theme.dart';
 import 'package:Signs/generated/l10n.dart';
 import 'package:Signs/ui/settings/widget/contact_us_bottom_sheet.dart';
