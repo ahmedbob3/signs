@@ -74,5 +74,7 @@
   "termsConditions": "Terms & conditions",
   "language": "Language",
   "logout": "Logout",
-  "changeLanguage": "Change Language"
+  "changeLanguage": "Change Language",
+  "emailUs": "Email us",
+  "callUs": "Call us"
 }

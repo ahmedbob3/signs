@@ -74,5 +74,7 @@
   "termsConditions": "الشروط والأحكام",
   "language": "اللغة",
   "logout": "الخروج",
-  "changeLanguage": "تغيير اللغة"
+  "changeLanguage": "تغيير اللغة",
+  "emailUs": "ارسال بريد اليكتروني",
+  "callUs": "اتصل بنا"
 }

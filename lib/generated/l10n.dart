@@ -784,6 +784,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Email us`
+  String get emailUs {
+    return Intl.message(
+      'Email us',
+      name: 'emailUs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Call us`
+  String get callUs {
+    return Intl.message(
+      'Call us',
+      name: 'callUs',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
