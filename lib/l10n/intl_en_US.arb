@@ -83,5 +83,8 @@
   "password": "password",
   "confirmPassword": "confirm password",
   "resetPassword": "Reset password",
-  "enterPassword": "enter password"
+  "enterPassword": "enter password",
+  "validation_insert_data": "this field can not be empty",
+  "passwordConfirmValidation": "password and confirm password must match",
+  "passwordValidation": "password must be at least 8 characters"
 }

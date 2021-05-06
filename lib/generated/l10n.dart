@@ -874,6 +874,36 @@ class S {
       args: [],
     );
   }
+
+  /// `this field can not be empty`
+  String get validation_insert_data {
+    return Intl.message(
+      'this field can not be empty',
+      name: 'validation_insert_data',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `password and confirm password must match`
+  String get passwordConfirmValidation {
+    return Intl.message(
+      'password and confirm password must match',
+      name: 'passwordConfirmValidation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `password must be at least 8 characters`
+  String get passwordValidation {
+    return Intl.message(
+      'password must be at least 8 characters',
+      name: 'passwordValidation',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -83,5 +83,8 @@
   "password": "الرقم السري",
   "confirmPassword": "تأكيد الرقم السري",
   "resetPassword": "تغيير الرقم السري",
-  "enterPassword": "أدخل الرقم السري"
+  "enterPassword": "أدخل الرقم السري",
+  "validation_insert_data": "برجاء ملئ هذا الحقل",
+  "passwordConfirmValidation": "الرقم السري لا يتطابق مع تأكيد الرقم السري",
+  "passwordValidation": "الرقم السري لابد ان يتكون علي الاقل من 8 حروف"
 }
