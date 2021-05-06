@@ -78,5 +78,10 @@
   "emailUs": "ارسال بريد اليكتروني",
   "callUs": "اتصل بنا",
   "logoutMsg": "هل متأكد تريد الخروج من التطبيق؟",
-  "later": "لاحقا"
+  "later": "لاحقا",
+  "oldPassword": "رقم السر القديم",
+  "password": "الرقم السري",
+  "confirmPassword": "تأكيد الرقم السري",
+  "resetPassword": "تغيير الرقم السري",
+  "enterPassword": "أدخل الرقم السري"
 }

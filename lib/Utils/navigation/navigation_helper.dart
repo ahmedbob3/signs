@@ -6,6 +6,7 @@ import 'package:Signs/ui/appointment/doctors/details/widgets/image_details.dart'
 import 'package:Signs/ui/appointment/doctors/list/doctors_screen.dart';
 import 'package:Signs/ui/appointment/speciality/specialty_screen.dart';
 import 'package:Signs/ui/appointment/hospital/details/hospital_details_screen.dart';
+import 'package:Signs/ui/settings/update_password/update_password_screen.dart';
 import 'package:get/get.dart';
 
 List<GetPage> applicationPages = [
@@ -47,6 +48,11 @@ List<GetPage> applicationPages = [
   GetPage(
     name: LandingScreen.tag,
     page: () => LandingScreen(),
+    transitionDuration: Duration(milliseconds: 0)
+  ),
+  GetPage(
+    name: UpdatePasswordScreen.tag,
+    page: () => UpdatePasswordScreen(),
     transitionDuration: Duration(milliseconds: 0)
   ),
 ];

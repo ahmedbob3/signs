@@ -78,5 +78,10 @@
   "emailUs": "Email us",
   "callUs": "Call us",
   "logoutMsg": "Are you Sure do you want to logout?",
-  "later": "Later"
+  "later": "Later",
+  "oldPassword": "Old Password",
+  "password": "password",
+  "confirmPassword": "confirm password",
+  "resetPassword": "Reset password",
+  "enterPassword": "enter password"
 }

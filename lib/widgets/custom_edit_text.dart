@@ -1,7 +1,7 @@
 import 'package:Signs/Utils/style/theme.dart';
 import 'package:flutter/material.dart';
 
-class CustomEditText extends StatelessWidget {
+class CustomEditText extends StatefulWidget {
   final String hintText;
   final Function validator;
   final ValueChanged<String> onFieldSubmitted;
@@ -34,6 +34,13 @@ class CustomEditText extends StatelessWidget {
     this.fillColor = Colors.white,
     this.textDirection = TextDirection.ltr
   }) : super(key: key);
+
+  @override
+  _CustomEditTextState createState() => _CustomEditTextState();
+}
+
+class _CustomEditTextState extends State<CustomEditText> {
+  bool hidePassword = true;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -42,23 +49,31 @@ class CustomEditText extends StatelessWidget {
       ),
       elevation: 2,
       child: TextFormField(
-        autofocus: autoFocus,
-        keyboardType: keyboardType,
-        controller: controller,
-        textInputAction: textInputAction,
-        focusNode: focusNode,
-        onFieldSubmitted: onFieldSubmitted,
-        onChanged: onChanged,
-        validator: validator,
-        textDirection: textDirection,
+        obscureText: widget.obscureText && hidePassword,
+        autofocus: widget.autoFocus,
+        keyboardType: widget.keyboardType,
+        controller: widget.controller,
+        textInputAction: widget.textInputAction,
+        focusNode: widget.focusNode,
+        onFieldSubmitted: widget.onFieldSubmitted,
+        onChanged: widget.onChanged,
+        validator: widget.validator,
+        textDirection: widget.textDirection,
         decoration: InputDecoration(
-          fillColor: fillColor,
-          prefixIcon: prefixIcon,
-          suffixIcon: suffixIcon,
+          fillColor: widget.fillColor,
+          prefixIcon: widget.prefixIcon,
+          suffixIcon: widget.obscureText? GestureDetector(
+            child: Icon(Icons.remove_red_eye, size: ICON_SIZE, color: hidePassword? ashGrey :blueDefance,),
+            onTap: (){
+              setState(() {
+                hidePassword = ! hidePassword;
+              });
+            },
+          ): widget.suffixIcon,
           filled: true,
-          hintText: hintText,
+          hintText: widget.hintText,
           hintStyle: hintTextStyle,
-          contentPadding: EdgeInsets.all(0),
+          contentPadding: widget.prefixIcon != null ? EdgeInsets.all(0): EdgeInsets.only(left: 8, right: 8),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8.0),
               borderSide: BorderSide(color: Colors.white, width: 1, style: BorderStyle.none)
@@ -80,3 +95,4 @@ class CustomEditText extends StatelessWidget {
     );
   }
 }
+const ICON_SIZE = 18.0;

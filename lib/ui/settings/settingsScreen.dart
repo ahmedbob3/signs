@@ -3,6 +3,7 @@ import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/services/shared_preferences_service.dart';
 import 'package:Signs/Utils/style/theme.dart';
 import 'package:Signs/generated/l10n.dart';
+import 'package:Signs/ui/settings/update_password/update_password_screen.dart';
 import 'package:Signs/ui/settings/widget/contact_us_bottom_sheet.dart';
 import 'package:Signs/ui/settings/widget/language_bottomsheet.dart';
 import 'package:Signs/ui/settings/widget/settings_card.dart';
@@ -39,7 +40,9 @@ class SettingsScreen extends StatelessWidget {
         SettingsCard(
           cardName: S.of(context).changePassword,
           cardIconPath: IC_SETTINGS_CHANGE_PASSWORD,
-          onSelect: (){},
+          onSelect: (){
+            Get.toNamed(UpdatePasswordScreen.tag);
+          },
         ),
         SizedBox(height: 8,),
         SettingsCard(

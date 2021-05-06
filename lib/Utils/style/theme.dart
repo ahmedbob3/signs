@@ -22,6 +22,7 @@ const Color denium                     = const Color.fromRGBO(33, 99, 206, 1);
 const Color smalt                      = const Color.fromRGBO(0, 55, 143, 1);
 const Color gansboro                   = const Color.fromRGBO(218, 221, 229, 1);
 const Color heavyBlue                  = const Color.fromRGBO(0, 47, 135, 1);
+const Color oxfordBlue                  = const Color.fromRGBO(0, 34, 81, 1);
 const Color platinum                   = const Color.fromRGBO(232, 232, 232, 1);
 const Color coralRed                   = const Color.fromRGBO(255, 59, 48, 1);
 const Color outerSpace                 = const Color.fromRGBO(70, 70, 70, 1);
@@ -30,13 +31,17 @@ const Color payneGrey                  = const Color.fromRGBO(62, 86, 119, 1);
 const Color lightGrey                  = const Color.fromRGBO(241, 245, 250, 1);
 const Color semiGrey                   = const Color.fromRGBO(163, 172, 194, 1);
 const Color stateGrey                  = const Color.fromRGBO(114, 121, 146, 1);
+const Color lavanderGrey                  = const Color.fromRGBO(193, 199, 208, 1);
 const Color riffleGreen                = const Color.fromRGBO(55, 59, 60, 1);
 const Color amber                      = const Color.fromRGBO(255, 178, 0, 1);
 const Color cancelGrey                 = const Color.fromRGBO(182, 182, 182, 1);
 const Color shadowColor                = const Color.fromRGBO(167, 167, 167, 0.23);
 const Color borderColor                = const Color.fromRGBO(198, 202, 217, 1);
 const Color darkMidNight               = const Color.fromRGBO(0, 54, 115, 1);
-const Color rifleGreen               = const Color.fromRGBO(63, 63, 63, 1);
+const Color rifleGreen                 = const Color.fromRGBO(63, 63, 63, 1);
+const Color muncil                     = const Color.fromRGBO(242, 244, 247, 1);
+const Color ashGrey         = const Color(0xFFb7b7b7);
+const Color blueDefance     = const Color(0xFF3784e5);
 
 LinearGradient blueGradient = LinearGradient(
     colors: [MEDIUM_TEAL_BLUE, MEDIUM_TEAL_BLUE],
@@ -132,6 +137,11 @@ TextStyle boldBlackTextStyle = TextStyle(
     fontSize: 18,
     color: Colors.black
 );
+TextStyle boldOxfordBlueTextStyle = TextStyle(
+    fontFamily: Fonts.boldFontFamily,
+    fontSize: 24,
+    color: oxfordBlue
+);
 TextStyle boldRifleTextStyle = TextStyle(
     fontFamily: Fonts.boldFontFamily,
     fontSize: 18,
@@ -182,6 +192,12 @@ TextStyle regularTealTextStyle = TextStyle(
     fontFamily: Fonts.semiBoldFontFamily,
     fontSize: 14,
     color: MEDIUM_TEAL_BLUE
+);
+
+TextStyle lavanderGreyTextStyle = TextStyle(
+    fontFamily: Fonts.semiBoldFontFamily,
+    fontSize: 14,
+    color: lavanderGrey
 );
 
 TextStyle regularGreyTextStyle = TextStyle(
