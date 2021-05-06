@@ -36,7 +36,9 @@ class HospitalDetailsController extends BaseController{
               handleResponse(
                 result: hospitalBannersResult,
                 onSuccess: (){
-                  hospitalBanners = hospitalBannersResult.data.data;
+                  if(hospitalBannersResult.data.data != null){
+                    hospitalBanners = hospitalBannersResult.data.data;
+                  }
                 },
               );
               isBannerLoading = false;

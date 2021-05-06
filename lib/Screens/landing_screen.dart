@@ -13,6 +13,7 @@ import 'medication_screen.dart';
 
 
 class LandingScreen extends StatefulWidget {
+  static const tag = "LandingScreen";
   final int startIndex;
   LandingScreen({Key key, this.startIndex}) : super(key: key);
 

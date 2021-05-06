@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:Signs/Screens/langauage_screen.dart';
 import 'package:Signs/Screens/welcome_screen.dart';
@@ -72,11 +73,12 @@ class _SplashScreenState extends State<SplashScreen> {
                 Future.delayed(Duration(milliseconds: 1), () {
                   print(state.loginResponse.code);
                   if (state.loginResponse.code == 200) {
-                    Navigator.of(context).push(
+                    Get.offAllNamed(LandingScreen.tag,);
+                    /*Navigator.of(context).pushReplacement(
                       MaterialPageRoute(
                         builder: (context) => LandingScreen(),
                       ),
-                    );
+                    );*/
                   }
                   //_loginBloc.add(resetState());
                   isLoading = false;

@@ -1,3 +1,4 @@
+import 'package:Signs/Screens/landing_screen.dart';
 import 'package:Signs/ui/appointment/details/appointment_details_screen.dart';
 import 'package:Signs/ui/appointment/doctors/details/doctor_details_screen.dart';
 import 'package:Signs/ui/appointment/doctors/details/reservation/confirmation_success/confirmation_success_screen.dart';
@@ -41,6 +42,11 @@ List<GetPage> applicationPages = [
   GetPage(
     name: ImageDetails.tag,
     page: () => ImageDetails(),
+    transitionDuration: Duration(milliseconds: 0)
+  ),
+  GetPage(
+    name: LandingScreen.tag,
+    page: () => LandingScreen(),
     transitionDuration: Duration(milliseconds: 0)
   ),
 ];
