@@ -17,118 +17,120 @@ class AppointmentListScreen extends StatelessWidget {
     return GetBuilder<AppointmentListController>(
       init: AppointmentListController(),
       builder: (controller) {
-        return Container(
-          height: 1.sh,
-          child: Stack(
-            children: [
-              Container(
-                width: 1.sw,
-                height: 0.25.sh,
-                padding: EdgeInsets.symmetric(horizontal: 30.w),
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(
-                        Appointment_BG,
+        return SafeArea(
+          child: Container(
+            height: 1.sh,
+            child: Stack(
+              children: [
+                Container(
+                  width: 1.sw,
+                  height: Get.height * .25,
+                  padding: EdgeInsets.symmetric(horizontal: 30.w),
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage(
+                          Appointment_BG,
+                        ),
+                        fit: BoxFit.fill),
+                  ),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 20.h,
                       ),
-                      fit: BoxFit.fill),
-                ),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 50.h,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          S.of(context).appointments,
-                          style: heavyWhiteTextStyle,
-                        ),
-                        SizedBox(
-                          width: 20.w,
-                        ),
-                        Image(
-                          image: AssetImage(SearchIcon,),
-                          fit: BoxFit.fill,
-                        ),
-                        Image(
-                          image: AssetImage(Medicine_notification,),
-                          fit: BoxFit.fill,
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 15.h,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          height: 50.h,
-                          width: 50.h,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: defaultSecondaryBackgroundColor,
-                            border: Border.all(
-                              color: Colors.white,
-                              width: 3,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            S.of(context).appointments,
+                            style: heavyWhiteTextStyle,
+                          ),
+                          SizedBox(
+                            width: 20.w,
+                          ),
+                          Image(
+                            image: AssetImage(SearchIcon,),
+                            fit: BoxFit.fill,
+                          ),
+                          Image(
+                            image: AssetImage(Medicine_notification,),
+                            fit: BoxFit.fill,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 15.h,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            height: 50.h,
+                            width: 50.h,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: defaultSecondaryBackgroundColor,
+                              border: Border.all(
+                                color: Colors.white,
+                                width: 3,
+                              ),
                             ),
-                          ),
-                          child: Text(
-                            '${controller.displayedFirstName[0].capitalize}${controller.displayedLastName[0].capitalize}',
-                            style: appTheme.textTheme.button,
-                          ),
-                        ),
-                        SizedBox(width: 4,),
-                        Expanded(
-                          child: Text(
-                            '${controller.displayedFirstName} ${S.of(context).appointments}',
-                            style: whiteSmokeStyle,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 15.w,
-                        ),
-                        TextButton(
-                          onPressed: (){
-                            bottomSheet(
-                                (account, isMainAccount){
-                                  controller.updateDisplayedAccount(account, isMainAccount);
-                                }
-                            );
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              S.of(context).change,
-                              style: changeTextStyle,
+                              '${controller.displayedFirstName[0].capitalize}${controller.displayedLastName[0].capitalize}',
+                              style: appTheme.textTheme.button,
                             ),
                           ),
-                        ),
-                      ],
+                          SizedBox(width: 4,),
+                          Expanded(
+                            child: Text(
+                              '${controller.displayedFirstName} ${S.of(context).appointments}',
+                              style: whiteSmokeStyle,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 15.w,
+                          ),
+                          TextButton(
+                            onPressed: (){
+                              bottomSheet(
+                                  (account, isMainAccount){
+                                    controller.updateDisplayedAccount(account, isMainAccount);
+                                  }
+                              );
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                S.of(context).change,
+                                style: changeTextStyle,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                Positioned(
+                  bottom: 0,
+                  child: Container(
+                    alignment: Alignment.topCenter,
+                    margin: EdgeInsets.symmetric(
+                      horizontal: 0.05.sw,
                     ),
-                  ],
-                ),
-              ),
-              Positioned(
-                bottom: 0,
-                child: Container(
-                  alignment: Alignment.topCenter,
-                  margin: EdgeInsets.symmetric(
-                    horizontal: 0.05.sw,
+                    height: Get.height * .70,
+                    width: 0.9.sw,
+                    child: controller.isLoading?
+                    Center(child: CircularProgressIndicator()):
+                    controller.appointments.isEmpty? NoAppointmentWidget():ListView.builder(
+                      itemCount: controller.appointments.length,
+                      itemBuilder: (context, index) => appointmentContainer(controller.appointments[index], context: context),
+                    ),
                   ),
-                  height: 0.75.sh,
-                  width: 0.9.sw,
-                  child: controller.isLoading?
-                  Center(child: CircularProgressIndicator()):
-                  controller.appointments.isEmpty? NoAppointmentWidget():ListView.builder(
-                    itemCount: controller.appointments.length,
-                    itemBuilder: (context, index) => appointmentContainer(controller.appointments[index], context: context),
-                  ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         );
       },
