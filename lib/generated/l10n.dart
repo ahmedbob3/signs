@@ -904,6 +904,26 @@ class S {
       args: [],
     );
   }
+
+  /// `something went wrong, please make sure old password is correct`
+  String get updatePasswordError {
+    return Intl.message(
+      'something went wrong, please make sure old password is correct',
+      name: 'updatePasswordError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ok`
+  String get ok {
+    return Intl.message(
+      'Ok',
+      name: 'ok',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -109,14 +109,16 @@ class UpdatePasswordScreen extends StatelessWidget {
                                           },
                                         ),
                                         SizedBox(height: 36,),
-                                        AnimatedButton(
-                                          btnName: S.of(context).resetPassword,
-                                          controller: controller.resetBtnController,
-                                          onPressed: (){
-                                            if(_formKey.currentState.validate()){
-
-                                            }
-                                          },
+                                        Center(
+                                          child: AnimatedButton(
+                                            btnName: S.of(context).resetPassword,
+                                            controller: controller.resetBtnController,
+                                            onPressed: (){
+                                              if(_formKey.currentState.validate()){
+                                                controller.updatePassword();
+                                              }
+                                            },
+                                          ),
                                         )
                                       ],
                                     ),

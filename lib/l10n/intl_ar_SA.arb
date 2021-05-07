@@ -86,5 +86,7 @@
   "enterPassword": "أدخل الرقم السري",
   "validation_insert_data": "برجاء ملئ هذا الحقل",
   "passwordConfirmValidation": "الرقم السري لا يتطابق مع تأكيد الرقم السري",
-  "passwordValidation": "الرقم السري لابد ان يتكون علي الاقل من 8 حروف"
+  "passwordValidation": "الرقم السري لابد ان يتكون علي الاقل من 8 حروف",
+  "updatePasswordError": "حدث خطأ ما, برجاء التأكد من الرقم السري القديم",
+  "ok": "تمام"
 }

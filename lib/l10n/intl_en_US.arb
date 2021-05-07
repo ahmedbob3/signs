@@ -86,5 +86,7 @@
   "enterPassword": "enter password",
   "validation_insert_data": "this field can not be empty",
   "passwordConfirmValidation": "password and confirm password must match",
-  "passwordValidation": "password must be at least 8 characters"
+  "passwordValidation": "password must be at least 8 characters",
+  "updatePasswordError": "something went wrong, please make sure old password is correct",
+  "ok": "Ok"
 }
