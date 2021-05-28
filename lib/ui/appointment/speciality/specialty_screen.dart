@@ -88,7 +88,7 @@ class SpecialityScreen extends StatelessWidget {
                            alignment: WrapAlignment.start,
                            crossAxisAlignment: WrapCrossAlignment.start,
                            children: [
-                             SpecialityCard(
+                             if(controller.searchController.text.isEmpty)SpecialityCard(
                                specialitiesData: controller.allSpecialitiesData,
                              ),
                              ...controller.availableSpecialities.map(
