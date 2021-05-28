@@ -39,6 +39,8 @@ class ChooseDateTimeController extends BaseController{
                 onSuccess: (){
                   if(availableTimeSlotsResult.data.data != null && availableTimeSlotsResult.data.data is List){
                     this.allTimeSlots = availableTimeSlotsResult.data.data;
+
+                    this.allTimeSlots.where((element)=>DateFormat('yyyy-MM-dd hh:mm:ss', 'en').parse('${element.dsDate} ${element.dsTime}').isBefore(DateTime.now())).forEach((element) { element.dsAvaliable = '0';});
                   } else{
                     this.allTimeSlots = [];
                   }
