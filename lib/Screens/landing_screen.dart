@@ -3,11 +3,9 @@ import 'package:Signs/Notifications/NotificationPlugin.dart';
 import 'package:Signs/Utils/constants.dart';
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/singleton.dart';
-import 'package:Signs/Utils/styles.dart';
 import 'package:Signs/ui/appointment/list/appointment_list_screen.dart';
 import 'package:Signs/ui/settings/settingsScreen.dart';
 import 'package:flutter/material.dart';
-
 import 'home_screen.dart';
 import 'medication_screen.dart';
 
@@ -88,15 +86,16 @@ class _LandingScreenState extends State<LandingScreen> {
                 child: Row(
                   children: <Widget>[
                     Expanded(
-                        child: IconButton(
-                          onPressed: (){
-                            setState(() {
-                              selectedTabIndex = 0 ;
-                            });
-                          },
-                      icon: Image.asset(selectedTabIndex == 0 ? Home_active : Home_inactive),
-                      iconSize: 140,
-                    )),
+                      child: IconButton(
+                        onPressed: (){
+                          setState(() {
+                            selectedTabIndex = 0 ;
+                          });
+                        },
+                        icon: Image.asset(selectedTabIndex == 0 ? Home_active : Home_inactive),
+                        iconSize: 140,
+                      )
+                    ),
                     Expanded(
                         child: IconButton(
                       icon: Image.asset(
@@ -110,9 +109,9 @@ class _LandingScreenState extends State<LandingScreen> {
                           },
                     )),
                     // Expanded(child: new Text('')),
-                    Expanded(
+                    /*Expanded(
                         child: IconButton(
-                            icon: Image.asset(History_inactive), iconSize: 140)),
+                            icon: Image.asset(History_inactive), iconSize: 140)),*/
                     Expanded(
                       child: IconButton(
                         onPressed: () {
