@@ -1,6 +1,7 @@
 import 'package:Signs/Screens/check_mobile_screen.dart';
 import 'package:Signs/Utils/images.dart';
 import 'package:Signs/Utils/services/shared_preferences_service.dart';
+import 'package:Signs/Utils/singleton.dart';
 import 'package:Signs/Utils/style/theme.dart';
 import 'package:Signs/generated/l10n.dart';
 import 'package:Signs/ui/settings/update_password/update_password_screen.dart';
@@ -113,49 +114,59 @@ class SettingsScreen extends StatelessWidget {
           ),
           SizedBox(height: 8,),
           SettingsCard(
-            cardName: S.of(context).logout,
+            cardName: (Singleton().loginModel == null) ? S.of(context).logIn: S.of(context).logout,
             cardIconPath: IC_SETTINGS_LOG_OUT,
             onSelect: (){
-              Get.dialog(
-                SimpleDialog(
-                  title: Text(S.of(context).logoutMsg, style: boldRifleTextStyle, textAlign: TextAlign.center,),
-                  backgroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(16))),
-                  children: [
-                    Image.asset(IC_LOGOUT, width: Get.width/2, height: Get.width/2,),
-                    SizedBox(height: 8,),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: AnimatedButton(
-                        btnName: S.of(context).logout,
-                        controller: AnimatedButtonController(),
-                        onPressed: (){
-                          Get.find<SharedPreferencesService>().mobileNumber = '';
-                          Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => CheckMobileScreen(isSignIn: false)
-                              )
-                          );
-                        },
-                      ),
-                    ),
-                    SizedBox(height: 8,),
-                    TextButton(
-                        onPressed: (){
-                          Get.back();
-                        },
-                        child: Text(S.of(context).later)
-                    )
-                  ],
-                )
-
-              );
+              if(Singleton().loginModel == null){
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CheckMobileScreen(isSignIn: false))
+                );
+              } else{
+                showLogOutDialog(context);
+              }
             },
           ),
           SizedBox(height: 8,),
-
         ],
       ),
+    );
+  }
+
+  void showLogOutDialog(BuildContext context) {
+    Get.dialog(
+        SimpleDialog(
+          title: Text(S.of(context).logoutMsg, style: boldRifleTextStyle, textAlign: TextAlign.center,),
+          backgroundColor: Colors.white,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(16))),
+          children: [
+            Image.asset(IC_LOGOUT, width: Get.width/2, height: Get.width/2,),
+            SizedBox(height: 8,),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: AnimatedButton(
+                btnName: S.of(context).logout,
+                controller: AnimatedButtonController(),
+                onPressed: (){
+                  Get.find<SharedPreferencesService>().mobileNumber = '';
+                  Navigator.of(context).push(
+                      MaterialPageRoute(
+                          builder: (context) => CheckMobileScreen(isSignIn: false)
+                      )
+                  );
+                },
+              ),
+            ),
+            SizedBox(height: 8,),
+            TextButton(
+                onPressed: (){
+                  Get.back();
+                },
+                child: Text(S.of(context).later)
+            )
+          ],
+        )
+
     );
   }
 }

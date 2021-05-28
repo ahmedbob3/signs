@@ -74,6 +74,7 @@
   "termsConditions": "Terms & conditions",
   "language": "Language",
   "logout": "Logout",
+  "logIn": "Log In",
   "changeLanguage": "Change Language",
   "emailUs": "Email us",
   "callUs": "Call us",
@@ -88,5 +89,7 @@
   "passwordConfirmValidation": "password and confirm password must match",
   "passwordValidation": "password must be at least 8 characters",
   "updatePasswordError": "something went wrong, please make sure old password is correct",
-  "ok": "Ok"
+  "ok": "Ok",
+  "signUpToMakeAppointment": "to make appointment you must sign in first",
+  "signUpToViewAppointment": "sign in first to make appointments and view it here"
 }

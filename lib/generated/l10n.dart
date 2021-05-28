@@ -775,6 +775,16 @@ class S {
     );
   }
 
+  /// `Log In`
+  String get logIn {
+    return Intl.message(
+      'Log In',
+      name: 'logIn',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Change Language`
   String get changeLanguage {
     return Intl.message(
@@ -920,6 +930,26 @@ class S {
     return Intl.message(
       'Ok',
       name: 'ok',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `to make appointment you must sign in first`
+  String get signUpToMakeAppointment {
+    return Intl.message(
+      'to make appointment you must sign in first',
+      name: 'signUpToMakeAppointment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `sign in first to make appointments and view it here`
+  String get signUpToViewAppointment {
+    return Intl.message(
+      'sign in first to make appointments and view it here',
+      name: 'signUpToViewAppointment',
       desc: '',
       args: [],
     );

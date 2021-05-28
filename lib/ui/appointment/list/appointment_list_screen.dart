@@ -1,10 +1,12 @@
 import 'package:Signs/Utils/images.dart';
+import 'package:Signs/Utils/singleton.dart';
 import 'package:Signs/Utils/style/theme.dart';
 import 'package:Signs/Utils/styles.dart';
 import 'package:Signs/generated/l10n.dart';
 import 'package:Signs/ui/appointment/list/appointment_list_controller.dart';
 import 'package:Signs/ui/appointment/list/widget/bottomSheet.dart';
 import 'package:Signs/ui/appointment/list/widget/no_appointment.dart';
+import 'package:Signs/ui/appointment/list/widget/sign_in_required_appointemnt.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,7 +19,8 @@ class AppointmentListScreen extends StatelessWidget {
     return GetBuilder<AppointmentListController>(
       init: AppointmentListController(),
       builder: (controller) {
-        return SafeArea(
+        return (Singleton().loginModel == null)? SignInRequiredAppointment()
+            :SafeArea(
           child: Container(
             height: 1.sh,
             child: Stack(
@@ -58,9 +61,7 @@ class AppointmentListScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(
-                        height: 15.h,
-                      ),
+                      SizedBox(height: 15.h,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [

@@ -74,6 +74,7 @@
   "termsConditions": "الشروط والأحكام",
   "language": "اللغة",
   "logout": "الخروج",
+  "logIn": "تسجيل الدخول",
   "changeLanguage": "تغيير اللغة",
   "emailUs": "ارسال بريد اليكتروني",
   "callUs": "اتصل بنا",
@@ -88,5 +89,7 @@
   "passwordConfirmValidation": "الرقم السري لا يتطابق مع تأكيد الرقم السري",
   "passwordValidation": "الرقم السري لابد ان يتكون علي الاقل من 8 حروف",
   "updatePasswordError": "حدث خطأ ما, برجاء التأكد من الرقم السري القديم",
-  "ok": "تمام"
+  "ok": "تمام",
+  "signUpToMakeAppointment": "برجاء تسجيل الدخول أولا لتتمكن من حجز موعد",
+  "signUpToViewAppointment": "برجاء تسجيل الدخول أولا لتتمكن من حجز موعد و مراجعة حجوزاتك من هذه الصفحة"
 }

@@ -1,6 +1,8 @@
 import 'package:Signs/Models/hospitals_model.dart';
 import 'package:Signs/Utils/images.dart';
+import 'package:Signs/Utils/singleton.dart';
 import 'package:Signs/Utils/style/theme.dart';
+import 'package:Signs/Utils/utils.dart';
 import 'package:Signs/data/remote/appointment/doctors/models/doctors_entity.dart';
 import 'package:Signs/generated/l10n.dart';
 import 'package:Signs/ui/appointment/doctors/details/doctor_details_controller.dart';
@@ -158,19 +160,23 @@ class DoctorsDetailsScreen extends StatelessWidget {
                   child: AnimatedButton(
                     btnName: S.of(context).makeAppointment,
                     onPressed: (){
-                      Get.put(PatientInfoController());
-                      showModalBottomSheet(
-                        context: context,
-                        builder: (ctx){
-                          return ReservationBottomSheet(doctor: doctor, hospital: hospital,);
-                        },
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.vertical(
-                            top: Radius.circular(25.0),
+                      if(Singleton().loginModel == null){
+                        showNeedSignInDialog(context, S.of(context).signUpToMakeAppointment);
+                      } else{
+                        Get.put(PatientInfoController());
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (ctx){
+                            return ReservationBottomSheet(doctor: doctor, hospital: hospital,);
+                          },
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(
+                              top: Radius.circular(25.0),
+                            ),
                           ),
-                        ),
-                        isScrollControlled: true,
-                      );
+                          isScrollControlled: true,
+                        );
+                      }
                     },
                     controller: AnimatedButtonController(),
                   ),

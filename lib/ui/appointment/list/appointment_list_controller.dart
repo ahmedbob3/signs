@@ -7,16 +7,18 @@ import 'package:Signs/data/remote/appointment/models/appointment_response_entity
 class AppointmentListController extends BaseController{
   List<AppointmentResponseData> appointments = [];
   bool isLoading = false;
-  final user = Singleton().loginModel.data;
+  final user = Singleton().loginModel?.data;
   String displayedFirstName = '';
   String displayedLastName = '';
 
   AppointmentRepository _appointmentRepository = AppointmentRepository();
 
   AppointmentListController(){
-    displayedFirstName = user.uFirstName;
-    displayedLastName = user.uLastName;
-    getAppointments(user.uId, user.uRelation.isEmpty? '0':'1');
+    displayedFirstName = user?.uFirstName??"";
+    displayedLastName = user?.uLastName??"";
+    if(user != null){
+      getAppointments(user.uId, user.uRelation.isEmpty? '0':'1');
+    }
   }
 
   void getAppointments(String userId, String userType) {
