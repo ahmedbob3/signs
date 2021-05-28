@@ -36,7 +36,7 @@
   "addNewCard": "أضف بطاقة جديدة",
   "next": "التالي",
   "warning": "تحذير",
-  "pleaseAddPatientIdFirst": "من فضلك اضف الرقم التعريفي أولا",
+  "pleaseAddPatientIdFirst": "من فضلك اضف الرقم التعريفي ثم اضغط (+) أولا",
   "haveInsurance": "لديك تأمين طبي",
   "selectImageFirst": "برجاء اختيار الصورة أولا",
   "enterPatientId": "من فضلك اضف الرقم التعريفي",

@@ -86,7 +86,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "patientInfo" : MessageLookupByLibrary.simpleMessage("Patient info"),
     "physicalAppointment" : MessageLookupByLibrary.simpleMessage("Physical Appointment"),
     "physicalAppointmentMsg" : MessageLookupByLibrary.simpleMessage("Book an appointment with a doctor in required specialty"),
-    "pleaseAddPatientIdFirst" : MessageLookupByLibrary.simpleMessage("please add patient id first"),
+    "pleaseAddPatientIdFirst" : MessageLookupByLibrary.simpleMessage("please add patient id and press (+) button first"),
     "privacyPolicy" : MessageLookupByLibrary.simpleMessage("Privacy Policy"),
     "rate" : MessageLookupByLibrary.simpleMessage("Rate"),
     "rateAppointment" : MessageLookupByLibrary.simpleMessage("Rate Appointment"),

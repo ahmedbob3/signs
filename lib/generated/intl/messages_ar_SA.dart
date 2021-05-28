@@ -86,7 +86,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "patientInfo" : MessageLookupByLibrary.simpleMessage("بيانات المريض"),
     "physicalAppointment" : MessageLookupByLibrary.simpleMessage("مقابلة فعلية"),
     "physicalAppointmentMsg" : MessageLookupByLibrary.simpleMessage("قم بحجز مقابلة فعلة مع طبيب في التخصص المطلوب"),
-    "pleaseAddPatientIdFirst" : MessageLookupByLibrary.simpleMessage("من فضلك اضف الرقم التعريفي أولا"),
+    "pleaseAddPatientIdFirst" : MessageLookupByLibrary.simpleMessage("من فضلك اضف الرقم التعريفي ثم اضغط (+) أولا"),
     "privacyPolicy" : MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
     "rate" : MessageLookupByLibrary.simpleMessage("قيّم"),
     "rateAppointment" : MessageLookupByLibrary.simpleMessage("قيّم المقابلة"),

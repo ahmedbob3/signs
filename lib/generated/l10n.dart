@@ -395,10 +395,10 @@ class S {
     );
   }
 
-  /// `please add patient id first`
+  /// `please add patient id and press (+) button first`
   String get pleaseAddPatientIdFirst {
     return Intl.message(
-      'please add patient id first',
+      'please add patient id and press (+) button first',
       name: 'pleaseAddPatientIdFirst',
       desc: '',
       args: [],

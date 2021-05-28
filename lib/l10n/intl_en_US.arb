@@ -36,7 +36,7 @@
   "addNewCard": "Add New Card",
   "next": "Next",
   "warning": "Warning",
-  "pleaseAddPatientIdFirst": "please add patient id first",
+  "pleaseAddPatientIdFirst": "please add patient id and press (+) button first",
   "haveInsurance": "Have insurance",
   "selectImageFirst": "please select image first",
   "enterPatientId": "please enter patient id",
