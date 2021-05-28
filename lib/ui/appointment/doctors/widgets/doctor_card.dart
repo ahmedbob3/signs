@@ -52,7 +52,7 @@ class DoctorCard extends StatelessWidget {
                         children: [
                           AutoSizeText(doctor.name, style: boldBlackTextStyle, maxLines: 1, textAlign: TextAlign.center,),
                           SizedBox(height: 14,),
-                          AutoSizeText(doctor.bio, style: Theme.of(context).textTheme.bodyText2, maxLines: 2, textAlign: TextAlign.center,),
+                          AutoSizeText(doctor.bio, style: Theme.of(context).textTheme.bodyText2, maxLines: 2, textAlign: TextAlign.left,),
                           SizedBox(height: 14,),
                           Container(
                             decoration: BoxDecoration(
